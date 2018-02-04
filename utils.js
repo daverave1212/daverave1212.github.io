@@ -58,13 +58,19 @@
 			array_a[iRandomize] = array_a[randomizeArrayIndex];
 			array_a[randomizeArrayIndex] = auxRandomize;
 		}
-		
 	}
 
 
 	function setImageXY(var_img_i, x, y){
 		var_img_i.style.top = y + "px";
 		var_img_i.style.left = x + "px";}
+		
+	function stringContains(string_a, substring_b){
+		if(string_a.indexOf(substring_b) >= 0){
+			return true;
+		}
+		return false;
+	}
 
 
 

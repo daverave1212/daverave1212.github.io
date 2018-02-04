@@ -14,15 +14,15 @@
 	SEA_BOTTOMRIGHT = 8;
 	
 	/* "constants" for how big and how many the terrain patches are */
-	var SEASAMOUNT = 4;
-	var SEASSIZE = 5;
+	var SEASAMOUNT = 4;	
+	var SEASSIZE = 5;	//5
 	var FORESTSNUMBER = 4;
 	var FORESTSSIZE = 6;
 	var MOUNTAINSNUMBER = 1;
 	var MOUNTAINSSIZE = 5;
-	var SNOWAMOUNT = 1;
-	var SNOWSIZE = 6;
-	var TOWNSNUMBER = 40;
+	var SNOWAMOUNT = 1;	//1
+	var SNOWSIZE = 6;	//6
+	var TOWNSNUMBER = 50;
 	
 	/* remembers if a sea exists at that origin */
 	var sea_top			= false;
@@ -151,7 +151,7 @@
 			var thisTown = towns[thisTownID];
 			setImageXY(yellowSelectedBorder, towns[thisTownID].x, towns[thisTownID].y);
 			getElement("DESCRIPTIONTITLE").innerHTML = thisTown.name;
-			getElement("DESCRIPTION").innerHTML = thisTown.specialty;
+			getElement("DESCRIPTION").innerHTML = thisTown.description;
 		});
 
 		this.setXY = function(_x, _y){
@@ -160,10 +160,33 @@
 			setImageXY(this.image, _x, _y);
 		}
 		
+		this.hasType = function(string_type){
+			if(stringContains(this.type, string_type)){
+				return true;}
+			return false;
+		}
 		this.collidesWithWater = function(){
 			for(iTown = 0; iTown<waterPatches.length; iTown++){
 				if(detectCollision(this, waterPatches[iTown])){return true;}}
 			return false;
+		}
+		
+		this.collidesWithForest = function(){
+			for(iTown = 0; iTown<forestPatches.length; iTown++){
+				if(detectCollision(this, forestPatches[iTown])){return true;}}
+			return false;
+		}
+		
+		this.collidesWithSnow = function(){
+			for(iTown = 0; iTown<snowPatches.length; iTown++){
+				if(detectCollision(this, snowPatches[iTown])){return true;}}
+			return false;
+		}
+		
+		this.collidesWithMountain = function(){
+			for(iTown = 0; iTown<mountainPatches.length; iTown++){
+				if(detectCollision(this, mountainPatches[iTown])){return true;}}
+			return false;			
 		}
 		
 		this.collidesWithTowns = function(){
@@ -179,12 +202,24 @@
 		
 
 		
-		/* Descriptions below */
-		this.townSize = "";
-		this.name = "";
-		this.specialty = "";
+		/* Descriptors below */
+		this.	townSize			= "";
+		this.	isCity				= false;
+		this.	name				= "";
+		this.	specialty			= "";
+		this.	type				= "";	//island, snow, mountain, etc
+		this.	description			= "";
+		this.	location			= "";
+		this.	northsouth			= "";
+		this.	westeast			= "";
+		this.	tavernName			= "";
+		this.	tavernDescription	= "";
 		
-		
+		this.generateTavern = function(){
+			this.tavernName = namegen.tavernName();
+			this.tavernDescription = gen.tavernDescription(this.townSize);
+		}
+			
 		this.giveRandomSize = function(){
 			var randomSizeVar = percentChance(3);
 			if(randomSizeVar == true){
@@ -194,6 +229,7 @@
 				randomSizeVar = randomInt(1, 4);
 				if(randomSizeVar == 4){
 					randomSizeVar = percentChance(30);
+					this.isCity = true;
 					if(randomSizeVar == true){
 						this.townSize = "Large City";
 						nBigCities++;}
@@ -216,16 +252,251 @@
 		}
 		
 		this.giveName = function(){
-			if(this.townSize == "Large City" || this.townSize == "City"){
-				this.name = namegen.cityName();}
-			else{
-				this.name = namegen.townName();}
+			var nameIsOK = false;
+			while(!nameIsOK){
+				nameIsOK = true;
+				if(this.townSize == "Large City" || this.townSize == "City"){
+					this.name = namegen.cityName();}
+				else{
+					this.name = namegen.townName();}
+				if(stringContains(this.name, "east") && (westeast == "west" || westeast == "center")){
+					alert("   > NOT OK BOI");
+					nameIsOK = false;}
+				if(stringContains(this.name, "west") && (westeast == "east" || westeast == "center")){
+					alert("   > NOT OK BOI");
+					nameIsOK = false;}
+				if(stringContains(this.name, "south") && (northsouth == "north" || northsouth == "center")){
+					alert("   > NOT OK BOI");
+					nameIsOK = false;}
+				if(stringContains(this.name, "north") && (northsouth == "south" || northsouth == "center")){
+					alert("   > NOT OK BOI");
+					nameIsOK = false;}
+			}
 		}
 		
 		this.createSpecialty = function(){
 			this.specialty = gen.townSpecialty(this.townSize);
 		}
+		
+		this.giveTypes = function(){
+			if(this.collidesWithForest()){
+				this.type += "forest";}
+			if(this.collidesWithMountain()){
+				this.type += "mountain";}
+			if(this.collidesWithSnow()){
+				this.type += "snow";}
+		}
+		
+		this.generateLocation = function(){
+			this.northsouth = "";
+			this.westeast = "";
+			console.log("  > Island? " + this.hasType("island"));
+			if(this.hasType("island")){
+				this.location += "on an island ";}
+			if(this.x < screenWidth/3){
+				westeast = "west";}
+			else if(this.x > 2 * screenWidth/3){
+				westeast = "east";}
+			else{
+				westeast = "center";}
+			if(this.y < screenHeight/3){
+				northsouth = "north";}
+			if(this.y > 2 * screenHeight/3){
+				northsouth = "south";}
+			else{
+				northsouth = "center";}
+			if(northsouth != westeast){
+				this.location += northsouth + "-" + westeast;}
+			else{
+				this.location += "in the center";}
+			this.location += " on the map";
+			if(this.hasType("snow")){
+				this.location += ", covered with snow";}
+			if(this.hasType("forest")){
+				this.location += " inside a forest";}
+			if(this.hasType("mountain")){
+				this.location += " on top of a mountain";}
+		}
+
+		this.generateDescription = function(){
+			this.description += this.name + " is a " + this.townSize + " located in the ";
+			this.description += this.location;
+			this.description += ".<br>";
+			this.description += this.specialty + "<br><br>";
+			this.description += this.name + " has:<br>";
+			
+			if(!this.isCity){
+				this.	hasPawnShop			= percentChance(12);
+				this.	hasHerbShop			= percentChance(23);
+				this.	hasFruitShop		= percentChance(70);
+				this.	hasMeatShop			= percentChance(89);
+				this.	hasPotteryShop		= percentChance(23);
+				this.	hasUndertaker		= percentChance(19);
+				this.	hasLibrary			= percentChance(9);
+				this.	hasMoneyLender		= percentChance(8);
+				this.	hasBlacksmith		= percentChance(72);
+				this.	hasCarpenter		= percentChance(46);
+				this.	hasJeweler			= percentChance(15);
+				this.	hasBaker			= percentChance(42);
+				this.	hasGeneralGoods		= percentChance(84);
+				this.	hasTailor			= percentChance(49);
+				this.	hasLeatherworker	= percentChance(39);
+				this.	hasAlchemist		= percentChance(5);
+				this.	hasAntiquities		= percentChance(3);
+				this.	hasTemple			= percentChance(78);
+				this.	hasBarracks			= percentChance(31);
+				this.	hasFort				= percentChance(12);
+				this.	hasGuardTower		= percentChance(19);
+				this.	hasMagicShop		= percentChance(18);
+				this.	hasSpecialShop		= percentChance(11);}
+			else{
+				this.	hasPawnShop			= percentChance(24);
+				this.	hasHerbShop			= percentChance(33);
+				this.	hasFruitShop		= percentChance(94);
+				this.	hasMeatShop			= percentChance(92);
+				this.	hasPotteryShop		= percentChance(31);
+				this.	hasUndertaker		= percentChance(26);
+				this.	hasLibrary			= percentChance(29);
+				this.	hasMoneyLender		= percentChance(12);
+				this.	hasBlacksmith		= percentChance(94);
+				this.	hasCarpenter		= percentChance(56);
+				this.	hasJeweler			= percentChance(21);
+				this.	hasBaker			= percentChance(69);
+				this.	hasGeneralGoods		= percentChance(97);
+				this.	hasTailor			= percentChance(64);
+				this.	hasLeatherworker	= percentChance(53);
+				this.	hasAlchemist		= percentChance(11);
+				this.	hasAntiquities		= percentChance(9);
+				this.	hasTemple			= percentChance(92);
+				this.	hasBarracks			= percentChance(78);
+				this.	hasFort				= percentChance(34);
+				this.	hasGuardTower		= percentChance(56);
+				this.	hasMagicShop		= percentChance(27);
+				this.	hasSpecialShop		= percentChance(19);				
+				}
+			
+			if(this.hasPawnShop){
+				var nCurrentShops = 1;
+				if(this.isCity){
+				nCurrentShops = randomInt(1, 3);}
+				this.description += "\t - " + nCurrentShops + " Pawn Shop(s)<br>";}
+			if(this.hasHerbShop){
+				var nCurrentShops = 1;
+				if(this.isCity){
+				nCurrentShops = randomInt(1, 3);}
+				this.description += "\t - " + nCurrentShops + " Herb Shop(s)<br>";}
+			if(this.hasFruitShop){
+				var nCurrentShops = 1;
+				if(this.isCity){
+				nCurrentShops = randomInt(1, 3);}
+				this.description += "\t - " + nCurrentShops + " Fruits and Vegetable Market(s)<br>";}
+			if(this.hasMeatShop){
+				var nCurrentShops = 1;
+				if(this.isCity){
+				nCurrentShops = randomInt(1, 3);}
+				this.description += "\t - " + nCurrentShops + " Butcher(s)<br>";}
+			if(this.hasPotteryShop){
+				var nCurrentShops = 1;
+				if(this.isCity){
+				nCurrentShops = randomInt(1, 3);}
+				this.description += "\t - " + nCurrentShops + " Pottery Shop(s)<br>";}
+			if(this.hasUndertaker){
+				var nCurrentShops = 1;
+				if(this.isCity){
+				nCurrentShops = randomInt(1, 3);}
+				this.description += "\t - " + nCurrentShops + " Undertaker(s)<br>";}
+			if(this.hasLibrary){
+				var nCurrentShops = 1;
+				if(this.isCity){
+				nCurrentShops = randomInt(1, 3);}
+				this.description += "\t - " + nCurrentShops + " Library(Libraries)<br>";}
+			if(this.hasMoneyLender){
+				var nCurrentShops = 1;
+				if(this.isCity){
+				nCurrentShops = randomInt(1, 3);}
+				this.description += "\t - " + nCurrentShops + " Money Lender or Bank(s)<br>";}
+			if(this.hasBlacksmith){
+				var nCurrentShops = 1;
+				if(this.isCity){
+				nCurrentShops = randomInt(1, 3);}
+				this.description += "\t - " + nCurrentShops + " Blacksmith(s)<br>";}
+			if(this.hasCarpenter){
+				var nCurrentShops = 1;
+				if(this.isCity){
+				nCurrentShops = randomInt(1, 3);}
+				this.description += "\t - " + nCurrentShops + " Carpenter(s)<br>";}
+			if(this.hasJeweler){
+				var nCurrentShops = 1;
+				if(this.isCity){
+				nCurrentShops = randomInt(1, 3);}
+				this.description += "\t - " + nCurrentShops + " Jeweler(s)<br>";}
+			if(this.hasBaker){
+				var nCurrentShops = 1;
+				if(this.isCity){
+				nCurrentShops = randomInt(1, 3);}
+				this.description += "\t - " + nCurrentShops + " Baker(s)<br>";}
+			if(this.hasGeneralGoods){
+				var nCurrentShops = 1;
+				if(this.isCity){
+				nCurrentShops = randomInt(1, 3);}
+				this.description += "\t - " + nCurrentShops + " General Goods Store(s)<br>";}
+			if(this.hasTailor){
+				var nCurrentShops = 1;
+				if(this.isCity){
+				nCurrentShops = randomInt(1, 3);}
+				this.description += "\t - " + nCurrentShops + " Tailor(s)<br>";}
+			if(this.hasLeatherworker){
+				var nCurrentShops = 1;
+				if(this.isCity){
+				nCurrentShops = randomInt(1, 3);}
+				this.description += "\t - " + nCurrentShops + " Leatherworker(s)<br>";}
+			if(this.hasAlchemist){
+				var nCurrentShops = 1;
+				if(this.isCity){
+				nCurrentShops = randomInt(1, 3);}
+				this.description += "\t - " + nCurrentShops + " Alchemist's Shop(s)<br>";}
+			if(this.hasAntiquities){
+				var nCurrentShops = 1;
+				if(this.isCity){
+				nCurrentShops = randomInt(1, 3);}
+				this.description += "\t - " + nCurrentShops + " Antiquarian(s)<br>";}
+			if(this.hasTemple){
+				var nCurrentShops = 1;
+				if(this.isCity){
+				nCurrentShops = randomInt(1, 3);}
+				this.description += "\t - " + nCurrentShops + " Temple(s)<br>";}
+			if(this.hasBarracks){
+				var nCurrentShops = 1;
+				if(this.isCity){
+				nCurrentShops = randomInt(1, 3);}
+				this.description += "\t - " + nCurrentShops + " Barrack(s)<br>";}
+			if(this.hasFort){
+				var nCurrentShops = 1;
+				if(this.isCity){
+				nCurrentShops = randomInt(1, 3);}
+				this.description += "\t - " + nCurrentShops + " Fort(s)<br>";}
+			if(this.hasGuardTower){
+				var nCurrentShops = 1;
+				if(this.isCity){
+				nCurrentShops = randomInt(1, 3);}
+				this.description += "\t - " + nCurrentShops + " Guard Tower(s)<br>";}
+			if(this.hasMagicShop){
+				var nCurrentShops = 1;
+				if(this.isCity){
+				nCurrentShops = randomInt(1, 3);}
+				this.description += "\t - " + nCurrentShops + " Magic Shop(s)<br>";}
+			if(this.hasSpecialShop){
+				var nCurrentShops = 1;
+				if(this.isCity){
+				nCurrentShops = randomInt(1, 3);}
+				this.description += "\t - " + nCurrentShops + " Special Shop(s)<br>";}
+			this.description += "<br>";
+			this.description += this.tavernName + "<br>" + this.tavernDescription;
+		}
 	}
+
+		
+		
 	
 	function Marker(x, y){
 		this.image = createImage("images/Marker.png");
@@ -645,9 +916,10 @@
 				if(newTown.collidesWithTowns()){
 					isPlaceable = false;}
 				else if(newTown.collidesWithWater()){
-					var doesItCollideWithWater = percentChance(10);
+					var doesItCollideWithWater = percentChance(10); // Gives it 10% chance to be an island
 					if(doesItCollideWithWater == true){
 						print("   WATER: Placed on water");
+						newTown.type += "island";
 						removeElement(newTown.image);
 						var newGrassPatch = new GrassPatch(0, 0);
 						newGrassPatch.setXY(childX - newTown.width/2 - 10, childY - newTown.height/2 -10);
@@ -661,9 +933,13 @@
 			else{
 				towns.push(newTown);
 				print("Generated town!");
+				newTown.giveTypes();
 				newTown.giveRandomSize();
+				newTown.generateTavern();
+				newTown.generateLocation();
 				newTown.giveName();
-				newTown.createSpecialty();}
+				newTown.createSpecialty();
+				newTown.generateDescription();}
 		}
 		
 	}
@@ -681,7 +957,8 @@
 		initParagraph();
 		console.log("nGeneratedWaterPatches: " + nGeneratedWaterPatches);
 		console.log("waterPatches.length: " + waterPatches.length);
-
+		
+		console.log("Finished generating world.");
 		}
 	
 	window.onload = initProgram;
@@ -697,6 +974,14 @@ TO DO:
 	(done) make base water patches bigger and round to look better
 	(fixed for forest?) see why mountains and forests sometimes spawn on water near shores
 		o Check max array size, maybe it exceeds
+		
+	
+	Day 4:
+		Added town location descriptions
+		Added town shops
+		
+	To do:
+		change shop frequency even more to match the town size
 
 	Algorithm:
 : Notice player that the map is 1 month/1 month-ish travel time

@@ -185,7 +185,7 @@
 		switch(spec){
 			case "canals": return "The "+t+" is known for having navigatable canals instead of streets. It was constructed atop a river/lake and much of the working around is done on floating bridges and boats.";
 			case "monument": return "In the "+aux.townLocation()+" lies a big monument or statue, dedicated to a god or hero perhaps.";
-			case "food": return "The "+t+" is renowned for its special "+aux.specialFood+" cooking recipes and adventurers are in for a treat!";
+			case "food": return "The "+t+" is renowned for its special "+aux.specialFood()+" cooking recipes and adventurers are in for a treat!";
 			case "rude": return "The "+t+" is known for its rude and xenophobic town folk. They will not talk to strangers and will seek to drive them away as soon as possible.";
 			case "markets": return "It is known to cover a quite wide variety of markets. Adventurers may find exotic goods, uncommon trinkets or equipment or even magical items... priced accordingly, of course";
 			case "artists": return "It is the common gathering place for various artists. Painters, writers and singers often come to this town for inspiration and monthly gatherings, as there is a dedicated society for this kind of people.";
@@ -225,8 +225,117 @@
 		return "error ;c";
 	}
 
-	
-	
+	gen.tavernDescription = function(townSize){
+		var desc = "";
+		var minQual = 0;
+		var maxQual = 0;
+		switch(townSize){
+			case "Caravan Town"		:	minQual = 1; maxQual = 2;
+			case "Small Village"	:	minQual = 2; maxQual = 3;
+			case "Village"			:	minQual = 2; maxQual = 4;
+			case "Town"				:	minQual = 2; maxQual = 5;
+			case "City"				:	minQual = 3; maxQual = 6;
+			case "Large City"		:	minQual = 4; maxQual = 6;
+		}	
+		
+		var quality = randomInt(minQual, maxQual);
+		var hasInsideToilet 	= percentChance(22 * quality);
+		var hasKitchen			= percentChance(35 * quality);
+		var hasGarden			= percentChance(15 * quality);
+		var hasBrothel			= percentChance(25 * quality);
+		var hasVipRooms			= percentChance(20 * quality);
+		var brothelQuality		= randomInt(minQual, maxQual);
+		var foodQuality			= randomInt(minQual, maxQual);
+		var drinkQuality		= randomInt(minQual, maxQual);
+		var nGuestRooms			= randomInt(minQual, maxQual + 3);
+		var nFloors				= randomInt(1, nGuestRooms/randomInt(3, 5));
+		
+		desc += "The tavern appears to be";
+		switch(quality){
+			case 1: desc += " of the lowest quality possible."; break;
+			case 2: desc += " cheap, yet not so bad."; break;
+			case 3: desc += " the average inn."; break;
+			case 4: desc += " one of decent quality."; break;
+			case 5: desc += " a rather high quality one."; break;
+			case 6: desc += " one of the most luxurious ones you have ever seen.";}
+		desc += " It has";
+		if(hasGarden){
+			desc += " a beautifully decorated garden on the outside, "}
+		if(hasBrothel){
+			desc += " a brothel with ";
+			switch(brothelQuality){
+				case 1: desc += "ugly and bad smelling wenches,"; break;
+				case 2: desc += "poor looking, cheap whores,"; break;
+				case 3: desc += "simple, yet fair women,"; break;
+				case 4: desc += "not the worst, but not the best looking 'employees' either,"; break;
+				case 5: desc += "rather attractive ladies, ocasionally a man too for the satisfaction of some,"; break;
+				case 6: desc += "gorgeous girls and men, dressed in the finest of clothing,";}}
+		if(hasVipRooms){
+			desc += " expensive or cheaper rooms, to your liking,";}
+		if(hasInsideToilet){
+			desc += " even an unexpectedly clean toilet on the inside";}
+		if(!hasBrothel && !hasInsideToilet && !hasGarden && !hasVipRooms && !hasKitchen){
+			desc += "... literally nothing on the inside.";}
+		else{
+			desc += ".";
+			if(!hasVipRooms && !hasKitchen){
+				desc += " Yet, curiously, it does not seem to have a kitchen of it's own, nor does it have any choice regarding rooms, since all seem to be the same.";}
+			else{
+				if(!hasVipRooms){
+					desc += " The rooms seem bland, being all similar and almost not decorated at all";}
+				else{
+					desc += " Curiously, it does not seem to have a kitchen to prepare food.";
+				}
+			}
+		}
+		desc += " With the " + nGuestRooms + " rooms being split among " + nFloors + " floors,";
+		if(foodQuality == 1 && drinkQuality == 1){
+			desc += " the tavern doesn't appear to serve food or nor drink.";}
+		else{
+			if(foodQuality == 1){
+				desc += " the tavern does not seem to serve any sort of food, but the drinks served";
+				switch(drinkQuality){
+					case 1: desc += " taste like bland liquid, almost undrinkable."; break;
+					case 2: desc += " are extremely cheap and dilluted."; break;
+					case 3: desc += " are rather decent."; break;
+					case 4: desc += " are sometimes strong and good, other times weak and inconsistent."; break;
+					case 5: desc += " seem of good production and taste and smell fresh, like they were made only recently."; break;
+					case 6: desc += " are top-notch, probably ones of the best you have ever tasted."; break;
+				}
+				}
+			else if(drinkQuality == 1){
+				desc += " the tarvern seems to be lacking drinks other than water, but the food";
+				switch(foodQuality){
+					case 1: desc += "... it looks and tastes horrible."; break;
+					case 2: desc += " is tasteless, though eatable."; break;
+					case 3: desc += " is just the average you'd expect from such place."; break;
+					case 4: desc += " is surprisingly good. Not the best, but certanly a decent meal."; break;
+					case 5: desc += " tastes and smells nice and tender, a good meal!"; break;
+					case 6: desc += " tastes heavenly... the perfect combinations of the most expensive ingredients."; break;
+				}}
+			else{
+				desc += " the tavern's drinks"
+				switch(drinkQuality){
+					case 1: desc += " taste like bland liquid, almost undrinkable"; break;
+					case 2: desc += " are extremely cheap and dilluted"; break;
+					case 3: desc += " are rather decent"; break;
+					case 4: desc += " are sometimes strong and good, other times weak and inconsistent"; break;
+					case 5: desc += " seem of good production and taste and smell fresh, like they were made only recently"; break;
+					case 6: desc += " are top-notch, probably ones of the best you have ever tasted"; break;
+				}
+				desc += " and the food";
+				switch(foodQuality){
+					case 1: desc += "... it looks and tastes horrible."; break;
+					case 2: desc += " is tasteless, though eatable."; break;
+					case 3: desc += " is just the average you'd expect from such place."; break;
+					case 4: desc += " is surprisingly good. Not the best, but certanly a decent meal."; break;
+					case 5: desc += " tastes and smells nice and tender, a good meal!"; break;
+					case 6: desc += " tastes heavenly... the perfect combinations of the most expensive ingredients."; break;
+				}			
+			}
+		}
+		return desc;
+	}
 	
 	
 	
@@ -428,4 +537,122 @@
 	case 37:w="pass";break;}
 
 	return q+w;
+	}
+
+	namegen.tavernName = function(){
+		var q, w, g;
+
+		switch(randomInt(1, 24)){
+		case 1:q="The Sleeping ";break;
+		case 2:q="The Jealous ";break;
+		case 3:q="The Stinky ";break;
+		case 4:q="The Drowned ";break;
+		case 5:q="The Mad ";break;
+		case 6:q="The Honey ";break;
+		case 7:q="The Blind ";break;
+		case 8:q="The Deaf ";break;
+		case 9:q="The Angry ";break;
+		case 10:q="The Saucy ";break;
+		case 11:q="The Tasty ";break;
+		case 12:q="The Black ";break;
+		case 13:q="The Brown ";break;
+		case 14:q="The Humble";break;
+		case 15:q="The Roasted ";break;
+		case 16:q="The Rusty ";break;
+		case 17:q="The Old ";break;
+		case 18:q="The Evil ";break;
+		case 19:q="The Crazed ";break;
+		case 20:q="The Golden ";break;
+		case 21:q="The White ";break;
+		case 22:q="The Red ";break;
+		case 23:q="The Lucky ";break;
+		case 24:q="The Drunken ";break;
+		case 25:q="";break;
+		case 26:q="";break;
+		case 27:q="";break;
+		case 28:q="";break;
+		case 29:q="";break;
+		case 30:q="";break;
+		case 31:q="";break;
+		case 32:q="";break;
+		case 33:q="";break;
+		case 34:q="";break;
+		case 35:q="";break;
+		case 36:q="";break;
+		case 37:q="";break;
+		case 38:q="";break;
+		case 39:q="";break;
+		case 40:q="";break;
+		case 41:q="";break;
+		case 42:q="";break;
+		case 43:q="";break;
+		case 44:q="";break;
+		case 45:q="";break;
+		case 46:q="";break;
+		case 47:q="";break;
+		case 48:q="";break;
+		case 49:q="";break;
+		case 50:q="";break;}
+
+
+		switch(randomInt(1, 36)){
+		case 1:w="Cat";break;
+		case 2:w="Weasel";break;
+		case 3:w="Gull";break;
+		case 4:w="Hound";break;
+		case 5:w="Mule";break;
+		case 6:w="Maiden";break;
+		case 7:w="Giant";break;
+		case 8:w="Gnoll";break;
+		case 9:w="Horseman";break;
+		case 10:w="Horse";break;
+		case 11:w="Mare";break;
+		case 12:w="Huntsman";break;
+		case 13:w="Knight";break;
+		case 14:w="Lion";break;
+		case 15:w="Panther";break;
+		case 16:w="Badger";break;
+		case 17:w="Bear";break;
+		case 18:w="Fox";break;
+		case 19:w="Raven";break;
+		case 20:w="Granny";break;
+		case 21:w="Goblin";break;
+		case 22:w="Rose";break;
+		case 23:w="Stag";break;
+		case 24:w="Mage";break;
+		case 25:w="Priest";break;
+		case 26:w="Bastard";break;
+		case 27:w="Prince";break;
+		case 28:w="Cauldron";break;
+		case 29:w="Imp";break;
+		case 30:w="Herring";break;
+		case 31:w="Dagger";break;
+		case 32:w="Sailor";break;
+		case 33:w="Horseshoe";break;
+		case 34:w="Windmill";break;
+		case 35:w="Crossroads";break;
+		case 36:w="Wizard";break;
+		case 37:w="";break;
+		case 38:w="";break;
+		case 39:w="";break;
+		case 40:w="";break;
+		case 41:w="";break;
+		case 42:w="";break;
+		case 43:w="";break;
+		case 44:w="";break;
+		case 45:w="";break;
+		case 46:w="";break;
+		case 47:w="";break;
+		case 48:w="";break;
+		case 49:w="";break;
+		case 50:w="";break;}
+
+		switch(randomInt(1, 4)){
+		case 1:g=" Inn";break;
+		case 2:g=" Tavern";break;
+		case 3:g="";break;
+		case 4:g="";break;
+		}
+
+		return q+w+g;
 	}
