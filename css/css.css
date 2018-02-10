@@ -1,0 +1,52 @@
+	.talentimage{
+		position: absolute;
+		z-index: -150;
+		cursor: pointer;
+	}
+	
+	#BRANCH{
+		position: absolute;
+		top: 380px;
+		left: 125px;
+		z-index: -200;
+		
+	}
+
+	#DESCDIV{
+		position: absolute;
+		width: 500px;
+		top: 150px;
+		left: 150px;
+		display: none;
+	}
+	
+	#DESCFRAME{
+		position: absolute;
+		width: 100%;
+		z-index: -100;
+	}
+	
+	.par{
+		color: yellow;
+		z-index: -50;
+		margin-left: 10px;
+		margin-right: 10px;
+		margin-bottom: 10px;
+		margin-top: 0px;
+		font-size: 110%;
+		font-family: Arial, Helvetica, sans-serif;
+	}
+	
+	#TALENTNAME{
+		color: white;
+		font-size: 125%;
+		font-weight: bold;
+		margin-top: 5px
+	}
+	
+	#TALENTCOST{
+		color: white;
+		font-size: 100%;
+		font-weight: bold;
+	}
+	
