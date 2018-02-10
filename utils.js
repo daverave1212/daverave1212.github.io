@@ -1,9 +1,9 @@
 	var print = console.log;
 	function addElement(dom_e){
-		document.getElementById("MAP").appendChild(dom_e);
+		document.getElementById("BODY").appendChild(dom_e);
 	}
 	function removeElement(dom_e){
-		document.getElementById("MAP").removeChild(dom_e);
+		document.getElementById("BODY").removeChild(dom_e);
 	}
 	function percentChance(chance){	/* Ex: percentChance(20) = 20% chance to return true; */
 		var c = randomInt(1, 100);
@@ -46,7 +46,7 @@
 	function createImage(src){
 		var img = createElement("img");
 		img.setAttribute("src", src);
-		getElement("MAP").appendChild(img);
+		getElement("BODY").appendChild(img);
 		return img;
 	}
 

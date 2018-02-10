@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+	<rule> scale buildings by x3;</rule>
+</resources>
+
+
+/*
+	window.onload = function(){
+		jQuery.get("resources.xml", function(data){
+			//var a = jQuery(data);
+			var xmlAsString = new XMLSerializer().serializeToString(data.documentElement);
+			var parser = new DOMParser();
+			var xmlAsDom = parser.parseFromString(xmlAsString, "text/xml");
+			var upMostNode = xmlAsDom.getElementsByTagName("resources")[0];
+			upMostNode.getElementsByTagName("rule")[0].innerHTML = "moe dragnea";
+			alert(upMostNode.getElementsByTagName("rule")[0].innerHTML);
+			
+			var containerElement = createElement("div");
+			containerElement.appendChild(upMostNode);
+			alert(containerElement.innerHTML);
+			
+			var xmlFile = new File("resources.xml");
+			xmlFile.open("w");
+			xmlFile.writeln("dasdasdasdasdasd");
+			xmlFile.close();
+			
+			/*
+			<?xml version="1.0" encoding="utf-8" ?>
+			<resources>
+				<rule> scale buildings by x3;</rule>
+			</resources>			
+			*/
+			
+		});
+	}
+
+
+*/
