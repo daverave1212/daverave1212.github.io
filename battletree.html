@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<link rel = "stylesheet" type = "text/css" href = "css/css.css">
+
+</head>
+<body id = "BODY" class = "BODYBATTLE">
+	
+	<div id = "DESCDIV">
+		<img id = "DESCFRAME" src = "descframe.png">
+		<p class = "par" id = "TALENTNAME">adas</p>
+		<p class = "par" id = "TALENTCOST">dasd</p>
+		<p class = "par" id = "TALENTDESC">asdasd</p>
+	</div>
+	
+	<img src = "branches/battle_branches.png" class = "BRANCH" id = "BATTLEBRANCH">
+	<img src = "backgrounds/battlebackground.png" id = "BACKGROUND">
+
+<script src="jquery-3.3.1.min.js"></script>
+<script src = "utils.js"></script>
+<script src = "js/scripts.js"></script>
+<script>
+
+
+
+
+	//jos-sus-stanga-dreapta: 125 	stanga-branch: 75
+	new Talent( 500, 650, "strong2", "Strong!!!", "3", "Gain 6 max health permanently.");
+	new Talent( 750, 650, "strong1", "Strong", "2", "Gain 6 max health permanently.");
+	new Talent( 875, 650, "protect", "Protect : 0", "3", "When an ally is attacked, instantly dash to them and absorb the damage for them if they get hit. Heal for 1d4 afterwards.");
+	new Talent( 375, 525, "shield_bash", "Shield Bash : 0.5", "2", "Deal 1d4 damage to a unit and attempt to stun it. \n Requires a shield equipped \n Getting this spell again also increases its damage (in addition to getting more charges). See the book for stats. \n When you first get this talent, mark the other Shield Bash talent in this tree as acquired.");
+	new Talent( 875, 525, "shield_bash", "Shield Bash : 0.5", "2", "Deal 1d4 damage to a unit and attempt to stun it. \n Requires a shield equipped \n Getting this spell again also increases its damage (in addition to getting more charges). See the book for stats. \n When you first get this talent, mark the other Shield Bash talent in this tree as acquired.");
+	new Talent( 250, 525, "throw_weapon", "Throw Weapon : 1 - 30 ft", "3", "Attack at range with your weapon by rolling a Strength + Dexterity Check (10). \n This deals damage equal to your normal attack. \n Your target must make a Crowd Control save with -5. \n If it fails, the next action it MUST take is to attack you. \n Otherwise it won't do anything.");
+	new Talent( 1000, 525, "heavy_armor", "Heavy Armor : Passive", "2", "You make more efficient use of heavy armor. \n It greatly reduces the time it takes to put on heavy armor and no longer decreases initiative. \n Your maximum Health is also increased by 2 for each level if you’re wearing heavy armor.");
+	new Talent( 500, 525, "headbutt", "Headbutt : 1", "2", "Both you and a target take 1d4 damage (same roll). \n Attack the target. \n If the attack lands, the target is attempted a Stun on with +2 Crowd Control Chance bonus.");
+	new Talent( 750, 525, "shield_wall", "Shield Wall : 0.5", "2", "Raise your shield. Until your next turn, you have +3 AC and MR. Your movement speed is slowed by 10 ft until then.");
+	new Talent( 375, 650, "beast", "Beast : 2", "2", "You gain +1 Strength and +2 Crowd Control Resistance.");
+	new Talent( 625, 650, "flank_attack", "Flank Attack : Passive", "2", "Whenever you or an ally flank attacks a target and you’re included in the flank as an attacker with a melee weapon, that attack gains +1d4 damage. \n You can get more charges of this ability (costs +1 each time) to increase the flank damage by 1 dice tier every time.");
+	new Talent( 500, 775, "rage", "Rage : 0", "3", "For 2 rounds (including this), you gain +1d4 damage on main hand (or 2 Handed) attacks. \n Until the end of the second round, you can not be healed.");
+	new Talent( 375, 775, "berserk", "Berserk : 0.5", "3", "Heal for 1d6 and break any Crowd Control (not Concussions) on you. If any Crowd Control was broken, heal for another 1d6. If you are at 0 HP (unconscious or near-death), you can use this ability instead of skipping your turn. If you do, heal for an additional 1d6 (can't heal more than 2d6 total).");
+	new Talent( 375, 900, "survivor", "Survivor : Passive", "2", "You can survive twice as much without food and water. \n You also gain Proficiency in Survival.");
+	new Talent( 250, 775, "whirlwind", "Whirlwind", "3", "Perform an attack with a 2 handed melee weapon. \n This attack hits all creatures near you for Weapon Damage, calculated separately for each.");
+	new Talent( 125, 775, "execute", "Execute : 1", "4", "Perform an attack with a melee weapon. \n If the attack kills the target, you gain 1 bonus (full) action. \n When you first get this talent, mark the other Execute talent in this tree as acquired. You can then continue to get talents from the other talent on too.");
+	new Talent( 750, 775, "vow_of_valor", "Vow of Valor : Passive", "2", "You vow to be true to your purpose, and breaking the vow may have consequences. \n You may not continue in other talents or trees until you acquire the Execute talent. \n You also gain Proficiency in any skill of your choice.");
+	new Talent( 875, 775, "disarm", "Disarm : 0.5", "2", "Attempt a disarm on the target. \n If the DM considers that the target can take additional damage depending on your vow and the type of enemy, it also takes 1d4 damage. \n Getting multiple instances (charges) of this ability increases its vow damage. \n Charge 2		1d8 \n Charge 3		1d12 \n Charge 4		1d20");
+	new Talent( 1000, 775, "opportunity_strike", "Opportunity Strike : 1", "3", "Perform an attack on each enemy around you.");
+	new Talent( 1125, 775, "execute", "Execute : 1", "4", "Perform an attack with a melee weapon. \n If the attack kills the target, you gain 1 bonus (full) action. \n When you first get this talent, mark the other Execute talent in this tree as acquired. You can then continue to get talents from the other talent on too.");
+	new Talent( 625, 900, "break", "Break : 1", "2", "Perform an attack with a 2 Handed melee weapon. \n The attack will apply a Status Effect of your choice with its intensity equal to your Proficiency if it hits.");
+	new Talent( 750, 900, "exorcise", "Exorcise : 1", "3", "You attempt to exorcise a creature. \n If the target is Unholy, it takes Staff Power + Religion + Proficiency Bonus damage and is attempted a stun on. This is considered a spell.<br>Thrown with advantage.");
+	new Talent( 750, 1025, "eviscerate", "Eviscerate : 1", "2", "Attack with a 2 Handed Weapon. \n You gain advantage on the attack roll and gain +1d4 damage. \n You can only have 2 charges.");
+	new Talent( 625, 1025, "thrust", "Thrust : 1", "2", "Perform an attack with a 2 Handed weapon. \n The attack hits regardless of what you rolled (and can't crit in normal situations). \n You can only have 2 charges.");
+	new Talent( 500, 1025, "slam", "Slam : 1", "2", "Attack with a 2 Handed Weapon. \n The attack deals +1d8 damage and has 50% chance to apply a Concussion. \n You can only have 2 charges.");
+	new Talent( 500, 1150, "battlecast", "Battlecast : Passive", "2", "If you're wearing heavy armor, after you land an attack with a melee weapon and you apply any Status Efect to the target, you get a bonus 0.5 action. It can only be used to cast a spell.");
+	new Talent( 625, 1150, "kick", "Kick : 0.5", "2", "Kicks the target to the ground. The target gets a Concussion and Snare.");
+	new Talent( 750, 1150, "martial_master", "Martial Master : Passive", "3", "Attacking with a 2 Handed weapon while wearing Light or no armor has +3 Accuracy.");
+	new Talent( 875, 1150, "keen_senses", "Keen Senses : ", "3", "You meditate to increase the effectiveness of all your seeing, \n hearing, smelling and sensing. \n You gain +2 AC until the next rest.");
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html style = "height: 1800px; width: 1800px;">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<link rel = "stylesheet" type = "text/css" href = "css/css.css">
+
+</head>
+<body id = "BODY" class = "BODYDUELING">
+	
+	<div id = "DESCDIV">
+		<img id = "DESCFRAME" src = "descframe.png">
+		<p class = "par" id = "TALENTNAME">adas</p>
+		<p class = "par" id = "TALENTCOST">dasd</p>
+		<p class = "par" id = "TALENTDESC">asdasd</p>
+	</div>
+	
+	<img src = "branches/dueling_branches.png" class = "BRANCH" id = "DUELINGBRANCH">
+	<img src = "backgrounds/duelingbackground.png" id = "BACKGROUND">
+
+<script src="jquery-3.3.1.min.js"></script>
+<script src = "utils.js"></script>
+<script src = "js/scripts.js"></script>
+<script>
+
+
+
+
+
+	
+
+	new Talent( 600, 600, "kick", "Kick : 0.5", "2", "Kicks the target to the ground. The target is attempted a concussion and snare.");
+	new Talent( 725, 600, "dodge", "Dodge : 0.5", "2", "The next attack you receive is automatically a miss and (then) you may move 5 feet in any possible direction.");
+	new Talent( 475, 600, "duelists_advance", "Duelist's Advance : 0.5", "2", "After you land an attack with a one-handed melee weapon, you can perform an attack. The attack crits if the total Hit Dice (plus modifiers) is over 20.<br>2 Uses / Charge<br>One charge is lost regardless if you hit.");
+	new Talent( 475, 725, "throwing_master", "Throwing Mster : 0", "3 (Doesn't Increase)", "The next melee one-handed weapon attack has 25 ft maximum range.<br>When you perform this attack, you throw your weapon and you must retrieve it before using it again.<br>3 Uses / Charge");
+	new Talent( 600, 725, "fencer", "Fencer : Passive", "3", "You gain +1 accuracy with one-handed weapons and gain +5 movement speed.");
+	new Talent( 600, 850, "counterattack", "Counterattack : 0", "2", "When you are attacked (before the roll), roll an attack against the target. If your attack roll is higher, the enemy attack is canceled and you continue the attack. Requires a one handed weapon that is not Finesse.");
+	new Talent( 600, 975, "momentum", "Momentum : 1", "4", "Move 5 feet in any direction possible without triggering attacks of opportunity.<br>The next melee attack you land is automatically a crit (even if you don't roll 16, 18 or 20) that deals tripled weapon damage.");
+	
+	new Talent( 1125, 600, "survivor", "Survivor : Passive", "2", "You can survive twice as long without food and water. You also gain +2 or proficiency in Survival");
+	new Talent( 1000, 725, "bandage", "Bandage : 1", "2", "Bandage an ally, removing bleed effects and healing it for 1d6 damage.<br>Getting this ability multiple times not only increases its number of charges, but also increases the heal by 1 dice tier every time (ex: 1d8, 1d10, 1d12");
+	new Talent( 1250, 725, "sense_beasts", "Sense Beasts : Depends", "2", "For a duration of minutes to hours, you can detect any beast around you (from feet to miles).<br>The ability's power is proportional to your wisdom.<br>You gain +1 in any Stat.");
+	new Talent( 1000, 850, "alarm_set", "Alarm Set : Only usable while resting", "1", "You can create an alarm set if you have materials. The alarm set is a 20 foot cube.<br>Anything triggering the alarm will make sharp chime noises.");
+	new Talent( 1000, 975, "fake_sound", "Fake Sound : 0.5", "2", "You create a sound out of thin air. You roll a deception check to see how close to perfection the result is.");
+	new Talent( 1250, 850, "beastmaster_attack", "Beastmaster Attack : 0", "3", "This turn, you get one more attack of any kind agains a beast.");
+	new Talent( 1250, 975, "luck", "Luck : Depends on the weapon", "3", "Perform an attack and call a number from 1 to 6, then roll 1d6. If you rolled the correct number and the attack hits, it gains +2d8 damage.<br>If the attack misses, you get your charge back.<br>If the attack hits, but you were not lucky with the 1d6, you have 50% chance to get your charge back.");
+	new Talent( 1125, 1100, "study_movement", "Study Movements : 1", "3", "You study the movements of a creature.<br>The next attack you hit on that creature is guaranteed to crit.<br>If the attack would crit anyway, the damage is quadrupled instead.");
+	new Talent( 1125, 1225, "eyes_of_the_beast", "Eyes of the Beat : Depends", "2", "For a duration, you are able to see through the eyes of beasts.<br>You can calm a beast too and convince it to leave.<br>.You can also attempt to communicate (speak) with an animal, but it will probably not be as comprehensive and deep as a conversation with another humanoid.<br>Gain proficiency or +2 in Animal Handling.");
+	new Talent( 1125, 1350, "tame_beast", "Tame Beast : Depends", "3", "You can tame one beast to become your pet. See the book for details.");
+
+</script>
+</body>
+</html>

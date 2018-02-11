@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<link rel = "stylesheet" type = "text/css" href = "css/css.css">
+
+</head>
+<body id = "BODY" class = "BODYNATURE">
+	
+	<div id = "DESCDIV">
+		<img id = "DESCFRAME" src = "descframe.png">
+		<p class = "par" id = "TALENTNAME">adas</p>
+		<p class = "par" id = "TALENTCOST">dasd</p>
+		<p class = "par" id = "TALENTDESC">asdasd</p>
+	</div>
+	
+	<img src = "branches/nature_branches.png" id = "NATUREBRANCH" class = "BRANCH">
+	<img src = "backgrounds/naturebackground.png" id = "BACKGROUND">
+
+<script src="jquery-3.3.1.min.js"></script>
+<script src = "utils.js"></script>
+<script src = "js/scripts.js"></script>
+<script>
+
+
+
+
+	//jos-sus-stanga-dreapta: 125 	stanga-branch: 75
+	new Talent( 600, 500, "call_of_nature", "Call of Nature", "2", "You hear the call of nature and become more connected with the flora, fauna, etc. \n Gain proficiency in any skill and 1 weapon (can be staff too). \n If this is the first Root talent you pick, also gain +2 Intelligence.");
+	new Talent( 475, 500, "shape_shift", "Shape Shift", "5", "This is a complex spell. See the book for details.");
+	new Talent( 600, 625, "natures_infusion", "Nature's Infusion : 1 - Touch", "3", "Heal a target for Spell Power + 1. \n Has no effect if the target is wearing Heavy Armor or is not made of flesh or is not living.");
+	new Talent( 725, 625, "survivor", "Survivor", "2", "You can survive twice as much without food and water. You also gain Proficiency or +2 on Survival.");
+	new Talent( 475, 750, "palm_attack", "Palm Attack", "2", "Rank 1 : Passive \n You gain profficiency with Unarmed. \n Rank 2+ : 0 Action \n After you landed (NOT missed) an unarmed attack, use this ability to attack the same target again.");
+	new Talent( 350, 750, "fast_hands", "Fast Hands : 0.5", "3", "Next turn, you can perform 1 bonus (full) action (or, of course, 2 0.5 actions). \n The effect is cancelled if you get crowd controlled until then.");
+	new Talent( 725, 750, "spark", "Spark : 1 - 30 ft", "3", "Damages a target for Spell Power + Proficiency Bonus. \n Deals 1d4 damage against targets that can properly conduct electricity (ex: heavy armor), but has hit disadvantage against targets wearing Medium Armor (leather) or very dry targets. \n Thrown.");
+	new Talent( 600, 875, "recharge", "Recharge : 1 - 25 ft", "2", "Regenerate for an ally 1 charge of a spell of that ally.");
+	new Talent( 725, 875, "focus", "Focus : Passive", "2", "Permanently increase your Proficiency by 1.");
+	new Talent( 850, 875, "vibrating_palm", "Vibrating Palm : 2 - Melee", "4", "Take 1 action this turn to channel this ability. \n Next turn, take 1 action to unleash this attack on an enemy. \n If the enemy is below 50% health and is Medium or smaller, kill it instantly. \n This attack has +3 chance to hit. \n Requires Proficiency in unarmed.");
+	new Talent( 475, 1000, "keen_senses", "Keen Senses : Only while resting", "3", "You meditate to increase the effectiveness of all your seeing, hearing, smelling and sensing. \n You gain +2 AC until the next rest.");
+	new Talent( 600, 1000, "channel", "Channel : Channeled", "2", "Attempt to communicate with a (higher) spiritual being.");
+	new Talent( 600, 1125, "natural_focus", "Natural Focus : 1", "3", "Your next 2 spells cast have the action requirement of 0.");
+	new Talent( 475, 1125, "surge", "Surge : 1", "3", "You can bring a dead creature back to life to 1 health if it died at most 5 minutes ago.");
+	new Talent( 725, 1125, "barkskin", "Barkskin : 1", "2", "Your skin becomes rough and hard and gains a texture similar to that of tree bark for up to 5 minutes. \n You gain +6 AC. \n While Barkskinned, you can't move and can't take any actions (you are effectively stunend). \n You can choose to instantly end the effect at any point.");
+	new Talent( 850, 1125, "control_plants", "Control Plants : Up to the DM", "2", "You can move and control plants around you. Their strength, your range and the duration scale with your Intelligence.");
+	new Talent( 600, 1250, "chain_lightning", "Chain Lightning : 1 - 30 ft", "3", "Damages the closest 4 targets to eachother for Spell Power -1. \n Prioritizes units in heavy armor or carrying much metal. \n This can hit allies! \n Thrown on the first target.");
+	new Talent( 475, 1250, "control_element", "Control Element : 1", "2", "You can manipulate one of the elements: fire, water, earth, air. \n You can use this quickly, but it still spends 1 action from your next turn if in combat. \n When you gain this ability, you gain control over only 1 of those elements. \n Your control and the strength of this ability scales with your Intelligence");
+	new Talent( 725, 1250, "control_bacteria", "Control Bacteria : Up to the DM", "2", "You can control bacteria. You may be able to cure or inflict infections.");
+	new Talent( 475, 1375, "growth", "Growth : Channeled", "2", "While you are channeling, you are able to grow plants extremely fast. An average growth caster will be able to fully grow a medium oak tree in 10 minutes.");
+	new Talent( 600, 1375, "natures_protection", "Nature's Protection : 1", "3", "The target is blessed and gains +2 AC for 1 hour.");
+	new Talent( 725, 1375, "revitalizing_flow", "Revitalizing Flow : 1	30 ft", "5", "You perform a dance of spirits and invoke a benevolent spirit. \n The DM chooses an ally. \n Heal that ally to full Health. \n Thrown. \n If you miss, the target must be changed next time and can't be targeted again for 5 minutes.");
+
+
+
+</script>
+</body>
+</html>

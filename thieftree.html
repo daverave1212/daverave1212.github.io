@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html style = "height: 1800px;">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<link rel = "stylesheet" type = "text/css" href = "css/css.css">
+
+</head>
+<body id = "BODY">
+	
+	<div id = "DESCDIV">
+		<img id = "DESCFRAME" src = "descframe.png">
+		<p class = "par" id = "TALENTNAME">adas</p>
+		<p class = "par" id = "TALENTCOST">dasd</p>
+		<p class = "par" id = "TALENTDESC">asdasd</p>
+	</div>
+	
+	<img src = "branches/thief_branches.png" class = "BRANCH" id = "THIEFBRANCH">
+	<img src = "backgrounds/thiefbackground.png" id = "BACKGROUND">
+
+<script src="jquery-3.3.1.min.js"></script>
+<script src = "utils.js"></script>
+<script src = "js/scripts.js"></script>
+<script>
+
+
+
+
+
+	
+	new Talent( 500, 625, "deadly_crits", "Deadly Crits : passive", "2", "Whenever you crit, also add 1d6 to the damage dealt.<br>You can get this Talent again for 4 Talent Points. This upgrades this ability so that your crits now deal triple damage instead.");
+	new Talent( 375, 625, "slice_and_dice", "Slice and Dice : Passive", "2", "You gain proficiency with Finesse Weapons, such as Daggers, Whips, etc.<br>You also gain +1 Accuracy with Finesse weapons if you are not wearing heavy armor.");
+	new Talent( 750, 625, "quickdraw", "Quickdraw : Passive", "2", "On ranged weapon attacks, if you roll 2, you hit automatically and add +1 damage.");
+	new Talent( 875, 625, "range", "Range : Passive", "2", "Gain +1 accuracy with ranged weapons.");
+	new Talent( 500, 750, "pick_lock", "Pick Lock : 1", "2", "Attempt to pick a lock. Attempt to pick a lock. Add double the proficiency if you roll a Skill check.<br>Requires {Lock Pick}");
+	new Talent( 750, 750, "track", "Track : Passive", "2", "You can slightly tell in which direction a specific physical being is. You also gain Proficiency in Perception or +2 on Perception.");
+	new Talent( 375, 750, "throwing_master", "Throwing Mster : 0", "3 (Doesn't Increase)", "The next melee one-handed weapon attack has 25 ft maximum range.<br>When you perform this attack, you throw your weapon and you must retrieve it before using it again.<br>3 Uses / Charge");
+	new Talent( 875, 750, "survivor", "Survivor : Passive", "2", "You can survive twice as long without food and water. You gain +2 on Survival or proficiency in Survival.");
+	new Talent( 625, 875, "dodge", "Dodge : 0.5", "2", "The next attack you receive is automatically a miss and you can move 5ft in any direction after that attack.");
+	new Talent( 375, 875, "ambush", "Ambush : 1", "3", "If you are hiding, you can melee attack an enemy with both weapons (or only one if you are wielding a 2-handed weapon).<br>You roll only once for attack roll. This attack also applies bonus Proficiency Damage on your offhand weapon. If the attack crits, it deals triple damage instead.<br>The attack crits on 16 and 18 if you hit, regardless of your Dexterity.");
+	new Talent( 875, 875, "concussive_shot", "Concussive Shot : 0", "2", "Your next ranged weapon crit will stun the target.");
+	new Talent( 625, 1000, "stealthy", "Stealthy : Passive", "2", "When you try to hide, you can more easily vanish.<br>You get +2 on Stealth or proficiency in Stealth.");
+	new Talent( 375, 1000, "agile", "Agile : Passive", "2", "You gain +2 on attack rolls with One Handed Melee Weapons once per turn.");
+	new Talent( 875, 1000, "steady", "Steady : Passive", "2", "Your ranged critical strikes don't double your damage, but allow you to attack again (any target) with +5 accuracy. This can happen multiple times in a row.");
+	new Talent( 250, 1000, "disguise", "Disguise : Depends", "2", "You attempt to disguise yourself as a certain thing or person. This requires materials.");
+	new Talent( 1000, 1000, "upper_hand", "Upper Hand : Passive", "2", "If you are hiding and land a surprise attack, you gain maximum initiative for this encounter.<br>You can also more easily detect and disarm traps and gain 1 Arcane Point. From now on, you can spend arcane points to reroll weapon damage rolls.");
+	new Talent( 250, 1125, "open_wound", "Open Wound : Passive", "3", "Ad +1 to landed Finesse weapon attacks.");
+	new Talent( 500, 1125, "fast_hands", "Fast Hands : 0.5", "3", "Next turn, you acn perform 1 bonus (full) action (or 2 0.5 actions). This effect is canceled if you get crowd controlled until then.");
+	new Talent( 750, 1125, "point_blank_shot", "Point Blank Shot : 0.5", "2", "Perform a melee attack with a 1-handed ranged weapon. The attack is not affected by penalty this way, but loses 2 accuracy. If it hits, it deals +1d8 damage.<br>Once charge is lost regardless if it hits.");
+	new Talent( 1000, 1125, "aim", "Aim : 1", "3", "Attack a target with a Ranged weapon.<br>If the Attack Roll is an even number, double all damage dealt.<br>You can only have 2 charges.<br>One charge is lost when you cast this ability, regardless if you hit.");
+	new Talent( 500, 1250, "swift_blows", "Swift Blows : Passive", "5", "If you start your turn with a Finesse weapon in either hand, you get 0.5 bonus action this turn. You can also apply proficiency on the damage roll twice.");
+	new Talent( 750, 1250, "piercing_shot", "Piercing Shot : 0.5", "0.5", "Perform an attack with a one-handed ranged weapon.<br>In the direction you are shooting, this attack tries to hit a creature behind the main target.<br>That creature from behind is attempted the same attack on but with -5 accuracy (same damage)");
+	new Talent( 875, 1250, "gunsling", "Gunsling : 1", "3", "Perform an attack with a 2 handed ranged weapon.<br>This attack isn't targeted on a creature, but shoots 5 bullets/bolts n a cone in front of you at around 45*.<br>Targets within 5 feet o fyou take +2 damage.<br>Targets 10 feet from you take normal damage.<br>Targets within 15 feet of you take -2 damage, and so on.");
+	new Talent( 1000, 1250, "triple_arrow", "Triple Arrow : 1", "3", "Perform an attack with a two-handed ranged weapon with -1 accuracy. Then perform an attack with the same weapon on up to 2 different targets close to your main target with -4 accuracy (same hit and damage rolls for these two).<br>A charge is lost even if you miss the primary target.");
+	new Talent( 625, 1375, "lethal_point", "Lethal Point : 0", "3", "Your next landed attack has 50% chance to allow you to attack again. Lasts until you trigger this effect once.");
+	
+	
+
+</script>
+</body>
+</html>

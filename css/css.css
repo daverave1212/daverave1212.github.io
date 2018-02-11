@@ -1,15 +1,75 @@
+	html{
+		width: 1800px;
+		height: 1800px;
+	}
+
+	body{
+		margin: 0px;
+
+	}
+	
+	.SPECIALBODY{
+		height: 1800px;
+	}
+	
 	.talentimage{
 		position: absolute;
 		z-index: -150;
 		cursor: pointer;
+		width: 60px;
 	}
 	
-	#BRANCH{
+	.BRANCH{
 		position: absolute;
+		z-index: -200;	
+	}
+	
+	#MAGICBRANCH{
 		top: 380px;
 		left: 125px;
-		z-index: -200;
-		
+	}
+	
+	#NATUREBRANCH{
+		top: 530px;
+		left: 385px;
+	}
+
+	#BATTLEBRANCH{
+		top: 550px;
+		left: 160px;
+	}
+	
+	#HOLYBRANCH{
+		top: 490px;
+		left: 270px;
+	}
+	
+	#THIEFBRANCH{
+		top: 643px;
+		left: 285px;
+	}
+	
+	#DARKBRANCH{
+		top: 425px;
+		left: 520px;
+	}
+	
+	#DUELINGBRANCH{
+		top: 620px;
+		left: 500px;
+	}
+	
+	#BARDBRANCH{
+		top: 385px;
+		left: 410px;
+	}
+	
+	#BACKGROUND{
+		position: fixed;
+		z-index: -250;
+		height: 1800px;
+		margin-left: 0px;
+		margin-top: 0px;
 	}
 
 	#DESCDIV{
@@ -27,7 +87,7 @@
 	}
 	
 	.par{
-		color: yellow;
+		color: #f4df41;
 		z-index: -50;
 		margin-left: 10px;
 		margin-right: 10px;

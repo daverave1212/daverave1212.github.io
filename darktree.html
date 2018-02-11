@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<link rel = "stylesheet" type = "text/css" href = "css/css.css">
+
+</head>
+<body id = "BODY">
+	
+	<div id = "DESCDIV">
+		<img id = "DESCFRAME" src = "descframe.png">
+		<p class = "par" id = "TALENTNAME">adas</p>
+		<p class = "par" id = "TALENTCOST">dasd</p>
+		<p class = "par" id = "TALENTDESC">asdasd</p>
+	</div>
+	
+	<img src = "branches/dark_branches.png" class = "BRANCH" id = "DARKBRANCH">
+	<img src = "backgrounds/darkbackground.png" id = "BACKGROUND">
+
+<script src="jquery-3.3.1.min.js"></script>
+<script src = "utils.js"></script>
+<script src = "js/scripts.js"></script>
+<script>
+
+
+
+
+	
+	
+	new Talent( 500, 500, "dark_call", "Dark Call : Passive", "5", "See the manual for this spell.");
+	new Talent( 500, 625, "raise_undead", "Raise Undead : 1, 15 ft", "Free", "When you get Dark Call, you can choose either Raise Undead or Summon Familiar, but not both. You gain the ability to raise undead minions to server and fight under your command. You will be able to upgrade this ability to summon multiple undead minions and combine them into unearthly creatures. Strength in numbers or strength in size!<br>Check the book for details.");
+	new Talent( 625, 500, "summon_familiar", "Summon Familiar : 1 minute", "Free", "When you get Dark Call, you can choose either Raise Undead or Summon Familiar, but not both. You gain the ability to summon a loyal demon. Its power is directly affected by yours. Upgrading this ability upgardes your demon by giving it abilities for various situations. Make it a bulky and resistant demon, a charming spellcaster succubus or a flesh eating hound, the choices are limitless! Check the book for details.");
+	new Talent( 625, 625, "banish", "Banish : 1", "2", "Banish a creature into a different plane until your next turn.<br>The target can't move or attack with weapons and can't be attacked with weapons and can only be attacked by spells. This is considered a form of Crowd Control. If the Banish fails, you have 50% chance to get the spell back.");
+	new Talent( 750, 625, "deathfire_bolt", "Deathfire Bolt : 1, 30 ft", "3", "Throws a green bolt of unholy energy towards a target and deals Spell Power + Proficiency Bonus + 1d4 damage.<br>Can only target living beings and can't target elementals.<br>Thrown.");
+	new Talent( 750, 500, "telepathy", "Telepathy : 1", "1", "You can convey messages at long or short distance in the minds of beings. The target can't talk to you this way, only you to them.");
+	new Talent( 750, 750, "dark_visions", "Dark Visions : 1", "2", "Inflict fake visions upon a target or temporarily change their memories or alter how they remember things. This could make them experience various emotions. This can only be done in certain circumstances (ask the DM).");
+	new Talent( 625, 750, "dark_reading", "Dark Reading : Passive", "2", "You can descipher dark language texts, understand them and speak them. You also undersatnd and speak these languages and use certain items such as dark scrolls.<br>Gain proficiency in 1 Intelligence Skill.");
+	new Talent( 875, 625, "alter_dreams", "Alter Dreams : 1", "1", "You can alter the dreams of a target in any way you want. If the target dies in the dream, they wake up.");
+	new Talent( 875, 500, "focus", "Focus : passive", "2", "Permanently increase your Proficiency by 1.");
+	new Talent( 875, 375, "invisibility", "Invisibility : 0.5, Channeled", "2", "Turn invisible. While invisible, you can only move at half speed. Getting too close to an enemy may break invisibility. This acts as if you are hiding.");
+	new Talent( 1000, 500, "watcher_eye", "Watcher Eye : 0.5", "2", "You can quickly place a small eye as a camera. The eye can twitch slightly in any direction, uncontrolably.<br>The eye visually records everything it can see and its sight is as good as its 'previous owner'.<br>You must retrieve the eye to see what it recorded.<br>Requires {Humanoid Eye}.");
+	new Talent( 750, 875, "rain_of_chaos", "Rain of Chaos : 1 - 30 ft", "3", "Deals Spell Power damage to a target.<br>Deals half of that damage to all units within 5 ft of the target.");
+	new Talent( 1000, 750, "antimagic_shield", "Antimagic Shield : 1", "4", "Create a 20 ft in diameter zone on the ground. ");
+	new Talent( 1000, 625, "channel", "Channel : Channeled", "2", "Attempt to communicate with a higher spiritual being. Ask the DM.");
+	new Talent( 875, 875, "sense_life", "Sense Life : Passive", "2", "You can sense alive beings within a mile radius or more.<br>You get slight locations of beings in terms of direction and distance.<br>Ask the DM.");
+	new Talent( 875, 1000, "mind_tear", "Mind Tear : 1 - 25 ft", "3", "Dark thoughts eveil a target's mind.<br>The target takes Proficiency * 2 damage and is attempted a Stun on. If the target is looking directly at you it taked 1d6 more damage.");
+	new Talent( 1000, 875, "detect_darkness", "Detect Darkness : Passive", "2", "You can sense unusual dark magic within a mile radius or more.<br>Ask the DM.<br>You also gain +2 or Proficiency in Arcana.");
+	new Talent( 1125, 750, "drain_life", "Drain Life : 1 - 40 ft", "4", "Drain the life of an enemy. Deal Spell Power + Proficiency damage. Heal for the amount of damage dealt.<br>Can only be used on living targets.<br>If you have Dark Call and you get this talent, you are considered a powerful user of black arts and can more freely use your dark powers.");
+	new Talent( 1125, 1000, "lich_ritual", "Lich Ritual", "4", "This is a complex spell.<br>It transforms you into a lich, but under very specific conditions.<br>Check the book for details and ask the DM for more info.");
+	//new Talent( , , "", "", "", "");
+
+</script>
+</body>
+</html>

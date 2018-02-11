@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<link rel = "stylesheet" type = "text/css" href = "css/css.css">
+
+</head>
+<body id = "BODY">
+	
+	<div id = "DESCDIV">
+		<img id = "DESCFRAME" src = "descframe.png">
+		<p class = "par" id = "TALENTNAME">adas</p>
+		<p class = "par" id = "TALENTCOST">dasd</p>
+		<p class = "par" id = "TALENTDESC">asdasd</p>
+	</div>
+	
+	<img src = "branches/holy_branches.png" id = "HOLYBRANCH" class = "BRANCH">
+	<img src = "backgrounds/holybackground.png" id = "BACKGROUND">
+
+<script src="jquery-3.3.1.min.js"></script>
+<script src = "utils.js"></script>
+<script src = "js/scripts.js"></script>
+<script>
+
+
+
+
+	//jos-sus-stanga-dreapta: 125 	stanga-branch: 75
+	new Talent( 500, 600, "holy_light", "Holy Light : 0.5", "2", "A flash of holy light sparks from your hand. \n The light lasts a few seconds and fades over time. \n As you learn this ability, you also gain proficiency in any 2-Handed melee weapon, any 1-Handed melee weapon and a shield or a staves and you can choose 2 of the 3 Basic Holy Spells (Mend, Power of God and Divine Aid) or one Basic Spell and one Basic Holy Spell. \n You can use this ability every 30 seconds.");
+	new Talent( 500, 475, "mend", "Mend : Only usable while resting", "Free", "You can heal up to 2 creatures for Spell Power health. \n 1 / Rest");
+	new Talent( 375, 475, "the_power_of_god", "The Power of God : 1 - Melee", "Free", "Attempt to stun an enemy. \n If you succeed, you also deal Proficiency damage to the target. \n Proficiency uses / Rest");
+	new Talent( 625, 475, "divine_aid", "Divine Aid : 1 - 15 ft", "Free", "Roll a d20. If your roll + Proficiency was 15 or more, heal a target for Spell Power \n Proficiency uses / Rest");
+	new Talent( 375, 725, "healing_touch", "Healing Touch : 1", "2", "Touch an ally to create a holy aura around him. \n Heal that ally for 1d12.");
+	new Talent( 625, 725, "turn", "Turn : 0.5 - 15 ft", "2", "Fear an enemy. If it's an undead, fear all other undead in a 15 ft radius from you.");
+	new Talent( 375, 850, "vow_of_holyness", "Vow of Holyness : Passive", "2", "You make a vow to serve a higher holy being and you are recognized as a powerful ally of the church. \n The vow can ONLY be taken in a Sacred Place (up to the DM). \n Once you take this path, you may not continue expanding in other directions other than ones branching from Holy Light (Ex: you can't start or continue in the Magic talent tree. \n But you can continue into Surge from Soothe Pain and so on. \n You do not lose other spells gained from other trees though, but you can't get more charges of those spells unless you reach them from side-branching (apply common sense if you don’t understand).");
+	new Talent( 625, 850, "smite", "Smite : 0", "2", "After you land an attack on an enemy, you can add +1d6 damage to it.");
+	new Talent( 375, 975, "halo", "Halo : 1 - 30 ft", "3", "Put a protective halo on an ally. Heal that ally for Spell Power + Proficiency Bonus. The heal can exceed the target's max HP. \n If this happens, lasts 1 minute.");
+	new Talent( 625, 975, "exorcise", "Exorcise : 1 - 30 ft", "3", "You attempt to exorcise a creature. \n If the target is Unholy, it takes Staff Power + Religion + Proficiency Bonus damage and is attempted a stun on. This is considered a spell.<br>Thrown with advantage.");
+	new Talent( 750, 850, "bless_weapon", "Bless Weapon : Only usable while resting", "2", "Use 1 {Holy Water} to enchant a weapon so it deals +1d4 damage to undead. Lasts 4 attacks. \n Not stackable with other enchantments.");
+	new Talent( 250, 975, "focus", "Focus : Passive", "2", "Permanently increase your proficiency by 1.");
+	new Talent( 375, 1100, "soothe_pain", "Soothe Pain : 0.5 - Melee", "2", "Calm the pain of a target temporarily. \n This does not treat the actual cause of the pain. \n The duration scales with Intelligence. \n With the permission of the DM, this can cleanse crowd control effects.");
+	new Talent( 625, 1100, "ritual_of_exorcism", "Ritual of Exorcism : Passive", "2", "Exorcise can now be used on any target, not only unholy. You also gain proficiency in any skill.");
+	new Talent( 875, 850, "vow_of_light", "Vow of Light : Passive", "2", "You vow to protect the poor, injured, etc. \n The vow can only be taken in a Sacred Place (up to the DM). \n You are recognized as a hero of the common folk and a paragon of light. \n Should you break the vows, you lose access to abilities gained and talents branching from this talent.<br>You also gain proficiency in one Skill.");
+	new Talent( 1000, 850, "judgement", "Judgement : passive", "2", "Smite now automatically applies to Unholy creatures. You can still activate Smite to deal +1d6 additional damage in this case. Smite heals you for the bonus damage (that +1d6) dealt too when used manually.");
+	new Talent( 875, 975, "divine_shield", "Divine Shield : 0.5", "4", "Makes you immune to damage until your next turn.");
+	new Talent( 875, 1100, "devotion_aura", "Devotion Aura : Passive - 40 ft", "4", "All allies around you have +1 AC.");
+	new Talent( 875, 1225, "curse_immunity", "Curse Immunity : Passive", "1", "You may not be cursed.");
+	new Talent( 250, 1100, "surge", "Surge : 1 - Melee", "3", "You can bring a dead creature back to life to 1 health if it died within 5 minutes.");
+	new Talent( 375, 1225, "binding_light", "Binding Light : 1 - 15 ft", "4", "Choose an ally and an enemy. \n Heal that ally and damage the enemy for Spell Power.");
+	new Talent( 625, 1225, "divine_protection", "Divine Protection : Only usable while resting", "3", "The target is healed for and gains Profficiency + 2 maximum health until the next rest.");
+	new Talent( 250, 1225, "dark_call", "Dark Call : Passive", "2", "You take the path of darkness and renounce all other religions you followed. \n This is a very complex talent. See more information in the book.");
+	new Talent( 500, 1350, "clease", "Cleanse : 0.5", "3", "Remove a magic debuff from an ally. Can use 2 times per short rest.");
+	new Talent( 500, 1475, "holy_circle", "Holy Circle : 1 - 15 ft from center", "4", "Create a 15x15 circle (or square...) on the ground. \n At the start of your next turn, the circle bursts, healing all allies in the circle by Spell Power. \n Also damages all enemies caught in the circle by Spell Power.");
+	new Talent( 500, 1600, "divine_mending", "Divine Mending : 1 - 30 ft", "4", "Heal a creature for Spell Power + 2*Proficiency. Can't target a creature that doesn't have faith in a higher power.");
+
+
+</script>
+</body>
+</html>

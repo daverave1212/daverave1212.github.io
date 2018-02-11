@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<link rel = "stylesheet" type = "text/css" href = "css/css.css">
+
+</head>
+<body id = "BODY" class = "BODYMAGIC">
+	
+	<div id = "DESCDIV">
+		<img id = "DESCFRAME" src = "descframe.png">
+		<p class = "par" id = "TALENTNAME">adas</p>
+		<p class = "par" id = "TALENTCOST">dasd</p>
+		<p class = "par" id = "TALENTDESC">asdasd</p>
+	</div>
+	
+	<img src = "branches/magic_branches.png" class = "BRANCH" id = "MAGICBRANCH">
+	<img src = "backgrounds/magicbackground.png" id = "BACKGROUND">
+
+<script src="jquery-3.3.1.min.js"></script>
+<script src = "utils.js"></script>
+<script src = "js/scripts.js"></script>
+<script>
+
+
+
+
+	//jos-sus-stanga-dreapta: 125 	stanga-branch: 75
+	new Talent(300, 350, "magic", "Magic : Passive", "2", "You gain proficiency with Staves. \n You can also choose 2 of the Basic Spells and gain Mage Power. \n The spells you cast draw energy from items with Staff Power.");
+	new Talent(375, 475, "blink", "Blink : 0.5	- 30 ft", "2", "Quickly teleport to a nearby spot. \n The spell leaves behind a magical trail that can be seen. \n If you have 2 charges of this spell ready, you can use 2 at once (0.5 action total) to leave no trail.");
+	new Talent(225, 475, "ignite", "Ignite : 0 - 30 ft", "2", "Sends a short burst of fire that deals 1d4 + Proficiency damage to a target." );
+	new Talent(100, 475, "focus", "Focus : Passive", "2", "Permanently increase your proficiency by 1." );
+	new Talent(225, 600, "control_element", "Control Element : 0.5 or 1 - 30 ft", "2", "You can manipulate one of the elements: fire, water, earth, air  \n You can use this quickly, but it still spends 1 action from your next turn if in combat.  \n When you gain this ability, you gain control over only 1 of those elements.  \n Your control and the strength of this ability scales with your Intelligence.  \n You can get this ability again for just 1 Skill Point." );
+	new Talent(500, 475, "distort_vision", "Distort Vision : 1 - 30 ft", "2", "This incantation distorts the space a few feet around you.  \n The more intelligence you have, the more it is distorted.  \n Concentrated.");
+	new Talent(100, 600, "invisibility", "Invisibility : Channeled, while moving", "2", "Turn invisible. While invisible, you can only move at half speed.  \n Getting too close to an enemy may break invisibility.");
+	new Talent(100, 725, "elemental_blast", "Elemental Blast : 1", "3", "Blast a target dealing Staff Power + Proficiency. You choose the element:  \n - Fire, Frost, Acid, Air, Earth -  \n The spell may have various effect depending on the element you chose.  \n Ask the DM.");
+	new Talent(100, 850, "hand_sign", "Hand Sign : 0", "2", "Your next spell that requires a 1 action will only require a 0.5 action.");
+	new Talent(625, 475, "mage_armor", "Mage Armor : 0 - 30 ft", "2", "Put a protective shield on an ally.  \n That ally takes -2 damage from spells. Lasts for 3 spell damage instances on the target.  \n 2 uses / rest");
+	new Talent(350, 600, "frost_enchantment", "Frost Enchantment : Only while resting", "2", "You use a {Frost Rune} to imbue a weapon.  \n For 4 attacks, that weapon does +1 damage and slows the target's move speed by 10 ft.  \n Not stackable with other enchantments.  \n Getting this spell again increases its rank by 1, doesn't cost more and gains bonus effects. \n Check the book for the stats.");
+	new Talent(225, 725, "fire_enchantment", "Fire Enchantment : Only while resting", "2", "You use a {Fire Rune} to imbue a weapon. For 5 attacks, that weapon does +1 damage.  \n Not stackable with other enchantments.  \n Getting this spell again increases its rank by 1, doesn't cost more and gains bonus effects. \n Check the book for the stats.");
+	new Talent(350, 725, "explosion_rune", "Explosion Rune : 1", "3", "Casts a rune on a solid surface (2.5 ft radius).  \n Any physical contact with it detonates it.  \n Whatever stepped in it takes Staff Power fire damage and is attempted a snare on.");
+	new Talent(625, 725, "mimick", "Mimick : 0.5 - 30 ft", "2", "The next time an enemy casts a spell, you can cast a version of that spell once in your next turn");
+	new Talent(475, 725, "telekinesis", "Telekinesis : Depends", "2", "You may levitate and control objects around you.  \n The weight and the precision of your control scales with your Intelligence.  \n Concentrated.");
+	new Talent(475, 600, "power_rune", "Power Rune : 1", "3", "Casts a rune on a solid surface (2.5 ft radius).  \n When an ally steps on it, you can freely activate the rune and that 1 ally gains 1 charge of a spell back and gains 0.5 action on their next turn.");
+	new Talent(875, 475, "conceal_magic", "Conceal Magic : Depends", "2", "This is a very very complicated concentration spell.  \n It conceals spells but at the same time it is a spell itself...  \n Ask the DM.");
+	new Talent(750, 350, "disenchant", "Disenchant : Only while resting", "2", "With this spell you can transfer the Staff Power of an item to another. \n Check the book for details.");
+	new Talent(625, 350, "force_zone", "Force Zone : Channeled while moving", "2", "You maintain a 15 ft zone of force around you. It blocks ranged physical attacks.  \n Can be maintained until you are attacked.");
+	new Talent(750, 600, "translation", "Translation : Passive", "2", "You are able to (only) understand (only) common languages when spoken to.");
+	new Talent(875, 350, "telekinesis", "Transmute : Unknown", "work in progress", "you may skip this talent");
+	new Talent(875, 725, "fake_sound", "Fake Sound : 0.5", "2", "You create a sound out of thin air.  \n You roll a Deception check to see how close to perfection the result is.");
+	new Talent(625, 600, "battlecast", "Battlecast : Passive", "2", "If you're wearing heavy armor, after you land an attack with a melee weapon and you apply any Status Efect to the target, you get a bonus 0.5 action. It can only be used to cast a spell.");
+	new Talent(475, 850, "spark", "Spark : 1 - 30 ft", "3", "Damages a target for Spell Power + Proficiency Bonus. \n Deals 1d4 damage against targets that can properly conduct electricity (ex: heavy armor), but has hit disadvantage against targets wearing Medium Armor (leather) or very dry targets. \n Thrown.");
+	new Talent(625, 975, "rain_of_ice", "Rain of Ice : 0.5 each turn - 30 ft", "3", "Target a point.  \n While you are channeling, each turn, all enemies in a 10 ft radius take Staff Power - 1 Damage.");
+	new Talent(750, 975, "flame_strike", "Flame Strike : 1", "3", "Deals Staff Power fire damage in a 7 ft radius.");
+	new Talent(625, 1100, "conjuration", "Conjuration : 1", "2", "You can conjure an object made of arcane energy.  \n The object is always of only a color of your choice, can be solid or not and is transparent or translucent.  \n Lasts from a few seconds to a few minutes and the size scales with your Intelligence.");
+	new Talent(375, 1100, "deathfire_bolt", "Deathfire Bolt : 1 - 30 ft", "3", "Throws a green bolt of unholy energy towards a target and deals Staff Power + Proficiency Bonus +1 damage.  \n Can only target living beings and can't target elementals.  \n Thrown.");
+	new Talent(500, 1225, "frost_bolt", "Frost Bolt : 1 - 30 ft", "3", "Throws a bolt of frost that deals Staff Power + Proficiency damage.  \n If the target is already cold, it takes 1d4 more damage.  \n Thrown.");
+	new Talent(750, 1225, "combust", "Combust : 1 - 30 ft", "3", "Attempts to stun a target twice.  \n If the first stun succeeds, the target takes 1d4 damage.  \n If the second stun also succeeds, the target takes Staff Power more damage.  \n If the first freeze fails and the second succeeds, the target takes 1d4 damage.");
+	new Talent(625, 1350, "portal", "Portal : 1", "2", "Conjure a portal where you are.  \n You can cast it again in another place.  \n You and allies can freely move between the 2 portals.  \n Lasts 7 days.  \n 1 use / week");
+	new Talent(750, 1350, "disintegration", "Fireball : 2 - 45 ft", "4", "This spell requires 2 turns to cast (explained below).  \n After you cast this spell the first time, the spell is not finished.  \n Next turn, before you move, you must cast it again to finalize it's effect.  \n The target stays the same.  \n You don't need a second Charge to do this.  \n After finishing the spell, the target takes 2 * (Staff Power + Proficiency), and all units in a 15 ft diameter from the main target take 1d12 damage (including the main target).");
+	new Talent(500, 1350, "blizzard", "Blizzard : 1 - 60 ft", "4", "Deal Staff Power frost damage in a 10x10 ft. area.  \n All targets caught in the zone are frost slowed by 50%.");
+
+
+</script>
+</body>
+</html>
