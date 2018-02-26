@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel = "stylesheet" type = "text/css" href = "css/css.css">
+
+</head>
+<body id = "BODY">
+
+<script src="jquery-3.3.1.min.js"></script>
+<script src = "js/utils.js"></script>
+<script src = "js/treasure.js"></script>
+<script>
+	window.onload = function(){
+		getElement("B_GENERATETREASURE").addEventListener("click", function(){
+			getElement("P").innerHTML = generateTreasure(parseInt(
+				getElement("I_GOLD").value
+			));
+		});
+	}
+</script>
+
+<div style = "padding: 100px">
+	<input id = "I_GOLD">
+	<br>
+	<button id = "B_GENERATETREASURE">Generate Treasure</button>
+	<br>
+	<p id = "P"></p>
+</div>
+</body>
+</html>
