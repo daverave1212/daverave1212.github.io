@@ -81,7 +81,7 @@
 				genTrinketDesc += " and ";}
 			else if(gti > 1){
 				genTrinketDesc += ", ";}
-			switch(randomInt(1, 5)){
+			switch(randomInt(1, 6)){
 				case 1:
 					var madeOf = "a " + randomOf("wood", "metal");
 					var theObject = madeOf + " " + randomOf(
@@ -100,8 +100,33 @@
 				case 3:
 					genTrinketDesc += "torches"; break;
 				case 4:
-					genTrinketDesc += randomOf("a tusk", "a bunch of fangs", "some toothpicks", "a few candles"); break;
 				case 5:
+					genTrinketDesc += randomOf(
+						"a tusk",
+						"a bunch of fangs",
+						"some toothpicks",
+						"a few candles",
+						"a lock",
+						"a bear trap",
+						"a pickaxe",
+						"a shovel",
+						"a few jars",
+						"a sack of nails",
+						"a sack of 20 caltrops",
+						"a metal hook",
+						"a whistle",
+						"20 feet of rope",
+						"a pair of socks",
+						"an oil lantern",
+						"a flint and steel",
+						"a vial of acid",
+						"a vial of drink-poison",
+						"a sack of flour",
+						"a crowbar",
+						"a bell",
+						"an oil flask",
+						"a quill and ink"); break;
+				case 6:
 					genTrinketDesc += "food"; break;
 					break;}
 		}
