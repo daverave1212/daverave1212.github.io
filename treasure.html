@@ -7,15 +7,15 @@
 </head>
 <body id = "BODY">
 
-<script src="jquery-3.3.1.min.js"></script>
 <script src = "js/utils.js"></script>
 <script src = "js/treasure.js"></script>
 <script>
 	window.onload = function(){
 		getElement("B_GENERATETREASURE").addEventListener("click", function(){
-			getElement("P").innerHTML = generateTreasure(parseInt(
+			var t = generateTreasure(parseInt(
 				getElement("I_GOLD").value
 			));
+			getElement("P").innerHTML = t;
 		});
 	}
 </script>

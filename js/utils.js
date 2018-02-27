@@ -24,6 +24,10 @@
 	
 	var WORLDSEED = 0;
 	
+	function capitalizeFirstLetter(string) {
+		return string.charAt(0).toUpperCase() + string.slice(1);
+	}
+	
 	function initSeed(seed){
 		WORLDSEED = seed % 2147483647;
 		if(WORLDSEED <= 0)
