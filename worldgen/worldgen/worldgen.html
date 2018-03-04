@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style type = "text/css">
+	img{
+		position: absolute;
+		image-rendering: optimizeSpeed;
+		image-rendering: -moz-crisp-edges;
+		image-rendering: -o-crisp-edges;
+		image-rendering: -webkit-optimize-contrast;
+		image-rendering: pixelated;
+		image-rendering: optimize-contrast;
+		-ms-interpolation-mode: nearest-neighbor;
+	}
+	
+	#MAP{
+		border-color: green;
+		border-style: solid;
+		border-width: 4px;
+		overflow: hidden;
+		position: relative;
+		display: none;
+	}
+	
+	p{
+		font-size: 30px;
+		display: block;
+		text-align: center;
+	}
+	
+	h2{
+		font-size: 36px;
+		display: block;
+		text-align: center;
+	}
+	
+	#OPTIONS{
+		margin-left: auto;
+		margin-right: auto;
+		border: black 1px solid;
+		width: 50%;
+		text-align: center;
+	}
+	
+	#BUTTONCREATEWORLD{
+		width: 75px;
+		height: 30px;
+		float: left;
+		margin-left: 29%;
+	}
+	
+	#BUTTONRESETWORLD{
+		width: 75px;
+		height: 30px;
+		margin-left: 15%;
+	}
+	
+	#BUTTONS{
+		width: 90%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+
+</style>
+<script src = "utils.js"></script>
+<script src = "treasure.js"></script>
+<script src = "generators.js"></script>
+<script src = "npcClass.js"></script>
+<script src = "objects.js"></script>
+<script src = "main.js"></script>
+
+
+</head>
+<body id = "BODY">
+<div id = "OPTIONS">
+	World Seed : <input id ="INPUTSEED"> </input> <br>
+	<br>
+	World Width  : <input id = "I_WIDTH"></input> <br>
+	World Height : <input id = "I_HEIGHT"></input> <br>
+	<br>
+	<input type = "range" id = "I_NSEAS" min = "0" max = "8"> : Number of Seas  <br>
+	&nbsp;&nbsp;&nbsp;
+	<input type = "range" id = "I_SSEAS" min = "-5" max = "5"> : Size of Seas  <br>
+	<input type = "range" id = "I_NFORESTS" min = "0" max = "8"> : Number of Forests  <br>
+	&nbsp;&nbsp;&nbsp;
+	<input type = "range" id = "I_SFORESTS" min = "-5" max = "5"> : Size of Forests  <br>
+	<input class = "i" type = "range" id = "I_NSNOW" min = "0" max = "8"> : Number of Snow Zones  <br>
+	&nbsp;&nbsp;&nbsp;
+	<input type = "range" id = "I_SSNOW" min = "-5" max = "5"> : Size of Snow Zones  <br>
+	<input type = "range" id = "I_NMOUNTAINS" min = "0" max = "8"> : Number of Mountains  <br>
+	&nbsp;&nbsp;&nbsp;
+	<input type = "range" id = "I_SMOUNTAINS" min = "-5" max = "5"> : Size of Mountains  <br>
+	<br>
+	<input type = "checkbox" id = "C_GENERATEFORESTS" checked> Generate forests <br>
+	<input type = "checkbox" id = "C_GENERATEMOUNTAINS" checked> Generate mountains <br>
+	<input type = "checkbox" id = "C_GENERATESNOW" checked> Generate snow <br>
+	<br>
+	Number of towns: <input id = "I_NTOWNS" value = "40"></input><br>
+	<input type = "checkbox" id = "C_GENERATETOWNSONISLANDS" checked> Generate towns on islands<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<input type = "range" id = "I_FREQUENCYTOWNSONISLANDS" min = "-10" max = "10"> Frequency of towns on islands <br>
+
+</div>
+<div id = "BUTTONS">
+	<button id = "BUTTONCREATEWORLD">Create World</button>
+	<button id = "BUTTONRESETWORLD">Reset</button>
+</div>
+<div id = "MAP"></div>
+<h2 id = "DESCRIPTIONTITLE">Click on a town!</h2>
+<p id = "DESCRIPTION">You will get a lot of useful information about the town, its residents, shops and many more!</p>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

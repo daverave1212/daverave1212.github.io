@@ -1,0 +1,186 @@
+hDmPzWOGHMIfh*@cX5IR
+Towns:
+	Size:
+		Very Small ( 20 - 115 )
+		Caravan Town (very low chance)
+		Small	( 99 - 315 )
+		Village ( 299 -  915)
+		Town	( 850 - 2000)
+		City    ( 2000 - 5000)
+		Large City (5000 - 15000)
+	
+	Race Relations? (low prob)
+	
+	Race Majorities? (low prob)
+
+	Ruler Status:
+		Respected, fair and just
+		Feared Tyrant
+		Weak
+		Illigitimate ruler, simmering civil war
+		Ruled by a monster
+		Mysterious / Anonymous leader
+		Currently voting (between X and Y)
+		On deathbed, claimants compete for power
+		Iron-willed but respected
+		Religious leader
+		
+	Notable Traits:
+		Canals in place of streets
+		Massive statue or monument
+		Specific food
+		Rude people
+		Markets covering a large gamma of goods
+		Artists and writers
+		Home of a local hero
+		Flower and livefulness
+		Beggars
+		Powerful Warriors
+		Decadence
+		Religiousness
+		Gambling
+		Atheism
+		Education
+		Wine and drinks
+		Fashion
+		Unclear political status
+		Poweful guilds
+		Patriotism
+		Jewelcrafting
+		Medicine
+		Alchemy
+		Blacksmithing
+		Leatherworking
+		Communion with nature (druids?)
+		Renowned magic
+		Protected by an anti-magic grid
+		Slavery
+		Secluded monks
+		Specific fruits or vegetables
+		Sarcasm
+		Hate adventurers
+		Very friendly people
+		Large fortress
+		Recently invaded
+		Cannibalism
+		Built atop ancient ruins
+		Tomb of an ancient personality
+		Skeleton of an ancient beast
+	
+	Smell:
+		Aweful
+		Country-side
+		Urban
+		Mesmerizing
+		Rotten
+		Sewers
+		Animal
+		Plants
+		
+	Trouble:
+		Suspected vampire infestation
+		Cult seeks converts
+		Important figure was murdered
+		Famine
+		Corrupt officials
+		Oftenly invading monsters (generate)
+		Powerful and cruel person moved recently
+		Undead are rising from graves
+		Prophecy of doom
+		Water sources have been poluted
+		In quarantine (spreading plague)
+		Thieves are running around
+		Trade route was blocked by bandits
+		Someone cursed it
+		Haunted
+		A monster lives inside it
+		Farmers are having trouble harvesting the crops
+		The town is almost barren
+		
+	Shops/buildings of interest:
+		Pawn shop
+		Herbs
+		Fruits/vegetables
+		Meat (dried)
+		Pottery
+		Undertaker
+		Books
+		Moneylender
+		Blacksmith
+		Carpenter
+		Weaver
+		Jeweler
+		Baker
+		General goods
+		Tailor
+		Leatherworker
+		Alchemist
+		Antiquities
+		Temple
+		Barracks
+		Fort
+		Guard Tower
+		Special shop
+		
+	Quests:
+		A <monster> ambushed a <party> <when> <where>
+		Elementals are spawning from the fountain
+		The <profession> ran out of materials for a secret project
+		Sprites of the forest are killing woodsmen
+		Wood elf camp is stirring trouble
+		<mob race> has kidnapped <person>
+		A <medium creature> has made itself a nest in <location>
+		<person> was <disabled> by a <witch>, find a cure
+		As the players get there, the town is being attacked by a wyvern
+		Trees are coming to life in the forest
+		A mimick is hidden somewhere in the town
+		The <building> is haunted by evil spirits
+		<NPC> needs info about another <NPC from another village>
+		Farmers are having trouble
+		A strange light is coming at <time> <place>
+		A dragon hunter has spotted a dragon nearby
+		Guards/Debt collectors are due to come collect tax
+		<NPC> is very sick and needs <animal> <part> to survive
+		<NPC> wants to retrieve an ancient <item> from <dungeon>
+		<Big monster>'s lair is nearby and is causing trouble
+		<NPC> believes a shapeshifting demon is actually ruling the town
+		There was a large boom <place>. Check it out.
+		<magical forest creature> was spotted and someone wants to kill it
+		<NPC> wants to start a guild and needs followers
+		Villagers from <society> are being killed. <3 NPC> are suspects
+		Members of a temple are going fanatic
+		
+	Rewards:
+		slave man/woman
+		gold
+		weird item
+		provisions
+		lied reward
+		
+		
+	Traditions:
+		You can't kill when <event>
+		
+	Plots:
+		An old <evil NPC> is returning
+		
+	NPC:
+		Someone wants something and is having difficulty getting is
+		- What does he want?
+		- What's stopping him?
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+
