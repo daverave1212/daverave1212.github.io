@@ -1,3 +1,5 @@
+
+
 	/* Defs */
 	W_SEA			= 1;
 	W_LAKE			= 2;
@@ -563,7 +565,7 @@
 			//this.description += "<br><br>" + this.npc3.description;
 			//this.description += "<br><br>" + generateTreasure(randomInt(20, 1600));
 			
-			/* [NPCDESC]
+			// [NPCDESC]
 		}
 	}
 
@@ -937,6 +939,7 @@
 		}
 	}
 
+
 	function generateMountains(){
 		var nMountains = MOUNTAINSNUMBER;
 		while(nMountains > 0){
@@ -1004,54 +1007,6 @@
 				newTown.giveName();
 				newTown.createSpecialty();
 				newTown.generateDescription();}
-		}
-		
+		}	
 	}
 
-
-	
-	
-		
-	
-	
-/*
-TO DO:
-	(done?) fix why on smaller maps, seas sometimes spawn not on the side (upper right)
-	(done) make base water patches bigger and round to look better
-	(fixed for forest?) see why mountains and forests sometimes spawn on water near shores
-		o Check max array size, maybe it exceeds
-		
-	
-	Day 4:
-		Added town location descriptions
-		Added town shops
-		
-	To do:
-		change shop frequency even more to match the town size
-
-	Algorithm:
-: Notice player that the map is 1 month/1 month-ish travel time
-o Generate a green background
-o Generate water (uninhabited)
-	- Generate 0 or 1 (or rarely 2) large patches of water
-		- Also, see if it starts from a side
-	- These "patches of water" (blue)
-		- These tree from eachother with a chance not to span
-		- It also stop spanning from a point on
-o Generate cities with pseudorandom positions
-	- if too close to eachother, try other pos
-		- this range depends on the screenWidth and screenHeight
-	- if it is on water, give it like 1/5 chance to stay there
-		if this happens, mark it as an Island city to generate 
-	- make sure you only repeat like 30 times so it doesnt get stuck
-	- all (almost) cities have a NULL terrain type (isl
-o For each city, parse and generate its quest locations or some shit
-
-
-
-
-
-
-
-
-*/
