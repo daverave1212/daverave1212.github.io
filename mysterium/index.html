@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html style = "height: 100%;">
+<head>
+	<script src = "utils.js"></script>
+	<script src = "scripts.js"></script>
+</head>
+<style>
+	#Window{
+		width: 80%;
+		height: auto;
+		margin-left: auto;
+		margin-right: auto;
+		font-size: 250%;
+		font-family: "Trebuchet MS", Helvetica, sans-serif
+	}
+	
+	#PlayerNameInput{
+		width: 99%;
+		height: 25%;
+		font-size: 250%;
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 5%;
+	}
+	
+	button{
+		width: 65%;
+		height: 18%;
+		font-size: 150%;
+		display: block;
+		margin-top: 5%;
+		margin-left: auto;
+		margin-right: auto;
+		font-family: "Trebuchet MS", Helvetica, sans-serif;}
+		
+	.hidden{
+		display: none;
+	}
+	
+	#FinalCorrectCombination{
+		border-style: solid;
+		border-color: black;
+		border-width: thick;
+	}
+	
+	
+	
+</style>
+<body style = "height: 100%;">
+<div id = "Window">
+	<input id = "PlayerNameInput">
+	<button id = "AddPlayer" class = "button">Add Player</button>
+	<div id = "PlayersDiv">
+
+	</div>
+	<div id = "FinalCorrectCombination" class = "hidden">
+		<p>Final Correct Combination:</p>
+	</div>
+	<button id = "Start" class = "button">Start Game</button>
+	<div id = "Cronometer" class = "hidden">	
+		<br>
+		<span id = "CurrentRound">Current Round: </span><span id = "RoundNumber">0</span>
+		<br>
+		<button id = "StartCronometer">Start Cronometer</button>
+		<br>
+		<span id = "TimeRemaining">Time Remaining: </span><span id = "Time">0</span>
+		<br>
+		<button id = "StopCronometer">Stop Cronometer</button>
+	</div>
+</div>
+</body>
+</html>
