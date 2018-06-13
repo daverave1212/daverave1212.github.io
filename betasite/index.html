@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src = "utils.js"></script>
+	<script src = "scripts.js"></script>
+	<script src = "talent_states.js"></script>
+	<script src = "load_functions.js"></script>
+	<script>
+		
+	
+	</script>
+</head>
+<style>
+
+	body{
+		margin: 0px;
+		padding: 0px;
+		overflow-x: hidden;
+		height: 1500px;
+	}
+	div{
+		position: absolute;
+	}
+	.TalentContainer{
+		position: absolute;
+	}
+	.TalentContainerAvailable{
+		padding: 0px;
+		box-shadow: 0px 0px 12px yellow;
+	}
+	.Talent{
+		border: solid;
+		border-width: 2px;
+		border-radius: 6px;
+		background-color: green;
+		width: 64px;
+		height: 64px;
+		cursor: pointer;
+	}
+	.Link{
+		border: none;
+		background-color: black;
+		height: 20px;
+	}
+	
+	.Acquired{
+		box-shadow: 0px 0px 5px green;
+	}
+	.Available{
+		-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+		filter: grayscale(100%);
+	}
+	.Unavailable{
+		-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+		filter: grayscale(100%);
+		//box-shadow: 0px 0px 10px yellow;
+		//filter: blur(1px);
+	}
+	
+	.par{
+		color: #f4df41;
+		z-index: -50;
+		margin-left: 10px;
+		margin-right: 10px;
+		margin-bottom: 10px;
+		margin-top: 0px;
+		font-size: 110%;
+		font-family: Arial, Helvetica, sans-serif;
+	}
+	
+	#TalentName{
+		color: white;
+		font-size: 125%;
+		font-weight: bold;
+		margin-top: 5px
+	}
+	
+	#TalentCost{
+		color: white;
+		font-size: 100%;
+		font-weight: bold;
+	}
+	
+	#DescriptionDiv{
+		position: absolute;
+		background-color: #222222;
+		border: solid;
+		width: 500px;
+		border-width: 2px;
+		z-index: 150;
+		display: none;
+	}
+	
+	#DescriptionFrame{
+		position: absolute;
+		width: 500px;
+		z-index: -100;
+	}
+	.TreeLinkButton{
+		background-color: #555555;
+		border: solid;
+		border-color: black;
+		border-radius: 10px;
+		color: white;
+		position: absolute;
+		width: 40px;
+		height: 15px;
+		z-index: 125;
+		cursor: pointer;
+	}
+	.ParInsideTreeLink{
+		color: #00FF00;
+		margin-left: 5px;
+		margin-top: -2px;
+		cursor: pointer;
+		font-size: 90%;
+		font-family: Arial, Helvetica, sans-serif;
+	}
+	.ChargesNumber{
+		position: absolute;
+		font-weight: 700px;
+		font-size: 150%;
+		color: black;
+		font-family: Arial, Helvetica, sans-serif;
+		text-shadow: -1px 0 #00FF00, 0 1px #00FF00, 1px 0 #00FF00, 0 -1px #00FF00;
+	}
+	#BackgroundImage{
+		position: absolute;
+		height: 1700px;
+		z-index: -999;
+	}
+</style>
+
+<body>
+	<img id = "BackgroundImage" src = "Backgrounds/magicbackground.png">
+	<div id = "DescriptionDiv">
+		<p class = "par" id = "TalentName">adas</p>
+		<p class = "par" id = "TalentCost">dasd</p>
+		<p class = "par" id = "TalentDesc">asdasd</p>
+	</div>
+<div id = "Window">
+	
+</div>
+<canvas id = "Canvas" width = "1500" height = "1500"></canvas>
+</body>
+</html>
