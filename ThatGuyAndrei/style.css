@@ -82,14 +82,7 @@
 		padding-top: 3%;
 	}
 	
-	div{
-		//border: solid;
-		//border-color: black;
-	}
-	img{
-		//border: solid;
-		//border-color: black;
-	}
+
 	
 	#ContactsContacts{
 		margin-top: 4%;
@@ -152,6 +145,154 @@
 		font-style: italic;
 	}
 	
+
+	div{
+		//border: solid;
+		//border-color: black;
+	}
+	img{
+		//border: solid;
+		//border-color: black;
+	}
+	
+	#ChatHeader{
+		width: 100%;
+		height: 12%;
+		background-color: #5555FF;
+		display: block;
+		color: white;
+		font-size: 2em;
+		z-index: 200;
+	}
+	#ChatBack{
+		display: inline-block;
+		float: left;
+		width: 10%;
+		height: 99%;
+		margin-left: 2%;
+	}
+	#ChatBack img{
+		width: 99%;
+		margin-top: 25%;
+	}
+	#ChatImg{
+		float: left;
+		display: inline-block;
+		height: 99%;
+		margin-left: 3%;
+		position: relative;
+	}
+	#ChatImg img{
+		height: 80%;
+		bottom: 2px;
+		border-radius: 200px;
+		margin-top: 10%;
+	}
+	#ChatAux{
+		display: inline-block;
+		width: 35%;
+		height: 99%;
+		float: left;
+		margin-left: 5%;
+	}
+	#ChatName{
+		display: block;
+		width: 99%;
+		height: 30%;
+		margin-top: 6%;
+	}
+	#ChatLastOnline{
+		display: block;
+		width: 99%;
+		height: 35%;
+		overflow-x: hidden;
+		overflow-y: none;
+	}
+	#ChatCall{
+		display: inline-block;
+		float: right;
+		width: 13%;
+		height: 99%;
+	}
+	#ChatCall img{
+		width: 99%;
+	}
+	#ChatInfo{
+		display: inline-block;
+		float: right;
+		width: 13%;
+		height: 99%;
+	}
+	#ChatInfo img{
+		width: 99%;
+	}
+	
+	#ChatBody{
+		width: 100%;
+		height: 60%;
+		overflow-y: scroll;
+		overflow-x: hidden;
+	}
+	#ChatTyping{
+		font-style: italic;
+		margin: auto;
+		width: 50%;
+		height: 5%;
+		text-align: center;
+		font-size: 2em;
+		color: #333333;
+	}
+	#ChatChoices{
+		width: 100%;
+		height: 20%;
+		font-size: 2em;
+		color: white;
+		background-color: #EEEEEE;
+	}
+	#ChatChoicesChoices{
+		float: left;
+		width: 75%;
+		height: 90%;
+	}
+	#ChatChoicesSend{
+		float: right;
+		width: 19%;
+		height: 94%;
+		background-color: #5555FF;
+		border-top-left-radius: 25px;
+		border-bottom-left-radius: 25px;
+	}
+	#ChatChoicesSend img{
+		width: 50%;
+		margin-top: 35%;
+		margin-left: 20%;
+	}
+	#ChatChoice1{
+		height: 30%;
+		text-align: center;
+		line-height: 1.6em;
+		background-color: #AAAAFF;
+		border-top-right-radius: 25px;
+		border-bottom-right-radius: 25px;
+	}
+	#ChatChoice2{
+		height: 30%;
+		text-align: center;
+		line-height: 1.6em;
+		background-color: #AAAAFF;
+		border-top-right-radius: 25px;
+		border-bottom-right-radius: 25px;
+		margin-top: 2%;
+	}
+	#ChatChoice3{
+		height: 30%;
+		text-align: center;
+		line-height: 1.6em;
+		background-color: #AAAAFF;
+		border-top-right-radius: 25px;
+		border-bottom-right-radius: 25px;
+		margin-top: 2%;
+	}
 	
 	@media (orientation:portrait){
 		#Window{
