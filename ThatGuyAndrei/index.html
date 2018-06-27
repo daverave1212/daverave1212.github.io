@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src = "utils.js"></script>
+	<script src = "scripts.js"></script>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id = "Window">
+	<div id = "Menu" class = "Scene">
+		<div class = "MessageWrapper"><div class = "MenuButtonEmptySpace"></div></div>
+		<div class = "MessageWrapper"><div class = "MenuButtonEmptySpace"></div></div>
+		<div class = "MessageWrapper"><div class = "MenuButtonEmptySpace"></div></div>
+		<div class = "MessageWrapper">
+			<div class = "MenuButton" onclick = "changeScene('Intro')" >Play</div>
+		</div>
+		<div class = "MessageWrapper">
+			<div class = "MenuButton">High Scores</div>
+		</div>
+	</div>
+	<div id = "Intro" onclick = "changeScene('Contacts')"class = "Scene">
+		<div id = "IntroStory">
+			"It all started one week ago, when I met this guy, Andrei...<br>
+			He seemed like a good guy at first.<br>
+			Then all changed..."
+		</div>
+	</div>
+	<div id = "Contacts" class = "Scene">
+		<div id = "ContactsHeader">
+			<div id = "ContactsHeaderName">Facechat Messenger</div>
+			<div id = "ContactsHeaderClock">6:18 PM</div>
+		</div>
+		<div id = "ContactsContacts">
+			<div class = "Contact" onclick = "changeScene('Chat')">
+				<div class = "ContactImg">
+					<img src = "Andrei.png">
+				</div>
+				<div class = "ContactText">
+					<div class = "ContactTextName">Andrei</div>
+					<div class = "ContactTextLastMessage">Andrei: hey man</div>
+				</div>
+				<div class = "ContactOther">
+					<div class = "ContactOtherTimestamp">5:34</div>
+					<div class = "ContactOtherSeen">seen</div>
+				</div>
+			</div>
+			<div class = "Contact">
+				<div class = "ContactImg">
+					<img src = "Andrei.png">
+				</div>
+				<div class = "ContactText">
+					<div class = "ContactTextName">Andrei</div>
+					<div class = "ContactTextLastMessage">Andrei: hey man</div>
+				</div>
+				<div class = "ContactOther">
+					<div class = "ContactOtherTimestamp">5:34</div>
+					<div class = "ContactOtherSeen">seen</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div id = "Chat" class = "Scene">
+		<div id = "ChatHeader">
+			<div id = "ChatBack">back</div>
+			<div id = ""
+		</div>
+	
+		<div class = "MessageWrapper">
+			<div class = "SentChatMessage">hello my name is boris and i like of playings games men what a fucking joy</div>
+		</div>
+		<div class = "MessageWrapper">
+			<div class = "ReceivedChatMessage">hello my name is boris and i like of playings games men what a fucking joy</div>
+		</div>
+	</div>
+	
+</div>
+</body>
+</html>
