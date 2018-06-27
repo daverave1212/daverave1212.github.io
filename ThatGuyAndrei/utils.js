@@ -43,12 +43,30 @@
 		}
 	}
 	
+	function setClass(dom, cls){
+		dom.setAttribute("class", cls);
+	}
+	function addClass(dom, cls){
+		dom.setAttribute("class", dom.getAttribute("class") + " " + cls);
+	}
+	
 	function addElement(dom_e){
 		document.getElementById("MAP").appendChild(dom_e);
 	}
 	function removeElement(dom_e){
 		document.getElementById("MAP").removeChild(dom_e);
 	}
+	function removeAllChildren(dom_e){
+		var myNode = dom_e;
+		while (myNode.firstChild) {
+			myNode.removeChild(myNode.firstChild);
+		}
+	}
+	
+	function lastOfArray(arr){
+		return arr[arr.length - 1];
+	}
+	
 	function percentChance(chance){	/* Ex: percentChance(20) = 20% chance to return true; */
 		var c = randomInt(1, 100);
 		if(c <= chance) return true;

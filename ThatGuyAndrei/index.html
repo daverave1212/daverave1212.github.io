@@ -3,6 +3,11 @@
 <head>
 	<script src = "utils.js"></script>
 	<script src = "scripts.js"></script>
+	<script src = "chat_object.js"></script>
+	<script src = "choice_logic.js"></script>
+	<script src = "sound.js"></script>
+	<script src = "Queue.src.js"></script>
+	
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -31,7 +36,7 @@
 			<div id = "ContactsHeaderClock">6:18 PM</div>
 		</div>
 		<div id = "ContactsContacts">
-			<div class = "Contact" onclick = "changeScene('Chat')">
+			<!--<div class = "Contact" onclick = "changeScene('Chat')">
 				<div class = "ContactImg">
 					<img src = "Andrei.png">
 				</div>
@@ -44,31 +49,19 @@
 					<div class = "ContactOtherSeen">seen</div>
 				</div>
 			</div>
-			<div class = "Contact">
-				<div class = "ContactImg">
-					<img src = "Andrei.png">
-				</div>
-				<div class = "ContactText">
-					<div class = "ContactTextName">Andrei</div>
-					<div class = "ContactTextLastMessage">Andrei: hey man</div>
-				</div>
-				<div class = "ContactOther">
-					<div class = "ContactOtherTimestamp">5:34</div>
-					<div class = "ContactOtherSeen">seen</div>
-				</div>
-			</div>
+			-->
 		</div>
 
 	</div>
 	<div id = "Chat" class = "Scene">
 		<div id = "ChatHeader">
-			<div id = "ChatBack"><img src = "back.png"></div>
+			<div id = "ChatBack"><img src = "back.png" onclick = "changeScene('Contacts')"></div>
 			<div id = "ChatImg">
-				<img src = "Andrei.png">
+				<img id = "ChatImgImg" src = "Andrei.png">
 			</div>
 			<div id = "ChatAux">
 				<div id = "ChatName">Andrei</div>
-				<div id = "ChatLastOnline">5 minutes ago</div>
+				<div id = "ChatLastOnline">Online</div>
 			</div>
 			<div id = "ChatCall"><img src = "call.png"></div>
 			<div id = "ChatInfo"><img src = "info.png"></div>
@@ -88,7 +81,7 @@
 			</div>				
 		</div>
 		<div id = "ChatTyping">
-			<span id = "ChatTypingName">Andrei </span> is typing...
+			<span id = "ChatTypingName"></span>
 		</div>
 		<div id = "ChatChoices">
 			<div id = "ChatChoicesChoices">
