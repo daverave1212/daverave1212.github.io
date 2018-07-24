@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src = "Javascript/utils.js"></script>
+	<script src = "Javascript/scripts.js"></script>
+	<script src = "Javascript/Queue.src.js"></script>
+	<script src = "Javascript/Abilities.js"></script>
+	<script src = "Javascript/RaceAbilities.js"></script>
+	<script src = "Javascript/Races.js"></script>
+	<link rel="stylesheet" href="CSS/globalstyle.css">
+</head>
+<!-- 825px height -->
+<style>
+
+	body{
+		color: white;
+	}
+	.Input{
+		margin-left: auto;
+		margin-right: auto;
+		width: 50%;
+		padding: 0px;
+		color: white;
+		background-color: rgba(0, 0, 0, 0.5);
+		font-size: 100%;
+		height: 25px;
+		text-align: center;
+	}
+	.InputLine{
+		height: 35px;
+		display: inline-block;
+	}
+	.InputSmall{
+		display: inline-block;
+		width: 15%;
+	}
+	.InputMedium{
+		width: 30%;
+		display: inline-block;
+	}
+	.InputText{
+		height: 100px;
+		display: block;
+		margin: 0px;
+		width: 80%;
+	}
+	.Button{
+		display: inline-block;
+		font-size: 125%;
+	}
+	.AbilityIcon{
+		margin-left: 25px;
+		margin-top: 5px;
+	}
+	.AbilityWrapper{
+		padding-top: 5px;
+		padding-bottom: 5px;
+		margin-bottom: 5px;
+		width: 100%;
+		border: solid gray 1px;
+		border-radius: 5px;
+		background-color: rgba(0, 0, 0, 0.5);
+		display: flex;
+	}
+	.AbilityWrapperLeft{
+		width: 33%;
+		display: inline-block;
+		position: relative;
+	}
+	.AbilityWrapperRight{
+		width: 66%;
+		display: inline-block;
+	}
+	#AbilityMod{
+		width: 100%;
+		height: 100%;
+	}
+	#RaceMod{
+		width: 100%;
+		height: 100%;
+		display: none;
+	}
+	.ModLeft{
+		width: 49%;
+		height: 100%;
+		display: inline-block;
+		padding-left: 10px;
+		position: relative;
+		float: left;
+	}
+	.ModRight{
+		width: 49%;
+		height: 100%;
+		display: inline-block;
+		float: right;
+	}
+
+
+</style>
+<body>
+<div id = "Wrapper">
+	<div id = "Navigation"></div>
+	<div id = "WindowWrapper"> <!-- Middle of the page -->
+		<div id = "Window" class = "Bordered"> <!-- Smaller panel -->
+			<img id = "Settings" onclick = "Scripts.showSettings()" class = "SettingsButton" src = "Images/Interface/settings.png">
+			<div id = "SettingsWrapper">
+				<div id = "SettingsPane">
+					<div class = "Button Bordered" onclick = "switchModType('ability')">Ability Mod</div>
+					<br>
+					<br>
+					<br>
+					<div class = "Button Bordered" onclick = "switchModType('race')">Race Mod</div>
+				</div>
+			</div>
+			<!-- Window Start -->
+				<div id = "RaceMod">
+					<div class = "ModLeft">
+						Race Name: <input id = "RaceName" class = "Input InputLine Bordered"> <br>
+						Race Description:
+						<textarea id = "RaceDescription" class = "Input InputText Bordered" rows = "20" cols = "20"></textarea> <br>
+						Race Icon Path (.png): <input id = "RaceIconPath" class = "Input InputLine Bordered"> <br>
+						Male Image Path (.png): <input id = "MaleImagePath" class = "Input InputLine Bordered"> <br>
+						Female Image Path (.png): <input id = "FemaleImagePath" class = "Input InputLine Bordered"> <br>
+						Health: <input id = "Health" class = "Input InputSmall Bordered">
+						Speed: <input id = "Speed" class = "Input InputSmall Bordered">
+						Size: <input id = "Size" class = "Input InputSmall Bordered"> <br>
+						Languages (separated by space):
+						<input id = "Languages" class = "Input InputMedium Bordered" value = "Common Orcish Elvish"> <br>
+						Skill Bonuses (separated by space):
+						<input id = "SkillBonuses" class = "Input InputMedium Bordered" value = "Athletics Acrobatics Perception"> <br>
+						Racial Abilities (separated by space):
+						<input id = "RacialAbilities" class = "Input InputMedium Bordered" value = "elf_swiftness force_of_nature"> <br>
+						<span style = "color: green;" onmouseover = "helpLevelShow('level')" onmouseout = "helpLevelHide()">(?)</span>
+						Level 2: <input  id = "Level2Description" class = "Input InputMedium Bordered" value = " At level 2 you gain somthing good"> <input  id = "Level2Abilities" class = "Input InputMedium Bordered" value = "guardian_of_the_forest"> <br>
+						Level 4: <input  id = "Level4Description" class = "Input InputMedium Bordered" value = " At level 4 you gain somthing good"> <input  id = "Level4Abilities" class = "Input InputMedium Bordered" value = "guardian_of_the_forest"> <br>
+						Level 6: <input  id = "Level6Description" class = "Input InputMedium Bordered" value = " At level 6 you gain somthing good"> <input  id = "Level6Abilities" class = "Input InputMedium Bordered" value = "guardian_of_the_forest"> <br>
+						Level 8: <input  id = "Level8Description" class = "Input InputMedium Bordered" value = " At level 8 you gain somthing good"> <input  id = "Level8Abilities" class = "Input InputMedium Bordered" value = "guardian_of_the_forest"> <br>
+						Level 10: <input id = "Level10Description"  class = "Input InputMedium Bordered" value = "At level 10 you gain somthing good"> <input id = "Level10Abilities" class = "Input InputMedium Bordered" value = "guardian_of_the_forest"> <br>
+						Level 12: <input id = "Level12Description"  class = "Input InputMedium Bordered" value = "At level 12 you gain somthing good"> <input id = "Level12Abilities" class = "Input InputMedium Bordered" value = "guardian_of_the_forest"> <br>
+						Level 14: <input id = "Level14Description"  class = "Input InputMedium Bordered" value = "At level 14 you gain somthing good"> <input id = "Level14Abilities" class = "Input InputMedium Bordered" value = "guardian_of_the_forest"> <br>
+						Level 16: <input id = "Level16Description"  class = "Input InputMedium Bordered" value = "At level 16 you gain somthing good"> <input id = "Level16Abilities" class = "Input InputMedium Bordered" value = "guardian_of_the_forest"> <br>
+						Level 18: <input id = "Level18Description"  class = "Input InputMedium Bordered" value = "At level 18 you gain somthing good"> <input id = "Level18Abilities" class = "Input InputMedium Bordered" value = "guardian_of_the_forest"> <br>
+						Level 20: <input id = "Level20Description"  class = "Input InputMedium Bordered" value = "At level 20 you gain somthing good"> <input id = "Level20Abilities" class = "Input InputMedium Bordered" value = "guardian_of_the_forest"> <br>
+					</div>
+					<div class = "ModRight">
+						<span style = "color: green;" onmouseover = "helpLevelShow('createrace')" onmouseout = "Scripts.hideHelpBox()">(?)</span>
+						<div class = "Button Bordered" onclick = "createRace()">Create Race</div> <br>
+						<textarea id = "CodeAreaRace" rows = "30" cols = "55"></textarea>
+						<br>
+						<button class = "Button Bordered" onclick = "saveMod()">Save Mod</button>
+					</div>
+				</div>
+				<div id = "AbilityMod">
+					<div class = "ModLeft">
+						Ability Name: <input id = "AbilityName" class = "Input InputMedium Bordered">	<br>
+						Ability Action Cost: <input id = "AbilityActionCost" class = "Input InputMedium Bordered"> <br>
+						Ability Text: <input id = "AbilityText" class = "Input InputMedium Bordered"> <br>
+						Ability Icon Path: <input id = "AbilityIconPath" class = "Input InputMedium Bordered"> <br>
+						<br>
+						Preview:
+						<div id = "AbilityPreview">
+						
+						</div>
+						</div>
+					<div class = "ModRight">
+						<span style = "color: green;" onmouseover = "helpLevelShow('createability')" onmouseout = "Scripts.hideHelpBox()">(?)</span>
+						<div class = "Button Bordered" onclick = "createAbility()">Create Ability</div> <br>
+						<div class = "Button Bordered" onclick = "previewAbility()">Preview Ability</div> <br>
+						<textarea id = "CodeAreaAbility" rows = "30" cols = "55"></textarea>
+						<br>
+						<button class = "Button Bordered" onclick = "saveMod()">Save Mod</button>
+					</div>
+				
+				</div>
+			<!-- Window End -->
+		</div>
+	</div>
+</div>
+</body>
+<script>
+	
+	function helpLevelShow(forWhat){
+		Scripts.showHelpBox();
+		if(forWhat == 'createrace') Scripts.setHelpText("Click on 'Create Race' to add the race you are currently working on to the races of this mod. This will generate a piece of code and it will automatically append it to the current code.");
+		if(forWhat == 'createability') Scripts.setHelpText("Click on 'Create Ability' to add the ability you are currently working on to the abilities of this mod. This will generate a piece of code and it will automatically append it to the current code.");
+		if(forWhat == 'level') Scripts.setHelpText("The first input takes in the text to be displayed in the race level bonuses, for each level.<br>The second input takes the abilities, given as tag names. Write them separated by space, like 'force_of_nature swiftness ranger_art'. These abilities need to exist, created by a mod (this one) or already existing in the default ability database.");}
+		
+	var CustomRaces = {};
+	
+	function createRace(){
+		var raceCode = "new Race ('";
+		raceCode += get("RaceName").value + "', '";
+		raceCode += get("RaceDescription").value + "',\n\t";
+		raceCode += "'" + get("MaleImagePath").value + "',\n\t";
+		raceCode += "'" + get("FemaleImagePath").value + "',\n\t";
+		raceCode += "'" + get("RaceIconPath").value + "',\n\t";
+		raceCode += get("Speed").value + ",'";
+		var langs = get("Languages").value;
+		langs = langs.replace(" ", ", ");
+		raceCode += langs;
+		raceCode += "', " + get("Health").value + ", ";
+		raceCode += get("Size").value + ",\n\t";
+		raceCode += "['";
+		var bonuses = replaceAll(get("SkillBonuses").value, " ", "', '");
+		raceCode += bonuses;
+		raceCode += "'],\n\t";
+		raceCode += toAbilitiesArray(get("RacialAbilities").value);
+		raceCode += ",\n\t";
+		raceCode += "new LevelBonus('" + get("Level2Description").value + "', " + toAbilitiesArray(get("Level2Abilities").value) + "),  \n\t";
+		raceCode += "new LevelBonus('" + get("Level4Description").value + "', " + toAbilitiesArray(get("Level4Abilities").value) + "),  \n\t";
+		raceCode += "new LevelBonus('" + get("Level6Description").value + "', " + toAbilitiesArray(get("Level6Abilities").value) + "),  \n\t";
+		raceCode += "new LevelBonus('" + get("Level8Description").value + "', " + toAbilitiesArray(get("Level8Abilities").value) + "),  \n\t";
+		raceCode += "new LevelBonus('" + get("Level10Description").value + "', " + toAbilitiesArray(get("Level10Abilities").value) + "),\n\t";
+		raceCode += "new LevelBonus('" + get("Level12Description").value + "', " + toAbilitiesArray(get("Level12Abilities").value) + "),\n\t";
+		raceCode += "new LevelBonus('" + get("Level14Description").value + "', " + toAbilitiesArray(get("Level14Abilities").value) + "),\n\t";
+		raceCode += "new LevelBonus('" + get("Level16Description").value + "', " + toAbilitiesArray(get("Level16Abilities").value) + "),\n\t";
+		raceCode += "new LevelBonus('" + get("Level18Description").value + "', " + toAbilitiesArray(get("Level18Abilities").value) + "),\n\t";
+		raceCode += "new LevelBonus('" + get("Level20Description").value + "', " + toAbilitiesArray(get("Level20Abilities").value) + "));";
+		get("CodeAreaRace").value += raceCode + "\n\n";
+	}
+	
+	function createAbility(){
+		var completeName = get("AbilityName").value + " : " + get("AbilityActionCost").value;
+		var text = get("AbilityText").value;
+		var iconPath = get("AbilityIconPath").value;
+		var abCode = "new Ability(" + quotify(completeName) + ",\n\t" + quotify(text) + ",\n\t" + quotify(iconPath) + ");"
+		get("CodeAreaAbility").innerHTML += abCode + "\n\n";
+	}
+	
+	function previewAbility(){
+		var completeName = get("AbilityName").value + " : " + get("AbilityActionCost").value;
+		var ability = createAbilityElement(new Ability(completeName, get("AbilityText").value, get("AbilityIconPath").value));
+		get("AbilityPreview").appendChild(ability);
+		}
+		
+	
+	function createAbilityElement(ability){
+		var abilityWrapper = createElement("div"); abilityWrapper.setAttribute("class", "AbilityWrapper");
+		var abilityWrapperLeft = createElement("div"); abilityWrapperLeft.setAttribute("class", "AbilityWrapperLeft");
+		var abilityIcon = createImage(ability.iconPath);
+		abilityIcon.setAttribute("class", "Icon AbilityIcon");
+		abilityWrapperLeft.appendChild(abilityIcon);
+		var abilityWrapperRight = createElement("div"); abilityWrapperRight.setAttribute("class", "AbilityWrapperRight");
+		abilityWrapperRight.innerHTML = ability.name + "<br><br>" + ability.desc;
+		abilityWrapper.appendChild(abilityWrapperLeft);
+		abilityWrapper.appendChild(abilityWrapperRight);
+		return abilityWrapper;}
+	
+	function saveMod(){
+		var abilityCode = get("CodeAreaAbility").value;
+		var raceCode = get("CodeAreaRace").value;
+		var uriContent = "data:application/octet-stream," + encodeURIComponent("//Ability Code Here\n\n" + abilityCode + "\n\n//Race Code Here\n" + raceCode + "\n\n\n initializeRaces()");
+		var newWindow = window.open(uriContent, 'MyMod.js');}
+		
+	function switchModType(type){
+		if(type == "race"){
+			get("AbilityMod").style.display = "none";
+			get("RaceMod").style.display = "block";}
+		if(type == "ability"){
+			get("AbilityMod").style.display = "block";
+			get("RaceMod").style.display = "none";}
+	}
+		
+	//console.log(toAbilitiesArray(get("RacialAbilities").value));
+
+</script>
+</html>
+
+
+
+
+
