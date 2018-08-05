@@ -8,6 +8,7 @@
 	<script src = "Javascript/Abilities.js"></script>
 	<script src = "Javascript/RaceAbilities.js"></script>
 	<script src = "Javascript/Races.js"></script>
+	<script src = "Javascript/Backgrounds.js"></script>
 	<link rel="stylesheet" href="CSS/globalstyle.css">
 </head>
 
@@ -179,31 +180,6 @@
 		padding-top: 10px;
 		background-color: rgba(0, 0, 0, 0.5);
 		color: white;
-	}
-	.AbilityIcon{
-		margin-left: 25px;
-		margin-top: 5px;
-	}
-	.AbilityWrapper{
-		padding-top: 5px;
-		padding-bottom: 5px;
-		margin-bottom: 5px;
-		width: 100%;
-		border: solid gray 1px;
-		border-radius: 5px;
-		background-color: rgba(0, 0, 0, 0.5);
-		display: flex;
-	}
-	.AbilityWrapperLeft{
-		width: 33%;
-		display: inline-block;
-		position: relative;
-		//border: solid yellow;
-	}
-	.AbilityWrapperRight{
-		width: 66%;
-		display: inline-block;
-		//border: solid yellow;
 	}
 	#RaceBonuses{
 		color: white;
@@ -377,18 +353,7 @@
 		for(var i = 0; i<SelectedRace.skillBonuses.length; i++){
 			get("SkillBonus").innerHTML += SelectedRace.skillBonuses[i];
 			if(i + 1 < SelectedRace.skillBonuses.length) get("SkillBonus").innerHTML += ", ";}}
-	
-	function createRaceAbility(ability){
-		var abilityWrapper = createElement("div"); abilityWrapper.setAttribute("class", "AbilityWrapper");
-		var abilityWrapperLeft = createElement("div"); abilityWrapperLeft.setAttribute("class", "AbilityWrapperLeft");
-		var abilityIcon = createImage(ability.iconPath);
-		abilityIcon.setAttribute("class", "Icon AbilityIcon");
-		abilityWrapperLeft.appendChild(abilityIcon);
-		var abilityWrapperRight = createElement("div"); abilityWrapperRight.setAttribute("class", "AbilityWrapperRight");
-		abilityWrapperRight.innerHTML = ability.name + "<br><br>" + ability.desc;
-		abilityWrapper.appendChild(abilityWrapperLeft);
-		abilityWrapper.appendChild(abilityWrapperRight);
-		return abilityWrapper;}
+
 	
 	function updateRaceLevelBonus(levelBonus){
 		removeAllChildren(get("LevelBonuses"));
@@ -397,7 +362,7 @@
 		levelBonusDescription.innerHTML = levelBonus.description + "<br>";
 		get("LevelBonuses").appendChild(levelBonusDescription);
 		for(var i = 0; i<levelBonus.abilities.length; i++){
-			var thisAbility = createRaceAbility(levelBonus.abilities[i]);
+			var thisAbility = createAbilityElement(levelBonus.abilities[i]);
 			get("LevelBonuses").appendChild(thisAbility);}}
 	
 	function updateRaceLevelBonuses(){
@@ -417,7 +382,7 @@
 	function updateRaceAbilities(){
 		removeAllChildren(get("Abilities"));
 		for(var i = 0; i<SelectedRace.abilities.length; i++){
-			var thisAbility = createRaceAbility(SelectedRace.abilities[i]);
+			var thisAbility = createAbilityElement(SelectedRace.abilities[i]);
 			get("Abilities").appendChild(thisAbility);}}
 	
 	function updateRaceDescription(){ get("RaceDescription").innerHTML = SelectedRace.description; }
@@ -471,7 +436,8 @@
 		alert(get("Name").value);
 		setParameter("name", get("Name").value);
 		setParameter("sex", get("RaceSex").innerHTML.toLowerCase());
-		setParameter("race", SelectedRace.name);}
+		setParameter("race", SelectedRace.name);
+		setParameter("level", "0");}
 
 	function next(){
 		readyParameters();

@@ -8,12 +8,23 @@
 	// For each individual page, use a onmouseover="handleHelp()"
 	// <img class = "StatHelp HelpIcon" onmouseover = "handleHelp('strength')" onmouseout = "Scripts.hideHelpBox()" src = "Images/Interface/help.png">
 	// Each page will handleHelp its own way
-	Scripts.showHelpBox = function(){
+	Scripts.showHelpBox = function(isAbility){
 		var x = roundUp(event.clientX, 40);
 		var y = event.clientY + window.scrollY;
 		get("HelpBox").style.display = "block";
 		get("HelpBox").style.top = y + "px";
-		get("HelpBox").style.left = x + "px";}
+		get("HelpBox").style.left = x + "px";
+		if(isAbility){
+			print("Definitely an ability");
+			get("HelpBox").style.color = "white";
+			get("HelpBox").style.fontFamily = "Arial, Helvetica, sans-serif";
+			get("HelpBox").style.maxWidth = "350px";
+			}
+		else{
+			get("HelpBox").style.color = "gold";
+			get("HelpBox").style.fontFamily = "'Times New Roman', Times, serif";
+			}
+		}
 		
 	Scripts.hideHelpBox = function(){
 		get("HelpBox").style.display = "none";

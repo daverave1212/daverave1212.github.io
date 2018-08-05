@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src = "Javascript/utils.js"></script>
+	<script src = "Javascript/scripts.js"></script>
+	<script src = "Javascript/Queue.src.js"></script>
+	<script src = "Javascript/Abilities.js"></script>
+	<script src = "Javascript/RaceAbilities.js"></script>
+	<script src = "Javascript/Races.js"></script>
+	<script src = "Javascript/Backgrounds.js"></script>
+	<script src = "Javascript/Items.js"></script>
+	<script src = "Javascript/Bundles.js"></script>
+	<script src = "Javascript/Player.js"></script>
+	<link rel="stylesheet" href="CSS/globalstyle.css">
+</head>
+<!-- 825px height -->
+<style>
+
+	.Icon{
+		margin: 3px;
+		display: inline-block;
+	}
+	#BundlesWrapper{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border: solid yellow;
+	}
+	.BundleWrapper{
+		width: 225px;
+		display: inline-block;
+		text-align: center;
+		background-color: rgba(0, 0, 0, 0.5);
+		margin-left: 5px;
+		margin-top: 10px;
+	}
+	.ChooseThisBundle{
+		color: white;
+		font-size: 150%;
+		margin: auto;
+		width: 175px;
+		position: relative;
+		margin-bottom: 5px;
+		width: 125px;
+		height: 40px;
+		line-height: 16px;
+	}
+	.BundleName{
+		font-size: 150%;
+		
+	}
+
+</style>
+<body>
+<div id = "Wrapper">
+	<div id = "Navigation"></div>
+	<div id = "WindowWrapper"> <!-- Middle of the page -->
+		<div id = "Window" class = "Bordered"> <!-- Smaller panel -->
+			<img id = "Settings" onclick = "Scripts.showSettings()" class = "SettingsButton" src = "Images/Interface/settings.png">
+			<div id = "SettingsWrapper">
+				<div id = "SettingsPane">
+				
+				</div>
+			</div>
+			<!-- Window Start -->
+			<div id ="BundlesWrapper">
+
+		
+			</div>
+			<!-- Window End -->
+		</div>
+	</div>
+</div>
+</body>
+<script>
+
+	function afterBundleWasAdded(){
+		print(Player);
+	}
+	
+	function showAvailableBundles(){
+		var lastBundle = Player.getLastBundle();
+		print(lastBundle);
+		for(var i = 0; i<lastBundle.nextBundles.length; i++){
+			print(lastBundle.nextBundles[i]);
+			var thisBundleElement = createBundleElement(lastBundle.nextBundles[i]);
+			get("BundlesWrapper").appendChild(thisBundleElement);
+		}
+	}
+	
+	
+	
+	// Initializaiton
+	loadParameters();
+	
+	showAvailableBundles();
+
+
+</script>
+</html>
+
+
+
+
+

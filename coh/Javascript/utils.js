@@ -1,15 +1,20 @@
 	var print = console.log;
 	var NULL = 0;
 	var KEY_ENTER = 13;
-	var link = window.location.href;
+	var linkLocation = window.location.href;
 	var url = new URL(window.location.href);
 	var Parameters = {};
 	
 	function loadParameters() {
+		if(! linkLocation.includes("?")){
+			console.log("Link does not have parameters");
+			return;
+		}
 		var parser = document.createElement('a');
-		parser.href = link;
+		parser.href = linkLocation;
 		var query = parser.search.substring(1);
 		var vars = query.split('&');
+		console.log("Found " + vars.length + " parameters");
 		for (var i = 0; i < vars.length; i++) {
 			var pair = vars[i].split('=');
 			Parameters[pair[0]] = decodeURIComponent(pair[1]);}
@@ -29,6 +34,14 @@
 		return substringTo(ret, ret.length - 2);
 	}
 	
+	function printParameters(){
+		console.log("  > Printing parameters:");
+		for (var key in Parameters) {	// for each property/ability in the Races object...
+			if (!Parameters.hasOwnProperty(key)) continue;
+			console.log(Parameters[key]);
+		}
+		console.log("  > Done");
+	}
 	
 	function urlify(str){
 		return replaceAll(str, " ", "%20");
@@ -41,6 +54,10 @@
 			ret += replacer + strings[i];
 		}
 		return ret;
+	}
+	
+	function removeSpaces(str){
+		return replaceAll(str, " ", "");
 	}
 	
 	function toAbilitiesArray(str){
@@ -371,6 +388,11 @@
 		while (node.firstChild) {
 			console.log("Removing " + node.firstChild);
 			node.removeChild(node.firstChild);}
+	}
+
+	function removeChildWithClass(node, cls){
+		var removedElement = node.getElementsByClassName(cls)[0];
+		node.removeChild(removedElement);
 	}
 		
 	function setClass(object, c){

@@ -7,6 +7,7 @@
 	<script src = "Javascript/Abilities.js"></script>
 	<script src = "Javascript/RaceAbilities.js"></script>
 	<script src = "Javascript/Races.js"></script>
+	<script src = "Javascript/jquery-3.3.1.min.js"></script>
 	<link rel="stylesheet" href="CSS/globalstyle.css">
 </head>
 <!-- 825px height -->
@@ -47,29 +48,6 @@
 	.Button{
 		display: inline-block;
 		font-size: 125%;
-	}
-	.AbilityIcon{
-		margin-left: 25px;
-		margin-top: 5px;
-	}
-	.AbilityWrapper{
-		padding-top: 5px;
-		padding-bottom: 5px;
-		margin-bottom: 5px;
-		width: 100%;
-		border: solid gray 1px;
-		border-radius: 5px;
-		background-color: rgba(0, 0, 0, 0.5);
-		display: flex;
-	}
-	.AbilityWrapperLeft{
-		width: 33%;
-		display: inline-block;
-		position: relative;
-	}
-	.AbilityWrapperRight{
-		width: 66%;
-		display: inline-block;
 	}
 	#AbilityMod{
 		width: 100%;
@@ -169,6 +147,7 @@
 						<textarea id = "CodeAreaAbility" rows = "30" cols = "55"></textarea>
 						<br>
 						<button class = "Button Bordered" onclick = "saveMod()">Save Mod</button>
+						<button id = "SaveAbility" style = "bottom: 50px;" class = "Button Bordered">Copy / Print</button>
 					</div>
 				
 				</div>
@@ -260,7 +239,22 @@
 			get("AbilityMod").style.display = "block";
 			get("RaceMod").style.display = "none";}
 	}
-		
+	
+	$("#SaveAbility").click(function() { 
+        html2canvas($("#AbilityPreview"), {
+            onrendered: function(canvas) {
+                theCanvas = canvas;
+                document.body.appendChild(canvas);
+
+                // Convert and download as image 
+                Canvas2Image.saveAsPNG(canvas); 
+                $("#AbilityPreview").append(canvas);
+                // Clean up 
+                //document.body.removeChild(canvas);
+            }
+        });
+    });
+	
 	//console.log(toAbilitiesArray(get("RacialAbilities").value));
 
 </script>

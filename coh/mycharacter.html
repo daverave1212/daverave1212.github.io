@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src = "Javascript/utils.js"></script>
+	<script src = "Javascript/scripts.js"></script>
+	<script src = "Javascript/Queue.src.js"></script>
+	<script src = "Javascript/Abilities.js"></script>
+	<script src = "Javascript/RaceAbilities.js"></script>
+	<script src = "Javascript/Races.js"></script>
+	<script src = "Javascript/Backgrounds.js"></script>
+	<script src = "Javascript/Items.js"></script>
+	<script src = "Javascript/Bundles.js"></script>
+	<script src = "Javascript/Player.js"></script>
+	<script src = "Javascript/Armor.js"></script>
+	<link rel="stylesheet" href="CSS/globalstyle.css">
+<style>
+
+	#Popup{
+		width: 375px;
+		margin-left: 300px;
+		height: 200px;
+		position: absolute;
+		display: none;
+		top: -375px;
+		text-align: center;
+		line-height: 140px;
+		font-size: 150%;
+		color: white;
+		z-index: 10000;
+		background-color: rgba(0, 0, 0, 0.8);
+	}
+	#WindowLeft{
+		height: 100%;
+		width: 30%;
+		display: inline-block;
+		float: left;
+		padding-left: 10px;
+		padding-top: 10px;
+	}
+	.StatWrapper{
+		width: 100%;
+		height: 16%;
+		position: relative;
+		text-align: center;
+	}
+	.Stat{
+		height: 100px;
+		width: 100px;
+		background-color: rgba(0, 0, 0, 0.7);
+		display: inline-block;
+		float: left;
+		font-size: 300%;
+		line-height: 90px;
+	}
+	.StatName{
+		position: absolute;
+		text-align: center;
+		top: -5px;
+		text-shadow: 0 0 3px #000000, 0 0 3px #000000, 0 0 5px #000000, 0 0 7px #000000;
+	}
+	.SkillHolder{
+		width: 60%;
+		margin-top: 5px;
+		display: inline-block;
+		text-align: left;
+		float: left;
+		background-color: rgba(0, 0, 0, 0.3);
+		border: solid black 1px;
+		border-radius: 10px;
+		border-left: none;
+		padding-left: 4px;
+	}
+	#WindowMid{
+		height: 100%;
+		width: 53%;
+		display: inline-block;
+		float: left;
+	}
+	#MidHeader{
+		width: 100%;
+		height: 30%;
+		padding-top: 10px;
+	}
+	#MidHeaderTop{
+		width: 100%;
+		height: 40%;
+		display: block;
+	}
+	#LevelWrapper{
+		width: 16%;
+		height: 100%;
+		display: inline-block;
+		vertical-align: top;
+		background-color: none;
+	}
+	#Level{
+		width: 64px;
+		height: 64px;
+		margin-top: 8px;
+		background-color: rgba(20, 10, 10, 0.6);
+		float: right;
+		text-align: center;
+		font-size: 200%;
+		line-height: 60px;
+		border-radius: 10px;
+	}
+	#Name{
+		width: 65%;
+		height: 100%;
+		display: inline-block;
+		font-size: 200%;
+		text-align: center;
+		line-height: 80px;
+		background-color: rgba(20, 10, 10, 0.6);
+	}
+	#SexWrapper{
+		width: 16%;
+		height: 100%;
+		display: inline-block;
+		vertical-align: top;
+	}
+	#Sex{
+		margin-top: 8px;
+	}
+	#MidHeaderMid{
+		margin-top: 7px;
+		width: 100%;
+		height: 5%;
+		font-size: 125%;
+		text-align: center;
+	}
+	#MidHeaderBot{
+		height: 52%;
+		width: 100%;
+		display: block;
+	}
+	.MainIcon{
+		width: 24%;
+		height: 100%;
+		display: inline-block;
+		position: relative;
+		text-align: center;
+		font-size: 200%;
+	}
+	.MainIconImage{
+		position: absolute;
+		width: 100xp;
+		height: 100px;
+		top: 10px;
+		left: 6px;
+		z-index: 0;
+	}
+	.MainIconNumber{
+		z-index: 100;
+		position: relative;
+		line-height: 110px;
+		text-shadow: 0 0 3px #000000, 0 0 3px #000000, 0 0 5px #000000, 0 0 7px #000000;
+	}
+
+	#MidMid{
+		margin-top: 7px;
+		width: 100%;
+		height: 30%;
+		//border: solid green;
+	}
+	#ImageWrapper{
+		width: 40%;
+		height: 100%;
+		//border: solid yellow;
+		display: inline-block;
+		overflow: hidden;
+	}
+	#Image{
+		width: 100%;
+		margin: auto;
+	}
+	#SpellsAndItems{
+		width: 58%;
+		height: 100%;
+		//border: solid purple;
+		display: inline-block;
+	}
+	#SpellBookWrapper{
+		width: 49%;
+		height: 100%;
+		display: inline-block;
+	}
+	#SpellBook{
+		width: 100%;
+		margin-top: 25%;
+	}
+	#SpellBook:hover{
+		filter: contrast(125%);
+		width: 102%;
+		margin-left: -1%;
+	}
+	#BackPackWrapper{
+		width: 49%;
+		height: 100%;
+		display: inline-block;
+	}
+	#BackPack{
+		width: 100%;
+		margin-top: 25%;
+	}
+	#BackPack:hover{
+		filter: contrast(125%);
+		width: 102%;
+		margin-left: -1%;
+	}
+	#MidBot{
+		width: 100%;
+		padding: 10px;
+	}
+	div{
+		//border: solid orange;
+		vertical-align: top;
+	}
+	
+	#WindowRight{
+		height: 100%;
+		width: 15%;
+		display: inline-block;
+		float: right;
+		padding-top: 10px;
+		padding-right: 10px;
+	}
+	.SecondaryStat{
+		height: 75px;
+		width: 75px;
+		background-color: rgba(0, 0, 0, 0.4);
+		display: inline-block;
+		float: right;
+		font-size: 150%;
+		text-align: center;
+		line-height: 70px;
+	}
+
+</style>
+</head>
+<!-- 825px height -->
+
+<body>
+<div id = "Wrapper">
+	<div id = "Navigation"></div>
+	<div id = "WindowWrapper"> <!-- Middle of the page -->
+		<div id = "Window" class = "Bordered"> <!-- Smaller panel -->
+			<img id = "Settings" onclick = "Scripts.showSettings()" class = "SettingsButton" src = "Images/Interface/settings.png">
+			<div id = "SettingsWrapper">
+				<div id = "SettingsPane">
+				
+				</div>
+			</div>
+			<!-- Window Start -->
+			<div id = "Popup" class = "Bordered">
+			
+			</div>
+			<div id = "WindowLeft">
+				<div class = "StatWrapper">
+					<p style = "left: 20px" class = "StatName">Strength</p>
+					<div class = "Stat Bordered" id = "Strength"></div>
+					<div id = "StrengthSkillHolder" class = "SkillHolder">
+						<p><span id = "Athletics"></span> : Athletics</p>
+					</div>
+				</div>
+				<div class = "StatWrapper">
+					<p style = "left: 20px" class = "StatName">Dexterity</p>
+					<div class = "Stat Bordered" id = "Dexterity"></div>
+					<div id = "DexteritySkillHolder" class = "SkillHolder">
+						<p><span id = "Acrobatics"></span> : Acrobatics</p>
+						<p><span id = "Craft"></span> : Craft</p>
+						<p><span id = "SleightOfHand"></span> : Sleight of Hand</p>
+						<p><span id = "Stealth"></span> : Stealth</p>
+						<p><span id = "UseRope"></span> : Use Rope</p>
+					</div>
+				</div>
+				<div class = "StatWrapper">
+					<p style = "left: 8px" class = "StatName">Constitution</p>
+					<div class = "Stat Bordered" id = "Constitution"></div>
+					<div id = "ConstitutionSkillHolder" class = "SkillHolder">
+						<p><span id = "Survival"></span> : Survival</p>
+						<p><span id = "Luck"></span> : Luck</p><!-- Luck -->
+					</div>
+				</div>
+				<div class = "StatWrapper">
+					<p style = "left: 10px" class = "StatName">Intelligence</p>
+					<div class = "Stat Bordered" id = "Intelligence"></div>
+					<div id = "IntelligenceSkillHolder" class = "SkillHolder">
+						<p><span id = "Arcana"></span> : Arcana</p>
+						<p><span id = "Biology"></span> : Biology</p>
+						<p><span id = "History"></span> : History</p>
+						<p><span id = "Knowledge"></span> : Knowledge</p>
+						<p><span id = "Nature"></span> : Nature</p>
+					</div>
+				</div>
+				<div class = "StatWrapper">
+					<p style = "left: 20px" class = "StatName">Wisdom</p>
+					<div class = "Stat Bordered" id = "Wisdom"></div>
+					<div id = "WisdomSkillHolder" class = "SkillHolder">
+						<p><span id = "AnimalHandling"></span> : Animal Handling</p>
+						<p><span id = "Insight"></span> : Insight</p>
+						<p><span id = "Investigation"></span> : Investigation</p>
+						<p><span id = "Perception"></span> : Perception</p>
+						<p><span id = "Religion"></span> : Religion</p>
+					</div>
+				</div>
+				<div class = "StatWrapper">
+					<p style = "left: 17px" class = "StatName">Charisma</p>
+					<div class = "Stat Bordered" id = "Charisma"></div>
+					<div id = "CharismaSkillHolder" class = "SkillHolder">
+						<p><span id = "Deception"></span> : Deception</p>
+						<p><span id = "Intimidation"></span> : Intimidation</p>
+						<p><span id = "Persuasion"></span> : Persuasion</p>
+						<p><span id = "Performance"></span> : Performance</p>
+					</div>
+				</div>
+			</div>
+			<div id = "WindowMid">
+				<div id = "MidHeader">
+					<div id = "MidHeaderTop">
+						<div id = "LevelWrapper"><div id = "Level" class = "Bordered">7</div></div>
+						<div id = "Name" class = "Bordered"></div>
+						<div id = "SexWrapper"><img id = "Sex" src = "Images/Icons/male.png"></div>
+					</div>
+					<div id ="MidHeaderMid">
+						<p id = "Title">Title</p>
+					</div>
+					<div id = "MidHeaderBot">
+						<div class = "MainIcon">
+							<p id = "Health" class = "MainIconNumber">22</p>
+							<img class = "MainIconImage" src = "Images/Interface/heart.png">
+						</div>
+						<div class = "MainIcon">
+							<img class = "MainIconImage" src = "Images/Interface/shield.png">
+							<p id = "Armor" class = "MainIconNumber">11</p>
+						</div>
+						<div class = "MainIcon">
+							<img class = "MainIconImage" src = "Images/Interface/boot.png">
+							<p id = "Speed" class = "MainIconNumber">30</p>
+						</div>
+						<div class = "MainIcon">
+							<img class = "MainIconImage" src = "Images/Interface/hand.png">
+							<p id = "Initiative" class = "MainIconNumber">+5</p>
+						</div>
+					</div>
+				</div>
+				<div id = "MidMid">	
+					<div id = "ImageWrapper" class = "Bordered">
+						<img id = "Image">
+					</div>
+					<div id = "SpellsAndItems">
+						<div id = "SpellBookWrapper">
+							<img id = "SpellBook" onclick = "goSpells()" src = "Images/Interface/spell_book.png">
+						</div>
+						<div id = "BackPackWrapper">
+							<img id = "BackPack" onclick = "goItems()" src = "Images/Interface/backpack.png">
+						</div>
+					</div>
+				</div>
+				<div id = "MidBot">
+					<div class = "Button Bordered" onclick = "levelUp()">Level Up</div>
+				</div>
+			</div>
+			<div id = "WindowRight">
+				<div class = "StatWrapper">
+					<p style = "right: 5px; top: -10px;line-height: 15px;" class = "StatName">Weapon<br>Effect</p>
+					<div id = "WeaponEffect" class = "SecondaryStat Bordered"></div>
+				</div>
+				<div class = "StatWrapper">
+					<p style = "right: 25px" class = "StatName">Crit</p>
+					<div id = "Crit" class = "SecondaryStat Bordered"></div>
+				</div>
+				<div class = "StatWrapper">
+					<p style = "right: -3px" class = "StatName">Health/Rest</p>
+					<div id = "HealthPerRest" class = "SecondaryStat Bordered"></div>
+				</div>
+				<div class = "StatWrapper">
+					<p style = "right: 9px; top: -10px;line-height: 15px;" class = "StatName">Arcane<br>Points</p>
+					<div id = "ArcanePoints" class = "SecondaryStat Bordered"></div>
+				</div>
+				<div class = "StatWrapper">
+					<p style = "right: -4px" class = "StatName">Save Bonus</p>
+					<div id = "SaveBonus" class = "SecondaryStat Bordered"></div>
+				</div>
+				<div class = "StatWrapper">
+					<p style = "right: 4px" class = "StatName">Save DC</p>
+					<div id = "SaveDC" class = "SecondaryStat Bordered"></div>
+				</div>
+			</div>
+			<!-- Window End -->
+		</div>
+	</div>
+</div>
+</body>
+<script>
+
+	var popupMoveSpeed = 0;
+	var popupTop = -200;
+	var popup = get("Popup");
+	
+	setInterval(function(){
+		if(popupMoveSpeed != 0){
+			popupTop += popupMoveSpeed;
+			popup.style.top = popupTop + "px";}
+		}, 0.066);
+	
+	function levelUp(){
+		setParameter("level", Player.level + 1);
+		popup.style.display = "block";
+		popup.style.height = "100px";
+		popup.innerHTML = "Level up!";
+		popupMoveSpeed = 2;
+		setTimeout(function(){
+			popupMoveSpeed = 0;
+		}, 300);
+		setTimeout(function(){
+			window.location.href = "mycharacter.html?" + parseParameters();
+		}, 1500);}
+	
+	function increaseStat(stat_id){
+		var thisStat = get(stat_id);
+		thisStat.innerHTML = parseInt(thisStat.innerHTML) + 1;
+	}
+
+	function updateFieldsFromParameters(){
+		get("Strength").innerHTML = Player.strength;
+			get("Athletics").innerHTML = Player.strength;
+		get("Dexterity").innerHTML = Player.dexterity;
+			get("Acrobatics").innerHTML = Player.dexterity;
+			get("SleightOfHand").innerHTML = Player.dexterity;
+			get("Craft").innerHTML = Player.dexterity;
+			get("Stealth").innerHTML = Player.dexterity;
+			get("UseRope").innerHTML = Player.dexterity;
+		get("Constitution").innerHTML = Player.constitution;
+			get("Survival").innerHTML = Player.constitution;
+		get("Intelligence").innerHTML = Player.intelligence;
+			get("Arcana").innerHTML = Player.intelligence;
+			get("Biology").innerHTML = Player.intelligence;
+			get("History").innerHTML = Player.intelligence;
+			get("Knowledge").innerHTML = Player.intelligence;
+			get("Nature").innerHTML = Player.intelligence;
+		get("Wisdom").innerHTML = Player.wisdom;
+			get("AnimalHandling").innerHTML = Player.wisdom;
+			get("Insight").innerHTML = Player.wisdom;
+			get("Investigation").innerHTML = Player.wisdom;
+			get("Perception").innerHTML = Player.wisdom;
+			get("Religion").innerHTML = Player.wisdom;
+		get("Charisma").innerHTML = Player.charisma;
+			get("Deception").innerHTML = Player.charisma;
+			get("Intimidation").innerHTML = Player.charisma;
+			get("Persuasion").innerHTML = Player.charisma;
+			get("Performance").innerHTML = Player.charisma;
+		get("Luck").innerHTML = "?";
+		get("Name").innerHTML = Player.name;
+		get("Level").innerHTML = Player.level;
+		get("Title").innerHTML = Player.race + " " + Player.background;
+		get("Image").setAttribute("src", Parameters["img"]);
+		var bonusesArray = Races[Player.race].skillBonuses;
+		for(var i = 0; i<bonusesArray.length; i++){ increaseStat(removeSpaces(bonusesArray[i])); }
+		bonusesArray = Backgrounds[Player.background].skillBonuses;
+		for(var i = 0; i<bonusesArray.length; i++){ increaseStat(removeSpaces(bonusesArray[i])); }
+		get("WeaponEffect").innerHTML = 20 - Player.strength;
+		get("Crit").innerHTML = 20 - parseInt(Player.dexterity / 2);
+		get("HealthPerRest").innerHTML = parseInt(Player.level * 1.5) + 2 * Player.constitution;
+		get("ArcanePoints").innerHTML = Player.intelligence;
+		get("SaveBonus").innerHTML = "+" + Player.wisdom;
+		get("SaveDC").innerHTML = 8 + Player.charisma;
+		get("Health").innerHTML = Races[Player.race].baseHealth + Player.level * (5 + Player.constitution);
+		get("Armor").innerHTML = Armors[Player.armor].ac + 8;
+		get("Initiative").innerHTML = "+" + Player.dexterity;}
+	
+	function goSpells(){
+		window.location.href = "myspells.html?" + parseParameters();
+	}
+	
+	// Initializaiton
+	loadParameters();
+	Player.loadFromParameters();
+	updateFieldsFromParameters();
+
+
+</script>
+</html>
+
+
+
+
+

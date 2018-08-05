@@ -15,6 +15,17 @@
 		margin: 0;
 		background-color: #111111;
 		position: relative;
+		color: white;
+	}
+	.Scrollable{
+		overflow-y: scroll;
+	}
+	.Scrollable::-webkit-scrollbar {width: 1em;}	 
+	.Scrollable::-webkit-scrollbar-track {-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);}
+	.Scrollable::-webkit-scrollbar-thumb {
+		background-color: rgba(0,0,0,0.1);
+		border: 1px solid #ffc69a;
+		border-radius: 5px;
 	}
 	.InputMod{
 		width: 200px;
@@ -34,10 +45,54 @@
 	.Icon{
 		width: 64px;
 		height: 64px;
-		border-bottom: 2px solid transparent;
-		-webkit-border-image:	url(icon_border.png) 2 ; /* Safari 3.1-5 */
-		-o-border-image: 		url(icon_border.png) 2 ; /* Opera 11-12.1 */
-		border-image: 			url(icon_border.png) 2 ;
+		border: solid gray 1px;
+		border-radius: 3px;
+	}
+	.BackgroundWrapper{
+		color: white;
+		padding-top: 5px;
+		padding-bottom: 5px;
+		margin-bottom: 5px;
+		width: 100%;
+		border: solid gray 1px;
+		border-radius: 2px;
+		background-color: rgba(0, 0, 0, 0.5);
+		display: flex;
+		position: relative;
+	}
+	.AbilityNameText{
+		font-style: normal;
+		font-size: 125%;
+		color: white;
+	}
+	.AbilityIcon{
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 5px;
+		display: block;
+		border: solid gray 1px;
+		border-radius: 3px;
+		width: 64px;
+		height: 64px;
+	}
+	.AbilityWrapper{
+		padding-top: 5px;
+		padding-bottom: 5px;
+		margin-bottom: 5px;
+		width: 100%;
+		border: solid gray 1px;
+		border-radius: 5px;
+		background-color: rgba(0, 0, 0, 0.5);
+		display: flex;
+		color: white;
+	}
+	.AbilityWrapperLeft{
+		width: 33%;
+		display: inline-block;
+	}
+	.AbilityWrapperRight{
+		width: 66%;
+		display: inline-block;
 	}
 	#WindowWrapper{
 		width: 100%;
@@ -58,6 +113,7 @@
 		margin: auto;
 		font-family: Arial, Helvetica, sans-serif;
 		position: relative;
+		overflow: hidden;
 		background-color: rgba(30, 20, 20, 0.85);
 	}
 	@media only screen and (max-width: 925px){
@@ -115,7 +171,7 @@
 		margin-top: 0px;
 		margin-bottom: 0px;
 		color: gold;
-		font-style: italic;
+		//font-style: italic;
 		//z-index: 51;
 	}
 	#SettingsWrapper{
@@ -142,6 +198,7 @@
 	.Button{
 		width: 150px;
 		height: 50px;
+		position: absolute;
 		border: 3px solid transparent;
 		-webkit-border-image:	url(border.png) 3 ; /* Safari 3.1-5 */
 		-o-border-image: 		url(border.png) 3 ; /* Opera 11-12.1 */
@@ -158,8 +215,9 @@
 	}
 	.Button:hover{
 		-webkit-box-shadow: inset 0px 0px 69px -108px rgba(143,133,80,0.49);
--moz-box-shadow: inset 0px 0px 69px -108px rgba(143,133,80,0.49);
-box-shadow: inset 0px 0px 69px -108px rgba(143,133,80,0.49);
+		-moz-box-shadow: inset 0px 0px 69px -108px rgba(143,133,80,0.49);
+		box-shadow: inset 0px 0px 69px -108px rgba(143,133,80,0.49);
+		color: gold;
 	}
 	.Bordered{
 		border: 3px solid transparent;
@@ -182,11 +240,21 @@ box-shadow: inset 0px 0px 69px -108px rgba(143,133,80,0.49);
 		overflow-y: hidden;
 		overflow-x: scroll;
 	}
+	.ItemTable{
+		width: 100%;
+		background-color: rgb(255, 255, 255, 0.1);
+		text-align: center;
+		border-collapse: collapse;
+	}
+	.ItemTableRow{
+		border: solid #151515 2px;
+		border-radius: 15px;
+	}
 
 	
 	
 	
-	input[type=range] {
+input[type=range] {
   -webkit-appearance: none;
   width: 100%;
   margin: -0.5px 0;
