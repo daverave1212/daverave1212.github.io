@@ -1,0 +1,340 @@
+	@font-face {
+		font-family: IskoolaPota;
+		src: url(iskpotab.ttf);
+	}
+	
+	p{
+		margin-top: 0px;
+		margin-bottom: 0px;
+	}
+	
+	body{
+		height: 100vh;
+		width: 100%;
+		padding: 0px;
+		margin: 0;
+		background-color: #111111;
+		position: relative;
+		color: white;
+	}
+	.Scrollable{
+		overflow-y: scroll;
+	}
+	.Scrollable::-webkit-scrollbar {width: 1em;}	 
+	.Scrollable::-webkit-scrollbar-track {-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);}
+	.Scrollable::-webkit-scrollbar-thumb {
+		background-color: rgba(0,0,0,0.1);
+		border: 1px solid #ffc69a;
+		border-radius: 5px;
+	}
+	.InputMod{
+		width: 200px;
+		height: 30px;
+	}
+	.AddModButton{
+		width: 150px;
+		height: 40px;
+		text-align: center;
+		color: white;
+		background-color: rgba(0,0,0,0.1);
+		-webkit-box-shadow: inset 0px 0px 69px 11px rgba(0,0,0,0.71);
+		-moz-box-shadow: inset 0px 0px 69px 11px rgba(0,0,0,0.71);
+		box-shadow: inset 0px 0px 69px 11px rgba(0,0,0,0.71);
+		cursor: pointer;
+	}
+	.Icon{
+		width: 64px;
+		height: 64px;
+		border: solid gray 1px;
+		border-radius: 3px;
+	}
+	.BackgroundWrapper{
+		color: white;
+		padding-top: 5px;
+		padding-bottom: 5px;
+		margin-bottom: 5px;
+		width: 100%;
+		border: solid gray 1px;
+		border-radius: 2px;
+		background-color: rgba(0, 0, 0, 0.5);
+		display: flex;
+		position: relative;
+	}
+	.AbilityNameText{
+		font-style: normal;
+		font-size: 125%;
+		color: white;
+	}
+	.AbilityIcon{
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 5px;
+		display: block;
+		border: solid gray 1px;
+		border-radius: 3px;
+		width: 64px;
+		height: 64px;
+	}
+	.AbilityWrapper{
+		padding-top: 5px;
+		padding-bottom: 5px;
+		margin-bottom: 5px;
+		width: 100%;
+		border: solid gray 1px;
+		border-radius: 5px;
+		background-color: rgba(0, 0, 0, 0.5);
+		display: flex;
+		color: white;
+	}
+	.AbilityWrapperLeft{
+		width: 33%;
+		display: inline-block;
+	}
+	.AbilityWrapperRight{
+		width: 66%;
+		display: inline-block;
+	}
+	#WindowWrapper{
+		width: 100%;
+		height: 825px;
+		background-image: url(../Images/Background/background.jpg);
+		background-size: cover;
+		margin-top: 0px;
+		display: block;
+		padding-top: 25px;
+		border-bottom: 3px solid transparent;
+		-webkit-border-image:	url(border.png) 3 ; /* Safari 3.1-5 */
+		-o-border-image: 		url(border.png) 3 ; /* Opera 11-12.1 */
+		border-image: 			url(border.png) 3 ;
+	}
+	#Window{
+		height: 775px;
+		width: 925px;
+		margin: auto;
+		font-family: Arial, Helvetica, sans-serif;
+		position: relative;
+		overflow: hidden;
+		background-color: rgba(30, 20, 20, 0.85);
+	}
+	@media only screen and (max-width: 925px){
+		#Window{
+			width: 100%;;
+		}
+	}
+	@media only screen and (max-width: 750px){
+		#Window{
+			width: 925px;
+		}
+	}
+	#Navigation{
+		height: 50px;
+		background-color: #111111;
+		color: white;
+		width: 100%;
+		border-bottom: 3px solid transparent;
+		-webkit-border-image:	url(border.png) 3 ; /* Safari 3.1-5 */
+		-o-border-image: 		url(border.png) 3 ; /* Opera 11-12.1 */
+		border-image: 			url(border.png) 3 ;
+	}
+	div{
+		box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		//border: solid;
+	}
+	.SettingsButton{
+		width: 32px;
+		height: 32px;
+		z-index: 9999;
+		position: absolute;
+		top: 0px;
+		right: 0px;
+	}
+	.HelpIcon{
+		width: 24px;
+		height: 24px;
+	}
+	#HelpBox{
+		max-width: 250px;
+		height: auto;
+		position: absolute;
+		border: 3px solid transparent;
+		-webkit-border-image:	url(border.png) 3 ; /* Safari 3.1-5 */
+		-o-border-image: 		url(border.png) 3 ; /* Opera 11-12.1 */
+		border-image: 			url(border.png) 3 ;
+		background-color: rgba(40, 30, 30, 0.7);
+		padding: 5px;
+		display: none;
+		//z-index: 50;
+	}
+	#HelpBoxPar{
+		margin-top: 0px;
+		margin-bottom: 0px;
+		color: gold;
+		//font-style: italic;
+		//z-index: 51;
+	}
+	#SettingsWrapper{
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		z-index: 200;
+		display: none;
+	}
+	#SettingsPane{
+		width: 50%;
+		height: 450px;
+		margin-left: auto;
+		margin-right: auto;
+		padding: 7px;
+		margin-top: 100px;
+		border: 3px solid transparent;
+		-webkit-border-image:	url(border.png) 3 ; /* Safari 3.1-5 */
+		-o-border-image: 		url(border.png) 3 ; /* Opera 11-12.1 */
+		border-image: 			url(border.png) 3 ;
+		background-color: rgba(40, 30, 30, 0.99);
+		//z-index: -200;
+	}
+	.Button{
+		width: 150px;
+		height: 50px;
+		position: absolute;
+		border: 3px solid transparent;
+		-webkit-border-image:	url(border.png) 3 ; /* Safari 3.1-5 */
+		-o-border-image: 		url(border.png) 3 ; /* Opera 11-12.1 */
+		border-image: 			url(border.png) 3 ;
+		text-align: center;
+		color: white;
+		font-size: 150%;
+		background-color: rgba(0,0,0,0.1);
+		-webkit-box-shadow: inset 0px 0px 69px 11px rgba(0,0,0,0.71);
+		-moz-box-shadow: inset 0px 0px 69px 11px rgba(0,0,0,0.71);
+		box-shadow: inset 0px 0px 69px 11px rgba(0,0,0,0.71);
+		padding-top: 8px;
+		cursor: pointer;
+	}
+	.Button:hover{
+		-webkit-box-shadow: inset 0px 0px 69px -108px rgba(143,133,80,0.49);
+		-moz-box-shadow: inset 0px 0px 69px -108px rgba(143,133,80,0.49);
+		box-shadow: inset 0px 0px 69px -108px rgba(143,133,80,0.49);
+		color: gold;
+	}
+	.Bordered{
+		border: 3px solid transparent;
+		-webkit-border-image:	url(border.png) 3 ; /* Safari 3.1-5 */
+		-o-border-image: 		url(border.png) 3 ; /* Opera 11-12.1 */
+		border-image: 			url(border.png) 3 ;
+	}
+	.BorderedRound{
+		border: 3px solid transparent;
+		-webkit-border-image:	url(border.png) 3 ; /* Safari 3.1-5 */
+		-o-border-image: 		url(border.png) 3 ; /* Opera 11-12.1 */
+		border-image: 			url(border.png) 3 ;
+		border-radius: 20px;
+	}
+	.ScrollY{
+		overflow-y: scroll;
+		overflow-x: hidden;
+	}
+	.ScrollX{
+		overflow-y: hidden;
+		overflow-x: scroll;
+	}
+	.ItemTable{
+		width: 100%;
+		background-color: rgb(255, 255, 255, 0.1);
+		text-align: center;
+		border-collapse: collapse;
+	}
+	.ItemTableRow{
+		border: solid #151515 2px;
+		border-radius: 15px;
+	}
+
+	
+	
+	
+input[type=range] {
+  -webkit-appearance: none;
+  width: 100%;
+  margin: -0.5px 0;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 20px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: #151615;
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+input[type=range]::-webkit-slider-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  height: 19px;
+  width: 20px;
+  border-radius: 0px;
+  background: rgba(255, 211, 0, 0.59);
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: 0.3px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #212321;
+}
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 20px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: #151615;
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+input[type=range]::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  height: 19px;
+  width: 20px;
+  border-radius: 0px;
+  background: rgba(255, 211, 0, 0.59);
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 20px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #090909;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range]::-ms-fill-upper {
+  background: #151615;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range]::-ms-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  width: 20px;
+  border-radius: 0px;
+  background: rgba(255, 211, 0, 0.59);
+  cursor: pointer;
+  height: 19px;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #151615;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #212321;
+}

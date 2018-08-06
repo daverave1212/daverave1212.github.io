@@ -1,0 +1,498 @@
+ <!DOCTYPE html>
+<html>
+<head>
+	<title>Races</title>
+	<script src = "Javascript/utils.js"></script>
+	<script src = "Javascript/scripts.js"></script>
+	<script src = "Javascript/Queue.src.js"></script>
+	<script src = "Javascript/Abilities.js"></script>
+	<script src = "Javascript/RaceAbilities.js"></script>
+	<script src = "Javascript/Races.js"></script>
+	<script src = "Javascript/Backgrounds.js"></script>
+	<link rel="stylesheet" href="CSS/globalstyle.css">
+</head>
+
+<style>
+	div{
+		//border: solid;
+	}
+	#WindowTop{
+		height: 175px;
+		width: 100%;
+	}
+	#TopLeft{
+		height: 175px;
+		width: 64%;
+		display: inline-block;
+	}
+	#PaneTitle{
+		height: 100px;
+		width: 100%;
+		color: white;
+		text-align: center;
+		line-height: 20px;
+		margin-top: 10px;
+	}
+	#Title{
+		font-size: 200%;
+	}
+	#Description{
+		margin-top: 10px;
+		font-size: 125%;
+	}
+	#PaneRaces{
+		height: 75px;
+		width: 75%;
+		margin: auto;
+		overflow-x: scroll;
+		overflow-y: hidden;
+	}
+	#PaneRaces::-webkit-scrollbar {
+		height: 10px;
+	}	 
+	#PaneRaces::-webkit-scrollbar-track {
+		-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	}
+	#PaneRaces::-webkit-scrollbar-thumb {
+		background-color: rgba(0,0,0,0.1);
+		border: 1px solid #ffc69a;
+		border-radius: 5px;
+	}
+	#RacesWrapper{
+		height: 100%;
+		white-space: nowrap;
+	}
+	.RaceIconWrapper{
+		height: 75px;
+		width: 75px;
+		display: inline-block;
+		border-bottom: none;
+		border-top: none;
+		border-left: none;
+		overflow: hidden;
+		position: relative;
+	}
+	.RaceIcon{
+		height: 100%;
+		width: 100%;
+		z-index: 0;
+	}
+	.SelectedRaceShadow{
+		-webkit-box-shadow: inset 0px 0px 18px 0px rgba(255,234,0,1);
+		-moz-box-shadow: inset 0px 0px 18px 0px rgba(255,234,0,1);
+		box-shadow: inset 0px 0px 18px 0px rgba(255,234,0,1);
+		position: absolute;
+		z-index: 100;
+		width: 75px;
+		height: 60px;
+		top: 0px;
+		left: 0px;
+	}
+	#TopRight{
+		height: 175px;
+		width: 34%;
+		display: inline-block;
+		float: right;
+	}
+	#PaneSex{
+		height: 100px;
+		width: 60%;
+		margin: auto;
+	}
+	#IconFemale{
+		margin-top: 18px;
+		float: left;
+		display: inline-block;
+	}
+	#IconMale{
+		margin-top: 18px;
+		float: right;
+		display: inline-block;
+	}
+	#PaneName{
+		height: 50px;
+		width: 80%;
+		margin: auto;
+		position: relative;
+	}
+	#RaceNamePane{
+		position: absolute;
+		width: 100%;
+		bottom: -35px;
+		color: white;
+		font-size: 125%;
+		text-align: center;
+	}
+	#Name{
+		width: 100%;
+		height: 42px;
+		margin-left: auto;
+		margin-right: auto;
+		padding: 0px;
+		display: block;
+		color: white;
+		background-color: rgba(0, 0, 0, 0.5);
+		font-size: 150%;
+		text-align: center;
+	}
+	#WindowMid{
+		width: 100%;
+		height: 25px;
+	}
+	#WindowBot{
+		width: 100%;
+		height: 475px;
+		//background: linear-gradient(to right, black, black, rgba(0, 0, 0, 0));
+	}
+	#BotLeft{
+		width: 50%;
+		height: 475px;
+		display: inline-block;
+		float: left;
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+	#LevelSelectors{
+		width: 100%;
+		height: 40px;
+		padding-bottom: 15px;
+		position: relative;
+	}
+	#LevelSelectorRangeWrapper{
+		width: 60%;
+		height: 25px;
+		display: inline-block;
+	}
+	#LevelSelectorLevel{
+		width: 39%;
+		height: 25px;
+		color: white;
+		font-size: 115%;
+		position: absolute;
+		top: 0px;
+		right: -10px;
+	}
+	#LevelBonuses{
+		width: 100%;
+		height: 150px;
+		padding-left: 25px;
+		padding-right: 25px;
+		padding-top: 10px;
+		background-color: rgba(0, 0, 0, 0.5);
+		color: white;
+	}
+	#RaceBonuses{
+		color: white;
+		width: 100%;
+		margin-top: 15px;
+		height: 270px;
+		overflow-x: hidden;
+		overflow-y: scroll;
+	}
+	#RaceBonuses::-webkit-scrollbar {
+		width: 1em;
+	}	 
+	#RaceBonuses::-webkit-scrollbar-track {
+		-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	}
+	#RaceBonuses::-webkit-scrollbar-thumb {
+		background-color: rgba(0,0,0,0.1);
+		//outline: 1px solid slategrey;
+		border: 1px solid #ffc69a;
+		border-radius: 5px;
+		//-webkit-box-shadow: inset 0px 0px 11px 3px rgba(82,49,0,1);
+		//-moz-box-shadow: inset 0px 0px 11px 3px rgba(82,49,0,1);
+		//box-shadow: inset 0px 0px 11px 3px rgba(82,49,0,1);
+		//box-shadow: inset 0px 0px 11px 3px rgba(82,49,0,1);
+	}
+	
+	#Bonuses{
+		padding-left: 35px;
+		padding-right: 35px;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		width: 100%;
+		border-top: none;
+		border-left: none;
+		border-right: none;
+	}
+	#Abilities{
+		padding-left: 10px;
+		padding-right: 10px;
+		width: 100%
+		margin: auto;
+		padding-top: 10px;
+	}
+	#BotRight{
+		width: 49%;
+		height: 475px;
+		display: inline-block;
+		float: right;
+		position: relative;
+		background-image: url(Images/Background/race_background_right.png);
+		background-repeat: no-repeat;
+	}
+	#RaceDescriptionWrapper{
+		width: 45%;
+		height: 100%;
+		padding: 10px;
+		color: gold;
+		z-index: 100;
+		direction: rtl;
+		position: absolute;
+		left: 0px;
+		top: 0px;
+		text-align: left;
+	}
+	#RaceDescription{
+		direction: ltr;
+		width: 100%;
+	}
+	#Image{
+		position: absolute;
+		right: 0px;
+		height: 450px;
+		bottom: 10px;
+		//z-index: 0;
+	}
+	#NextButton{
+		bottom: 20px;
+		right: 20px;
+		position: absolute;
+	}
+	#BackButton{
+		bottom: 20px;
+		left: 20px;
+		position: absolute;
+	}
+<!-- 925w x 775h -->
+</style>
+<body>
+<div id = "Wrapper">
+	<div id = "Navigation"></div>
+	<div id = "WindowWrapper"> <!-- Middle of the page -->
+		<div id = "Window" class = "Bordered"> <!-- Smaller panel -->
+			<img id = "Settings" onclick = "Scripts.showSettings()" class = "SettingsButton" src = "Images/Interface/settings.png">
+			<div id = "SettingsWrapper">
+				<div id = "SettingsPane">
+					Mod Link: <input id = "ImportMod" class = "InputMod Bordered"> <button onclick = "importMod()" class = "AddModButton Bordered">Import Mod</button>
+				</div>
+			</div>
+			<!-- Window Interior Start -->
+			<div id = "WindowTop">
+				<div id = "TopLeft">
+					<div id = "PaneTitle">
+						<p id = "Title">Choose your race</p>
+						<p id = "Description">The race defines what you look like, what part of the world you come form, who your ancestors are, etc.<br>It also defines what special traits you possess!</p>
+					</div>
+					<div id = "PaneRaces" class = "Bordered">
+						<div id = "RacesWrapper">
+							<!-- Races get generated here -->
+						</div>
+					</div>
+				</div>
+				<div id = "TopRight">
+					<div id="PaneSex">
+						<img id = "IconFemale"	 onclick = "selectFemale()"	class = "Icon" src = "Images/Icons/female.png">
+						<img id = "IconMale"	onclick = "selectMale()"	class = "Icon" src = "Images/Icons/male.png">					
+					</div>
+					<div id="PaneName">
+						<div id = "RaceNamePane">
+							<span id = "RaceName">Human</span>
+							<span id = "RaceSex">Male</span>
+						</div>
+						<input id = "Name" class = "Bordered">
+					</div>
+				</div>
+			</div>
+			<div id = "WindowMid"></div>
+			<div id = "WindowBot">
+				<div id = "BotLeft">
+					<div id = "LevelSelectors">
+						<div id = "LevelSelectorRangeWrapper" class = "Bordered">
+							<input id = "LevelSelectorRange" onchange = "updateRaceLevelBonuses()" type = "range" min="4" max="20" step="2" value="4">
+						</div>
+						<div id = "LevelSelectorLevel">At level <span id = "Level">4</span> you get:</div>
+					</div>
+					<div id = "LevelBonuses" class = "Bordered">
+						<div class = "LevelBonusDescription"></div>
+						<div class = "AbilityWrapper">
+							<div class = "AbilityWrapperLeft"></div>
+							<div class = "AbilityWrapperRight"></div>
+						</div>
+					</div>
+					<div id = "RaceBonuses" class = "Bordered">
+						<div id = "Bonuses" class = "Bordered">
+							<div class = "Bonus"><b>Movement Speed: 		&nbsp;&nbsp;</b><span id = "MovementSpeed"></span></div>
+							<div class = "Bonus"><b>Languages: 				&nbsp;&nbsp;</b><span id = "Languages"></span></div>
+							<div class = "Bonus"><b>Base Health:			&nbsp;&nbsp;</b><span id = "BaseHealth"></span></div>
+							<div class = "Bonus"><b>Size:					&nbsp;&nbsp;</b><span id = "Size"></span></div>
+							<div class = "Bonus"><b>You are better at:		&nbsp;&nbsp;</b><span id = "SkillBonus"></span></div>
+							<div class = "Bonus"><b>You are not good at:	&nbsp;&nbsp;</b><span id = "SkillMinus"></span></div>
+						</div>
+						<div id = "Abilities"></div>
+					</div>
+				</div>
+				<div id = "BotRight">
+					<div id = "RaceDescriptionWrapper" class = "Scrollable">
+						<div id = "RaceDescription">
+							The humans are the most populous and the youngest race in Azeroth. The humans have become the de facto leaders of the Alliance, with their youthful ambitions and resilience.
+						</div>
+					</div>
+					<img id = "Image" src = "Images/Characters/human_male.png">
+				</div>
+			</div>
+				
+			<!-- Window Interior End -->
+			<div id = "NextButton" onclick = "next()" class = "Button">Next</div>
+			<div id = "BackButton" onclick = "back()" class = "Button">Back</div>
+		</div>
+	</div>
+</div>
+</body>
+<script>
+
+	var SelectedRace = null;
+	
+	function updateRaceTitle(){
+		get("RaceName").innerHTML = SelectedRace.name;}
+		
+	function updateRaceBonuses(){
+		get("MovementSpeed").innerHTML	= SelectedRace.movementSpeed;
+		get("Languages").innerHTML		= SelectedRace.languages;
+		get("BaseHealth").innerHTML		= SelectedRace.baseHealth;
+		get("Size").innerHTML			= SelectedRace.size;
+		get("SkillBonus").innerHTML		= "";
+		for(var i = 0; i<SelectedRace.skillBonuses.length; i++){
+			get("SkillBonus").innerHTML += SelectedRace.skillBonuses[i];
+			if(i + 1 < SelectedRace.skillBonuses.length) get("SkillBonus").innerHTML += ", ";}
+		get("SkillMinus").innerHTML		= "";
+		for(var i = 0; i<SelectedRace.skillMinuses.length; i++){
+			get("SkillMinus").innerHTML += SelectedRace.skillMinuses[i];
+			if(i + 1 < SelectedRace.skillMinuses.length) get("SkillMinus").innerHTML += ", ";}}
+
+	
+	function updateRaceLevelBonus(levelBonus){
+		removeAllChildren(get("LevelBonuses"));
+		var levelBonusDescription = createElement("div");
+		levelBonusDescription.setAttribute("class", "LevelBonusDescription");
+		levelBonusDescription.innerHTML = levelBonus.description + "<br>";
+		get("LevelBonuses").appendChild(levelBonusDescription);
+		for(var i = 0; i<levelBonus.abilities.length; i++){
+			var thisAbility = createAbilityElement(levelBonus.abilities[i]);
+			get("LevelBonuses").appendChild(thisAbility);}}
+	
+	function updateRaceLevelBonuses(){
+		get("Level").innerHTML = get("LevelSelectorRange").value;
+		switch(get("LevelSelectorRange").value){
+			case "2": updateRaceLevelBonus(SelectedRace.level2Bonus);	break;
+			case "4": updateRaceLevelBonus(SelectedRace.level4Bonus);    break;
+			case "6": updateRaceLevelBonus(SelectedRace.level6Bonus);    break;
+			case "8": updateRaceLevelBonus(SelectedRace.level8Bonus);    break;
+			case "10": updateRaceLevelBonus(SelectedRace.level10Bonus);  break;
+			case "12": updateRaceLevelBonus(SelectedRace.level12Bonus);  break;
+			case "14": updateRaceLevelBonus(SelectedRace.level14Bonus);  break;
+			case "16": updateRaceLevelBonus(SelectedRace.level16Bonus);  break;
+			case "18": updateRaceLevelBonus(SelectedRace.level18Bonus);  break;
+			case "20": updateRaceLevelBonus(SelectedRace.level20Bonus);  break;}}
+	
+	function updateRaceAbilities(){
+		removeAllChildren(get("Abilities"));
+		for(var i = 0; i<SelectedRace.abilities.length; i++){
+			var thisAbility = createAbilityElement(SelectedRace.abilities[i]);
+			get("Abilities").appendChild(thisAbility);}}
+	
+	function updateRaceDescription(){ get("RaceDescription").innerHTML = SelectedRace.description; }
+	
+	function selectFemale(){
+		get("RaceSex").innerHTML = "Female";
+		get("Image").src = SelectedRace.imageFemalePath;
+		updateRaceTitle();}
+	function selectMale(){
+		get("RaceSex").innerHTML = "Male";
+		get("Image").src = SelectedRace.imageMalePath;
+		updateRaceTitle();}
+	
+	var InitializedRaces = {};
+	
+	function initializeRaces(){
+		for (var key in Races) {	// for each property/ability in the Races object...
+			if (!Races.hasOwnProperty(key)) continue;	// skip loop if the property is from prototype
+			if((key in InitializedRaces)) continue;
+			console.log("Initializing " + key);
+			InitializedRaces[key] = true;
+			var thisRace = Races[key];
+			thisRace.icon = createImage(thisRace.iconPath);
+			thisRace.icon.setAttribute("class", "RaceIcon");
+			thisRace.icon.setAttribute("name", thisRace.name);
+			thisRace.icon.onclick = function(){raceIconClick( Races[this.getAttribute("name")] );};
+			thisRace.iconSelectedShadow = createElement("div");
+			thisRace.iconSelectedShadow.setAttribute("class", "");
+			thisRace.iconWrapper = createElement("div");
+			thisRace.iconWrapper.setAttribute("class", "RaceIconWrapper Bordered");
+			thisRace.iconWrapper.appendChild(thisRace.icon);
+			thisRace.iconWrapper.appendChild(thisRace.iconSelectedShadow);
+			get("RacesWrapper").appendChild(thisRace.iconWrapper);}}
+		
+	function raceIconClick(raceObject){
+		if(SelectedRace != null) SelectedRace.iconSelectedShadow.setAttribute("class", "");
+		SelectedRace = raceObject;
+		console.log("Selected " + SelectedRace.name);
+		SelectedRace.iconSelectedShadow.setAttribute("class", "SelectedRaceShadow");
+		if( get("RaceSex").innerHTML == "Female" ){get("Image").src = raceObject.imageFemalePath;}
+		if( get("RaceSex").innerHTML == "Male" ){get("Image").src = raceObject.imageMalePath;}
+		updateRaceTitle();
+		updateRaceBonuses();
+		updateRaceLevelBonuses();
+		updateRaceAbilities();
+		updateRaceDescription();
+		
+	}
+	
+	function readyParameters(){
+		alert(get("Name").value);
+		setParameter("name", get("Name").value);
+		setParameter("sex", get("RaceSex").innerHTML.toLowerCase());
+		setParameter("race", SelectedRace.name);
+		setParameter("level", "0");}
+
+	function next(){
+		readyParameters();
+		window.location.href = "background.html?" + parseParameters();}
+		
+	function back(){
+		readyParameters();
+		window.location.href = "stats.html?" + parseParameters();
+	}
+	
+	function setFromParameters(){
+		get("Name").value = Parameters["name"];
+		if(! ("race" in Parameters)) return;
+		get("RaceSex").innerHTML = capitalizeFirstLetter(Parameters["sex"]);
+		raceIconClick(Races[Parameters["race"]]);
+	}
+	
+	function importMod(){
+		Scripts.addMod();
+		initializeRaces();}
+	
+	// On Start
+	initializeRaces();
+	
+	loadParameters();
+	
+	setFromParameters();
+	
+	
+	
+	
+
+		
+
+</script>
+</html>
+
+
+
+
+
