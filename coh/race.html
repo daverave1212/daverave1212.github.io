@@ -228,22 +228,32 @@
 		height: 475px;
 		display: inline-block;
 		float: right;
+		position: relative;
 		background-image: url(Images/Background/race_background_right.png);
 		background-repeat: no-repeat;
 	}
-	#RaceDescription{
+	#RaceDescriptionWrapper{
 		width: 45%;
 		height: 100%;
 		padding: 10px;
 		color: gold;
 		z-index: 100;
+		direction: rtl;
+		position: absolute;
+		left: 0px;
+		top: 0px;
+		text-align: left;
+	}
+	#RaceDescription{
+		direction: ltr;
+		width: 100%;
 	}
 	#Image{
 		position: absolute;
 		right: 0px;
 		height: 450px;
-		margin-top: 25px;
-		z-index: 0;
+		bottom: 10px;
+		//z-index: 0;
 	}
 	#NextButton{
 		bottom: 20px;
@@ -317,16 +327,19 @@
 							<div class = "Bonus"><b>Languages: 				&nbsp;&nbsp;</b><span id = "Languages"></span></div>
 							<div class = "Bonus"><b>Base Health:			&nbsp;&nbsp;</b><span id = "BaseHealth"></span></div>
 							<div class = "Bonus"><b>Size:					&nbsp;&nbsp;</b><span id = "Size"></span></div>
-							<div class = "Bonus"><b>You have a bonus in:	&nbsp;&nbsp;</b><span id = "SkillBonus"></span></div>
+							<div class = "Bonus"><b>You are better at:		&nbsp;&nbsp;</b><span id = "SkillBonus"></span></div>
+							<div class = "Bonus"><b>You are not good at:	&nbsp;&nbsp;</b><span id = "SkillMinus"></span></div>
 						</div>
 						<div id = "Abilities"></div>
 					</div>
 				</div>
 				<div id = "BotRight">
-					<img id = "Image" src = "Images/Characters/human_male.png">
-					<div id = "RaceDescription">
-						The humans are the most populous and the youngest race in Azeroth. The humans have become the de facto leaders of the Alliance, with their youthful ambitions and resilience.
+					<div id = "RaceDescriptionWrapper" class = "Scrollable">
+						<div id = "RaceDescription">
+							The humans are the most populous and the youngest race in Azeroth. The humans have become the de facto leaders of the Alliance, with their youthful ambitions and resilience.
+						</div>
 					</div>
+					<img id = "Image" src = "Images/Characters/human_male.png">
 				</div>
 			</div>
 				
@@ -352,7 +365,11 @@
 		get("SkillBonus").innerHTML		= "";
 		for(var i = 0; i<SelectedRace.skillBonuses.length; i++){
 			get("SkillBonus").innerHTML += SelectedRace.skillBonuses[i];
-			if(i + 1 < SelectedRace.skillBonuses.length) get("SkillBonus").innerHTML += ", ";}}
+			if(i + 1 < SelectedRace.skillBonuses.length) get("SkillBonus").innerHTML += ", ";}
+		get("SkillMinus").innerHTML		= "";
+		for(var i = 0; i<SelectedRace.skillMinuses.length; i++){
+			get("SkillMinus").innerHTML += SelectedRace.skillMinuses[i];
+			if(i + 1 < SelectedRace.skillMinuses.length) get("SkillMinus").innerHTML += ", ";}}
 
 	
 	function updateRaceLevelBonus(levelBonus){
@@ -449,17 +466,15 @@
 	}
 	
 	function setFromParameters(){
-		if(! ("race" in Parameters)) return;
-		console.log("Race: " + Parameters["race"])
-		get("RaceSex").innerHTML = capitalizeFirstLetter(Parameters["sex"]);
 		get("Name").value = Parameters["name"];
+		if(! ("race" in Parameters)) return;
+		get("RaceSex").innerHTML = capitalizeFirstLetter(Parameters["sex"]);
 		raceIconClick(Races[Parameters["race"]]);
 	}
 	
 	function importMod(){
 		Scripts.addMod();
-		initializeRaces();
-	}
+		initializeRaces();}
 	
 	// On Start
 	initializeRaces();
@@ -467,6 +482,8 @@
 	loadParameters();
 	
 	setFromParameters();
+	
+	
 	
 	
 

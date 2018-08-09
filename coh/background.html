@@ -206,13 +206,18 @@
 		get("Name").innerHTML = SelectedBackground.name;
 		get("Title").innerHTML = SelectedBackground.title;
 		get("Description").innerHTML = SelectedBackground.longDesc;
-		get("Bonuses").innerHTML = SelectedBackground.otherBonuses + "<br><br>" + "You have a bonus in: ";
+		get("Bonuses").innerHTML = "You are better at: ";
 		get("Bonuses").innerHTML += SelectedBackground.skillBonuses[0];
 		for(var i = 1; i<SelectedBackground.skillBonuses.length; i++){
-			console.log("i: " + i + ", vs: " + SelectedBackground.skillBonuses.length);
 			if(i < SelectedBackground.skillBonuses.length - 1) get("Bonuses").innerHTML += ", ";
 			else get("Bonuses").innerHTML += " and ";
 			get("Bonuses").innerHTML += SelectedBackground.skillBonuses[i];}
+		get("Bonuses").innerHTML += "<br>You are worse at: ";
+		get("Bonuses").innerHTML += SelectedBackground.skillMinuses[0];
+		for(var i = 1; i<SelectedBackground.skillMinuses.length; i++){
+			if(i < SelectedBackground.skillMinuses.length - 1) get("Bonuses").innerHTML += ", ";
+			else get("Bonuses").innerHTML += " and ";
+			get("Bonuses").innerHTML += SelectedBackground.skillMinuses[i];}
 		get("Gold").innerHTML = SelectedBackground.gold;
 		removeAllChildren(get("Abilities"));
 		for(var i = 0; i<SelectedBackground.abilities.length; i++){
@@ -224,7 +229,7 @@
 	
 	function next(){
 		setParameter("background", SelectedBackground.name);
-		window.location.href = "mycharacter.html?" + parseParameters();
+		window.location.href = "image.html?" + parseParameters();
 	}
 	
 	function back(){

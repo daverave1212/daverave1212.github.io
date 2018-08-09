@@ -34,6 +34,8 @@
 	new Bundle("Start", []);	// Default bundle. Base bundles branch from here.
 	new Bundle("Start2", [Abilities["agile"]]);
 	new Bundle("Start3", [Abilities["agile"], Abilities["agile"]]);
+	new Bundle("Magic1", [Abilities["frost_stance"], Abilities["frost_stance"], Abilities["frost_stance"]]);
 	
 	link("Start", "Start2");
 	link("Start", "Start3");
+	link("Start3", "Magic1");

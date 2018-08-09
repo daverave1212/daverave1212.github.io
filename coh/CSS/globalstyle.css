@@ -48,6 +48,9 @@
 		border: solid gray 1px;
 		border-radius: 3px;
 	}
+	.Clickable{
+		cursor: pointer;
+	}
 	.BackgroundWrapper{
 		color: white;
 		padding-top: 5px;

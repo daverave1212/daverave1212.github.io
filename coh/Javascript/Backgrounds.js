@@ -2,7 +2,7 @@
 	var Backgrounds = {};
 	
 	function Background(Name, Title, ShortDesc, LongDesc,
-						OtherBonuses, SkillBonuses, Abilities, Gold, Items,
+						OtherBonuses, SkillBonuses, SkillMinuses, Abilities, Gold, Items,
 						IconPath){
 		Backgrounds[Name]	= this;
 		this.name			= Name;
@@ -11,6 +11,7 @@
 		this.longDesc		= LongDesc;
 		this.otherBonuses	= OtherBonuses;
 		this.skillBonuses	= SkillBonuses;
+		this.skillMinuses	= SkillMinuses;
 		this.abilities		= Abilities;
 		this.gold			= Gold;
 		this.items			= Items;
@@ -38,7 +39,8 @@
 		"There's only one thing a man can be more in love with than a woman: the sea",
 		"You sailed on a seagoing vessel for years. In that time, you faced down mighty storms, monsters of the deep, and those who wanted to sink your craft to the bottomless depths.",
 		"You know your way around a ship or boat.<br>With you on board, ships travel 25% faster.",
-		["Survival", "Craft", "Use Rope"],
+		["Luck", "Perception", "Use Rope"],
+		["Religion", "Knowledge", "Stealth"],
 		[Abilities["action_surge"], Abilities["frost_stance"]],
 		50,
 		["Sailor Clothes", "30 feet of rope", "Other cool stuff idk", "Some Rum", "Fishing Pole", "Boots"],

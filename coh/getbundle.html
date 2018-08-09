@@ -75,7 +75,18 @@
 <script>
 
 	function afterBundleWasAdded(){
-		print(Player);
+		if(Player.bundle1 != "none"){setParameter("b1", Player.bundle1);}
+		if(Player.bundle2 != "none"){setParameter("b2", Player.bundle2);}
+		if(Player.bundle3 != "none"){setParameter("b3", Player.bundle3);}
+		if(Player.bundle5 != "none"){setParameter("b5", Player.bundle5);}
+		if(Player.bundle7 != "none"){setParameter("b7", Player.bundle7);}
+		if(Player.bundle9 != "none"){setParameter("b9", Player.bundle9);}
+		if(Player.bundle11 != "none"){setParameter("b11", Player.bundle11);}
+		if(Player.bundle13 != "none"){setParameter("b13", Player.bundle13);}
+		if(Player.bundle15 != "none"){setParameter("b15", Player.bundle15);}
+		if(Player.bundle17 != "none"){setParameter("b17", Player.bundle17);}
+		if(Player.bundle19 != "none"){setParameter("b19", Player.bundle19);}
+		window.location.href = "mycharacter.html?" + parseParameters();
 	}
 	
 	function showAvailableBundles(){
@@ -92,6 +103,8 @@
 	
 	// Initializaiton
 	loadParameters();
+	
+	Player.loadFromParameters();
 	
 	showAvailableBundles();
 

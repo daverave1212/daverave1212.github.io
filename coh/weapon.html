@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src = "Javascript/utils.js"></script>
+	<script src = "Javascript/scripts.js"></script>
+	<script src = "Javascript/Queue.src.js"></script>
+	<script src = "Javascript/Abilities.js"></script>
+	<script src = "Javascript/RaceAbilities.js"></script>
+	<script src = "Javascript/Races.js"></script>
+	<script src = "Javascript/Backgrounds.js"></script>
+	<script src = "Javascript/Items.js"></script>
+	<script src = "Javascript/Weapons.js"></script>
+	<link rel="stylesheet" href="CSS/globalstyle.css">
+</head>
+<!-- 825px height -->
+<style>
+
+	#Weapons{
+		width: 50%;
+		height: 90%;
+		margin: auto;
+		margin-top: 5%;
+	}
+	#AbilityWrapper{
+		position: relative;
+	}
+	.Glow{
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0px;
+		z-index: 1000;
+		-webkit-box-shadow: inset 0px 0px 18px 0px rgba(255,234,0,1);
+		-moz-box-shadow: inset 0px 0px 18px 0px rgba(255,234,0,1);
+		box-shadow: inset 0px 0px 18px 0px rgba(255,234,0,1);
+	}
+	#NextButton{
+		bottom: 20px;
+		right: 20px;
+	}
+	#BackButton{
+		bottom: 20px;
+		left: 20px;
+	}
+	
+</style>
+<body>
+<div id = "Wrapper">
+	<div id = "Navigation"></div>
+	<div id = "WindowWrapper"> <!-- Middle of the page -->
+		<div id = "Window" class = "Bordered"> <!-- Smaller panel -->
+			<img id = "Settings" onclick = "Scripts.showSettings()" class = "SettingsButton" src = "Images/Interface/settings.png">
+			<div id = "SettingsWrapper">
+				<div id = "SettingsPane">
+					
+				</div>
+			</div>
+			<!-- Window Start -->
+			<div id = "Weapons" class = "Bordered Scrollable">
+			
+			</div>
+			<!-- Window End -->
+			<div id = "NextButton" onclick = "next()" class = "Button">Next</div>
+			<div id = "BackButton" onclick = "back()" class = "Button">Back</div>
+		</div>
+	</div>
+</div>
+</body>
+<script>
+	
+	var SelectedArmor = null;
+
+	function loadWeapons(){
+		forEachElementInObject(Weapons, function(object, key){
+			var thisWeapon = Weapons[key];
+			var weaponElement = createItemElement(thisWeapon);
+			thisWeapon.weaponElement = weaponElement;
+			addClass(weaponElement, "Clickable");
+			weaponElement.setAttribute("name", thisWeapon.name);
+			weaponElement.onclick = function(){
+				onWeaponClick(Weapons[this.getAttribute("name")]);}
+			get("Weapons").appendChild(weaponElement);
+		});
+	}
+	
+	function onWeaponClick(weaponObject){
+		if(SelectedArmor != null){
+			removeChildWithClass(SelectedArmor.armorElement, "Glow");
+		}
+		SelectedArmor = weaponObject;
+		var glow = createElementWithClass("div", "Glow");
+		SelectedArmor.armorElement.appendChild(glow);
+		print(SelectedArmor.armorElement);
+	}
+	
+	function next(){
+		setParameter("armor", SelectedArmor.name);
+		window.location.href = "mycharacter.html?" + parseParameters();
+	}
+
+	// Init
+	loadParameters();
+	loadWeapons();
+	
+
+
+</script>
+</html>
+
+
+
+
+

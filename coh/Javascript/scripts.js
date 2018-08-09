@@ -8,12 +8,25 @@
 	// For each individual page, use a onmouseover="handleHelp()"
 	// <img class = "StatHelp HelpIcon" onmouseover = "handleHelp('strength')" onmouseout = "Scripts.hideHelpBox()" src = "Images/Interface/help.png">
 	// Each page will handleHelp its own way
-	Scripts.showHelpBox = function(isAbility){
-		var x = roundUp(event.clientX, 40);
+	
+
+	Scripts.HelpBoxElement = null;
+	
+	Scripts.updateHelpBoxPosition = function(){
+		if(Scripts.HelpBoxElement == null) return;
+		var x = event.clientX + window.scrollX;
 		var y = event.clientY + window.scrollY;
-		get("HelpBox").style.display = "block";
-		get("HelpBox").style.top = y + "px";
-		get("HelpBox").style.left = x + "px";
+		Scripts.HelpBoxElement.style.top = y + 10 + "px";
+		Scripts.HelpBoxElement.style.left = x + 10 + "px";
+	}
+	
+	Scripts.showHelpBox = function(isAbility){
+		Scripts.HelpBoxElement = get("HelpBox");
+		Scripts.HelpBoxElement.style.display = "block";
+		//var x = roundUp(event.clientX, 40);
+		//var y = event.clientY + window.scrollY;
+		//get("HelpBox").style.top = y + "px";
+		//get("HelpBox").style.left = x + "px";
 		if(isAbility){
 			print("Definitely an ability");
 			get("HelpBox").style.color = "white";
@@ -38,6 +51,10 @@
 		var helpBoxText = createElementWithID("p", "HelpBoxPar")
 		helpBoxNode.appendChild(helpBoxText);
 		get("Wrapper").appendChild(helpBoxNode);
+		get("Window").onmousemove = function(){
+			Scripts.updateHelpBoxPosition();
+		}
+		
 	}
 	
 	// There is by default an OptionsWrapper > OptionsPane as the first child of WindowWrapper

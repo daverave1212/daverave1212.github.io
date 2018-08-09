@@ -5,6 +5,27 @@
 	var url = new URL(window.location.href);
 	var Parameters = {};
 	
+	function forEachElementInObject(object, func){
+		for (var key in object) {
+			if (!object.hasOwnProperty(key)) continue;
+			func(object, key);}}
+	
+	function inRedSpan(str){
+		return "<span style='color:#FF3333'>"+ str + "</span>"
+	}
+	
+	function inGreenSpan(str){
+		return "<span style='color:#99EE99'>" + str + "</span>";
+	}
+	
+	function inGraySpan(str){
+		return  "<span style='color:#999999'>" + str + "</span>";
+	}
+	
+	function inBlueSpan(str){
+		return  "<span style='color:#777799'>" + str + "</span>";
+	}
+	
 	function loadParameters() {
 		if(! linkLocation.includes("?")){
 			console.log("Link does not have parameters");
@@ -85,6 +106,22 @@
 	function getParameterNumber(param){
 		return parseInt(url.searchParams.get(param));
 	}
+	
+	function fitImageInContainer(image, containerWidth, containerHeight){
+		var imgHeight = image.naturalHeight;
+		var imgWidth = image.naturalWidth;
+		if(imgHeight >= imgWidth){
+			image.style.width = "100%";
+			image.style.height = "auto";}
+		else{
+			image.style.width = "auto";
+			image.style.height = "100%";}
+		imgHeight = image.clientHeight;
+		imgWidth = image.clientWidth;
+		print(imgHeight);
+		print(imgWidth);
+		image.style.marginLeft = (containerWidth - imgWidth)/2 + "px";
+		image.style.marginTop = (containerHeight - imgHeight)/2 + "px";}
 	
 	function getRandomProperty(obj) {
 		var result;
@@ -402,7 +439,7 @@
 		object.setAttribute("id", id);}
 		
 	function addClass(object, c){
-		object.setAttribute("class", object.getAttention("class") + " " + c);}
+		object.setAttribute("class", object.getAttribute("class") + " " + c);}
 	
 	function createImage(src){
 		var img = createElement("img");

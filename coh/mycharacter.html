@@ -170,10 +170,6 @@
 		display: inline-block;
 		overflow: hidden;
 	}
-	#Image{
-		width: 100%;
-		margin: auto;
-	}
 	#SpellsAndItems{
 		width: 58%;
 		height: 100%;
@@ -182,30 +178,41 @@
 	}
 	#SpellBookWrapper{
 		width: 49%;
-		height: 100%;
+		height: 49%;
 		display: inline-block;
 	}
 	#SpellBook{
-		width: 100%;
-		margin-top: 25%;
+		height: 100%;
 	}
 	#SpellBook:hover{
 		filter: contrast(125%);
-		width: 102%;
+		height: 102%;
 		margin-left: -1%;
 	}
 	#BackPackWrapper{
 		width: 49%;
-		height: 100%;
+		height: 49%;
 		display: inline-block;
 	}
 	#BackPack{
-		width: 100%;
-		margin-top: 25%;
+		height: 100%;
 	}
 	#BackPack:hover{
 		filter: contrast(125%);
-		width: 102%;
+		height: 102%;
+		margin-left: -1%;
+	}
+	#BundlesWrapper{
+		width: 49%;
+		height: 49%;
+		display: inline-block;
+	}
+	#Bundles{
+		height: 100%;
+	}
+	#Bundles:hover{
+		filter: contrast(125%);
+		height: 102%;
 		margin-left: -1%;
 	}
 	#MidBot{
@@ -213,7 +220,7 @@
 		padding: 10px;
 	}
 	div{
-		//border: solid orange;
+	//	border: solid orange;
 		vertical-align: top;
 	}
 	
@@ -336,7 +343,7 @@
 						</div>
 						<div class = "MainIcon">
 							<img class = "MainIconImage" src = "Images/Interface/boot.png">
-							<p id = "Speed" class = "MainIconNumber">30</p>
+							<p id = "MovementSpeed" class = "MainIconNumber">30</p>
 						</div>
 						<div class = "MainIcon">
 							<img class = "MainIconImage" src = "Images/Interface/hand.png">
@@ -355,6 +362,9 @@
 						<div id = "BackPackWrapper">
 							<img id = "BackPack" onclick = "goItems()" src = "Images/Interface/backpack.png">
 						</div>
+						<div id = "BundlesWrapper">
+							<img id = "Bundles" onclick = "goBundles()" src = "Images/Interface/magic.png">
+						</div>
 					</div>
 				</div>
 				<div id = "MidBot">
@@ -363,7 +373,7 @@
 			</div>
 			<div id = "WindowRight">
 				<div class = "StatWrapper">
-					<p style = "right: 5px; top: -10px;line-height: 15px;" class = "StatName">Weapon<br>Effect</p>
+					<p style = "right: 5px; top: -10px;line-height: 15px;" class = "StatName">Weapon<br>Effects/Day</p>
 					<div id = "WeaponEffect" class = "SecondaryStat Bordered"></div>
 				</div>
 				<div class = "StatWrapper">
@@ -375,7 +385,7 @@
 					<div id = "HealthPerRest" class = "SecondaryStat Bordered"></div>
 				</div>
 				<div class = "StatWrapper">
-					<p style = "right: 9px; top: -10px;line-height: 15px;" class = "StatName">Arcane<br>Points</p>
+					<p style = "right: 9px; top: -10px;line-height: 15px;" class = "StatName">Recharge<br>Points</p>
 					<div id = "ArcanePoints" class = "SecondaryStat Bordered"></div>
 				</div>
 				<div class = "StatWrapper">
@@ -403,6 +413,25 @@
 			popupTop += popupMoveSpeed;
 			popup.style.top = popupTop + "px";}
 		}, 0.066);
+		
+	function playerHasAllBundles(){
+		var level = Player.level;
+		var bundleLevel;
+		if(level > 3 && level % 2 == 1){
+			bundleLevel = level;
+		} else if(level < 4){
+			bundleLevel = level;
+		} else bundleLevel--;
+		if(Player["bundle" + bundleLevel] == "none"){
+			return false;}
+		else return true;}
+		
+	function setupBundlesButton(){
+		if(playerHasAllBundles()){
+			get("Bundles").style.filter = "grayscale(100%)";
+			get("Bundles").onclick = "";
+		}
+	}
 	
 	function levelUp(){
 		setParameter("level", Player.level + 1);
@@ -424,42 +453,40 @@
 
 	function updateFieldsFromParameters(){
 		get("Strength").innerHTML = Player.strength;
-			get("Athletics").innerHTML = Player.strength;
 		get("Dexterity").innerHTML = Player.dexterity;
-			get("Acrobatics").innerHTML = Player.dexterity;
-			get("SleightOfHand").innerHTML = Player.dexterity;
-			get("Craft").innerHTML = Player.dexterity;
-			get("Stealth").innerHTML = Player.dexterity;
-			get("UseRope").innerHTML = Player.dexterity;
 		get("Constitution").innerHTML = Player.constitution;
-			get("Survival").innerHTML = Player.constitution;
 		get("Intelligence").innerHTML = Player.intelligence;
-			get("Arcana").innerHTML = Player.intelligence;
-			get("Biology").innerHTML = Player.intelligence;
-			get("History").innerHTML = Player.intelligence;
-			get("Knowledge").innerHTML = Player.intelligence;
-			get("Nature").innerHTML = Player.intelligence;
 		get("Wisdom").innerHTML = Player.wisdom;
-			get("AnimalHandling").innerHTML = Player.wisdom;
-			get("Insight").innerHTML = Player.wisdom;
-			get("Investigation").innerHTML = Player.wisdom;
-			get("Perception").innerHTML = Player.wisdom;
-			get("Religion").innerHTML = Player.wisdom;
 		get("Charisma").innerHTML = Player.charisma;
-			get("Deception").innerHTML = Player.charisma;
-			get("Intimidation").innerHTML = Player.charisma;
-			get("Persuasion").innerHTML = Player.charisma;
-			get("Performance").innerHTML = Player.charisma;
-		get("Luck").innerHTML = "?";
-		get("Name").innerHTML = Player.name;
+			get("Athletics").innerHTML 		= Player["athletics"];		
+			get("Acrobatics").innerHTML 	= Player["acrobatics"];	
+			get("SleightOfHand").innerHTML 	= Player["sleightofhand"];			
+			get("Craft").innerHTML 			= Player["craft"];	
+			get("Stealth").innerHTML 		= Player["stealth"];		
+			get("UseRope").innerHTML 		= Player["userope"];		
+			get("Survival").innerHTML		= Player["survival"];
+			get("Luck").innerHTML			= Player["luck"];			
+			get("Arcana").innerHTML 		= Player["arcana"];		
+			get("Biology").innerHTML 		= Player["biology"];		
+			get("History").innerHTML 		= Player["history"];		
+			get("Knowledge").innerHTML 		= Player["knowledge"];		
+			get("Nature").innerHTML 		= Player["nature"];		
+			get("AnimalHandling").innerHTML = Player["animalhandling"];
+			get("Insight").innerHTML 		= Player["insight"];		
+			get("Investigation").innerHTML	= Player["investigation"];	
+			get("Perception").innerHTML 	= Player["perception"];	
+			get("Religion").innerHTML 		= Player["religion"];		
+			get("Deception").innerHTML		= Player["deception"];		
+			get("Intimidation").innerHTML 	= Player["intimidation"];	
+			get("Persuasion").innerHTML 	= Player["persuasion"];	
+			get("Performance").innerHTML 	= Player["performance"];	
+		get("Name").innerHTML = Player.name;  
 		get("Level").innerHTML = Player.level;
 		get("Title").innerHTML = Player.race + " " + Player.background;
 		get("Image").setAttribute("src", Parameters["img"]);
-		var bonusesArray = Races[Player.race].skillBonuses;
-		for(var i = 0; i<bonusesArray.length; i++){ increaseStat(removeSpaces(bonusesArray[i])); }
-		bonusesArray = Backgrounds[Player.background].skillBonuses;
-		for(var i = 0; i<bonusesArray.length; i++){ increaseStat(removeSpaces(bonusesArray[i])); }
-		get("WeaponEffect").innerHTML = 20 - Player.strength;
+		get("Image").onload = function(){
+			fitImageInContainer(get("Image"), 190, 230);}
+		get("WeaponEffect").innerHTML = Player.strength;
 		get("Crit").innerHTML = 20 - parseInt(Player.dexterity / 2);
 		get("HealthPerRest").innerHTML = parseInt(Player.level * 1.5) + 2 * Player.constitution;
 		get("ArcanePoints").innerHTML = Player.intelligence;
@@ -467,16 +494,26 @@
 		get("SaveDC").innerHTML = 8 + Player.charisma;
 		get("Health").innerHTML = Races[Player.race].baseHealth + Player.level * (5 + Player.constitution);
 		get("Armor").innerHTML = Armors[Player.armor].ac + 8;
-		get("Initiative").innerHTML = "+" + Player.dexterity;}
+		get("Initiative").innerHTML = Player.initiative;
+		get("MovementSpeed").innerHTML = Player.movementSpeed;
+		}
 	
 	function goSpells(){
 		window.location.href = "myspells.html?" + parseParameters();
 	}
 	
+	function goBundles(){
+		window.location.href = "getbundle.html?" + parseParameters();
+	}
+	
 	// Initializaiton
 	loadParameters();
 	Player.loadFromParameters();
+	Player.addRaceSkillBonuses();
+	Player.addBackgroundSkillBonuses();
+	Player.addArmorBonuses();
 	updateFieldsFromParameters();
+	setupBundlesButton();
 
 
 </script>
