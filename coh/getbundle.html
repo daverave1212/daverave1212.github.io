@@ -21,13 +21,16 @@
 		display: inline-block;
 	}
 	#BundlesWrapper{
-		display: flex;
+		max-width: 75%;
+		//display: flex;
 		justify-content: center;
 		align-items: center;
-		border: solid yellow;
+		margin: auto;
+		padding-top: 35px;
+		//border: solid yellow;
 	}
 	.BundleWrapper{
-		width: 225px;
+		width: 325px;
 		display: inline-block;
 		text-align: center;
 		background-color: rgba(0, 0, 0, 0.5);
@@ -74,6 +77,8 @@
 </body>
 <script>
 
+	print("Base magic: " + Bundles["Basic Magic"]);
+
 	function afterBundleWasAdded(){
 		if(Player.bundle1 != "none"){setParameter("b1", Player.bundle1);}
 		if(Player.bundle2 != "none"){setParameter("b2", Player.bundle2);}
@@ -91,8 +96,8 @@
 	
 	function showAvailableBundles(){
 		var lastBundle = Player.getLastBundle();
-		print(lastBundle);
-		for(var i = 0; i<lastBundle.nextBundles.length; i++){
+		print("Last bundle next len: " + lastBundle.nextBundles.length);
+		for(var i = 1; i<lastBundle.nextBundles.length; i++){
 			print(lastBundle.nextBundles[i]);
 			var thisBundleElement = createBundleElement(lastBundle.nextBundles[i]);
 			get("BundlesWrapper").appendChild(thisBundleElement);

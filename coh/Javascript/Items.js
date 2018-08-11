@@ -22,7 +22,8 @@
 		itemWrapperLeft.appendChild(itemIcon);
 		var itemWrapperRight = createElement("div");
 		itemWrapperRight.setAttribute("class", "AbilityWrapperRight");
-		itemWrapperRight.innerHTML = item.name + "<br><br>" + item.desc;
+		if(item.isWeapon) itemWrapperRight.innerHTML = item.name + "<br>" + item.desc;
+		else itemWrapperRight.innerHTML = item.name + "<br><br>" + item.desc;
 		itemWrapper.appendChild(itemWrapperLeft);
 		itemWrapper.appendChild(itemWrapperRight);
 		return itemWrapper;}

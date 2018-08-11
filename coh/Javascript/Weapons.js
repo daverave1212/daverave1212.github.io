@@ -3,7 +3,9 @@
 	
 	function Weapon(Name, Type, Damage, IconPath, Effect, Other, Other2){
 		Weapons[Name] = this;
-		this.name = Name + "<br>" + inGraySpan(Type);
+		this.isWeapon = true;
+		this.name = Name; + "<br>" + inGraySpan(Type);
+		this.type = Type;
 		this.damage = Damage;
 		if(substringTo(IconPath, 3) == "http"){
 			this.iconPath = IconPath;
@@ -11,7 +13,7 @@
 		else{
 			this.iconPath = "Images/Icons/" + IconPath;
 		}
-		this.desc = Damage + " damage<br>";
+		this.desc = inGraySpan(Type) + "<br><br>" + Damage + " damage<br>";
 		if(Other != undefined && Other != ""){
 			this.desc += Other + "<br>";}
 		if(Effect != "") this.desc += "<br>" + inGreenSpan("Special Effect: " + Effect);
@@ -60,17 +62,17 @@
 	
 	new Weapon("Spear", "1-Handed Melee", "1d8 Pierce - 1",
 			"spear.jpg",
-			"Use this before you declare an attack. The attack gains 10 feet bonus range.");		
+			"For 0 Actions, this turn, your Spear attacks have 15 feet range.");		
 	
 	new Weapon("Flail", "1-Handed Melee", "1d10 - 2 Pierce or Smash",
 			"flail.png",
-			"Both you and the target take 200% of the damage.",
+			"Both you and the target take 200% bonus damage.",
 			"",
 			"Alternatives: Combat Chains, Kusarigama");	
 	
 	new Weapon("Shortsword", "1-Handed Melee", "1d6",
 			"shortsword.png",
-			"The attack gains +3 to hit (se this after you rolled for hit)",
+			"The attack gains +3 to hit (use this after you rolled for hit)",
 			"",
 			"Alternatives: Falchion, Sabre, Scimitar variant");	
 	
@@ -84,13 +86,13 @@
 	
 	new Weapon("Cleaver", "1-Handed Melee, Thrown", "1d4 + 1 Slash",
 			"cleaver.png",
-			"Attack again with this weapon.",
+			"If you miss, attack again with this weapon with +2 to hit.",
 			"",
 			"Alternatives: Dead Fish (Smash instead of Slash)");
 	
 	new Weapon("Warglaive", "1-Handed Melee, Finesse, Thrown", "1d12 - 3",
 			"glaive.jpg",
-			"If you miss, attack again.",
+			"Attack again.",
 			"",
 			"Alternatives: Boomerang, Chakram, Shuriken");
 	
@@ -104,7 +106,7 @@
 	
 	new Weapon("Warhammer", "2-Handed Melee", "2d6",
 			"warhammer.jpg",
-			"Deal 100% bonus damage. You MUST use this after you land an attack, if you can.");	
+			"You MUST use this before every attack (if you can): This attack deals 100% bonus damage if it hits.");	
 	
 	new Weapon("Heavy Mace", "2-Handed Melee", "1d12",
 			"heavy_mace.png",
@@ -124,15 +126,15 @@
 	
 	new Weapon("Quarterstaff", "2-Handed Melee, Finesse", "1d12 + 1",
 			"quarterstaff.jpg",
-			"Use this before you declare the attack. Attack 2 targets and roll once for damage. Each target takes 50% of the damage if it hits, rounded up.");	
+			"Use this before you declare the attack. Attack 2 targets and roll once for damage. Each target takes 50% of the damage if it hits, rounded up. This effect benefits from crit bonus damage.");	
 	
 	new Weapon("Battle Axe", "2-Handed Melee", "2d8 - 2",
 			"battle_axe.png",
 			"Heal for 100% of the damage dealt.");	
 	
-	new Weapon("Scythe", "2-Handed Melee", "3d4",
+	new Weapon("Scythe", "2-Handed Melee", "3d4 - 1",
 			"scythe.png",
-			"Instead of attacking, roll for damage. You can spread the damage however you want between creatures around you (at least 2 creatures).");	
+			"Instead of attacking, roll for damage. Spread the damage evenly among all creatures around you (at least 2).");	
 	
 	new Weapon("Lance", "2-Handed Melee", "1d8",
 			"lance.png",
@@ -150,11 +152,11 @@
 	
 	new Weapon("Katana", "2-Handed Melee, Finesse", "2d10 - 4",
 			"katana.png",
-			"If the attack was an ambush, deal 50% bonus damage.");	
+			"If the attack was an ambush, deal 100% bonus damage.");	
 	
 	new Weapon("Trident", "2-Handed Melee", "1d12",
 			"trident.jpg",
-			"Use this before you declare the attack. The attack gains +3 to hit.",
+			"Use this before you declare the attack. The attack gains +4 to hit.",
 			"",
 			"Alternatives: Pitchfork");	
 	
@@ -166,22 +168,24 @@
 	
 	new Weapon("Whip", "2-Handed Melee, Finesse", "1d8 + 2",
 			"https://icon2.kisspng.com/20180403/wtw/kisspng-dark-souls-iii-whip-weapon-whip-5ac317d6924fd5.5518822315227350625993.jpg",
-			"Deal 50% bonus damage, only if the target can bleed.");	
+			"Deal 50% bonus damage, only if the target can bleed. You do this for free, automatically if you crit (the Special Effect damage is applied from the original damage before the crit and doesn't affect the crit damage).");	
 	
 	new Weapon("Longbow", "2-Handed Ranged", "1d10",
 			"longbow.jpg",
 			"Deal 50% bonus damage.");	
 
-	new Weapon("Shortbow", "2-Handed Ranged<br><br><i>Hint: this weapon is intended for characters who are not proficient in ranged weapons, such as heavy melee, strenght based warriors who want a decent ranged attack once in a while.</i>", "1d8",
+	new Weapon("Shortbow", "2-Handed Ranged<br><br><i>Hint: this weapon is intended for characters who are not proficient in ranged weapons, such as heavy melee, strength based warriors who want a decent ranged attack once in a while.</i>", "1d8",
 			"shortbow.jpg",
-			"Use this before you declare the attack. This attack is done as if you had proficiency in the weapon if you don't have it.");	
+			"Use this before you declare the attack. This attack is done as if you had proficiency in the weapon if you don't have it.",
+			"",
+			"Alternatives: Javelin (variant)");	
 
 	new Weapon("Heavy Crossbow", "2-Handed Ranged", "1d12 + 1",
 			"heavy_crossbow.jpg",
 			"Use this for 0 Actions to reload the crossbow.",
 			"<br>You must always spend 0.5 Actions to reload the crossbow before you can attack again.");	
 
-	new Weapon("Heavy Gun", "2-Handed Ranged", "2d6 + 1",
+	new Weapon("Heavy Gun", "2-Handed Ranged", "1d10 + 2",
 			"heavy_gun.jpg",
 			"Instead of attacking normally, shoot all targets in a 45*, 15 foot cone. Roll an attack for each and roll for damage once. Each attack hit deals 50% of the damage.",
 			"<br>You must always spend 0.5 Actions to reload the gun before you can attack again.");	
@@ -193,8 +197,7 @@
 	new Weapon("Sling", "1-Handed Ranged", "1d4",
 			"sling.png",
 			"Use this for 0 Actions. This turn, attack with slings only use 0.25 Actions",
-			"Attacks with slings use 0.33 actions (and you can attack 3 times per turn with the same sling)",
-			"",
+			"<br>Attacks with slings use 0.33 actions (and you can attack 3 times per turn with the same sling).<br><i>Slings only benefit from half of the bonus level damage for 1-Handed weapons.</i>",
 			"Alternatives: Slingshot");	
 
 	new Weapon("Light Crossbow", "1-Handed Ranged", "4",

@@ -226,7 +226,6 @@
 				returnedPath += "_";}
 			else if(lowerCaseT[i] == ":"){
 				returnedPath = returnedPath.substring(0, i-1);
-				console.log(returnedPath);
 				return returnedPath;
 			}
 			else{

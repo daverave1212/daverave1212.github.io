@@ -87,3 +87,165 @@
 		new LevelBonus("Your damage with 2-Handed weapons increases by an additional 1d6 (to +3d6), and your bonus damage with 1-Handed weapons increases to 5", []),
 		new LevelBonus("You can now perform up to 2 Actions in total per turn by default.", []))
 	
+	new Race(
+		"Bertle", "Probably the fluffiest of all races, the Bertles are bipedal rabbits who can even hold weapons in their paws (hands). Their fur color can vary from white to brown or red and some choose to dye their fluff pink, blue or other colors.\nTheir eyes can be of any color from the visible color spectrum and their height ranges from 1 meter to up to 1.80 meters, depending on the region and breed.\nBertles live mostly in rural farms and steads. Their societies are not build around war and leadership, and so bertle towns and villages are autonomous. In bertle societies, there are no kings or magistrates and the gap between poverty and luxury is extremely tight, as bertles don’t value money as much as they value integration in society and a good living. They make a living from farming, building, and other such activities and they have no internal currency. Every transaction is made by trading goods: 1 melon for a pumpkin? That’s a deal!\nThere are, however, guilds of bertles who train in fights. The most common fighting proffession for bertles is Bounty Hunter. These are individuals trained in combat agains monsters terrorizing the people, goblins, ogres and other creatures alike who disturb the 99.993% peaceful bertle villages.",
+		"Images/Characters/bertle_male.png",
+		"Images/Characters/bertle_female.png",
+		"Images/Characters/bertle_icon.png",
+		35, "Common and 1 Common language of choice", 7, "Small to Medim",
+		["Animal Handling", "Perception", "Acrobatics"],
+		["Intimidation", "Survival", "Athletics"],
+		[Abilities["rabbit_foot"], Abilities["natural_enemy"]],
+		new LevelBonus("", []),
+		new LevelBonus("You gain Action Surge:", [Abilities["action_surge"]]),
+		new LevelBonus("Your damage with 2-Handed weapons increases by 1d6, and your damage with 1-Handed weapons increases by 2.", []),
+		new LevelBonus("You can now use Natural Enemy twice per day and you gain an additional +5 movement speed", []),
+		new LevelBonus("Your base Armor increase by 1 and your Initiative by 2.", []),
+		new LevelBonus("Your damage with 2-Handed weapons increases by an additional 1d6 (to +2d6), and your bonus damage with 1-Handed weapons increases to 4 (instead of 2).", []),
+		new LevelBonus("You can now use Action Surge twice per day, and the damage of Natural Enemy increases to 3d8.", []),
+		new LevelBonus("Your base health increases by 10. Your 5 weakest Skills increase by 2.", []),
+		new LevelBonus("Your damage with 2-Handed weapons increases by an additional 1d6 (to +3d6), and your bonus damage with 1-Handed weapons increases to 5", []),
+		new LevelBonus("You can now perform up to 2 Actions in total per turn by default.", []))
+
+	new Race("Dwarf",	// name
+		"'Shut up and bring me some ale!'<br>Halgan Dungroth, the Drunk King, on his wedding day, when asked to take his vows.<br>If dwarves don’t know how to both brawl and celebrate, then nobody deserves to. Long lived and strong, the Dwarves have always made their home wherever they settled, be it a rough underground gold mine or the picturesque landscapes of the seaside.<br>Long or short bearded, brawny or fat, courageous or coward, any dwarf is welcome at the table!<br>Ancient and bulky, the dwarves were abandoned prototypes who weren’t fit to rule the earth in the view of gods. Dwarves turned out too short and wide and too slow. Good temper control, however, proved a very useful tool in forgetting their past, together with some fine old ale!<br>That is no longer a sterotype of dwarves, as they have evolved very closely to humans, elves and other races.<br>What they have kept over time, however, was their undesirable bane and longevity: dwarves need 12 hours of sleep per day as opposed to most other creatures. Any less than that can lead to exhaustion. This made dwarves retreat into mines and giant underground cities to escape the possible 18 hours of sunlight per day, which would disturb their circadian rythm.<br>A useful trait of dwarves is that their bones are as tough as steel. Dwarves are hard to kill in combat because of this. Medicine became a problem among dwarves since surgeries could often not be performed due to this flaw. Most dwarves turn to magic to cure whatever they have to cure, or to divine gods who still wish to help become the best version of themselves. Dwarves worship a very narrow range of gods, because those are the only ones who wish to help them in their deeds. Such gods probably include benevolent gods of earth, gods of metalworking and gods of time and stagnation, as they can more closely empathize with dwarves.", // desc
+		"Images/Characters/dwarf_male.png", // image male
+		"Images/Characters/dwarf_female.png", // image female
+		"Images/Characters/dwarf_icon.png", // icon
+		25, "Common and Dwarvish", 13, "Medium",	// speed, langs, hp, size
+		["Athletics", "Craft", "History"],	// bonuses
+		["Acrobatics", "Perception", "Stealth"],	// minuses
+		[Abilities["strong_bones"], Abilities["tough"]],
+		new LevelBonus("", []),
+		new LevelBonus("You gain Action Surge:", [Abilities["action_surge"]]),
+		new LevelBonus("Your damage with 2-Handed weapons increases by 1d6, and your damage with 1-Handed weapons increases by 2.", []),
+		new LevelBonus("You become completely immune to regular poison damage. You also gain Headbutt.", [Abilities["headbutt"]]),
+		new LevelBonus("Your base Armor increase by 2.", []),
+		new LevelBonus("Your damage with 2-Handed weapons increases by an additional 1d6 (to +2d6), and your bonus damage with 1-Handed weapons increases to 4 (instead of 2).", []),
+		new LevelBonus("You can now use Action Surge twice per day, and Headbutt saves are thrown with Disadvantage.", []),
+		new LevelBonus("Your base health increases by 10. Your 5 weakest Skills increase by 2.", []),
+		new LevelBonus("Your damage with 2-Handed weapons increases by an additional 1d6 (to +3d6), and your bonus damage with 1-Handed weapons increases to 5", []),
+		new LevelBonus("You can now perform up to 2 Actions in total per turn by default.", []));
+
+/*		
+	new Race("",	// name
+		"", // desc
+		"Images/Characters/_male.png", // image male
+		"Images/Characters/_female.png", // image female
+		"Images/Characters/_icon.png", // icon
+		, "Common", , "Medium",	// speed, langs, hp, size
+		["", "", ""],	// bonuses
+		["", "", ""],	// minuses
+		[Abilities[""], Abilities[""]],
+		new LevelBonus("", []),
+		new LevelBonus("You gain Action Surge:", [Abilities["action_surge"]]),
+		new LevelBonus("Your damage with 2-Handed weapons increases by 1d6, and your damage with 1-Handed weapons increases by 2.", []),
+		new LevelBonus("", []),
+		new LevelBonus("Your base Armor increase by 1 and", []),
+		new LevelBonus("Your damage with 2-Handed weapons increases by an additional 1d6 (to +2d6), and your bonus damage with 1-Handed weapons increases to 4 (instead of 2).", []),
+		new LevelBonus("You can now use Action Surge twice per day, and ", []),
+		new LevelBonus("Your base health increases by 10. Your 5 weakest Skills increase by 2.", []),
+		new LevelBonus("Your damage with 2-Handed weapons increases by an additional 1d6 (to +3d6), and your bonus damage with 1-Handed weapons increases to 5", []),
+		new LevelBonus("You can now perform up to 2 Actions in total per turn by default.", []));
+		
+	new Race("",	// name
+		"", // desc
+		"Images/Characters/_male.png", // image male
+		"Images/Characters/_female.png", // image female
+		"Images/Characters/_icon.png", // icon
+		, "Common", , "Medium",	// speed, langs, hp, size
+		["", "", ""],	// bonuses
+		["", "", ""],	// minuses
+		[Abilities[""], Abilities[""]],
+		new LevelBonus("", []),
+		new LevelBonus("You gain Action Surge:", [Abilities["action_surge"]]),
+		new LevelBonus("Your damage with 2-Handed weapons increases by 1d6, and your damage with 1-Handed weapons increases by 2.", []),
+		new LevelBonus("", []),
+		new LevelBonus("Your base Armor increase by 1 and", []),
+		new LevelBonus("Your damage with 2-Handed weapons increases by an additional 1d6 (to +2d6), and your bonus damage with 1-Handed weapons increases to 4 (instead of 2).", []),
+		new LevelBonus("You can now use Action Surge twice per day, and ", []),
+		new LevelBonus("Your base health increases by 10. Your 5 weakest Skills increase by 2.", []),
+		new LevelBonus("Your damage with 2-Handed weapons increases by an additional 1d6 (to +3d6), and your bonus damage with 1-Handed weapons increases to 5", []),
+		new LevelBonus("You can now perform up to 2 Actions in total per turn by default.", []));
+		
+	new Race("",	// name
+		"", // desc
+		"Images/Characters/_male.png", // image male
+		"Images/Characters/_female.png", // image female
+		"Images/Characters/_icon.png", // icon
+		, "Common", , "Medium",	// speed, langs, hp, size
+		["", "", ""],	// bonuses
+		["", "", ""],	// minuses
+		[Abilities[""], Abilities[""]],
+		new LevelBonus("", []),
+		new LevelBonus("You gain Action Surge:", [Abilities["action_surge"]]),
+		new LevelBonus("Your damage with 2-Handed weapons increases by 1d6, and your damage with 1-Handed weapons increases by 2.", []),
+		new LevelBonus("", []),
+		new LevelBonus("Your base Armor increase by 1 and", []),
+		new LevelBonus("Your damage with 2-Handed weapons increases by an additional 1d6 (to +2d6), and your bonus damage with 1-Handed weapons increases to 4 (instead of 2).", []),
+		new LevelBonus("You can now use Action Surge twice per day, and ", []),
+		new LevelBonus("Your base health increases by 10. Your 5 weakest Skills increase by 2.", []),
+		new LevelBonus("Your damage with 2-Handed weapons increases by an additional 1d6 (to +3d6), and your bonus damage with 1-Handed weapons increases to 5", []),
+		new LevelBonus("You can now perform up to 2 Actions in total per turn by default.", []));
+		
+	new Race("",	// name
+		"", // desc
+		"Images/Characters/_male.png", // image male
+		"Images/Characters/_female.png", // image female
+		"Images/Characters/_icon.png", // icon
+		, "Common", , "Medium",	// speed, langs, hp, size
+		["", "", ""],	// bonuses
+		["", "", ""],	// minuses
+		[Abilities[""], Abilities[""]],
+		new LevelBonus("", []),
+		new LevelBonus("You gain Action Surge:", [Abilities["action_surge"]]),
+		new LevelBonus("Your damage with 2-Handed weapons increases by 1d6, and your damage with 1-Handed weapons increases by 2.", []),
+		new LevelBonus("", []),
+		new LevelBonus("Your base Armor increase by 1 and", []),
+		new LevelBonus("Your damage with 2-Handed weapons increases by an additional 1d6 (to +2d6), and your bonus damage with 1-Handed weapons increases to 4 (instead of 2).", []),
+		new LevelBonus("You can now use Action Surge twice per day, and ", []),
+		new LevelBonus("Your base health increases by 10. Your 5 weakest Skills increase by 2.", []),
+		new LevelBonus("Your damage with 2-Handed weapons increases by an additional 1d6 (to +3d6), and your bonus damage with 1-Handed weapons increases to 5", []),
+		new LevelBonus("You can now perform up to 2 Actions in total per turn by default.", []));
+		
+	new Race("",	// name
+		"", // desc
+		"Images/Characters/_male.png", // image male
+		"Images/Characters/_female.png", // image female
+		"Images/Characters/_icon.png", // icon
+		, "Common", , "Medium",	// speed, langs, hp, size
+		["", "", ""],	// bonuses
+		["", "", ""],	// minuses
+		[Abilities[""], Abilities[""]],
+		new LevelBonus("", []),
+		new LevelBonus("You gain Action Surge:", [Abilities["action_surge"]]),
+		new LevelBonus("Your damage with 2-Handed weapons increases by 1d6, and your damage with 1-Handed weapons increases by 2.", []),
+		new LevelBonus("", []),
+		new LevelBonus("Your base Armor increase by 1 and", []),
+		new LevelBonus("Your damage with 2-Handed weapons increases by an additional 1d6 (to +2d6), and your bonus damage with 1-Handed weapons increases to 4 (instead of 2).", []),
+		new LevelBonus("You can now use Action Surge twice per day, and ", []),
+		new LevelBonus("Your base health increases by 10. Your 5 weakest Skills increase by 2.", []),
+		new LevelBonus("Your damage with 2-Handed weapons increases by an additional 1d6 (to +3d6), and your bonus damage with 1-Handed weapons increases to 5", []),
+		new LevelBonus("You can now perform up to 2 Actions in total per turn by default.", []));
+		
+	new Race("",	// name
+		"", // desc
+		"Images/Characters/_male.png", // image male
+		"Images/Characters/_female.png", // image female
+		"Images/Characters/_icon.png", // icon
+		, "Common", , "Medium",	// speed, langs, hp, size
+		["", "", ""],	// bonuses
+		["", "", ""],	// minuses
+		[Abilities[""], Abilities[""]],
+		new LevelBonus("", []),
+		new LevelBonus("You gain Action Surge:", [Abilities["action_surge"]]),
+		new LevelBonus("Your damage with 2-Handed weapons increases by 1d6, and your damage with 1-Handed weapons increases by 2.", []),
+		new LevelBonus("", []),
+		new LevelBonus("Your base Armor increase by 1 and", []),
+		new LevelBonus("Your damage with 2-Handed weapons increases by an additional 1d6 (to +2d6), and your bonus damage with 1-Handed weapons increases to 4 (instead of 2).", []),
+		new LevelBonus("You can now use Action Surge twice per day, and ", []),
+		new LevelBonus("Your base health increases by 10. Your 5 weakest Skills increase by 2.", []),
+		new LevelBonus("Your damage with 2-Handed weapons increases by an additional 1d6 (to +3d6), and your bonus damage with 1-Handed weapons increases to 5", []),
+		new LevelBonus("You can now perform up to 2 Actions in total per turn by default.", []));
+		
+*/

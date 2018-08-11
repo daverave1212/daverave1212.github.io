@@ -93,9 +93,9 @@
 			"Armor Bonus: 3<br><br>" + inRedSpan("-4 Stealth"));
 	Armors["Chain Mail"].stats.stealth = -4;
 
-	new Armor("Plate", 4,
+	new Armor("Plate", 5,
 			"Images/Icons/plate.png",
-			"Armor Bonus: 4<br><br>+2 Intimidation<br><br>" + inRedSpan("-5 on Stealth and Acrobatics and -5 movement speed"));
+			"Armor Bonus: 5<br><br>+2 Intimidation<br><br>" + inRedSpan("-5 on Stealth and Acrobatics and -5 movement speed"));
 	Armors["Plate"].stats.intimidation = 2;
 	Armors["Plate"].stats.stealth = -5;
 	Armors["Plate"].stats.acrobatics = -5;

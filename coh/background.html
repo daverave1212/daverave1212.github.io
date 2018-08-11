@@ -109,16 +109,19 @@
 		width: 100%;
 		height: 50%;
 		padding: 7px;
+		padding-bottom: 2px;
 		background-color: rgba(0, 0, 0, 0.5);
 	}
 	#Abilities{
 		width: 100%;
-		height: 59%;
+		//max-height: 80%;
+		margin-bottom: 8px;
 	}
 	#Items{
 		width: 100%;
-		margin-top: 3%;
-		height: 40%;
+		margin-top: 5px;
+		//min-height: 18%;
+		padding-bottom: 5px;
 		//float: bottom;
 	}
 	#NextButton{
@@ -170,9 +173,10 @@
 					<p id = "Bonuses"></p>
 				</div>
 				<div class = "FillerDiv"></div>
-				<div id = "RightBot" class = "Bordered">
-					<div id = "Abilities" class = "Scrollable"></div>
-					<div id = "Items" class = "Scrollable"></div>
+				<div id = "RightBot" class = "Bordered Scrollable">
+					<div id = "Abilities"></div>
+					<p style = "text-align:center"><b>You start with:</b></p>
+					<div id = "Items"></div>
 				</div>
 			</div>
 			<!-- Window End -->
@@ -206,7 +210,11 @@
 		get("Name").innerHTML = SelectedBackground.name;
 		get("Title").innerHTML = SelectedBackground.title;
 		get("Description").innerHTML = SelectedBackground.longDesc;
-		get("Bonuses").innerHTML = "You are better at: ";
+		get("Bonuses").innerHTML = "";
+		if(SelectedBackground.otherBonuses != ""){
+			get("Bonuses").innerHTML += SelectedBackground.otherBonuses + "<br><br>";
+		}
+		get("Bonuses").innerHTML += "You are better at: ";
 		get("Bonuses").innerHTML += SelectedBackground.skillBonuses[0];
 		for(var i = 1; i<SelectedBackground.skillBonuses.length; i++){
 			if(i < SelectedBackground.skillBonuses.length - 1) get("Bonuses").innerHTML += ", ";

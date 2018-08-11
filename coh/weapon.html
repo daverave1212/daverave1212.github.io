@@ -14,12 +14,26 @@
 </head>
 <!-- 825px height -->
 <style>
-
+	#TitleWrapper{
+		height: 10%;
+		width: 100%;
+		text-align: center;
+		margin-top: 15px;
+		color: white;
+	}
+	#Title{
+		font-size: 200%;
+		text-align: center;
+	}
+	#Subtitle{
+		font-silent: 100%;
+		text-align: center;
+	}
 	#Weapons{
 		width: 50%;
-		height: 90%;
+		height: 80%;
 		margin: auto;
-		margin-top: 5%;
+		margin-top: 2%;
 	}
 	#AbilityWrapper{
 		position: relative;
@@ -56,6 +70,10 @@
 				</div>
 			</div>
 			<!-- Window Start -->
+			<div id = "TitleWrapper">
+				<p id = "Title">Choose your starting weapons</p>
+				<p id = "Subtitle">You start with 2 weapons. Make sure your character knows how to use those weapons!</p>
+			</div>
 			<div id = "Weapons" class = "Bordered Scrollable">
 			
 			</div>
@@ -68,7 +86,8 @@
 </body>
 <script>
 	
-	var SelectedArmor = null;
+	var SelectedWeapon1 = null;
+	var SelectedWeapon2 = null;
 
 	function loadWeapons(){
 		forEachElementInObject(Weapons, function(object, key){
@@ -83,24 +102,69 @@
 		});
 	}
 	
-	function onWeaponClick(weaponObject){
-		if(SelectedArmor != null){
-			removeChildWithClass(SelectedArmor.armorElement, "Glow");
-		}
-		SelectedArmor = weaponObject;
+	function glow(wep){
 		var glow = createElementWithClass("div", "Glow");
-		SelectedArmor.armorElement.appendChild(glow);
-		print(SelectedArmor.armorElement);
+		wep.weaponElement.appendChild(glow);}
+		
+	function clear(wep){
+		print("   > clear(" + wep.name + ")");
+		removeChildWithClass(wep.weaponElement, "Glow");
 	}
 	
+	function onWeaponClick(weaponObject){
+		if(SelectedWeapon1 == null && SelectedWeapon2 == null){
+			print("Both were null");
+			//print(weaponObject);
+			SelectedWeapon1 = weaponObject;
+			glow(SelectedWeapon1);}
+		else if(SelectedWeapon1 == null && SelectedWeapon2 != null){
+			print("SW1 was null, SW2 was not null");
+			if(SelectedWeapon2 == weaponObject){
+				print("Clearing sw2: " + SelectedWeapon2.name);
+				clear(SelectedWeapon2);
+				SelectedWeapon2 = null;}
+			else{
+				SelectedWeapon1 = weaponObject;
+				glow(SelectedWeapon1);}}
+		else if(SelectedWeapon1 != null && SelectedWeapon2 == null){
+			print("SW1 was not null, SW2 was null");
+			if(SelectedWeapon1 == weaponObject){
+				print("Clearing sw1: " + SelectedWeapon1.name);
+				clear(SelectedWeapon1);
+				SelectedWeapon1 = null;}
+			else{
+				SelectedWeapon2 = weaponObject;
+				glow(SelectedWeapon2);}}
+		else if(SelectedWeapon1 != null && SelectedWeapon2 != null){
+			print("Both were not null");
+			if(weaponObject == SelectedWeapon1){
+				print("Clearing sw1: " + SelectedWeapon1.name);
+				clear(SelectedWeapon1);
+				SelectedWeapon1 = null;}
+			else if(weaponObject == SelectedWeapon2){
+				print("Clearing sw2: " + SelectedWeapon2.name);
+				clear(SelectedWeapon2);
+				SelectedWeapon2 = null;}}}
+	
 	function next(){
-		setParameter("armor", SelectedArmor.name);
 		window.location.href = "mycharacter.html?" + parseParameters();
 	}
 
 	// Init
 	loadParameters();
 	loadWeapons();
+	
+	document.body.addEventListener("keypress", function(){
+		var s1, s2;
+		if(SelectedWeapon1 == null){
+			s1 = "SW1 is null";}
+		else s1 = "SW1 is not null";
+		if(SelectedWeapon2 == null){
+			s2 = "SW2 is null";}
+		else s2 = "SW2 is not null";
+		print(s1);
+		print(s2);
+	});
 	
 
 

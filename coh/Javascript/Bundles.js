@@ -32,10 +32,24 @@
 			
 		
 	new Bundle("Start", []);	// Default bundle. Base bundles branch from here.
-	new Bundle("Start2", [Abilities["agile"]]);
-	new Bundle("Start3", [Abilities["agile"], Abilities["agile"]]);
-	new Bundle("Magic1", [Abilities["frost_stance"], Abilities["frost_stance"], Abilities["frost_stance"]]);
 	
 	link("Start", "Start2");
-	link("Start", "Start3");
-	link("Start3", "Magic1");
+	
+	new Bundle("Basic Magic", [Abilities["magic"]]);
+	new Bundle("Dark Powers", [Abilities["dark_call"], Abilities["dark_vision"]]);
+	new Bundle("Fighting Skills", [Abilities["flank_attack"]]);
+	new Bundle("Thievery", [Abilities["slice_and_dice"], Abilities["pick_lock"]]);
+	new Bundle("Rangery", [Abilities["range"], Abilities["alarm"]]);
+	new Bundle("Druid", [Abilities["call_of_nature"], Abilities["mindful_meditation"]]);
+	new Bundle("Sanctity", [Abilities["holy_light"]]);
+
+	link("Start", "Basic Magic");
+	link("Start", "Dark Powers");
+	link("Start", "Fighting Skills");
+	link("Start", "Thievery");
+	link("Start", "Rangery");
+	link("Start", "Druid");
+	link("Start", "Sanctity");
+	
+	
+	
