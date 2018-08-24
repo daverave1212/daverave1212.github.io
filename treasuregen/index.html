@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src = "Javascript/utils.js"></script>
+	<script src = "Javascript/Queue.src.js"></script>
+	<script src = "Javascript/treasure.js"></script>
+	<script src = "Javascript/jquery-3.3.1.min.js"></script>
+	<link rel="stylesheet" href="CSS/style.css">
+</head>
+<body>
+<div id = "Window">
+	
+	<button onclick = "gimmeTreasure(35)">35 Gold</button>
+	<button onclick = "gimmeTreasure(75)">  75 Gold</button>
+	<button onclick = "gimmeTreasure(100)"> 100 Gold</button>
+	<button onclick = "gimmeTreasure(150)"> 150 Gold</button>
+	<button onclick = "gimmeTreasure(200)"> 200 Gold</button>
+	<button onclick = "gimmeTreasure(250)"> 250 Gold</button>
+	<button onclick = "gimmeTreasure(350)"> 350 Gold</button>
+	<button onclick = "gimmeTreasure(500)"> 500 Gold</button>
+	<button onclick = "gimmeTreasure(750)"> 750 Gold</button>
+	<button onclick = "gimmeTreasure(1000)">1000 Gold</button>
+	<p id = "Par" style = "font-size: 200%">Here</p>
+</div>
+<script>
+	function gimmeTreasure(howMuch){
+		$("#Par").html(generateTreasure(howMuch));
+	}
+</script>
+</body>
+</html>
