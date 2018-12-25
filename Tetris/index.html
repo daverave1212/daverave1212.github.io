@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<head>
+	<script src="scripts.js"></script>
+	<style>
+		.Square{
+			position: absolute;
+			width: 48px;
+			height: 48px;
+			border: solid 1px gray;
+		}
+		.red{
+			background-image: url("red.png");
+		}
+		.green{
+			background-image: url("green.png");
+		}
+		.blue{
+			background-image: url("blue.png");
+		}
+		.purple{
+			background-image: url("purple.png");
+		}
+		.yellow{
+			background-image: url("yellow.png");
+		}
+		.none{
+			background-color: #EEEEEE;
+		}
+		#Score{
+			position: absolute;
+			font-size: 200%;
+			left: 500px;
+		}
+		.Button{
+			position: absolute;
+			top: 750px;
+			width: 100px;
+			height: 100px;
+			background-color: #AAAAFF;
+			color: white;
+			font-size: 200%;
+		}
+	</style>
+</head>
+<body>
+	<p id="Score">Score: <span id="ScoreValue">0</span></p>
+	<div id="Window">
+		
+	</div>
+	<div class = "Button" onclick = "moveBlockLeft()">LEFT</div>
+	<div class = "Button" style="left: 125px;" onclick = "rotateBlock()">ROTATE</div>
+	<div class = "Button" style="left: 250px;" onclick = "MOBILE_toggleSpeed()">SPEED</div>
+	<div class = "Button" style="left: 400px;" onclick = "moveBlockRight()">RIGHT</div>
+	
+</body>
+<script>
+
+var Score = 0;
+
+function MOBILE_toggleSpeed(){
+	isSpeedingUp = !isSpeedingUp;
+}
+
+function Square(col){
+	this.div = createElementWithClass("div", "Square");
+	get("Window").appendChild(this.div);
+	this.isOccupied = false;
+	this.color = col;
+}
+
+Grid = [];
+Grid.init = function(nRows, nCols){
+	Grid.nCols = nCols;
+	Grid.nRows = nRows;
+	for(var i = 0; i<nRows; i++){
+		Grid[i] = [];
+		for(var j = 0; j<nCols; j++){
+			Grid[i][j] = new Square("none");
+			setImageXY(Grid[i][j].div, j * 48, i * 48);
+		}
+	}
+}
+Grid.fillSquare = function(i, j, color){
+	Grid[i][j].div.classList.remove(Grid[i][j].color);
+	Grid[i][j].div.classList.add(color);
+	Grid[i][j].color = color;
+	Grid[i][j].isOccupied = true;
+}
+
+Grid.clearSquare = function(i, j){
+	Grid[i][j].div.classList.remove(Grid[i][j].color);
+	Grid[i][j].color = "none";
+	Grid[i][j].isOccupied = false;
+}
+
+Grid.clearRow = function(i){
+	for(var j = 0; j<Grid.nCols; j++){
+		Grid.clearSquare(i, j);
+	}
+}
+
+Grid.fillRow = function(i, color){
+	for(var j = 0; j<Grid.nCols; j++){
+		Grid.fillSquare(i, j, color);
+	}
+}
+
+Grid.moveRowDown = function(i){
+	for(var j = 0; j < Grid.nCols; j++){
+		//console.log(j);
+		//Grid[i+1][j].copy(Grid[i][j]);
+		Grid[i+1][j].color = Grid[i][j].color;
+		Grid[i+1][j].isOccupied = Grid[i][j].isOccupied;
+		Grid.fillSquare(i+1, j, Grid[i+1][j].color);
+		if(Grid[i][j].isOccupied){
+			Grid.fillSquare(i+1, j, Grid[i][j].color);
+		} else {
+			Grid.clearSquare(i+1, j);
+		}
+		
+	}
+	Grid.clearRow(i);
+}
+
+Grid.isRowFull = function(i){
+	console.log("Checking " + i);
+	for(let j = 0; j<Grid.nCols; j++){
+		if(!Grid[i][j].isOccupied)
+			return false;
+	}
+	return true;
+}
+
+Grid.isRowEmpty = function(i){
+	for(let j = 0; j<Grid.nCols; j++){
+		if(Grid[i][j].isOccupied)
+			return false;
+	}
+	return true;
+}
+
+Grid.removeFullRows = function(){
+	for(var i = 0; i < Grid.nRows; i++){
+		//console.log("At " + i);
+		if(Grid.isRowFull(i)){
+			console.log("Row " + i + " is full");
+			Grid.clearRow(i);
+			Score += (Grid.nCols + i/2);// * 52;
+			get("ScoreValue").innerHTML = Score;
+		}
+	}
+}
+
+/*
+Grid.moveDownRows = function(){
+	var foundAnyEmptyRow = true;
+	while(foundAnyEmptyRow){
+		foundAnyEmptyRow = false;
+		for(let i = Grid.nRows - 1; i>0; i--){
+			console.log("At i = " + i);
+			if(Grid.isRowEmpty(i)){
+				console.log("   Row is empty");
+				foundAnyEmptyRow = true;
+				for(let ii = i - 1; ii >= 0; ii--){
+					Grid.moveRowDown(ii);
+				}
+			} else {
+				console.log("   Row is NOT empty");
+			}
+		}
+		if(foundAnyEmptyRow){
+			//Grid.moveDownRows();
+		}
+	}
+} */
+
+Grid.moveDownRows = function(){
+	for(let times = 1; times <= Grid.nRows; times++){
+		for(let i = Grid.nRows - 1; i>0; i--){
+			console.log("At i = " + i);
+			if(Grid.isRowEmpty(i)){
+				console.log("   Row is empty");
+				for(let ii = i - 1; ii >= 0; ii--){
+					console.log("     At ii " + ii);
+					Grid.moveRowDown(ii);
+				}
+				break;
+			}
+		}
+	}
+}
+
+document.body.onkeypress = function(evt){
+	evt = evt || window.event;
+    var charCode = evt.keyCode || evt.which;
+	if(charCode == 119){	// Space
+		rotateBlock();
+		console.log("Rotating");
+	} else if(charCode == 100){ // D
+		moveBlockRight();
+	} else if(charCode == 97){ // A
+		moveBlockLeft();
+	} else if(charCode == 115){ // S
+		isSpeedingUp = true;
+	}
+}
+
+document.body.onkeyup = function(evt){
+	evt = evt || window.event;
+    var charCode = evt.keyCode || evt.which;
+	if(charCode == 83){
+		isSpeedingUp = false;
+	}
+}
+
+Block = {};
+Block.i = 0;
+Block.j = 0;
+Block.width = 2;
+Block.height = 2;
+//Block.shape = [[1,1,1],[1,0,1],[0,0,1]];
+Block.shape = [[1,1],[1,1]];
+Block.color = "red";
+Block.shapeIndex = 0;
+
+Block.setShape = function(index){
+	console.log("Setting shape to " + index);
+	undrawBlock();
+	Block.width = Shape[index].width;
+	Block.height = Shape[index].height;
+	Block.shape = Shape[index].shape;
+	Block.shapeIndex = index;
+	drawBlock();
+}
+
+Shape = [];
+
+Shape[0] = {
+	width : 2,
+	height : 2,
+	shape : [
+		[1,1],
+		[1,1]
+		]
+}
+
+Shape[1] = {
+	width : 3,
+	height : 2,
+	shape : [[1,1,0],
+			 [0,1,1]]
+}
+
+Shape[2] = {
+	width : 2,
+	height : 3,
+	shape : [[0,1],
+			 [1,1],
+			 [1,0]]
+}
+
+
+
+
+Shape[3] = {
+	width : 2,
+	height : 3,
+	shape : [[1,1],
+			 [0,1],
+			 [0,1]]
+}
+
+Shape[4] = {
+	width : 3,
+	height : 2,
+	shape : [[0,0,1],
+			 [1,1,1]]
+}
+
+Shape[5] = {
+	width : 2,
+	height : 3,
+	shape : [[1,0],
+			 [1,0],
+			 [1,1]]
+}
+
+Shape[6] = {
+	width : 3,
+	height : 2,
+	shape : [[1,1,1],
+			 [1,0,0]]
+}
+
+
+Shape[7] = {
+	width : 3,
+	height : 2,
+	shape : [[1,1,1],
+			 [0,1,0]]
+}
+
+Shape[8] = {
+	width : 2,
+	height : 3,
+	shape : [[0,1],
+			 [1,1],
+			 [0,1]]
+}
+
+Shape[9] = {
+	width : 3,
+	height : 2,
+	shape : [[0,1,0],
+			 [1,1,1]]
+}
+
+Shape[10] = {
+	width : 2,
+	height : 3,
+	shape : [[1,0],
+			 [1,1],
+			 [1,0]]
+}
+
+
+
+////////////////
+
+Shape[11] = {
+	width : 1,
+	height : 4,
+	shape : [[1],
+			 [1],
+			 [1],
+			 [1]]
+}
+
+Shape[12] = {
+	width : 4,
+	height : 1,
+	shape : [[1,1,1,1]]
+}
+
+
+Shape[13] = {
+	width : 3,
+	height : 3,
+	shape : [[1,1,1],
+			 [1,1,1],
+			 [1,1,1]]
+}
+
+Shape[14] = {
+	width : 1,
+	height : 1,
+	shape : [[1]]
+}
+
+// -----
+Shape[15] = {
+	width : 2,
+	height : 3,
+	shape : [[1,1],
+			 [1,0],
+			 [0,1]]
+}
+
+Shape[16] = {
+	width : 3,
+	height : 2,
+	shape : [[0,1,1],
+			 [1,0,1]]
+}
+
+Shape[17] = {
+	width : 2,
+	height : 3,
+	shape : [[1,0],
+			 [0,1],
+			 [1,1]]
+}
+
+Shape[18] = {
+	width : 3,
+	height : 2,
+	shape : [[1,0,1],
+			 [1,1,0]]
+}
+
+
+// -----
+
+function shouldBlockRotate(){
+	return true;
+}
+
+rotateBlock = function(){
+	if(!shouldBlockRotate()) return;
+	console.log("Current shape: " + Block.shapeIndex);
+	switch(Block.shapeIndex){
+		case 0: break;
+		case 1: Block.setShape(2);  break;
+		case 2: Block.setShape(1);  break;
+		case 3: Block.setShape(4);  break;
+		case 4: Block.setShape(5);  break;
+		case 5: Block.setShape(6);  break;
+		case 6: Block.setShape(3);  break;
+		case 7: Block.setShape(8);  break;
+		case 8: Block.setShape(9);  break;
+		case 9: Block.setShape(10);  break;
+		case 10: Block.setShape(7);  break;
+		case 11: Block.setShape(12);  break;
+		case 12: Block.setShape(11);  break;
+		case 15: Block.setShape(16);  break;
+		case 16: Block.setShape(17);  break;
+		case 17: Block.setShape(18);  break;
+		case 18: Block.setShape(15);  break;
+	}
+}
+
+// Draw if block does not overlap
+function drawBlock(){
+	for(let i = 0; i<Block.shape.length; i++){
+		for(let j = 0; j<Block.shape[i].length; j++){
+			if(Block.shape[i][j] == 1){
+				Grid.fillSquare(i + Block.i,j + Block.j, Block.color);
+			}
+		}
+	}
+}
+
+function undrawBlock(){
+	for(let i = 0; i<Block.shape.length; i++){
+		for(let j = 0; j<Block.shape[i].length; j++){
+			if(Block.shape[i][j] == 1){
+				Grid.clearSquare(i + Block.i,j + Block.j);
+			}
+		}
+	}
+}
+
+function shouldBlockStop(){
+	if(Block.i + Block.height >= Grid.nRows){
+		return true;
+	}
+	for(let j = Block.width - 1; j >= 0; j--){
+		let i = Block.height - 1;
+		while(Block.shape[i][j] != 1){
+			i--;
+		}
+		if(Grid[i + Block.i + 1][j + Block.j].isOccupied){
+			return true;
+		}
+	}
+	return false;
+}
+
+function moveBlockDown(){
+	undrawBlock();
+	Block.i++;
+	drawBlock();
+}
+
+function shouldBlockStopRight(){
+	if(Block.j + Block.width >= Grid.nRows){
+		return true;
+	}
+	for(let i = 0; i< Block.height; i++){
+		let j = Block.width - 1;
+		while(Block.shape[i][j] != 1){
+			j--;
+		}
+		if(Grid[i + Block.i][Block.j + j + 1].isOccupied){
+			return true;
+		}
+	}
+	return false;
+}
+
+function shouldBlockStopLeft(){
+	if(Block.j - 1 < 0){
+		return true;
+	}
+	for(let i = 0; i< Block.height; i++){
+		let j = 0;
+		while(Block.shape[i][j] != 1){
+			j++;
+		}
+		if(Grid[i + Block.i][Block.j + j - 1].isOccupied){
+			return true;
+		}
+	}
+	return false;
+}
+
+function moveBlockLeft(){
+	console.log("Moving left");
+	if(!shouldBlockStopLeft()){
+		undrawBlock();
+		Block.j--;
+		drawBlock();
+	}
+}
+
+function moveBlockRight(){
+	console.log("Moving right");
+	if(!shouldBlockStopRight()){
+		undrawBlock();
+		Block.j++;
+		drawBlock();
+	}
+}
+
+
+var isSpeedingUp = false;
+var currentTick = 0;
+
+function startMovingBlockDown(){
+	setInterval(function(){
+		console.log(isSpeedingUp);
+		currentTick += 50;
+		if(isSpeedingUp){
+			if(shouldBlockStop()){
+				Grid.removeFullRows();
+				Grid.moveDownRows();
+				respawnBlock();
+			} else {
+				undrawBlock();
+				moveBlockDown();
+				drawBlock();
+			}
+		}
+		else if(currentTick % 1000 == 0){
+			if(shouldBlockStop()){
+				Grid.removeFullRows();
+				Grid.moveDownRows();
+				respawnBlock();
+			} else {
+				undrawBlock();
+				moveBlockDown();
+				drawBlock();
+			}
+		}
+	}, 50)
+}
+
+function respawnBlock(){
+	let whichShape = randomInt(0, Shape.length - 1);
+	Block.i = 0;
+	Block.j = 3;
+	Block.height = Shape[whichShape].height;
+	Block.width = Shape[whichShape].width;
+	Block.shape = Shape[whichShape].shape;
+	Block.shapeIndex = whichShape;
+	Block.color = randomOf("red", "blue", "green", "purple", "yellow");
+	drawBlock();
+}
+
+// Init
+Grid.init(15, 10);
+//Grid.fillSquare(5, 5, "red");
+//Grid.fillSquare(1, 9, "blue");
+//Grid.fillSquare(7, 2, "green");
+//Grid.fillSquare(5, 2, "red");
+//Grid.fillSquare(4, 9, "blue");
+//Grid.fillSquare(5, 3, "green");
+//Grid.clearSquare(3, 5);
+//Grid.fillRow(3, "blue");
+//Grid.clearRow(3);
+
+function fillRandom(){
+	for(let x = 1; x<=200; x++){
+		Grid.fillSquare(randomInt(0, 14), randomInt(0, 9), "red");
+	}
+};
+
+
+respawnBlock();
+startMovingBlockDown();
+
+
+
+	
+</script>
