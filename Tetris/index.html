@@ -4,8 +4,8 @@
 	<style>
 		.Square{
 			position: absolute;
-			width: 6px;
-			height: 6px;
+			width: 32px;
+			height: 32px;
 			border: solid 1px gray;
 		}
 		.red{
@@ -76,7 +76,7 @@ Grid.init = function(nRows, nCols){
 		Grid[i] = [];
 		for(var j = 0; j<nCols; j++){
 			Grid[i][j] = new Square("none");
-			setImageXY(Grid[i][j].div, j * 6, i * 6);
+			setImageXY(Grid[i][j].div, j * 32, i * 32);
 		}
 	}
 }
@@ -593,7 +593,7 @@ function respawnBlock(){
 }
 
 // Init
-Grid.init(60, 38);
+Grid.init(35, 15);
 //Grid.fillSquare(5, 5, "red");
 //Grid.fillSquare(1, 9, "blue");
 //Grid.fillSquare(7, 2, "green");
