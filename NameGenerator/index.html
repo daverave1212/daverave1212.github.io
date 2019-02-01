@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src = "Javascript/utils.js"></script>
+	<script src = "Javascript/scripts.js"></script>
+	<script src = "Javascript/Queue.src.js"></script>
+	<script src = "Javascript/NameGenerators/_default.js"></script>
+	<link rel="stylesheet" href="CSS/style.css">
+	<style>
+		.Button{
+			height: 50px;
+			padding-left: 15px;
+			padding-right: 15px;
+			font-size: 200%;
+			text-align: center;
+			border: solid gray 3px;
+			border-radius: 3px;
+			margin: 3px;
+			background-color: #DDDDFF;
+			line-height: 48px;
+			display: inline-block;
+			cursor: pointer;
+		}
+		
+		#Window{
+			width: 100%;
+		}
+	</style>
+	
+</head>
+<body>
+<div id = "Window">
+	<div class = "Button">Miau Miau</div>
+
+</div>
+<script>
+
+	function goodyName(name){
+		let ret = name[0].toUpperCase()
+		for(let i = 1; i<name.length; i++){
+			if(name[i].toUpperCase() == name[i]){
+				ret += " "
+			}
+			ret += name[i]
+		}
+		return ret;
+	}
+
+	function createButton(key){
+		let button = createElement("div")
+		button.classList.add("Button")
+		button.setAttribute("data-function", key)
+		button.innerHTML = goodyName(key)
+		button.onclick = function(){
+			console.clear()
+			for(let i = 1; i<=5; i++){
+				console.log(Names[this.getAttribute("data-function")]())
+			}
+		}
+		get("Window").appendChild(button)
+	}
+
+	// Generate buttons
+	for (var key in Names) {
+		createButton(key)
+	}	
+</script>
+
+</body>
+</html>
