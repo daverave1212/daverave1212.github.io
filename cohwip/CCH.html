@@ -398,11 +398,6 @@ function calculate(){
 	Player.stats.intelligence = parseInt(get("IntelligenceInput").value)
 	Player.stats.wisdom		  = parseInt(get("WisdomInput").value)
 	Player.stats.charisma	  = parseInt(get("CharismaInput").value)
-	Player.saves.fortitudeSave 	  += Player.stats.fortitude 	 
-	Player.saves.dexteritySave 	  += Player.stats.dexterity 	 
-	Player.saves.intelligenceSave += Player.stats.intelligence
-	Player.saves.wisdomSave		  += Player.stats.wisdom		 
-	Player.saves.charismaSave	  += Player.stats.charisma
 	forEachElementInObject(pRace.options.saves, function(obj, key){
 		Player.saves[key] += obj[key]
 	})
@@ -413,10 +408,11 @@ function calculate(){
 	let classStatCheckboxes	= get("ClassOptions").getElementsByTagName("input")
 	addStatsFromCheckboxes(raceStatCheckboxes)
 	addStatsFromCheckboxes(classStatCheckboxes)
-	let raceRadios	= get("RaceOptions").getElementsByTagName("input")
-	let classRadios	= get("ClassOptions").getElementsByTagName("input")
-	addStatsFromRadioButtons(raceRadios)
-	addStatsFromRadioButtons(classRadios)
+	Player.saves.fortitudeSave 	  += Player.stats.fortitude 	 
+	Player.saves.dexteritySave 	  += Player.stats.dexterity 	 
+	Player.saves.intelligenceSave += Player.stats.intelligence
+	Player.saves.wisdomSave		  += Player.stats.wisdom		 
+	Player.saves.charismaSave	  += Player.stats.charisma
 	forEachElementInObject(Player.skills, function(obj, key){
 		let theStat = "fortitude"
 		if(skills.fortitude.includes(key)) theStat = 'fortitude'
