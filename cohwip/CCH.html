@@ -1,0 +1,442 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+	<link rel="stylesheet" type="text/css" href="style.css">
+    <title></title>
+</head>
+<body>
+<div class = "Navigation bordered">
+	<div class = "NavigationItem">
+		Classes
+		<div class = "NavigationDropdownContent bordered">
+			<div class = "NavAWrapper bordered">
+				<a href="Cleric.html">Cleric</a>
+			</div>
+			<div class = "NavAWrapper bordered">
+				<a href="Druid.html">Druid</a>
+			</div>
+			<div class = "NavAWrapper bordered">
+				<a href="Hunter.html">Hunter</a>
+			</div>
+			<div class = "NavAWrapper bordered">
+				<a href="Mage.html">Mage</a>
+			</div>
+			<div class = "NavAWrapper bordered">
+				<a href="Paladin.html">Paladin</a>
+			</div>
+			<div class = "NavAWrapper bordered">
+				<a href="Rogue.html">Rogue</a>
+			</div>
+			<div class = "NavAWrapper bordered">
+				<a href="Shaman.html">Shaman</a>
+			</div>
+			<div class = "NavAWrapper bordered">
+				<a href="Warlock.html">Warlock</a>
+			</div>
+			<div class = "NavAWrapper bordered">
+				<a href="Warrior.html">Warrior</a>
+			</div>
+			<div class = "NavAWrapper bordered locked">
+				<a href="#">Bard</a>
+			</div>
+			<div class = "NavAWrapper bordered locked">
+				<a href="#">Monk</a>
+			</div>
+			<div class = "NavAWrapper bordered locked">
+				<a href="#">Necromancer</a>
+			</div>
+		</div>
+	</div>
+	<div class = "NavigationItem">
+		Races
+		<div class = "NavigationDropdownContent bordered">
+			<div class = "NavAWrapper bordered">
+				<a href="Bertle.html">Bertle</a>
+			</div>
+			<div class = "NavAWrapper bordered">
+				<a href="Dragonborn.html">Dragonborn</a>
+			</div>
+			<div class = "NavAWrapper bordered">
+				<a href="Dwarf.html">Dwarf</a>
+			</div>
+			<div class = "NavAWrapper bordered">
+				<a href="Gnome.html">Gnome</a>
+			</div>
+			<div class = "NavAWrapper bordered">
+				<a href="Hollow.html">Hollow</a>
+			</div>
+			<div class = "NavAWrapper bordered">
+				<a href="Human.html">Human</a>
+			</div>
+			<div class = "NavAWrapper bordered">
+				<a href="Elf.html">Elf</a>
+			</div>
+			<div class = "NavAWrapper bordered">
+				<a href="Orc.html">Orc</a>
+			</div>
+		</div>
+	</div>
+	<div class = "NavigationItem">
+		<a href = "Prices.html">Items</a>
+	</div>
+	<div class = "NavigationItem">
+		<a href = "Spells.html">Spells</a>
+	</div>
+	<div class = "NavigationItem">
+		<a href = "CharacterCreationHelper.html">Stat Calculator</a>
+	</div>
+</div>
+<div class = "Window bordered-full">
+
+
+<h2 class = "golden-text">Use the following numbers as your base stats:</h2>
+<h3 class = "Title">-1, 0, 0, 1, 1</h3>
+<div id = "Stats">
+	<table>
+		<tr>
+			<td>Fortitude</td>
+			<td><input id="FortitudeInput" value="0"></td>
+		</tr>
+		<tr>
+			<td>Dexterity</td>
+			<td><input id="DexterityInput" value="0"></td>
+		</tr>
+		<tr>
+			<td>Intelligence</td>
+			<td><input id="IntelligenceInput" value="0"></td>
+		</tr>
+		<tr>
+			<td>Wisdom</td>
+			<td><input id="WisdomInput" value="0"></td>
+		</tr>
+		<tr>
+			<td>Charisma</td>
+			<td><input id="CharismaInput" value="0"></td>
+		</tr>
+	</table>
+	Level: <input id = "LevelInput">
+</div>
+<select onchange="update()" id = "Race"></select>
+<select onchange="update()" id = "Class"></select>
+<select onchange="update()" id = "Background"></select>
+<h4 class = "CCHFrom golden-text">From your race...</h4>
+<div id = "RaceOptions">
+
+</div>
+<h4 class = "CCHFrom golden-text">From your class...</h4>
+<div id = "ClassOptions">
+
+</div>
+<button class = "CalculateButton bordered-full golden-text" onclick = "calculate()">Calculate</button>
+<div id = "PlayerStats"></div>
+<script src = "Databases/Stats.js"></script>
+<script src = "utils.js"></script>
+<script>
+
+Player = {
+	health : 0,
+	levelUpHealth : 0,
+	charges : 0,
+	chargesReset : "Long Rest",
+	knownSpellsAndManeuvers : 0,
+	spellCaster : false,
+	saveDC : 0,
+	featPoints : 0,
+	stats : {
+		fortitude : 0,
+		dexterity : 0,
+		intelligence : 0,
+		wisdom : 0,
+		charisma : 0
+	},
+	saves : {
+		fortitudeSave : 0,
+		dexteritySave : 0,
+		intelligenceSave : 0,
+		wisdomSave : 0,
+		charismaSave : 0
+	},
+	languages : [],
+	weapons : [],
+	skills : {			
+		athletics		: 0,	
+		survival		: 0,	
+		acrobatics		: 0,	
+		craft			: 0,
+		sleightOfHand	: 0,			
+		stealth			: 0,
+		useRope			: 0,
+		arcana			: 0,
+		biology			: 0,
+		knowledge		: 0,	
+		nature			: 0,
+		history			: 0,
+		animalHandling	: 0,		
+		insight			: 0,
+		investigation	: 0,		
+		perception		: 0,	
+		religion		: 0,	
+		deception		: 0,	
+		intimidation	: 0,		
+		persuasion		: 0,	
+		performance		: 0,	
+		luck			: 0
+	}
+}
+PlayerBackup = clone(Player)
+
+skills = {
+	fortitude : ['athletics', 'survival'],
+	dexterity : ['acrobatics', 'craft', 'sleightOfHand', 'stealth', 'useRope'],
+	intelligence : ['arcana', 'biology', 'history', 'knowledge', 'nature'],
+	wisdom : ['animalHandling', 'insight', 'investigation', 'perception', 'religion'],
+	charisma : ['deception', 'intimidation', 'persuasion', 'performance']
+}
+saves = ['fortitudeSave', 'dexteritySave', 'intelligenceSave', 'wisdomSave', 'charismaSave']
+function isSkill(what){
+	if(skills.fortitude.includes(what)) return true
+	if(skills.dexterity.includes(what)) return true
+	if(skills.intelligence.includes(what)) return true
+	if(skills.wisdom.includes(what)) return true
+	if(skills.charisma.includes(what)) return true
+	if(what == "luck") return true
+	return false
+}
+function isSave(what){
+	if(saves.includes(what)) return true
+	return false
+}
+
+
+function addSkills(rcb){	// Race, Class or Background
+	forEachElementInObject(rcb.skills, function(obj, key){
+		Player.skills[key] += rcb.skills[key];
+	});
+}
+function setup(){
+	document.getElementsByClassName("Window")[0].classList.add("CCH")
+	forEachElementInObject(Races, function(obj, key){
+	let option = createElement("option")
+	option.value = key
+	option.innerHTML = key
+	get("Race").appendChild(option);
+	})
+	forEachElementInObject(Classes, function(obj, key){
+		let option = createElement("option")
+		option.value = key
+		option.innerHTML = key
+		get("Class").appendChild(option)
+	})
+	forEachElementInObject(Backgrounds, function(obj, key){
+		let option = createElement("option")
+		option.value = key
+		option.innerHTML = key
+		get("Background").appendChild(option)
+	})
+}
+setup();
+
+function addStatOption(toDiv, statsObj){
+	forEachElementInObject(statsObj, function(obj, key){
+		if(statsObj[key] == true){
+			let wrapper = createElementWithClass("div", "OptionsWrapper")
+			let rb = createElement("input")
+			rb.setAttribute("type", "checkbox");
+			rb.setAttribute("data-value", key);
+			wrapper.appendChild(rb)
+			wrapper.innerHTML += key + "<br>"
+			toDiv.appendChild(wrapper)
+		}
+	})
+}
+
+function addOption(toDiv, optionsObj, optionsObjName){
+	let p = createElement("p")
+	p.innerHTML = "Choose one of the following:"
+	toDiv.appendChild(p)
+	forEachElementInObject(optionsObj, function(obj, key){
+		let wrapper = createElementWithClass("div", "OptionsWrapper")
+		let rb = createElement("input")
+		rb.setAttribute("name", toDiv.getAttribute("id") + optionsObjName)
+		rb.setAttribute("type", "radio");
+		rb.setAttribute("data-key", key);
+		rb.setAttribute("data-value", optionsObj[key]);
+		wrapper.appendChild(rb)
+		wrapper.innerHTML += key + " : " + optionsObj[key] + "<br>"
+		toDiv.appendChild(wrapper)
+	})
+}
+
+function update(){
+	removeAllChildren(get("RaceOptions"))
+	removeAllChildren(get("ClassOptions"))
+	let pRace 		= Races[getSelectValue(get("Race"))]
+	let pClass		= Classes[getSelectValue(get("Class"))]
+	let pBackground	= Backgrounds[getSelectValue(get("Background"))]
+	let raceStatPar		= createElement("p")
+	let classStatPar	= createElement("p")
+	raceStatPar.innerHTML	= "Choose two of the following to increase by 1:"
+	classStatPar.innerHTML	= "Choose two of the following to increase by 1:"
+	get("RaceOptions").appendChild(raceStatPar)
+	get("ClassOptions").appendChild(classStatPar)
+	addStatOption(get("RaceOptions"), pRace.options.stats)
+	addStatOption(get("ClassOptions"), pClass.options.stats)
+	//addOption(get("RaceOptions"), pRace.options.option1, 'option1')
+	//addOption(get("RaceOptions"), pRace.options.option2, 'option2')
+	//addOption(get("ClassOptions"), pClass.options.option1, 'option1')
+	//addOption(get("ClassOptions"), pClass.options.option2, 'option2')
+}
+
+function addStatsFromCheckboxes(checkboxes){
+	for(let i = 0; i<checkboxes.length; i++){
+		let cb = checkboxes[i]
+		if(cb.checked && cb.getAttribute("type") == "checkbox"){
+			Player.stats[cb.getAttribute("data-value")] += 1
+		}
+	}
+}
+
+function addStatsFromRadioButtons(radios){
+	for(let i = 0; i<radios.length; i++){
+		let rb = radios[i]
+		if(rb.checked && rb.getAttribute("type") == "radio"){
+			let stat = rb.getAttribute("data-key")
+			let value = rb.getAttribute("data-value")
+			if(isSave(stat)){
+				Player.saves[stat] += parseInt(value)}
+			else if(isSkill(stat)){
+				Player.skills[stat] += parseInt(value)}
+			else {
+				Player[stat] += parseInt(value)
+			}
+		}
+	}
+}
+
+function createTableFromObject(obj){
+	let table = createElementWithClass("table", "ItemTable CCHTable")
+	forEachElementInObject(obj, function(o, key){
+		let tr = createElement("tr")
+		let tdkey = createElement("td")
+		let tdval = createElement("td")
+		tdkey.innerHTML = capitalizeFirstLetter(functionNameToWords(key))
+		tdval.innerHTML = o[key]
+		tr.appendChild(tdkey)
+		tr.appendChild(tdval)
+		table.appendChild(tr)
+	})
+	return table
+}
+
+function createTableFromArrays(arrays, head){
+	let table = createElementWithClass("table", "ItemTable CCHTable")
+	let nRows = arrays[0].length
+	if(head != null){
+		let tr = createElement("tr")
+		for(let i = 0; i<head.length; i++){
+			let th = createElement("th")
+			th.innerHTML = head[i]
+			tr.appendChild(th)
+		}
+		table.appendChild(tr)
+	}
+	for(let i = 0; i<nRows; i++){
+		let tr = createElement("tr")
+		for(let j = 0; j<arrays.length; j++){
+			let td = createElement("td")
+			td.innerHTML = arrays[j][i]
+			tr.appendChild(td)
+		}
+		table.appendChild(tr)
+	}
+	return table
+}
+
+function renderPlayer(){
+	let div = get("PlayerStats")
+	let p = Player
+	let r = Races[getSelectValue(get("Race"))]
+	let c = Classes[getSelectValue(get("Class"))]
+	let b = Backgrounds[getSelectValue(get("Background"))]
+	let lvl = parseInt(get("LevelInput").value)
+	p.health += r.health + c.health + (lvl-1)*c.levelUpHealth
+	if(lvl >= 3)
+		p.health += 1 + p.stats.fortitude
+	if(lvl >= 7)
+		p.health += 1 + p.stats.fortitude
+	if(c.knownSpellsAndManeuvers == "normal"){
+		p.knownSpellsAndManeuvers = 2 + lvl + p.stats.intelligence
+	} else {
+		p.knownSpellsAndManeuvers = 2 + Math.floor((lvl)/2) + p.stats.intelligence
+	}
+	let nBonusCharges = Math.ceil(p.lvl / 2) - 1	// 3,5,7,9
+	if(nBonusCharges < 0) nBonusCharges = 0
+	p.charges = 3 + nBonusCharges
+	let statsTable = createTableFromArrays(
+		[getKeys(p.stats), getValues(p.stats), getValues(p.saves)],
+		["Stat Name", "Stat", "Save Bonus"]
+	)
+	div.appendChild(statsTable)
+	div.innerHTML += "<br>"
+	let hp = createTableFromObject({health : p.health})
+	div.appendChild(hp)
+	div.innerHTML += "<br>"
+	let skillsTable = createTableFromObject(p.skills)
+	div.appendChild(skillsTable)
+}
+
+function calculate(){
+	let pRace 		= Races[getSelectValue(get("Race"))]
+	let pClass		= Classes[getSelectValue(get("Class"))]
+	let pBackground	= Backgrounds[getSelectValue(get("Background"))]
+	addSkills(pRace)
+	addSkills(pClass)
+	addSkills(pBackground)
+	Player.stats.fortitude 	  = parseInt(get("FortitudeInput").value)
+	Player.stats.dexterity 	  = parseInt(get("DexterityInput").value)
+	Player.stats.intelligence = parseInt(get("IntelligenceInput").value)
+	Player.stats.wisdom		  = parseInt(get("WisdomInput").value)
+	Player.stats.charisma	  = parseInt(get("CharismaInput").value)
+	Player.saves.fortitudeSave 	  += Player.stats.fortitude 	 
+	Player.saves.dexteritySave 	  += Player.stats.dexterity 	 
+	Player.saves.intelligenceSave += Player.stats.intelligence
+	Player.saves.wisdomSave		  += Player.stats.wisdom		 
+	Player.saves.charismaSave	  += Player.stats.charisma
+	forEachElementInObject(pRace.options.saves, function(obj, key){
+		Player.saves[key] += obj[key]
+	})
+	forEachElementInObject(pClass.options.saves, function(obj, key){
+		Player.saves[key] += obj[key]
+	})
+	let raceStatCheckboxes	= get("RaceOptions").getElementsByTagName("input")
+	let classStatCheckboxes	= get("ClassOptions").getElementsByTagName("input")
+	addStatsFromCheckboxes(raceStatCheckboxes)
+	addStatsFromCheckboxes(classStatCheckboxes)
+	let raceRadios	= get("RaceOptions").getElementsByTagName("input")
+	let classRadios	= get("ClassOptions").getElementsByTagName("input")
+	addStatsFromRadioButtons(raceRadios)
+	addStatsFromRadioButtons(classRadios)
+	forEachElementInObject(Player.skills, function(obj, key){
+		let theStat = "fortitude"
+		if(skills.fortitude.includes(key)) theStat = 'fortitude'
+		else if(skills.dexterity.includes(key)) theStat = 'dexterity'
+		else if(skills.intelligence.includes(key)) theStat = 'intelligence'
+		else if(skills.wisdom.includes(key)) theStat = 'wisdom'
+		else if(skills.charisma.includes(key)) theStat = 'charisma'
+		Player.skills[key] += Player.stats[theStat]
+	})
+	renderPlayer()
+	console.log(Player)
+}
+
+
+	
+</script>
+
+﻿</div>
+<footer class = "bordered">
+	a
+</footer>
+</body>
+</html>
