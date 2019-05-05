@@ -1,7 +1,7 @@
 
 Races = {
 	Bertle : {
-		health : 7,
+		health : 10,
 		language : {
 			intRequirement	: 2,
 			language		: "1 additional Common language"
@@ -28,7 +28,7 @@ Races = {
 		}
 	},
 	Dragonborn : {
-		health : 6,
+		health : 11,
 		language : {
 			intRequirement	: 1,
 			language		: "1 additional Common language"
@@ -56,7 +56,7 @@ Races = {
 		}
 	},
 	Dwarf : {
-		health : 9,
+		health : 13,
 		weapons : [
 			"Hand Hammers",
 			"Warhammers",
@@ -84,7 +84,7 @@ Races = {
 		}
 	},
 	Gnome : {
-		health : 3,
+		health : 9,
 		language : {
 			intRequirement	: 1,
 			language		: "1 additional Common language"
@@ -117,7 +117,7 @@ Races = {
 		}
 	},
 	Human : {
-		health : 6,
+		health : 10,
 		language : {
 			intRequirement	: 1,
 			language		: "1 additional Common language"
@@ -136,7 +136,7 @@ Races = {
 		}
 	},
 	Hollow : {
-		health : 2,
+		health : 8,
 		language : {
 			intRequirement	: 1,
 			language		: "1 additional Common language"
@@ -163,7 +163,7 @@ Races = {
 		}
 	},
 	Elf : {
-		health : 6,
+		health : 10,
 		weapons : [
 			"Longbow",
 			"Shortbow"
@@ -191,7 +191,7 @@ Races = {
 		}
 	},
 	Orc : {
-		health : 7,
+		health : 12,
 		language : {
 			intRequirement	: 1,
 			language		: "1 additional Wild language"
@@ -226,7 +226,7 @@ Races = {
 
 Classes = {
 	Cleric : {
-		health : 7,
+		health : 9,
 		levelUpHealth : 5,
 		charges : 3,
 		chargesReset : "Long Rest",
@@ -259,7 +259,7 @@ Classes = {
 		}
 	},
 	Druid : {
-		health : 6,
+		health : 8,
 		levelUpHealth : 5,
 		charges : 3,
 		chargesReset : "Long Rest",
@@ -292,7 +292,7 @@ Classes = {
 		}
 	},
 	Hunter : {
-		health : 7,
+		health : 9,
 		levelUpHealth : 5,
 		charges : 3,
 		chargesReset : "Long Rest",
@@ -324,7 +324,7 @@ Classes = {
 		}
 	},
 	Mage : {
-		health : 4,
+		health : 6,
 		levelUpHealth : 5,
 		charges : 4,
 		chargesReset : "Long Rest",
@@ -357,7 +357,7 @@ Classes = {
 		}
 	},
 	Paladin : {
-		health : 4,
+		health : 6,
 		levelUpHealth : 6,
 		charges : 3,
 		chargesReset : "Long Rest",
@@ -390,7 +390,7 @@ Classes = {
 		}
 	},
 	Rogue : {
-		health : 5,
+		health : 7,
 		levelUpHealth : 5,
 		charges : 3,
 		chargesReset : "Long Rest",
@@ -422,7 +422,7 @@ Classes = {
 		}
 	},
 	Shaman : {
-		health : 5,
+		health : 7,
 		levelUpHealth : 5,
 		charges : 3,
 		chargesReset : "Long Rest",
@@ -454,8 +454,8 @@ Classes = {
 		}
 	},
 	Warlock : {
-		health : 3,
-		levelUpHealth : 6,
+		health : 9,
+		levelUpHealth : 4,
 		charges : 2,
 		chargesReset : "Short Rest",
 		knownSpellsAndManeuvers : "normal",
@@ -487,7 +487,7 @@ Classes = {
 		}
 	},
 	Warrior : {
-		health : 9,
+		health : 10,
 		levelUpHealth : 5,
 		charges : 3,
 		chargesReset : "Long Rest",
