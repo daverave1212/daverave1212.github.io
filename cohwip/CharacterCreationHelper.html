@@ -291,23 +291,6 @@ function addStatsFromCheckboxes(checkboxes){
 	}
 }
 
-function addStatsFromRadioButtons(radios){
-	for(let i = 0; i<radios.length; i++){
-		let rb = radios[i]
-		if(rb.checked && rb.getAttribute("type") == "radio"){
-			let stat = rb.getAttribute("data-key")
-			let value = rb.getAttribute("data-value")
-			if(isSave(stat)){
-				Player.saves[stat] += parseInt(value)}
-			else if(isSkill(stat)){
-				Player.skills[stat] += parseInt(value)}
-			else {
-				Player[stat] += parseInt(value)
-			}
-		}
-	}
-}
-
 function createTableFromObject(obj){
 	let table = createElementWithClass("table", "ItemTable CCHTable")
 	forEachElementInObject(obj, function(o, key){
@@ -367,6 +350,7 @@ function renderPlayer(){
 	let nBonusCharges = Math.ceil(p.lvl / 2) - 1	// 3,5,7,9
 	if(nBonusCharges < 0) nBonusCharges = 0
 	p.charges = 3 + nBonusCharges
+	console.log(p.saves)
 	let statsTable = createTableFromArrays(
 		[getKeys(p.stats), getValues(p.stats), getValues(p.saves)],
 		["Stat Name", "Stat", "Save Bonus"]
@@ -392,11 +376,6 @@ function calculate(){
 	Player.stats.intelligence = parseInt(get("IntelligenceInput").value)
 	Player.stats.wisdom		  = parseInt(get("WisdomInput").value)
 	Player.stats.charisma	  = parseInt(get("CharismaInput").value)
-	Player.saves.fortitudeSave 	  += Player.stats.fortitude 	 
-	Player.saves.dexteritySave 	  += Player.stats.dexterity 	 
-	Player.saves.intelligenceSave += Player.stats.intelligence
-	Player.saves.wisdomSave		  += Player.stats.wisdom		 
-	Player.saves.charismaSave	  += Player.stats.charisma
 	forEachElementInObject(pRace.options.saves, function(obj, key){
 		Player.saves[key] += obj[key]
 	})
@@ -407,10 +386,11 @@ function calculate(){
 	let classStatCheckboxes	= get("ClassOptions").getElementsByTagName("input")
 	addStatsFromCheckboxes(raceStatCheckboxes)
 	addStatsFromCheckboxes(classStatCheckboxes)
-	let raceRadios	= get("RaceOptions").getElementsByTagName("input")
-	let classRadios	= get("ClassOptions").getElementsByTagName("input")
-	addStatsFromRadioButtons(raceRadios)
-	addStatsFromRadioButtons(classRadios)
+	Player.saves.fortitudeSave 	  += Player.stats.fortitude 	 
+	Player.saves.dexteritySave 	  += Player.stats.dexterity 	 
+	Player.saves.intelligenceSave += Player.stats.intelligence
+	Player.saves.wisdomSave		  += Player.stats.wisdom		 
+	Player.saves.charismaSave	  += Player.stats.charisma
 	forEachElementInObject(Player.skills, function(obj, key){
 		let theStat = "fortitude"
 		if(skills.fortitude.includes(key)) theStat = 'fortitude'

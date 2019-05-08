@@ -82,7 +82,21 @@
 		</div>
 	</div>
 	<div class = "NavigationItem">
-		<a href = "Prices.html">Items</a>
+		Items
+		<div class = "NavigationDropdownContent bordered">
+			<div class = "NavAWrapper bordered">
+				<a href="Prices.html">Shop</a>
+			</div>
+			<div class = "NavAWrapper bordered">
+				<a href="Weapons.html">Weapons</a>
+			</div>
+			<div class = "NavAWrapper bordered">
+				<a href="Armors.html">Armors</a>
+			</div>
+		</div>
+	</div>
+	<div class = "NavigationItem">
+		<a href = "Backgrounds.html">Backgrounds</a>
 	</div>
 	<div class = "NavigationItem">
 		<a href = "Spells.html">Spells</a>
@@ -113,7 +127,7 @@
 <div class="split">
 <div class="Stats bordered split-box">
 	<h3 class="StatsHeader golden-text">Starting Stats:</h3>
-	<p class="StatsPar">Base Health: 5</p>
+	<p class="StatsPar">Base Health: 7</p>
 	<p class="StatsPar">Bonus Health when leveling up: +5</p>
 </div>
 <div class="Language bordered split-box">
@@ -151,7 +165,21 @@
 			</div>
 			<div class="SpellText">
 				<h4 class="SpellTitle SpellTitleAbility"><span class="SpellName">Ambush</span> : <span class="SpellActionsPassive">Passive</span></h4>
-				<p class="SpellDescription">If you are hiding, your next attack has +1 to hit and deals + <span style="color: #FF5500">1d6</span> damage.<br>When doing this, you can also spend as many charges as you want (and can).<br>That attack gains +1 to hit and + <span style="color: #FF5500">1d6</span> damage more for each Charge spent.<br>This can only happen once per turn.</p>
+				<p class="SpellDescription">If you are hiding, your next attack has +1 to hit and deals + <span style="color: #FF5500">1d6</span> damage. <br> When doing this, you can also spend as many charges as you want (and can). <br> That attack gains +1 to hit and + <span style="color: #FF5500">1d6</span> damage more for each Charge spent. <br> This can only happen once per turn.</p>
+			</div>
+		</div>
+	</div>
+	<div class="AbilitiesPart">
+		<p class="AbilitiesParagraph">You automatically know the Hide maneuver:</p>
+	</div>
+	<div class="Spell">
+		<div class="SpellContentWrapper">
+			<div class="SpellIconWrapper">
+				<img class="SpellIcon" src="Icons/Hide.png">
+			</div>
+			<div class="SpellText">
+				<h4 class="SpellTitle SpellTitleAbility"><span class="SpellName">Hide</span> : <span class="SpellActionsPassive">Reaction</span></h4>
+				<p class="SpellDescription">1) When you are ambushing and succeed the Stealth check, you become Hidden. <br> 2) When you are ambushed, you can roll Stealth instead of Perception. If you succeed, you become Hidden. <br> _Hidden: Your next attack has +2 to hit and unhides you. Using abilities unhides you too._ <br> _Enemies don't see you._ <br> _The DM might ask for more Stealth checks for you to remain hidden._</p>
 			</div>
 		</div>
 	</div>
@@ -188,7 +216,7 @@
 			</div>
 			<div class="SpellText">
 				<h4 class="SpellTitle SpellTitleAbility"><span class="SpellName">Agile Hand</span> : <span class="SpellActionsPassive">Passive</span></h4>
-				<p class="SpellDescription">You can pick locks.<br>You have +2 Sleight of Hand and +2 Stealth.<br>You can do the Disengage maneuver even if you don't have it and it uses 0 Actions.</p>
+				<p class="SpellDescription">You can pick locks. <br> You have +2 Sleight of Hand and +2 Stealth. <br> You can do the Disengage maneuver even if you don't have it and it uses 0 Actions.</p>
 			</div>
 		</div>
 	</div>
@@ -199,7 +227,7 @@
 			</div>
 			<div class="SpellText">
 				<h4 class="SpellTitle SpellTitleAbility"><span class="SpellName">Fool's Coin</span> : <span class="SpellActionsPassive">Passive</span></h4>
-				<p class="SpellDescription">Whenever you deal damage to a worthy enemy, you can spend 1 Charge.<br>If you do, you gain Gold Tokens, an imaginary currency, equal to one of the rolled dice (you choose).<br>When in a town or city, you can convert all Gold Tokens to actual gold coins (1 for 1) (this is done on a Long Rest).</p>
+				<p class="SpellDescription">Whenever you deal damage to a worthy enemy, you can spend 1 Charge. <br> If you do, you gain Gold Tokens, an imaginary currency, equal to one of the rolled dice (you choose). <br> When in a town or city, you can convert all Gold Tokens to actual gold coins (1 for 1) (this is done on a Long Rest).</p>
 			</div>
 		</div>
 	</div>
@@ -235,7 +263,7 @@
 			</div>
 			<div class="SpellText">
 				<h4 class="SpellTitle SpellTitleTalent"><span class="SpellName">Arcane Trickster</span> : <span class="SpellActionsPassive">Passive</span></h4>
-				<p class="SpellDescription">You are now trained in spells.<br>You permanently know 2 spells from the following spell list:<br>Acid Burst  : 0.5 Actions<br>Burning Breath  : 0.5 Actions<br>Conjure Ammo  : 1 Action<br>Control Flames  : 1 Action<br>Control Water  : 1 Action<br>Flameblade  : 0 Actions<br>Light  : 1 Action<br>Magic Missiles  : 1 Action<br>Mastery  : 1 Action<br>Prestidigitation  : 1 Action<br>Chaining Grasp  : 0 Actions<br>Charming Word  : 1 Action<br>Cure Poison  : 1 Action<br>Distort Vision  : 1 Action<br>Fake Sound  : 0.5 Action<br>Mage Hand  : 0 Actions<br>Unlock  : 1 Action<br>Shadow Clone  : 0 Actions<br>Encode Thoughts  : 1 Action (Level 4)<br>Invisibility  : 1 Action (Level 4)<br>Levitate  : 1 Action (Level 4)<br>Sense Magic  : 0 Actions (Level 4)<br>Spider Climb  : 1 Action (Level 4)<br>When you level up, you can change one of these abilities with another from the same list.<br>You learn 1 additional ability at Level 4, and another one at Level 8.</p>
+				<p class="SpellDescription">You are now trained in spells. <br> You permanently know 2 spells from the following spell list: <br> Acid Burst  : 0.5 Actions <br> Burning Breath  : 0.5 Actions <br> Conjure Ammo  : 1 Action <br> Control Flames  : 1 Action <br> Control Water  : 1 Action <br> Flameblade  : 0 Actions <br> Light  : 1 Action <br> Magic Missiles  : 1 Action <br> Mastery  : 1 Action <br> Prestidigitation  : 1 Action <br> Chaining Grasp  : 0 Actions <br> Charming Word  : 1 Action <br> Cure Poison  : 1 Action <br> Distort Vision  : 1 Action <br> Fake Sound  : 0.5 Action <br> Mage Hand  : 0 Actions <br> Unlock  : 1 Action <br> Shadow Clone  : 0 Actions <br> Encode Thoughts  : 1 Action (Level 4) <br> Invisibility  : 1 Action (Level 4) <br> Levitate  : 1 Action (Level 4) <br> Sense Magic  : 0 Actions (Level 4) <br> Spider Climb  : 1 Action (Level 4) <br> When you level up, you can change one of these abilities with another from the same list. <br> You learn 1 additional ability at Level 4, and another one at Level 8.</p>
 			</div>
 		</div>
 	</div>
@@ -274,7 +302,7 @@
 			</div>
 			<div class="SpellText">
 				<h4 class="SpellTitle SpellTitleAbility"><span class="SpellName">Isolated</span> : <span class="SpellActionsPassive">Passive</span></h4>
-				<p class="SpellDescription">When you attack an enemy, and there is no other creature near that enemy (except you), the attack gains Ambush.<br>If you are already Ambushing the target, the attack gains an additional +1 to hit and + <span style="color: #FF5500">1d6</span> damage.</p>
+				<p class="SpellDescription">When you attack an enemy, and there is no other creature near that enemy (except you), the attack gains Ambush. <br> If you are already Ambushing the target, the attack gains an additional +1 to hit and + <span style="color: #FF5500">1d6</span> damage.</p>
 			</div>
 		</div>
 	</div>
@@ -285,7 +313,7 @@
 			</div>
 			<div class="SpellText">
 				<h4 class="SpellTitle SpellTitleAbility"><span class="SpellName">Planned Assassination</span> : <span class="SpellActionsNormal">1 Action</span></h4>
-				<p class="SpellDescription">Spend 1 Charge and declare a target you can see.<br>Your next attack on that target has +1 to hit and deals + <span style="color: #FF5500">1d10</span> Poison damage if it hits.<br>Planned Assassination fails if your Line of Sight to the target is broken.</p>
+				<p class="SpellDescription">Spend 1 Charge and declare a target you can see. <br> Your next attack on that target has +1 to hit and deals + <span style="color: #FF5500">1d10</span> Poison damage if it hits. <br> Planned Assassination fails if your Line of Sight to the target is broken.</p>
 			</div>
 		</div>
 	</div>
@@ -299,7 +327,7 @@
 			</div>
 			<div class="SpellText">
 				<h4 class="SpellTitle SpellTitleTalent"><span class="SpellName">Take Out</span> : <span class="SpellActionsNormal">1 Action</span></h4>
-				<p class="SpellDescription">Spend 1 Charge.<br>A target near you rolls a Dexterity save.<br>If it fails, it is put to Sleep for 1 minute and you gain the Action back.<br>You must be hiding to use Take Out, and the target must be Isolated.<br>This ability unhides you!</p>
+				<p class="SpellDescription">Spend 1 Charge. <br> A target near you rolls a Dexterity save. <br> If it fails, it is put to Sleep for 1 minute and you gain the Action back. <br> You must be hiding to use Take Out, and the target must be Isolated. <br> This ability unhides you!</p>
 			</div>
 		</div>
 	</div>
@@ -310,7 +338,7 @@
 			</div>
 			<div class="SpellText">
 				<h4 class="SpellTitle SpellTitleTalent"><span class="SpellName">Poison Master</span> : <span class="SpellActionsPassive">1 hour</span></h4>
-				<p class="SpellDescription">Spend 1 Charge.<br>Using ingredients costing 35 Gold, you are able to create a few drops of Drinkable Poison.<br>Someone ingesting them takes <span style="color: #FF5500">1d12</span> Poison damage instantly.<br>Combining multiple instances of Drinkable Poison increases its damage by <span style="color: #FF5500">1d12</span>1-Handed Gun or Crossbow.<br>This attack does not trigger attacks of oportunity and can be used in melee range without penalty.</p>
+				<p class="SpellDescription">Spend 1 Charge. <br> Using ingredients costing 35 Gold, you are able to create a few drops of Drinkable Poison. <br> Someone ingesting them takes <span style="color: #FF5500">1d12</span> Poison damage instantly. <br> Combining multiple instances of Drinkable Poison increases its damage by <span style="color: #FF5500">1d12</span>1-Handed Gun or Crossbow. <br> This attack does not trigger attacks of oportunity and can be used in melee range without penalty.</p>
 			</div>
 		</div>
 	</div>

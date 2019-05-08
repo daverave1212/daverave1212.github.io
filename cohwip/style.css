@@ -455,6 +455,7 @@ select{
 	border-bottom: 4px solid transparent;
 }
 
+
 	.SpellIconWrapper{
 		flex: 2;
 		padding: 0px;
@@ -511,6 +512,15 @@ select{
 			.SpellActionsPassive{
 				color: #bca549;
 			}
+		.SpellCost{
+			color: #41C7d0;
+		}
+		.SpellRange{
+			color: #c63dc2;
+		}
+		.SpellDuration{
+			color: #45BB45;
+		}
 
 .Spec div.SpellContentWrapper{
 	margin: auto;

@@ -82,7 +82,21 @@
 		</div>
 	</div>
 	<div class = "NavigationItem">
-		<a href = "Prices.html">Items</a>
+		Items
+		<div class = "NavigationDropdownContent bordered">
+			<div class = "NavAWrapper bordered">
+				<a href="Prices.html">Shop</a>
+			</div>
+			<div class = "NavAWrapper bordered">
+				<a href="Weapons.html">Weapons</a>
+			</div>
+			<div class = "NavAWrapper bordered">
+				<a href="Armors.html">Armors</a>
+			</div>
+		</div>
+	</div>
+	<div class = "NavigationItem">
+		<a href = "Backgrounds.html">Backgrounds</a>
 	</div>
 	<div class = "NavigationItem">
 		<a href = "Spells.html">Spells</a>
@@ -113,7 +127,7 @@
 <div class="split">
 <div class="Stats bordered split-box">
 	<h3 class="StatsHeader golden-text">Starting Stats:</h3>
-	<p class="StatsPar">Base Health: 4</p>
+	<p class="StatsPar">Base Health: 6</p>
 	<p class="StatsPar">Bonus Health when leveling up: +5</p>
 </div>
 <div class="Language bordered split-box">
@@ -157,7 +171,7 @@
 			</div>
 			<div class="SpellText">
 				<h4 class="SpellTitle SpellTitleAbility"><span class="SpellName">Magic Mastery</span> : <span class="SpellActionsNormal">0 Actions</span></h4>
-				<p class="SpellDescription">Spend 1 Charge.<br>The next ability you use that has the cost of 1 Action now costs 0.5 Actions.<br>This is considered a maneuver.</p>
+				<p class="SpellDescription">Spend 1 Charge. <br> The next ability you use that has the cost of 1 Action now costs 0.5 Actions. <br> This is considered a maneuver.</p>
 			</div>
 		</div>
 	</div>
@@ -214,6 +228,10 @@
 		<li class="ListOfSpellsElement">Shield Element</li>
 		<li class="ListOfSpellsElement">Shadow Clone</li>
 		<li class="ListOfSpellsElement">Water Sphere</li>
+		<li class="ListOfSpellsElement">Force Wall</li>
+		<li class="ListOfSpellsElement">Dancing Weapon</li>
+		<li class="ListOfSpellsElement">Crackling Lightning</li>
+		<li class="ListOfSpellsElement">Heat Metal</li>
 	</ul>
 	<ul class="ListOfSpells">
 		<li class="ListOfSpellsHeader">Higher Level Spells:</li>
@@ -251,7 +269,7 @@
 			</div>
 			<div class="SpellText">
 				<h4 class="SpellTitle SpellTitleAbility"><span class="SpellName">Innate Magic</span> : <span class="SpellActionsPassive">Passive</span></h4>
-				<p class="SpellDescription">Of all your spells, you can only cast each ONCE, except Overcharge, until your next Long Rest.<br>(Ex: you can cast Firebolt once, then you can't cast Firebolt again until you Long Rest.)</p>
+				<p class="SpellDescription">Of all your spells, you can only cast each ONCE, except Overcharge, until your next Long Rest. <br> (Ex: you can cast Firebolt once, then you can't cast Firebolt again until you Long Rest.)</p>
 			</div>
 		</div>
 	</div>
@@ -262,7 +280,7 @@
 			</div>
 			<div class="SpellText">
 				<h4 class="SpellTitle SpellTitleAbility"><span class="SpellName">Overcharge</span> : <span class="SpellActionsPassive">Depends</span></h4>
-				<p class="SpellDescription">This has the effect of the last ability you used (except itself), and costs the same number of Actions and Charges.<br>(Ex: you can cast Firebolt, then, the next turn, Overcharge: Firebolt again).</p>
+				<p class="SpellDescription">This has the effect of the last ability you used (except itself), and costs the same number of Actions and Charges. <br> (Ex: you can cast Firebolt, then, the next turn, Overcharge: Firebolt again).</p>
 			</div>
 		</div>
 	</div>
@@ -287,7 +305,7 @@
 			</div>
 			<div class="SpellText">
 				<h4 class="SpellTitle SpellTitleTalent"><span class="SpellName">Shadow Clone</span> : <span class="SpellActionsNormal">0 Actions</span></h4>
-				<p class="SpellDescription">Spend 1 Charge.<br>You create an illusion of yourself at a target location within 3 meters.<br>The illusion has 1 Health and 1 Armor and it fails all saves.<br>You can control what the illusion does at will.<br>Lasts up to 10 minutes.</p>
+				<p class="SpellDescription">Spend 1 Charge. <br> You create an illusion of yourself at a target location within 3 meters. <br> The illusion has 1 Health and 1 Armor and it fails all saves. <br> You can control what the illusion does at will. <br> Lasts up to 10 minutes.</p>
 			</div>
 		</div>
 	</div>
@@ -298,7 +316,7 @@
 			</div>
 			<div class="SpellText">
 				<h4 class="SpellTitle SpellTitleTalent"><span class="SpellName">Momentum Magic</span> : <span class="SpellActionsPassive">Passive</span></h4>
-				<p class="SpellDescription">After an encounter, you can roll <span style="color: #FF5500">1d20</span> and add your Main Stat.<br>If you rolled a total of or over 20, you gain 1 Charge.<br>You can succeed this once per Long Rest (you can try multiple times, but after you succeed once, you need to Long Rest to do it again).</p>
+				<p class="SpellDescription">After an encounter, you can roll <span style="color: #FF5500">1d20</span> and add your Main Stat. <br> If you rolled a total of or over 20, you gain 1 Charge. <br> You can succeed this once per Long Rest (you can try multiple times, but after you succeed once, you need to Long Rest to do it again).</p>
 			</div>
 		</div>
 	</div>
@@ -315,7 +333,7 @@
 			</div>
 			<div class="SpellText">
 				<h4 class="SpellTitle SpellTitleAbility"><span class="SpellName">Spell Book</span> : <span class="SpellActionsPassive">Passive</span></h4>
-				<p class="SpellDescription">You have a special Spell Book.<br>To cast spells, you need to be holding your Spell Book.<br>You can hold it in one hand without consuming actions.<br>If your Spell Book has been with you for the past 8 hours, during each Long Rest, you can change any spell you know from the Wizard Spell List to another spell from the Wizard Spell List!<br>(You can pick your spells again!)<br>While holding the Book, your hand counts as occupied, and you can't hold anything else in it, but you still have 1 Action per turn.</p>
+				<p class="SpellDescription">You have a special Spell Book. <br> To cast spells, you need to be holding your Spell Book. <br> You can hold it in one hand without consuming actions. <br> If your Spell Book has been with you for the past 8 hours, during each Long Rest, you can change any spell you know from the Wizard Spell List to another spell from the Wizard Spell List! <br> (You can pick your spells again!) <br> While holding the Book, your hand counts as occupied, and you can't hold anything else in it, but you still have 1 Action per turn.</p>
 			</div>
 		</div>
 	</div>
@@ -326,7 +344,7 @@
 			</div>
 			<div class="SpellText">
 				<h4 class="SpellTitle SpellTitleAbility"><span class="SpellName">Wizard Specialization</span> : <span class="SpellActionsPassive">Passive</span></h4>
-				<p class="SpellDescription">When creating your character, choose any other class.<br>You have access to that class's Spell List.</p>
+				<p class="SpellDescription">When creating your character, choose any other class. <br> You have access to that class's Spell List.</p>
 			</div>
 		</div>
 	</div>
@@ -340,7 +358,7 @@
 			</div>
 			<div class="SpellText">
 				<h4 class="SpellTitle SpellTitleTalent"><span class="SpellName">Vanishing Book</span> : <span class="SpellActionsPassive">Passive</span></h4>
-				<p class="SpellDescription">You gain +1 in Stealth and Sleight of Hand.<br>For 0 Actions, you can instantly vanish you Spell Book, or make it reappear in your hand.<br>You can only vanish it every 10 minutes.</p>
+				<p class="SpellDescription">You gain +1 in Stealth and Sleight of Hand. <br> For 0 Actions, you can instantly vanish you Spell Book, or make it reappear in your hand. <br> You can only vanish it every 10 minutes.</p>
 			</div>
 		</div>
 	</div>
@@ -362,7 +380,7 @@
 			</div>
 			<div class="SpellText">
 				<h4 class="SpellTitle SpellTitleTalent"><span class="SpellName">Arcane Focus</span> : <span class="SpellActionsPassive">Passive</span></h4>
-				<p class="SpellDescription">Your Spell Book becomes replaced with an item called Arcane Focus.<br>An Arcane Focus is an item of your choice. It can be an amulet, a sword, a cape, etc.<br>As long as you have the Arcane Focus on you, it counts as if you are holding the Spell Book without occupying your hand.</p>
+				<p class="SpellDescription">Your Spell Book becomes replaced with an item called Arcane Focus. <br> An Arcane Focus is an item of your choice. It can be an amulet, a sword, a cape, etc. <br> As long as you have the Arcane Focus on you, it counts as if you are holding the Spell Book without occupying your hand.</p>
 			</div>
 		</div>
 	</div>
@@ -379,7 +397,7 @@
 			</div>
 			<div class="SpellText">
 				<h4 class="SpellTitle SpellTitleAbility"><span class="SpellName">Artificer</span> : <span class="SpellActionsPassive">Passive</span></h4>
-				<p class="SpellDescription">You own a set of Artificer's Tools, with which you can create potions, scrolls and other items.<br>Some of your class spells require you to use your Artificer's Tools (described below).<br>For 1 Action, you can summon or vanish your Artificer's Tools.<br>If you ever lose your Artificer's Tools, the price for a new set is 200 gold.<br>Also...<br>Spells noted as 'Artificer:' require you to use Artificer's Tools.<br>If they require you to spend Charges, those Charges become locked and can't be regained through any means, until the item created is used or destroyed.<br>As usual, items created this way require 0.5 Actions to use.<br>Artificer potions do not count towards the potion limit cooldown.</p>
+				<p class="SpellDescription">You own a set of Artificer's Tools, with which you can create potions, scrolls and other items. <br> Some of your class spells require you to use your Artificer's Tools (described below). <br> For 1 Action, you can summon or vanish your Artificer's Tools. <br> If you ever lose your Artificer's Tools, the price for a new set is 200 gold. <br> Also... <br> Spells noted as 'Artificer:' require you to use Artificer's Tools. <br> If they require you to spend Charges, those Charges become locked and can't be regained through any means, until the item created is used or destroyed. <br> As usual, items created this way require 0.5 Actions to use. <br> Artificer potions do not count towards the potion limit cooldown.</p>
 			</div>
 		</div>
 	</div>
@@ -390,7 +408,7 @@
 			</div>
 			<div class="SpellText">
 				<h4 class="SpellTitle SpellTitleAbility"><span class="SpellName">Artificer: Magic Scroll</span> : <span class="SpellActionsPassive">5 minutes</span></h4>
-				<p class="SpellDescription">Spend 1 Charge.<br>Choose a spell you can cast and spend Charges for it if it requires charges.<br>You create a scroll containing that spell.</p>
+				<p class="SpellDescription">Spend 1 Charge. <br> Choose a spell you can cast and spend Charges for it if it requires charges. <br> You create a scroll containing that spell.</p>
 			</div>
 		</div>
 	</div>
@@ -401,7 +419,7 @@
 			</div>
 			<div class="SpellText">
 				<h4 class="SpellTitle SpellTitleAbility"><span class="SpellName">Artificer: Magic Elixir</span> : <span class="SpellActionsPassive">5 minutes</span></h4>
-				<p class="SpellDescription">Spend 1 Charge.<br>Choose one of the following types of potions and create it:<br>o Elixir of Healing: Heal for <span style="color: #FF5500">2d4</span> + 1.<br>o Elixir of Strength: Attacks with 2-Handed weapons deal +2 damage, and attacks with 1-Handed weapons deal +1 damage (1 hour).<br>o Elixir of Agility: Doubled movement speed and Acrobatics bonus (1 hour).<br>o Elixir of Intelligence: Gain 1 Charge.</p>
+				<p class="SpellDescription">Spend 1 Charge. <br> Choose one of the following types of potions and create it: <br> o Elixir of Healing: Heal for <span style="color: #FF5500">2d4</span> + 1. <br> o Elixir of Strength: Attacks with 2-Handed weapons deal +2 damage, and attacks with 1-Handed weapons deal +1 damage (1 hour). <br> o Elixir of Agility: Doubled movement speed and Acrobatics bonus (1 hour). <br> o Elixir of Intelligence: Gain 1 Charge.</p>
 			</div>
 		</div>
 	</div>
@@ -426,7 +444,7 @@
 			</div>
 			<div class="SpellText">
 				<h4 class="SpellTitle SpellTitleTalent"><span class="SpellName">Artificer: Magic Weapon</span> : <span class="SpellActionsPassive">5 minutes</span></h4>
-				<p class="SpellDescription">Spend 1 Charge.<br>Choose one a type of weapon, and choose 2 of the following effects:<br>o +<span style="color: #FF5500">1d4</span>1 Action).<br>You can customize what the custom spell looks like (for aesthetics only).<br>You know and have this spell prepared until your next Long Rest.</p>
+				<p class="SpellDescription">Spend 1 Charge. <br> Choose one a type of weapon, and choose 2 of the following effects: <br> o +<span style="color: #FF5500">1d4</span>1 Action). <br> You can customize what the custom spell looks like (for aesthetics only). <br> You know and have this spell prepared until your next Long Rest.</p>
 			</div>
 		</div>
 	</div>
