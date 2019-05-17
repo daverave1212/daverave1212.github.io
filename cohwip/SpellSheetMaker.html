@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<title>5e Icon Sheets</title>
+	<script src = "SheetMakerFiles/Javascript/utils.js"></script>
+	<script src = "SheetMakerFiles/Javascript/jquery-3.3.1.min.js"></script>
+	<script src = "SheetMakerFiles/Javascript/jszip.min.js"></script>
+	<script src = "SheetMakerFiles/Javascript/FileSaver.js"></script>
+	<script src = "SheetMakerFiles/Javascript/canvas.js"></script>
+	<script src = "SheetMakerFiles/Javascript/Spells.js"></script>
+	<script src	= "SheetMakerFiles/Javascript/reimg.js"></script>
+	<script src = "SheetMakerFiles/Javascript/scripts.js"></script>
+	<link rel="icon" href="icon2.png">
+	<link rel="stylesheet" href="SheetMakerFiles/CSS/style.css">
+</head>
+<body>
+<div id = "Window">
+	<div id = "InputWrapper">
+		<div class="autocomplete" style="width:300px;">
+			<input id="Input" type="text"  placeholder="Search your spell here...">
+			<button class = "Button" id = "AddSpell" onclick = "queueSpell()">Add</button>
+		</div>
+	</div>
+	<div id = "AddedSpellsWrapper">
+		<select multiple id = "AddedSpells">
+			
+		</select>
+	</div>
+	<div id = "ButtonsWrapper">
+		<button class = "Button" id = "Reset" onclick = "resetSpells()" title = "Click here to reset everything.">Reset</button>
+		<button class = "Button" id = "RemoveSpell" onclick = "removeSpell()" title = "Click here to remove the selected spell">Remove Spell</button>
+	</div>
+	<div id = "GenerateDownloadWrapper">
+		<button class = "Button" id = "Generate" onclick = "generate()" title = "When you are done adding spells, click Generate! to get your awesome spell sheets!">Generate!</button>
+		<button class = "Button" id = "Download" onclick = "download()" title = "You need to generate the spell sheets first!">Download</button>
+	</div>
+	<div id = "CanvasWrapper">
+	</div>
+</div>
+<p style = "font-family: 'IskoolaPota'; color: white;">You found me! Hello! c:</p>
+<script src = "Javascript/interface.js"></script>
+</body>
+</html>
