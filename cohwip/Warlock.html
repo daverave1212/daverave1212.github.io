@@ -167,11 +167,11 @@
 	<div class="Spell">
 		<div class="SpellContentWrapper">
 			<div class="SpellIconWrapper">
-				<img class="SpellIcon" src="Icons/Life_Tap.png">
+				<img class="SpellIcon" src="Icons/Limited_Powers.png">
 			</div>
 			<div class="SpellText">
-				<h4 class="SpellTitle SpellTitleAbility"><span class="SpellName">Life Tap</span> : <span class="SpellActionsNormal">0.5 Actions</span></h4>
-				<p class="SpellDescription">Take 6 damage. <br> Gain 1 Charge.</p>
+				<h4 class="SpellTitle SpellTitleAbility"><span class="SpellName">Limited Powers</span> : <span class="SpellActionsPassive">Passive</span></h4>
+				<p class="SpellDescription">You can never have more than 2 Charges in total.</p>
 			</div>
 		</div>
 	</div>
@@ -179,11 +179,28 @@
 </div>
 <div class="SpellList bordered">
 	<h3 class="Spells golden-text">Casting Spells and Maneuvers</h3>
-	<p>You know a total number of spells and maneuvers equal to 2 + Your Level + Your Intelligence.</p>
-	<p>You can reasign your spells whenever you level up.</p>
+	<p>Number of known maneuvers:	1 + Your Intelligence</p>
+	<p>Number of known spells:		2 + Your Intelligence + Your Level</p>
+	<p>You can reasign your spells and maneuvers whenever you level up.</p>
 	<p>This is your spell list:</p>
 	<ul class="ListOfSpells">
-		<li class="ListOfSpellsHeader">Maneuvers: All</li>
+		<li class="ListOfSpellsHeader">Maneuvers:</li>
+		<li class="ListOfSpellsElement">Aim</li>
+		<li class="ListOfSpellsElement">Dash</li>
+		<li class="ListOfSpellsElement">Disengage</li>
+		<li class="ListOfSpellsElement">Shift</li>
+		<li class="ListOfSpellsElement">Bull Rush</li>
+		<li class="ListOfSpellsElement">Defend</li>
+		<li class="ListOfSpellsElement">Grapple</li>
+		<li class="ListOfSpellsElement">Hamstring</li>
+		<li class="ListOfSpellsElement">Hide</li>
+		<li class="ListOfSpellsElement">Overthrow</li>
+		<li class="ListOfSpellsElement">Push</li>
+		<li class="ListOfSpellsElement">Shank</li>
+		<li class="ListOfSpellsElement">Taunt</li>
+		<li class="ListOfSpellsElement">Wait</li>
+	</ul>
+	<ul class="ListOfSpells">
 		<li class="ListOfSpellsHeader">Basic Spels:</li>
 		<li class="ListOfSpellsElement">Acid Burst</li>
 		<li class="ListOfSpellsElement">Poison Spray</li>
@@ -252,7 +269,7 @@
 			</div>
 			<div class="SpellText">
 				<h4 class="SpellTitle SpellTitleAbility"><span class="SpellName">Fey Patron</span> : <span class="SpellActionsPassive">Passive</span></h4>
-				<p class="SpellDescription">Your lord is a higher fey creature. <br> You can pick a Racial Ability from any other race and have it permanently. <br> Your Spell DC increases by +2 when you try to put enemies to Sleep or to Charm them.</p>
+				<p class="SpellDescription">Your lord is a higher fey creature. <br> You can pick a Racial Ability from any other race and have it permanently.</p>
 			</div>
 		</div>
 	</div>
@@ -263,7 +280,7 @@
 			</div>
 			<div class="SpellText">
 				<h4 class="SpellTitle SpellTitleAbility"><span class="SpellName">Celestial Patron</span> : <span class="SpellActionsPassive">Passive</span></h4>
-				<p class="SpellDescription">Your lord is a celestial being, who lives in a higher plane. <br> Your Spell DC increases by +2 when you try to Snare or Blind enemies.</p>
+				<p class="SpellDescription">Your lord is a celestial being, who lives in a higher plane. <br> You gain Life Cycle:</p>
 			</div>
 		</div>
 	</div>
@@ -285,7 +302,18 @@
 			</div>
 			<div class="SpellText">
 				<h4 class="SpellTitle SpellTitleAbility"><span class="SpellName">Demon Pact</span> : <span class="SpellActionsPassive">Passive</span></h4>
-				<p class="SpellDescription">Your lord is a powerful demon. <br> Once per Long Rest, you can use Life Tap for 0 Actions and without taking Damage. <br> Your Spell DC increases by +2 when you try to Stun enemies.</p>
+				<p class="SpellDescription">Your lord is a powerful demon. <br> You gain Life Tap:</p>
+			</div>
+		</div>
+	</div>
+	<div class="Spell">
+		<div class="SpellContentWrapper">
+			<div class="SpellIconWrapper">
+				<img class="SpellIcon" src="Icons/Life_Tap.png">
+			</div>
+			<div class="SpellText">
+				<h4 class="SpellTitle SpellTitleAbility"><span class="SpellName">Life Tap</span> : <span class="SpellActionsNormal">1 Actions</span></h4>
+				<p class="SpellDescription"><span class="SpellCost">Cost: 6 Health</span> <br> Instantly gain the benefits of a Short Rest (as if you just took a short rest). <br> _Yes, you can heal from your extra health pool._</p>
 			</div>
 		</div>
 	</div>
@@ -313,6 +341,12 @@
 		<li class="SpecializationsListItem">Summoner, specialized in calling for aid from familiars and other worldly beings</li>
 		<li class="SpecializationsListItem">Waverer, whose master's magic is far beyond its control: one who should expect the unexpected</li>
 	</ul>
+</div>
+<div class="Spec bordered">
+	<h2 class="SpecTitle golden-text">Sangomancer</h2>
+	<div class="SpecPart">
+		<p>Snitelin</p>
+	</div>
 </div>
 <div class="Spec bordered">
 	<h2 class="SpecTitle golden-text">Hexblade	~ 4.25 Charges</h2>
@@ -390,17 +424,9 @@
 			</div>
 			<div class="SpellText">
 				<h4 class="SpellTitle SpellTitleAbility"><span class="SpellName">Summon Familiar</span> : <span class="SpellActionsPassive">1 Hour</span></h4>
-				<p class="SpellDescription">You conjure a ritual using various magical materials worth 25 Gold. <br> The first time you cast this ritual, you summon a familiar which becomes yours. <br> You can choose which type of familiar you want: <br> - It can take the shape of a small creature. <br> - It can look spectral or look as a normal animal with a slight glow (does not radiate light). <br> - You can choose what color it is if it's spectral or what color its glow is. <br> Also, choose an element which is bound to it: Fire, Water, Frost, Arcane, Thunder, Earth, Wind, Light or Darkness. <br> That becomes your Familiar Element. <br> Your familiar comes with a name. Roll for your familiar name on the Familiar Name Table (or your DM will choose one for you). <br> You can communicate with your Familiar telepathically. <br> The familiar doesn't take turns on its own, but at the same time as you. <br> On your turn, your familiar can use its own movement to move, but you must spend your actions for it to take actions. <br> If your familiar goes more than 20 meters away from you, it becomes unsummoned. <br> If it dies, it becomes unsummoned. <br> You can always summon it back with this Ability. <br> After your familiar is unsummoned, it needs 24 hours to be summonable back.</p>
+				<p class="SpellDescription">You conjure a ritual using various magical materials worth 25 Gold. <br> The first time you cast this ritual, you summon a familiar which becomes yours. <br> You can choose which type of familiar you want: <br> - It can take the shape of a small creature. <br> - It can look spectral or look as a normal animal with a slight glow (does not radiate light). <br> - You can choose what color it is if it's spectral or what color its glow is. <br> Also, choose an element which is bound to it: Fire, Water, Frost, Arcane, Thunder, Earth, Wind, Light or Darkness. <br> That becomes your Familiar Element. <br> Your familiar comes with a name. Roll for your familiar name on the Familiar Name Table (or your DM will choose one for you). <br> You can communicate with your Familiar telepathically. <br> The familiar doesn't take turns on its own, but at the same time as you. <br> On your turn, your familiar can use its own movement to move, but you must spend your actions for it to take actions. <br> If your familiar goes more than 20 meters away from you, it becomes unsummoned. <br> If it dies, it becomes unsummoned. <br> You can always summon it back with this Ability. <br> After your familiar is unsummoned, it needs 24 hours to be summonable back. <br> Your familiar has the following stats: <br> - Health: 10 + Your Fortitude + 2 per level after level 1. <br> - Armor: 10 + Your Dexterity <br> - Stats and Saves: Same as yours <br> - Movement: Same as yours, can't fly, but it can swim <br> - Attack Bonus: +3</p>
 			</div>
 		</div>
-	</div>
-	<div class="SpecPart">
-		<p>Your familiar has the following stats:</p>
-		<p>- Health: 10 + Your Fortitude + 2 per level after level 1.</p>
-		<p>- Armor: 10 + Your Dexterity</p>
-		<p>- Stats and Saves: Same as yours</p>
-		<p>- Movement: Same as yours, can't fly, but it can swim</p>
-		<p>- Attack Bonus: +3</p>
 	</div>
 	<div class="Spell">
 		<div class="SpellContentWrapper">

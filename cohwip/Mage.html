@@ -151,7 +151,7 @@
 		<p class="MainStatParagraph">Your Race tells you what your Spell Power is.</p>
 	</div>
 	<div class="MainStatPart bordered">
-		<p class="MainStatParagraph">You have 4 Charges: O O O O</p>
+		<p class="MainStatParagraph">You have 5 Charges: O O O O O</p>
 		<p class="MainStatParagraph">Certain Abilities require you to spend one Charge.</p>
 		<p class="MainStatParagraph">You regain all Charges back when you Long Rest.</p>
 	</div>
@@ -182,11 +182,28 @@
 </div>
 <div class="SpellList bordered">
 	<h3 class="Spells golden-text">Casting Spells and Maneuvers</h3>
-	<p>You know a total number of spells and maneuvers equal to 2 + Your Level + Your Intelligence.</p>
-	<p>You can reasign your spells whenever you level up.</p>
+	<p>Number of known maneuvers:	1 + Your Intelligence</p>
+	<p>Number of known spells:		2 + Your Intelligence + Your Level</p>
+	<p>You can reasign your spells and maneuvers whenever you level up.</p>
 	<p>This is your spell list:</p>
 	<ul class="ListOfSpells">
-		<li class="ListOfSpellsHeader">Maneuvers: All</li>
+		<li class="ListOfSpellsHeader">Maneuvers:</li>
+		<li class="ListOfSpellsElement">Aim</li>
+		<li class="ListOfSpellsElement">Dash</li>
+		<li class="ListOfSpellsElement">Disengage</li>
+		<li class="ListOfSpellsElement">Shift</li>
+		<li class="ListOfSpellsElement">Bull Rush</li>
+		<li class="ListOfSpellsElement">Defend</li>
+		<li class="ListOfSpellsElement">Grapple</li>
+		<li class="ListOfSpellsElement">Hamstring</li>
+		<li class="ListOfSpellsElement">Hide</li>
+		<li class="ListOfSpellsElement">Overthrow</li>
+		<li class="ListOfSpellsElement">Push</li>
+		<li class="ListOfSpellsElement">Shank</li>
+		<li class="ListOfSpellsElement">Taunt</li>
+		<li class="ListOfSpellsElement">Wait</li>
+	</ul>
+	<ul class="ListOfSpells">
 		<li class="ListOfSpellsHeader">Basic Spels:</li>
 		<li class="ListOfSpellsElement">Acid Burst</li>
 		<li class="ListOfSpellsElement">Burning Breath</li>
@@ -269,7 +286,7 @@
 			</div>
 			<div class="SpellText">
 				<h4 class="SpellTitle SpellTitleAbility"><span class="SpellName">Innate Magic</span> : <span class="SpellActionsPassive">Passive</span></h4>
-				<p class="SpellDescription">Of all your spells, you can only cast each ONCE, except Overcharge, until your next Long Rest. <br> (Ex: you can cast Firebolt once, then you can't cast Firebolt again until you Long Rest.)</p>
+				<p class="SpellDescription">When you cast a spell, if it's different than the last spell you casted, you can't use that last spell until your next Long Rest. <br> _Ex: Firebolt, Firebolt, Firebolt, Magic Missile, Magic Missile, Fog.</p>
 			</div>
 		</div>
 	</div>
@@ -279,8 +296,8 @@
 				<img class="SpellIcon" src="Icons/Overcharge.png">
 			</div>
 			<div class="SpellText">
-				<h4 class="SpellTitle SpellTitleAbility"><span class="SpellName">Overcharge</span> : <span class="SpellActionsPassive">Depends</span></h4>
-				<p class="SpellDescription">This has the effect of the last ability you used (except itself), and costs the same number of Actions and Charges. <br> (Ex: you can cast Firebolt, then, the next turn, Overcharge: Firebolt again).</p>
+				<h4 class="SpellTitle SpellTitleAbility"><span class="SpellName">Overcharge</span> : <span class="SpellActionsPassive">Passive</span></h4>
+				<p class="SpellDescription">After you cast a spell the 3rd time in a row, your next ability benefits from Magic Mastery.</p>
 			</div>
 		</div>
 	</div>

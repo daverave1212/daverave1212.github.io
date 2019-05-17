@@ -581,7 +581,32 @@ select{
 	text-align: center;
 }
 
+.MonsterWrapper{
+	border: solid gray 2px;
+	margin: auto;
+	max-width: 550px;
+}
+.MonsterWrapper select{
+	display: inline-block;
+	margin-left: 40px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+.MonsterWrapper h4{
+	padding-left: 40px;
+	font-size: 1.25em;
+}
+.MonsterWrapper h3{
+	padding-left: 40px;
+}
 
+.hidden{
+	display: none;
+	border: solid red 2px;
+}
+.shown{
+	display: block;
+}
 
 
 

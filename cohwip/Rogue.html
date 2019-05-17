@@ -148,7 +148,7 @@
 		<p class="MainStatParagraph">Your Spell Hit Bonus is (Main Stat).</p>
 	</div>
 	<div class="MainStatPart bordered">
-		<p class="MainStatParagraph">You have 3 Charges: O O O</p>
+		<p class="MainStatParagraph">You have 4 Charges: O O O O</p>
 		<p class="MainStatParagraph">Certain Abilities require you to spend Charges.</p>
 		<p class="MainStatParagraph">You regain all Charges back when you Long Rest.</p>
 	</div>
@@ -165,7 +165,7 @@
 			</div>
 			<div class="SpellText">
 				<h4 class="SpellTitle SpellTitleAbility"><span class="SpellName">Ambush</span> : <span class="SpellActionsPassive">Passive</span></h4>
-				<p class="SpellDescription">If you are hiding, your next attack has +1 to hit and deals + <span style="color: #FF5500">1d6</span> damage. <br> When doing this, you can also spend as many charges as you want (and can). <br> That attack gains +1 to hit and + <span style="color: #FF5500">1d6</span> damage more for each Charge spent. <br> This can only happen once per turn.</p>
+				<p class="SpellDescription">If you are hiding (with hide), your next attack has +1 to hit and deals + <span style="color: #FF5500">1d6</span> damage. <br> When doing this, you can also spend as many charges as you want (and can). <br> That attack gains +1 to hit and + <span style="color: #FF5500">1d6</span> damage more for each Charge spent. <br> This can only happen once per turn.</p>
 			</div>
 		</div>
 	</div>
@@ -190,9 +190,26 @@
 </div>
 <div class="SpellList bordered">
 	<h3 class="Spells golden-text">Casting Spells and Maneuvers</h3>
-	<p>You know a total number of maneuvers equal to 2 + Half of Your Level + Your Intelligence.</p>
+	<p>Number of known maneuvers:	1 + Your Intelligence + Your Level</p>
 	<p>You can reasign your maneuvers whenever you level up.</p>
 	<p>You do not cast spells.</p>
+	<ul class="ListOfSpells">
+		<li class="ListOfSpellsHeader">Maneuvers:</li>
+		<li class="ListOfSpellsElement">Aim</li>
+		<li class="ListOfSpellsElement">Dash</li>
+		<li class="ListOfSpellsElement">Disengage</li>
+		<li class="ListOfSpellsElement">Shift</li>
+		<li class="ListOfSpellsElement">Bull Rush</li>
+		<li class="ListOfSpellsElement">Defend</li>
+		<li class="ListOfSpellsElement">Grapple</li>
+		<li class="ListOfSpellsElement">Hamstring</li>
+		<li class="ListOfSpellsElement">Hide</li>
+		<li class="ListOfSpellsElement">Overthrow</li>
+		<li class="ListOfSpellsElement">Push</li>
+		<li class="ListOfSpellsElement">Shank</li>
+		<li class="ListOfSpellsElement">Taunt</li>
+		<li class="ListOfSpellsElement">Wait</li>
+	</ul>
 </div>
 <div class="Specialization bordered">
 	<h3 class="SpecializationTitle golden-text">Choosing Your Specialization...</h3>
@@ -216,7 +233,7 @@
 			</div>
 			<div class="SpellText">
 				<h4 class="SpellTitle SpellTitleAbility"><span class="SpellName">Agile Hand</span> : <span class="SpellActionsPassive">Passive</span></h4>
-				<p class="SpellDescription">You can pick locks. <br> You have +2 Sleight of Hand and +2 Stealth. <br> You can do the Disengage maneuver even if you don't have it and it uses 0 Actions.</p>
+				<p class="SpellDescription">You can pick locks. <br> You have +2 Sleight of Hand and +2 Stealth. <br> Your movement does not trigger attacks of oportunity.</p>
 			</div>
 		</div>
 	</div>
@@ -227,7 +244,7 @@
 			</div>
 			<div class="SpellText">
 				<h4 class="SpellTitle SpellTitleAbility"><span class="SpellName">Fool's Coin</span> : <span class="SpellActionsPassive">Passive</span></h4>
-				<p class="SpellDescription">Whenever you deal damage to a worthy enemy, you can spend 1 Charge. <br> If you do, you gain Gold Tokens, an imaginary currency, equal to one of the rolled dice (you choose). <br> When in a town or city, you can convert all Gold Tokens to actual gold coins (1 for 1) (this is done on a Long Rest).</p>
+				<p class="SpellDescription">Whenever you deal damage to a worthy enemy, you can spend 1 Charge. <br> If you do, you gain Gold Tokens, an imaginary currency, equal to one of the rolled dice (you choose). <br> When in a town or city, you convert all Gold Tokens to actual gold coins (1 Gold Token for 10 Gold) (this is done on a Long Rest).</p>
 			</div>
 		</div>
 	</div>
@@ -248,11 +265,11 @@
 	<div class="Spell Talent">
 		<div class="SpellContentWrapper">
 			<div class="SpellIconWrapper">
-				<img class="SpellIcon" src="Icons/Smugglers_Skill.png">
+				<img class="SpellIcon" src="Icons/Payback_Shot.png">
 			</div>
 			<div class="SpellText">
-				<h4 class="SpellTitle SpellTitleTalent"><span class="SpellName">Smuggler's Skill</span> : <span class="SpellActionsPassive">Passive</span></h4>
-				<p class="SpellDescription">Each Gold Token is now worth 3 gold coins.</p>
+				<h4 class="SpellTitle SpellTitleTalent"><span class="SpellName">Payback Shot</span> : <span class="SpellActionsNormal">0.5 Actions</span></h4>
+				<p class="SpellDescription">An enemy near you makes a Dexterity save. <br> If it fails, it is Stunned. <br> The DC for this ability is your current number of Gold Tokens. <br> After you use this ability, halve your current Gold Tokens.</p>
 			</div>
 		</div>
 	</div>
@@ -263,7 +280,7 @@
 			</div>
 			<div class="SpellText">
 				<h4 class="SpellTitle SpellTitleTalent"><span class="SpellName">Arcane Trickster</span> : <span class="SpellActionsPassive">Passive</span></h4>
-				<p class="SpellDescription">You are now trained in spells. <br> You permanently know 2 spells from the following spell list: <br> Acid Burst  : 0.5 Actions <br> Burning Breath  : 0.5 Actions <br> Conjure Ammo  : 1 Action <br> Control Flames  : 1 Action <br> Control Water  : 1 Action <br> Flameblade  : 0 Actions <br> Light  : 1 Action <br> Magic Missiles  : 1 Action <br> Mastery  : 1 Action <br> Prestidigitation  : 1 Action <br> Chaining Grasp  : 0 Actions <br> Charming Word  : 1 Action <br> Cure Poison  : 1 Action <br> Distort Vision  : 1 Action <br> Fake Sound  : 0.5 Action <br> Mage Hand  : 0 Actions <br> Unlock  : 1 Action <br> Shadow Clone  : 0 Actions <br> Encode Thoughts  : 1 Action (Level 4) <br> Invisibility  : 1 Action (Level 4) <br> Levitate  : 1 Action (Level 4) <br> Sense Magic  : 0 Actions (Level 4) <br> Spider Climb  : 1 Action (Level 4) <br> When you level up, you can change one of these abilities with another from the same list. <br> You learn 1 additional ability at Level 4, and another one at Level 8.</p>
+				<p class="SpellDescription">You are now trained in spells. <br> You permanently know 2 spells from the following spell list: <br> - Acid Burst  : 0.5 Actions <br> - Burning Breath  : 0.5 Actions <br> - Conjure Ammo  : 1 Action <br> - Control Flames  : 1 Action <br> - Control Water  : 1 Action <br> - Flameblade  : 0 Actions <br> - Light  : 1 Action <br> - Magic Missiles  : 1 Action <br> - Mastery  : 1 Action <br> - Prestidigitation  : 1 Action <br> - Chaining Grasp  : 0 Actions <br> - Charming Word  : 1 Action <br> - Cure Poison  : 1 Action <br> - Distort Vision  : 1 Action <br> - Fake Sound  : 0.5 Action <br> - Mage Hand  : 0 Actions <br> - Unlock  : 1 Action <br> - Shadow Clone  : 0 Actions <br> - Encode Thoughts  : 1 Action (Level 4) <br> - Invisibility  : 1 Action (Level 4) <br> - Levitate  : 1 Action (Level 4) <br> - Sense Magic  : 0 Actions (Level 4) <br> - Spider Climb  : 1 Action (Level 4) <br> When you level up, you can change one of these abilities with another from the same list. <br> You learn 1 additional ability at Level 4, and another one at Level 8.</p>
 			</div>
 		</div>
 	</div>
