@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src = "Javascript/utils.js"></script>
+	<script src = "Javascript/scripts.js"></script>
+	<script src = "Javascript/Queue.src.js"></script>
+	<script src = "Javascript/jquery-3.3.1.min.js"></script>
+	<link rel="stylesheet" href="CSS/style.css">
+</head>
+<body>
+<nav>
+	<div id = "Navigation">
+		<div class = "NavLink"  onclick="window.location.href = 'index.html'" id = "NavHome">
+			<a href = "index.html">Who Am I?</a>
+		</div>
+		<div class = "NavLink" onclick="window.location.href = 'https://github.com/whoamigame/whoamigame.github.io'">
+			<a href = "https://github.com/whoamigame/whoamigame.github.io">Source Code</a>
+		</div>
+		<div class = "NavLink" disabled>
+			<a href = "index.html">How To Play</a>
+		</div>
+	</div>
+</nav>
+<div id = "Window">
+	<input class = "Centered Full" id = "Name" placeholder = "Your name...">
+	<input class = "Centered Full" id = "Entry" placeholder = "Role for another person...">
+	<button class = "Centered Full" id = "PlayButton" onclick = "submitName()">Play</button>
+</div>
+</body>
+<script>
+
+function submitName(){
+	let name = get("Name").value;
+	let entry = get("Entry").value;
+	if(name == "" || entry == "") alert("Type in your name. Then type in what the role you want another player to have :).")
+	doPost(website + '/game/addplayer', {name:name, entry:entry}, (message)=>{
+		if(message){
+			window.location.href = 'lobby.html?' + objectToURL({name:name})
+		} else {
+			alert("Something went wrong. Try again.")
+		}
+	})
+}
+
+$.post('http://localhost:3000/info', null, (res, status)=>{
+	console.log(res)
+})
+
+</script>
+</html>

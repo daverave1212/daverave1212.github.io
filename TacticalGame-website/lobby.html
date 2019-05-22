@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src = "Javascript/utils.js"></script>
+	<script src = "Javascript/scripts.js"></script>
+	<script src = "Javascript/Queue.src.js"></script>
+	<script src = "Javascript/jquery-3.3.1.min.js"></script>
+	<link rel="stylesheet" href="CSS/style.css">
+</head>
+<body>
+<nav>
+	<div id = "Navigation">
+		<div class = "NavLink"  onclick="window.location.href = 'index.html'" id = "NavHome">
+			<a href = "index.html">Who Am I?</a>
+		</div>
+		<div class = "NavLink" onclick="window.location.href = 'https://github.com/whoamigame/whoamigame.github.io'">
+			<a href = "https://github.com/whoamigame/whoamigame.github.io">Source Code</a>
+		</div>
+		<div class = "NavLink" disabled>
+			<a href = "index.html">How To Play</a>
+		</div>
+	</div>
+</nav>
+<div id = "Window">
+	<br>
+	<p class = "Centered Full BigPar">Lobby</p>
+	<br>
+	<button class = "Centered Full" onclick = "startGame()">Start Game</button>
+	<br>
+</div>
+</body>
+<script>
+
+MyName = getURLParameters().name
+PlayerNames = []
+
+function addPlayer(name){
+	if(PlayerNames.includes(name)) return;
+	else{
+		PlayerNames.push(name)
+		let playerPar = createElementWithClass("p", "Centered Full BigPar NamePar")
+		playerPar.innerHTML = PlayerNames.length + ". " + name
+		get("Window").appendChild(playerPar)
+	}
+}
+
+
+
+function getPlayers(){
+	console.log("Requesting players")
+	requestPlayers((response)=>{
+		for(let i = 0; i<response.length; i++){
+			if(!PlayerNames.includes(response[i].name)){
+				addPlayer(response[i].name)
+			}
+		}
+		requestGameReady((isGameReady)=>{
+			if(isGameReady){
+				window.location.href = "game.html?" + objectToURL({name:MyName})
+			}
+		})
+	})
+}
+getPlayers()
+setInterval(getPlayers, 2500)
+
+function startGame(){
+	doPost(website + '/game/start', null, (res)=>{
+		console.log("Starting game?")
+		console.log(res)
+		if(res == true){
+			window.location.href = 'game.html?' + objectToURL({name:MyName})
+		}
+	})
+}
+
+
+</script>
+</html>

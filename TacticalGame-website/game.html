@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src = "Javascript/utils.js"></script>
+	<script src = "Javascript/Structures.js"></script>
+	<script src = "Javascript/scripts.js"></script>
+	<script src = "Javascript/jquery-3.3.1.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="CSS/style.css">
+	<meta charset="UTF-8">
+	<style>
+		#Window{}
+		#UpperTab{
+			position: absolute;
+			width: calc(8 * 64px);
+			height: 35px;
+			background-color: #DDDDDD;
+			padding-left: 25px;
+			padding-top: 15px;
+		}
+		#UpperTab img{
+			margin-left: 25px;
+			margin-right: 5px;
+		}
+		#BuildMenu{
+			position: absolute;
+			margin-left: calc(8 * 64px);
+			height: calc(8 * 48px);
+			width: 100px;
+			background-color: #afbced;
+		}
+		#Description{
+			position: absolute;
+			margin-left: calc(8 * 64px + 100px);
+			height: calc(8 * 48px);
+			background-color: white;
+			border: solid 3px gray;
+		}
+		#Board{}
+		.BoardLayer{
+			top: 100px;
+			position: absolute;
+		}
+		.Tile{
+			position: absolute;
+			width: 64px;
+			z-index: 0;
+		}
+		.Tile:hover{
+			filter: hue-rotate(-25deg);
+		}
+		.Structure{
+			position: absolute;
+			width: 64px;
+			z-index: 1;
+			pointer-events: none;
+		}
+		
+		
+	</style>
+	<script>
+	// Overhead
+	const website = 'http://tactical-game.herokuapp.com'
+	var name = null
+	var gameID = null
+	Board = {
+		tiles : []
+	}
+	
+	</script>
+</head>
+<body>
+<div id="Login">
+	<input id="Name" placeholder="Name..."><br>
+	<input id="GameID" placeholder="Game ID..."><br>
+	<button onclick="play()">Play</button>
+</div>
+<div id="Window">
+	<div id="UpperTab">
+		<img class="ResourceIcon" src="UI/Wood.png"><span id="Wood">0</span>
+		<img class="ResourceIcon" src="UI/Stone.png"><span id="Stone">0</span>
+		<img class="ResourceIcon" src="UI/Food.png"><span id="Food">0</span>
+		<img class="ResourceIcon" src="UI/Gold.png"><span id="Gold">0</span>
+		<img class="ResourceIcon" src="UI/Points.png"><span id="Points">0</span>
+	</div>
+	<div id="BuildMenu">
+		<select multiple id="BuildSelect" onchange="updateBuildingDescription()">
+			<option value="House">House</option>
+			<option value="Tower">Tower</option>
+			<option value="Temple">Temple</option>
+			<option value="Windmill">Windmill</option>
+			<option value="Shack">Shack</option>
+			<option value="Workcamp">Workcamp</option>
+		</select>
+		<button id="BuildButton" onclick="onBuildButtonClick()">Build</button>
+	</div>
+	<div id="Description">
+		<h4 id = "BuildingName">Select a building</h4>
+		<p>Cost:</p>
+		<img class="ResourceIcon" src="UI/Wood.png"><span id="WoodCost">0</span>
+		<br><img class="ResourceIcon" src="UI/Stone.png"><span id="StoneCost">0</span>
+		<br><img class="ResourceIcon" src="UI/Food.png"><span id="FoodCost">0</span>
+		<br><img class="ResourceIcon" src="UI/Gold.png"><span id="GoldCost">0</span>
+		<br><img class="ResourceIcon" src="UI/Points.png"><span id="PointsCost">0</span>
+		<p>Cost:</p>
+		<img class="ResourceIcon" src="UI/Wood.png"><span id="WoodProduced">0</span>
+		<br><img class="ResourceIcon" src="UI/Stone.png"><span id="StoneProduced">0</span>
+		<br><img class="ResourceIcon" src="UI/Food.png"><span id="FoodProduced">0</span>
+		<br><img class="ResourceIcon" src="UI/Gold.png"><span id="GoldProduced">0</span>
+		<br><img class="ResourceIcon" src="UI/Points.png"><span id="PointsProduced">0</span>
+	</div>
+	<div id="Board">
+		<div id="BuildingsLayer" class="BoardLayer"></div>
+		<div id="TilesLayer" class="BoardLayer"></div>
+	</div>
+</div>
+</body>
+<script>
+
+var clickState = "NONE"
+var selectedStructure = "House"
+var isMyTurn = false
+
+function play(){
+	name	= get('Name').value
+	gameID	= get('GameID').value
+	get("Login").style.display = "none"
+	__joinGame()
+	setInterval(()=>{
+		__getIsMyTurn(function(server_isMyTurn){
+			updateMyResources()
+			if(isMyTurn && server_isMyTurn){
+				console.log("Thinking...")
+			} else if(isMyTurn && !server_isMyTurn){
+				isMyTurn = false
+				console.log("Not your turn anymore, pal")
+			} else if(!isMyTurn && server_isMyTurn){
+				isMyTurn = true
+				setupBoard()
+				console.log("Ok, let's do this!!")
+			} else if(!isMyTurn && !server_isMyTurn){
+				console.log("Patience...")
+			}
+		})
+	}, 2000)
+}
+
+function __joinGame(cb){
+	doGet(website + "/info/game_exists", {
+		gameID : gameID
+	}, (gameExists)=>{
+		if(gameExists){
+			doGet(website + "/join_game", {
+				name : name,
+				gameID : gameID
+			}, (itWorked)=>{
+				if(itWorked){
+					alert("Joined game! Now wait for it to start")
+				}
+			})
+		} else {
+			alert("Game doesn't exist")
+		}
+	})
+}
+
+function onBuildButtonClick(){
+	selectedStructure = getSelectedOption("BuildSelect")
+	console.log(selectedStructure)
+	if(selectedStructure == null){
+		alert("Select a structure before building.")
+		return
+	} 
+	clickState = "PLACING_STRUCT"
+}
+
+function onTileClick(i, j){
+	if(clickState == "PLACING_STRUCT"){
+		clickState = "NONE"
+		doGet(website + "/turn", {
+			name : name,
+			gameID : gameID,
+			action : "build",
+			x : j,
+			y : i,
+			structureName : selectedStructure
+		}, function(res){
+			if(!res['success']){
+				alert(res.message)
+				isMyTurn = false
+			} else {
+				console.log(res.message)
+				__build(j, i, selectedStructure, name)
+				updateMyResources()
+			}
+		})
+	}
+}
+
+
+function createTileDOM(x, y, type){
+	let img = null
+	switch(type){
+		case "grass": img = createImage("TileImages/grass" + randomInt(1, 3) + ".png", "Tile"); break;
+		case "dirt":  img = createImage("TileImages/dirt" + randomInt(1, 1) + ".png", "Tile"); break;
+	}
+	setXY(img, x, y)
+	return img
+}
+
+function createStrDOM(x, y, type){
+	let img = createImage("StructureImages/" + type + ".png", "Structure");
+	setXY(img, x, y - 48)
+	return img
+}
+
+function __updateBoardTiles(tilesSimpleData){
+	removeAllChildren(get("TilesLayer"))
+	Board.tiles = tilesSimpleData
+	for(let i = 0; i<8; i++){
+		for(let j = 0; j<8; j++){
+			let img = createTileDOM(j*64, i*48, Board.tiles[i][j].type)
+			Board.tiles[i][j].img = img
+			img.onclick = function(){
+				onTileClick(i, j)
+			}
+			get('TilesLayer').appendChild(img)
+		}
+	}
+	Board.tiles[8] = []
+	for(let j = 0; j<8; j++){
+		let img = createTileDOM(j*64, 8*48, 'dirt')
+		Board.tiles[8][j] = {
+			img : img
+		}
+		get('TilesLayer').appendChild(img)
+	}
+}
+
+function __build(x, y, strType, playerName){
+	Board.tiles[y][x].strDOM = createStrDOM(x * 64, y * 48, strType)
+	Board.tiles[y][x].structure = strType
+	Board.tiles[y][x].owner = playerName
+	get('BuildingsLayer').appendChild(Board.tiles[y][x].strDOM)
+}
+function __updateBoardBuildings(tilesSimpleData){
+	removeAllChildren(get("BuildingsLayer"))
+	for(let i = 0; i<8; i++){
+		for(let j = 0; j<8; j++){
+			let tile = tilesSimpleData[i][j]
+			if(tile.structure != null){
+				__build(j, i, tile.structure, tile.ownerName)
+			}
+		}
+	}
+}
+
+function __getIsMyTurn(callback){
+	doGet(website + '/info/current_player', {
+		gameID : gameID
+	}, function(res){
+		if(res == name){
+			callback(true)
+		} else {
+			callback(false)
+		}
+	})
+}
+
+
+
+
+function setupBoard(){
+	console.log("Setting up board")
+	doGet(website + '/info/board', {
+		name : name,
+		gameID : gameID
+	}, function(res){
+		__updateBoardTiles(res)
+		__updateBoardBuildings(res)
+	})
+}
+
+function updateMyResources(){
+	doGet(website + '/info/player', {
+		name : name,
+		gameID : gameID
+	}, function(res){
+		if(res == null) return
+		if(res.success == false) return
+		get("Wood").innerHTML = res.res.wood
+		get("Stone").innerHTML = res.res.stone
+		get("Food").innerHTML = res.res.food
+		get("Gold").innerHTML = res.res.gold
+		get("Points").innerHTML = res.res.points
+	})
+}
+
+function updateBuildingDescription(){
+	console.log(StructureTypes)
+	let strName = getSelectedOption("BuildSelect")
+	console.log("Selected " + strName)
+	let str = StructureTypes[strName]
+	console.log(str)
+	get("BuildingName").innerHTML = strName
+	if(str.cost.wood   != null) get("WoodCost").innerHTML 		= str.cost.wood
+	if(str.cost.food   != null) get("FoodCost").innerHTML 		= str.cost.food
+	if(str.cost.stone  != null) get("StoneCost").innerHTML		= str.cost.stone
+	if(str.cost.points != null) get("PointsCost").innerHTML 	= str.cost.points
+	if(str.cost.gold   != null) get("GoldCost").innerHTML 		= str.cost.gold
+	if(str.res.wood    != null) get("GoldProduced").innerHTML 	= str.res.gold
+	if(str.res.food    != null) get("WoodProduced").innerHTML 	= str.res.wood
+	if(str.res.stone   != null) get("FoodProduced").innerHTML 	= str.res.food
+	if(str.res.points  != null) get("StoneProduced").innerHTML 	= str.res.stone
+	if(str.res.gold    != null) get("PointsProduced").innerHTML = str.res.points
+	
+	// And make them 0 (I know, really bad code)
+	if(str.cost.wood   == null) get("WoodCost").innerHTML 		= "0"
+	if(str.cost.food   == null) get("FoodCost").innerHTML 		= "0"
+	if(str.cost.stone  == null) get("StoneCost").innerHTML		= "0"
+	if(str.cost.points == null) get("PointsCost").innerHTML 	= "0"
+	if(str.cost.gold   == null) get("GoldCost").innerHTML 		= "0"
+	if(str.res.wood    == null) get("WoodProduced").innerHTML 	= "0"
+	if(str.res.food    == null) get("FoodProduced").innerHTML 	= "0"
+	if(str.res.stone   == null) get("StoneProduced").innerHTML 	= "0"
+	if(str.res.points  == null) get("PointsProduced").innerHTML 	= "0"
+	if(str.res.gold    == null) get("GoldProduced").innerHTML = "0"
+}
+
+
+
+
+
+</script>
+</html>
+
+
+
+
+
+
+
+
+
