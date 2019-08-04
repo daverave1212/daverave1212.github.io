@@ -607,7 +607,9 @@ select{
 .shown{
 	display: block;
 }
-
+.ItemTable a{
+	text-decoration: none;
+}
 
 
 

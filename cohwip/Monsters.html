@@ -110,7 +110,154 @@
 
 <div class="Monsters">
 	<div>
-		<div class="MonsterWrapper" data-name="Bandit">
+		<table class="ItemTable">
+			<tr>
+				<td>
+					<a href="#Bandit">Bandit</a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a href="#Bugbear">Bugbear</a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a href="#Cultist">Cultist</a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a href="#Drake">Drake</a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a href="#Ekimmara">Ekimmara</a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a href="#Evoker">Evoker</a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a href="#Giant_Rat">Giant Rat</a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a href="#Goblin">Goblin</a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a href="#Goblin_(Variant)">Goblin (Variant)</a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a href="#Goblin_Shaman">Goblin Shaman</a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a href="#Guard">Guard</a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a href="#Harpy">Harpy</a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a href="#Hound">Hound</a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a href="#Imp">Imp</a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a href="#Lesser_Vampire">Lesser Vampire</a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a href="#Mana_Wyrm">Mana Wyrm</a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a href="#Mimick">Mimick</a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a href="#Ogre">Ogre</a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a href="#Ogre_Dire">Ogre Dire</a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a href="#Rusalka">Rusalka</a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a href="#Skeleton">Skeleton</a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a href="#Skeleton_(Alternative)">Skeleton (Alternative)</a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a href="#Spider">Spider</a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a href="#Spider_Broodmother">Spider Broodmother</a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a href="#Torch_Villager">Torch Villager</a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a href="#Undead_Drake">Undead Drake</a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a href="#Wight">Wight</a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a href="#Wolf">Wolf</a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a href="#Zombie">Zombie</a>
+				</td>
+			</tr>
+		</table>
+		<div id="Bandit" class="MonsterWrapper" data-name="Bandit">
 			<h3>Bandit</h3>
 			<select onchange="changeLevel(this.parentNode)">
 				<option value="Level 1">Level 1</option>
@@ -144,6 +291,10 @@
 						<tr>
 							<td>Behavior</td>
 							<td>Tries to ambush</td>
+						</tr>
+						<tr>
+							<td>Initiative</td>
+							<td>10</td>
 						</tr>
 					</table>
 					<h4 class="MonsterAbilities">Abilities</h4>
@@ -188,6 +339,10 @@
 							<td>Behavior</td>
 							<td>Tries to ambush</td>
 						</tr>
+						<tr>
+							<td>Initiative</td>
+							<td>10</td>
+						</tr>
 					</table>
 					<h4 class="MonsterAbilities">Abilities</h4>
 					<table class="ItemTable">
@@ -231,6 +386,10 @@
 							<td>Behavior</td>
 							<td>Tries to ambush, steals and runs away if steals</td>
 						</tr>
+						<tr>
+							<td>Initiative</td>
+							<td>10</td>
+						</tr>
 					</table>
 					<h4 class="MonsterAbilities">Abilities</h4>
 					<table class="ItemTable">
@@ -247,11 +406,12 @@
 				</div>
 			</div>
 		</div>
-		<div class="MonsterWrapper" data-name="Bugbear">
+		<div id="Bugbear" class="MonsterWrapper" data-name="Bugbear">
 			<h3>Bugbear</h3>
 			<select onchange="changeLevel(this.parentNode)">
 				<option value="Level 1">Level 1</option>
 				<option value="Level 2">Level 2</option>
+				<option value="Level 3">Level 3</option>
 			</select>
 			<div class="MonsterLevelWrapper hidden" data-name="Level 1">
 				<div class="MonsterContent">
@@ -276,6 +436,10 @@
 						<tr>
 							<td>Behavior</td>
 							<td>Attacks back-most target</td>
+						</tr>
+						<tr>
+							<td>Initiative</td>
+							<td>13</td>
 						</tr>
 					</table>
 					<h4 class="MonsterAbilities">Abilities</h4>
@@ -322,6 +486,10 @@
 							<td>Behavior</td>
 							<td>Attacks back-most target</td>
 						</tr>
+						<tr>
+							<td>Initiative</td>
+							<td>13</td>
+						</tr>
 					</table>
 					<h4 class="MonsterAbilities">Abilities</h4>
 					<table class="ItemTable">
@@ -343,12 +511,6 @@
 					</table>
 				</div>
 			</div>
-		</div>
-		<div class="MonsterWrapper" data-name="Bugbear Brute">
-			<h3>Bugbear Brute</h3>
-			<select onchange="changeLevel(this.parentNode)">
-				<option value="Level 3">Level 3</option>
-			</select>
 			<div class="MonsterLevelWrapper hidden" data-name="Level 3">
 				<div class="MonsterContent">
 					<h3 class="MonsterName">6/3/1/2/4</h3>
@@ -373,6 +535,10 @@
 							<td>Behavior</td>
 							<td>Attacks back-most target</td>
 						</tr>
+						<tr>
+							<td>Initiative</td>
+							<td>13</td>
+						</tr>
 					</table>
 					<h4 class="MonsterAbilities">Abilities</h4>
 					<table class="ItemTable">
@@ -395,7 +561,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="MonsterWrapper" data-name="Cultist">
+		<div id="Cultist" class="MonsterWrapper" data-name="Cultist">
 			<h3>Cultist</h3>
 			<select onchange="changeLevel(this.parentNode)">
 				<option value="Level 1">Level 1</option>
@@ -425,6 +591,10 @@
 						<tr>
 							<td>Behavior</td>
 							<td>Raise, keep enemies away with Unholy Zone</td>
+						</tr>
+						<tr>
+							<td>Initiative</td>
+							<td>12</td>
 						</tr>
 					</table>
 					<h4 class="MonsterAbilities">Abilities</h4>
@@ -471,6 +641,10 @@
 							<td>Behavior</td>
 							<td>Raise, keep enemies away with Unholy Zone</td>
 						</tr>
+						<tr>
+							<td>Initiative</td>
+							<td>12</td>
+						</tr>
 					</table>
 					<h4 class="MonsterAbilities">Abilities</h4>
 					<table class="ItemTable">
@@ -516,6 +690,10 @@
 							<td>Behavior</td>
 							<td>Raise, keep enemies away with Unholy Zone</td>
 						</tr>
+						<tr>
+							<td>Initiative</td>
+							<td>12</td>
+						</tr>
 					</table>
 					<h4 class="MonsterAbilities">Abilities</h4>
 					<table class="ItemTable">
@@ -538,7 +716,170 @@
 				</div>
 			</div>
 		</div>
-		<div class="MonsterWrapper" data-name="Giant Rat">
+		<div id="Drake" class="MonsterWrapper" data-name="Drake">
+			<h3>Drake</h3>
+			<select onchange="changeLevel(this.parentNode)">
+				<option value="Level 1">Level 1</option>
+			</select>
+			<div class="MonsterLevelWrapper hidden" data-name="Level 1">
+				<div class="MonsterContent">
+					<h3 class="MonsterName">4/4/1/4/4</h3>
+					<table class="ItemTable">
+						<tr>
+							<td>Ratio</td>
+							<td>3</td>
+						</tr>
+						<tr>
+							<td>Health</td>
+							<td>55</td>
+						</tr>
+						<tr>
+							<td>Armor</td>
+							<td>10</td>
+						</tr>
+						<tr>
+							<td>Bite/Scratch</td>
+							<td>+3, 1d6 + 2	(Pierce/Slash)</td>
+						</tr>
+						<tr>
+							<td>Breath</td>
+							<td>+5, 1d6 + 1, 3x3 around target</td>
+						</tr>
+						<tr>
+							<td>Speed</td>
+							<td>3 meters</td>
+						</tr>
+						<tr>
+							<td>Behavior</td>
+							<td>Attack random targets above 50% Health, then move to another</td>
+						</tr>
+						<tr>
+							<td>Initiative</td>
+							<td>15, 10, 5</td>
+						</tr>
+					</table>
+					<h4 class="MonsterAbilities">Abilities</h4>
+					<table class="ItemTable">
+						<tr>
+							<td>Takes 3 turns.</td>
+						</tr>
+						<tr>
+							<td>Dark Vision (12m), immune to its element</td>
+						</tr>
+						<tr>
+							<td>Tail Swipe (if flanked): DC13 Dex save or 1d6 + pushed 2 meters away + knock down</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div id="Ekimmara" class="MonsterWrapper" data-name="Ekimmara">
+			<h3>Ekimmara</h3>
+			<select onchange="changeLevel(this.parentNode)">
+				<option value="Level 2">Level 2</option>
+			</select>
+			<div class="MonsterLevelWrapper hidden" data-name="Level 2">
+				<div class="MonsterContent">
+					<h3 class="MonsterName">4/4/0/4/4</h3>
+					<table class="ItemTable">
+						<tr>
+							<td>Ratio</td>
+							<td>2</td>
+						</tr>
+						<tr>
+							<td>Health</td>
+							<td>35</td>
+						</tr>
+						<tr>
+							<td>Armor</td>
+							<td>10</td>
+						</tr>
+						<tr>
+							<td>Bite/Scratch</td>
+							<td>+3, 1d6 + 2	(Pierce/Slash)</td>
+						</tr>
+						<tr>
+							<td>Speed</td>
+							<td>8 meters</td>
+						</tr>
+						<tr>
+							<td>Behavior</td>
+							<td>Always retaliates if within range</td>
+						</tr>
+						<tr>
+							<td>Initiative</td>
+							<td>10</td>
+						</tr>
+					</table>
+					<h4 class="MonsterAbilities">Abilities</h4>
+					<table class="ItemTable">
+						<tr>
+							<td>Dark Vision (12m)</td>
+						</tr>
+						<tr>
+							<td>Heals from 100% of damage done</td>
+						</tr>
+						<tr>
+							<td>Retaliate (whenever attacked, 3m): +3, 1d6 + 2 Damage</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div id="Evoker" class="MonsterWrapper" data-name="Evoker">
+			<h3>Evoker</h3>
+			<select onchange="changeLevel(this.parentNode)">
+				<option value="Level 3">Level 3</option>
+			</select>
+			<div class="MonsterLevelWrapper hidden" data-name="Level 3">
+				<div class="MonsterContent">
+					<h3 class="MonsterName">0/0/0/0/0</h3>
+					<table class="ItemTable">
+						<tr>
+							<td>Ratio</td>
+							<td>2</td>
+						</tr>
+						<tr>
+							<td>Health</td>
+							<td>58</td>
+						</tr>
+						<tr>
+							<td>Armor</td>
+							<td>10</td>
+						</tr>
+						<tr>
+							<td>Dagger/Claws</td>
+							<td>+3, 1d6 + 4	(Pierce/Slash)</td>
+						</tr>
+						<tr>
+							<td>Speed</td>
+							<td>8 meters teleportation</td>
+						</tr>
+						<tr>
+							<td>Behavior</td>
+							<td>Hides and runs and summons skeletons.</td>
+						</tr>
+						<tr>
+							<td>Initiative</td>
+							<td>8, 12</td>
+						</tr>
+					</table>
+					<h4 class="MonsterAbilities">Abilities</h4>
+					<table class="ItemTable">
+						<tr>
+							<td>Takes 2 turns</td>
+						</tr>
+						<tr>
+							<td>Dark Vision (12m)</td>
+						</tr>
+						<tr>
+							<td>Summon Skeleton (whenever possible): Summons a Skeleton (Alternative)</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div id="Giant_Rat" class="MonsterWrapper" data-name="Giant Rat">
 			<h3>Giant Rat</h3>
 			<select onchange="changeLevel(this.parentNode)">
 				<option value="Level 1">Level 1</option>
@@ -568,6 +909,10 @@
 						<tr>
 							<td>Behavior</td>
 							<td>Attack random targets above 50% Health, then move to another</td>
+						</tr>
+						<tr>
+							<td>Initiative</td>
+							<td>10</td>
 						</tr>
 					</table>
 					<h4 class="MonsterAbilities">Abilities</h4>
@@ -605,6 +950,10 @@
 							<td>Behavior</td>
 							<td>Attack random targets above 50% Health, then move to another</td>
 						</tr>
+						<tr>
+							<td>Initiative</td>
+							<td>10</td>
+						</tr>
 					</table>
 					<h4 class="MonsterAbilities">Abilities</h4>
 					<table class="ItemTable">
@@ -641,6 +990,10 @@
 							<td>Behavior</td>
 							<td>Attack random targets above 50% Health, then move to another</td>
 						</tr>
+						<tr>
+							<td>Initiative</td>
+							<td>10</td>
+						</tr>
 					</table>
 					<h4 class="MonsterAbilities">Abilities</h4>
 					<table class="ItemTable">
@@ -654,7 +1007,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="MonsterWrapper" data-name="Goblin">
+		<div id="Goblin" class="MonsterWrapper" data-name="Goblin">
 			<h3>Goblin</h3>
 			<select onchange="changeLevel(this.parentNode)">
 				<option value="Level 1">Level 1</option>
@@ -691,6 +1044,10 @@
 						<tr>
 							<td>Behavior</td>
 							<td>Chaotic and without strategy, run away if losing</td>
+						</tr>
+						<tr>
+							<td>Initiative</td>
+							<td>13</td>
 						</tr>
 					</table>
 					<h4 class="MonsterAbilities">Abilities</h4>
@@ -742,6 +1099,10 @@
 							<td>Behavior</td>
 							<td>Chaotic and without strategy, run away if losing</td>
 						</tr>
+						<tr>
+							<td>Initiative</td>
+							<td>13</td>
+						</tr>
 					</table>
 					<h4 class="MonsterAbilities">Abilities</h4>
 					<table class="ItemTable">
@@ -761,7 +1122,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="MonsterWrapper" data-name="Goblin (Variant)">
+		<div id="Goblin_(Variant)" class="MonsterWrapper" data-name="Goblin (Variant)">
 			<h3>Goblin (Variant)</h3>
 			<select onchange="changeLevel(this.parentNode)">
 				<option value="Level 3">Level 3</option>
@@ -798,6 +1159,10 @@
 							<td>Behavior</td>
 							<td>Chaotic, attack random target, run away if losing</td>
 						</tr>
+						<tr>
+							<td>Initiative</td>
+							<td>13</td>
+						</tr>
 					</table>
 					<h4 class="MonsterAbilities">Abilities</h4>
 					<table class="ItemTable">
@@ -817,7 +1182,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="MonsterWrapper" data-name="Goblin Shaman">
+		<div id="Goblin_Shaman" class="MonsterWrapper" data-name="Goblin Shaman">
 			<h3>Goblin Shaman</h3>
 			<select onchange="changeLevel(this.parentNode)">
 				<option value="Level 1">Level 1</option>
@@ -846,7 +1211,11 @@
 						</tr>
 						<tr>
 							<td>Behavior</td>
-							<td>Spams Mass Curse, sacrifices when low HP, explodes corpses when can</td>
+							<td>Tries to stay alive, hides behind his minions</td>
+						</tr>
+						<tr>
+							<td>Initiative</td>
+							<td>8</td>
 						</tr>
 					</table>
 					<h4 class="MonsterAbilities">Abilities</h4>
@@ -888,7 +1257,11 @@
 						</tr>
 						<tr>
 							<td>Behavior</td>
-							<td>Spams Mass Curse, sacrifices when low HP, explodes corpses when can</td>
+							<td>Tries to stay alive, hides behind his minions</td>
+						</tr>
+						<tr>
+							<td>Initiative</td>
+							<td>8</td>
 						</tr>
 					</table>
 					<h4 class="MonsterAbilities">Abilities</h4>
@@ -930,7 +1303,11 @@
 						</tr>
 						<tr>
 							<td>Behavior</td>
-							<td>Spams Mass Curse, sacrifices when low HP, explodes corpses when can</td>
+							<td>Tries to stay alive, hides behind his minions</td>
+						</tr>
+						<tr>
+							<td>Initiative</td>
+							<td>8</td>
 						</tr>
 					</table>
 					<h4 class="MonsterAbilities">Abilities</h4>
@@ -951,7 +1328,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="MonsterWrapper" data-name="Guard">
+		<div id="Guard" class="MonsterWrapper" data-name="Guard">
 			<h3>Guard</h3>
 			<select onchange="changeLevel(this.parentNode)">
 				<option value="Level 2">Level 2</option>
@@ -980,6 +1357,10 @@
 							<td>Behavior</td>
 							<td>Try to flank, form shield walls</td>
 						</tr>
+						<tr>
+							<td>Initiative</td>
+							<td>12</td>
+						</tr>
 					</table>
 					<h4 class="MonsterAbilities">Abilities</h4>
 					<table class="ItemTable">
@@ -1002,7 +1383,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="MonsterWrapper" data-name="Harpy">
+		<div id="Harpy" class="MonsterWrapper" data-name="Harpy">
 			<h3>Harpy</h3>
 			<select onchange="changeLevel(this.parentNode)">
 				<option value="Level 1">Level 1</option>
@@ -1035,6 +1416,10 @@
 							<td>Behavior</td>
 							<td>Grabs enemies,uses terrain to its advantage, hides behind things</td>
 						</tr>
+						<tr>
+							<td>Initiative</td>
+							<td>10</td>
+						</tr>
 					</table>
 					<h4 class="MonsterAbilities">Abilities</h4>
 					<table class="ItemTable">
@@ -1054,7 +1439,215 @@
 				</div>
 			</div>
 		</div>
-		<div class="MonsterWrapper" data-name="Mimick">
+		<div id="Hound" class="MonsterWrapper" data-name="Hound">
+			<h3>Hound</h3>
+			<select onchange="changeLevel(this.parentNode)">
+				<option value="Level 2">Level 2</option>
+			</select>
+			<div class="MonsterLevelWrapper hidden" data-name="Level 2">
+				<div class="MonsterContent">
+					<h3 class="MonsterName">1/3/0/3/1</h3>
+					<table class="ItemTable">
+						<tr>
+							<td>Ratio</td>
+							<td>0.5</td>
+						</tr>
+						<tr>
+							<td>Health</td>
+							<td>9</td>
+						</tr>
+						<tr>
+							<td>Armor</td>
+							<td>13</td>
+						</tr>
+						<tr>
+							<td>Bite/Scratch</td>
+							<td>+3, 1d4 + 1 (Pierce/Smash/Slash/Fire)</td>
+						</tr>
+						<tr>
+							<td>Behavior</td>
+							<td>Protect their master (usually one with a gun)</td>
+						</tr>
+						<tr>
+							<td>Initiative</td>
+							<td>12</td>
+						</tr>
+					</table>
+					<h4 class="MonsterAbilities">Abilities</h4>
+					<table class="ItemTable">
+						<tr>
+							<td>Dark Vision (12m)</td>
+						</tr>
+						<tr>
+							<td>Nibble (team): DC12 Dex save, 2d6 or half + Knock Prone</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div id="Imp" class="MonsterWrapper" data-name="Imp">
+			<h3>Imp</h3>
+			<select onchange="changeLevel(this.parentNode)">
+				<option value="Level 1">Level 1</option>
+			</select>
+			<div class="MonsterLevelWrapper hidden" data-name="Level 1">
+				<div class="MonsterContent">
+					<h3 class="MonsterName">0/3/2/2/1</h3>
+					<table class="ItemTable">
+						<tr>
+							<td>Health</td>
+							<td>14</td>
+						</tr>
+						<tr>
+							<td>Armor</td>
+							<td>12</td>
+						</tr>
+						<tr>
+							<td>Bite/Scratch</td>
+							<td>+3, 1d6 + 2	(Pierce/Slash)</td>
+						</tr>
+						<tr>
+							<td>Magic Bolt</td>
+							<td>+3, 1d4 + 3	(Fire/Force) (6m)</td>
+						</tr>
+						<tr>
+							<td>Speed</td>
+							<td>8 meters</td>
+						</tr>
+						<tr>
+							<td>Behavior</td>
+							<td>Kite around, avoid melee combat</td>
+						</tr>
+						<tr>
+							<td>Initiative</td>
+							<td>13</td>
+						</tr>
+					</table>
+					<h4 class="MonsterAbilities">Abilities</h4>
+					<table class="ItemTable">
+						<tr>
+							<td>Dark Vision (12m), 50% resistance to Fire</td>
+						</tr>
+						<tr>
+							<td>Don't trigger attacks of oportunity.</td>
+						</tr>
+						<tr>
+							<td>Summon Imp (only when below 50% health) (once): Summons a new Imp 3 meters away.</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div id="Lesser_Vampire" class="MonsterWrapper" data-name="Lesser Vampire">
+			<h3>Lesser Vampire</h3>
+			<select onchange="changeLevel(this.parentNode)">
+				<option value="Level 2">Level 2</option>
+			</select>
+			<div class="MonsterLevelWrapper hidden" data-name="Level 2">
+				<div class="MonsterContent">
+					<h3 class="MonsterName">3/5/3/2/4</h3>
+					<table class="ItemTable">
+						<tr>
+							<td>Ratio</td>
+							<td>2</td>
+						</tr>
+						<tr>
+							<td>Health</td>
+							<td>45</td>
+						</tr>
+						<tr>
+							<td>Armor</td>
+							<td>12</td>
+						</tr>
+						<tr>
+							<td>Bite/Scratch/Weapon</td>
+							<td>+3, 1d6 + 3	(Pierce/Slash)</td>
+						</tr>
+						<tr>
+							<td>Speed</td>
+							<td>8 meters (phantomly dashes, ignores AoO)</td>
+						</tr>
+						<tr>
+							<td>Behavior</td>
+							<td>Charms the most powerful enemy/weakest willed. Flees as a bat when low. Returns smarter.</td>
+						</tr>
+						<tr>
+							<td>Initiative</td>
+							<td>15</td>
+						</tr>
+					</table>
+					<h4 class="MonsterAbilities">Abilities</h4>
+					<table class="ItemTable">
+						<tr>
+							<td>Dark Vision (12m), immune to Diseases, 50% Res. to Poison</td>
+						</tr>
+						<tr>
+							<td>Inhuman Reflexes (every time): When an attack on him misses, he dashes and counterattacks.</td>
+						</tr>
+						<tr>
+							<td>Charm (9m, 12DC, once): Player's next turn must attack the closest creature with weapon currently equipped. This does consume action.</td>
+						</tr>
+						<tr>
+							<td>Bat Swarm Retreat (when gets to 12 or less HP): Transforms into a bat and tries to escape. No longer immune to AoO</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div id="Mana_Wyrm" class="MonsterWrapper" data-name="Mana Wyrm">
+			<h3>Mana Wyrm</h3>
+			<select onchange="changeLevel(this.parentNode)">
+				<option value="Level 1">Level 1</option>
+			</select>
+			<div class="MonsterLevelWrapper hidden" data-name="Level 1">
+				<div class="MonsterContent">
+					<h3 class="MonsterName">0/0/0/0/0</h3>
+					<table class="ItemTable">
+						<tr>
+							<td>Ratio</td>
+							<td>0.5</td>
+						</tr>
+						<tr>
+							<td>Health</td>
+							<td>9</td>
+						</tr>
+						<tr>
+							<td>Armor</td>
+							<td>10</td>
+						</tr>
+						<tr>
+							<td>Lash</td>
+							<td>+3, 1d4	(Force)</td>
+						</tr>
+						<tr>
+							<td>Speed</td>
+							<td>6 meters</td>
+						</tr>
+						<tr>
+							<td>Behavior</td>
+							<td>Don't attack, run from enemies but remain around. Will sacrifice themselves to block spells.</td>
+						</tr>
+						<tr>
+							<td>Initiative</td>
+							<td>6</td>
+						</tr>
+					</table>
+					<h4 class="MonsterAbilities">Abilities</h4>
+					<table class="ItemTable">
+						<tr>
+							<td>They can levitate. Don't trigger attacks of oportunity.</td>
+						</tr>
+						<tr>
+							<td>Counterspell (reaction): Kills itself. Negates an enmey spell after it was cast.</td>
+						</tr>
+						<tr>
+							<td>Silence Explosion: When is killed by someone else, all creatures near it DC12 Int save or Silenced.</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div id="Mimick" class="MonsterWrapper" data-name="Mimick">
 			<h3>Mimick</h3>
 			<select onchange="changeLevel(this.parentNode)">
 				<option value="Level 1">Level 1</option>
@@ -1083,6 +1676,10 @@
 							<td>Behavior</td>
 							<td>Ambushes target that gets close or kills it before it has a chance to attack.</td>
 						</tr>
+						<tr>
+							<td>Initiative</td>
+							<td>0</td>
+						</tr>
 					</table>
 					<h4 class="MonsterAbilities">Abilities</h4>
 					<table class="ItemTable">
@@ -1108,7 +1705,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="MonsterWrapper" data-name="Ogre">
+		<div id="Ogre" class="MonsterWrapper" data-name="Ogre">
 			<h3>Ogre</h3>
 			<select onchange="changeLevel(this.parentNode)">
 				<option value="Level 1">Level 1</option>
@@ -1145,6 +1742,10 @@
 						<tr>
 							<td>Behavior</td>
 							<td>Attacks random targets</td>
+						</tr>
+						<tr>
+							<td>Initiative</td>
+							<td>6</td>
 						</tr>
 					</table>
 					<h4 class="MonsterAbilities">Abilities</h4>
@@ -1202,6 +1803,10 @@
 							<td>Behavior</td>
 							<td>Attacks random targets</td>
 						</tr>
+						<tr>
+							<td>Initiative</td>
+							<td>6</td>
+						</tr>
 					</table>
 					<h4 class="MonsterAbilities">Abilities</h4>
 					<table class="ItemTable">
@@ -1227,7 +1832,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="MonsterWrapper" data-name="Ogre Dire">
+		<div id="Ogre_Dire" class="MonsterWrapper" data-name="Ogre Dire">
 			<h3>Ogre Dire</h3>
 			<select onchange="changeLevel(this.parentNode)">
 				<option value="Level 3">Level 3</option>
@@ -1264,6 +1869,10 @@
 							<td>Behavior</td>
 							<td>Attacks random targets</td>
 						</tr>
+						<tr>
+							<td>Initiative</td>
+							<td>6</td>
+						</tr>
 					</table>
 					<h4 class="MonsterAbilities">Abilities</h4>
 					<table class="ItemTable">
@@ -1289,7 +1898,64 @@
 				</div>
 			</div>
 		</div>
-		<div class="MonsterWrapper" data-name="Skeleton">
+		<div id="Rusalka" class="MonsterWrapper" data-name="Rusalka">
+			<h3>Rusalka</h3>
+			<select onchange="changeLevel(this.parentNode)">
+				<option value="Level 2">Level 2</option>
+			</select>
+			<div class="MonsterLevelWrapper hidden" data-name="Level 2">
+				<div class="MonsterContent">
+					<h3 class="MonsterName">2/5/1/2/2</h3>
+					<table class="ItemTable">
+						<tr>
+							<td>Health</td>
+							<td>24</td>
+						</tr>
+						<tr>
+							<td>Armor</td>
+							<td>10</td>
+						</tr>
+						<tr>
+							<td>Huge Claws</td>
+							<td>+3, 1d8 + 2	(Pierce/Slash), 3 meters range, can go through hair</td>
+						</tr>
+						<tr>
+							<td>Huge Claw</td>
+							<td>+3, 1d4 + 1</td>
+						</tr>
+						<tr>
+							<td>Speed</td>
+							<td>6 meters</td>
+						</tr>
+						<tr>
+							<td>Behavior</td>
+							<td>Attack</td>
+						</tr>
+						<tr>
+							<td>Appearance</td>
+							<td>Skinny, pale hag with very long, dark hair</td>
+						</tr>
+						<tr>
+							<td>Initiative</td>
+							<td>15</td>
+						</tr>
+					</table>
+					<h4 class="MonsterAbilities">Abilities</h4>
+					<table class="ItemTable">
+						<tr>
+							<td>Dark Vision (12m)</td>
+						</tr>
+						<tr>
+							<td>Tie Hairs (Team, 4 meters): 2 Rusalki form a barrier. Blocks projectiles, like of sight and pathing.</td>
+						</tr>
+						<tr>
+							<td>Hair Grapple (0.5 Actions) : DC12 Fortitude or snared and crippled.</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div id="Skeleton" class="MonsterWrapper" data-name="Skeleton">
 			<h3>Skeleton</h3>
 			<select onchange="changeLevel(this.parentNode)">
 				<option value="Level 1">Level 1</option>
@@ -1323,6 +1989,10 @@
 						<tr>
 							<td>Behavior</td>
 							<td>Attack random targets, fight till death</td>
+						</tr>
+						<tr>
+							<td>Initiative</td>
+							<td>8</td>
 						</tr>
 					</table>
 					<h4 class="MonsterAbilities">Abilities</h4>
@@ -1367,6 +2037,10 @@
 							<td>Behavior</td>
 							<td>Attack random targets, fight till death</td>
 						</tr>
+						<tr>
+							<td>Initiative</td>
+							<td>8</td>
+						</tr>
 					</table>
 					<h4 class="MonsterAbilities">Abilities</h4>
 					<table class="ItemTable">
@@ -1403,6 +2077,10 @@
 							<td>+3, 1d4 + 5	(Depends on Weapon)</td>
 						</tr>
 						<tr>
+							<td>Initiative</td>
+							<td>8</td>
+						</tr>
+						<tr>
 							<td>Speed</td>
 							<td>6 meters</td>
 						</tr>
@@ -1426,7 +2104,54 @@
 				</div>
 			</div>
 		</div>
-		<div class="MonsterWrapper" data-name="Spider">
+		<div id="Skeleton_(Alternative)" class="MonsterWrapper" data-name="Skeleton (Alternative)">
+			<h3>Skeleton (Alternative)</h3>
+			<select onchange="changeLevel(this.parentNode)">
+				<option value="Level 1">Level 1</option>
+			</select>
+			<div class="MonsterLevelWrapper hidden" data-name="Level 1">
+				<div class="MonsterContent">
+					<h3 class="MonsterName">0/0/0/0/0</h3>
+					<table class="ItemTable">
+						<tr>
+							<td>Ratio</td>
+							<td>0.5</td>
+						</tr>
+						<tr>
+							<td>Health</td>
+							<td>9</td>
+						</tr>
+						<tr>
+							<td>Armor</td>
+							<td>10</td>
+						</tr>
+						<tr>
+							<td>Weapon</td>
+							<td>+3, 1d4	(Pierce/Slash)</td>
+						</tr>
+						<tr>
+							<td>Speed</td>
+							<td>5 meters</td>
+						</tr>
+						<tr>
+							<td>Behavior</td>
+							<td>Attack the closest target</td>
+						</tr>
+						<tr>
+							<td>Initiative</td>
+							<td>8</td>
+						</tr>
+					</table>
+					<h4 class="MonsterAbilities">Abilities</h4>
+					<table class="ItemTable">
+						<tr>
+							<td>Dark Vision (12m), immune to Diseases</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div id="Spider" class="MonsterWrapper" data-name="Spider">
 			<h3>Spider</h3>
 			<select onchange="changeLevel(this.parentNode)">
 				<option value="Level 1">Level 1</option>
@@ -1451,6 +2176,14 @@
 						<tr>
 							<td>Speed</td>
 							<td>8 meters</td>
+						</tr>
+						<tr>
+							<td>Behavior</td>
+							<td>Noone</td>
+						</tr>
+						<tr>
+							<td>Initiative</td>
+							<td>10</td>
 						</tr>
 					</table>
 					<h4 class="MonsterAbilities">Abilities</h4>
@@ -1505,6 +2238,10 @@
 							<td>Speed</td>
 							<td>8 meters</td>
 						</tr>
+						<tr>
+							<td>Initiative</td>
+							<td>10</td>
+						</tr>
 					</table>
 					<h4 class="MonsterAbilities">Abilities</h4>
 					<table class="ItemTable">
@@ -1539,10 +2276,183 @@
 				</div>
 			</div>
 		</div>
-		<div class="MonsterWrapper" data-name="Wight">
+		<div id="Spider_Broodmother" class="MonsterWrapper" data-name="Spider Broodmother">
+			<h3>Spider Broodmother</h3>
+			<select onchange="changeLevel(this.parentNode)">
+				<option value="Level 1">Level 1</option>
+			</select>
+			<div class="MonsterLevelWrapper hidden" data-name="Level 1">
+				<div class="MonsterContent">
+					<h3 class="MonsterName">1/3/0/1/0</h3>
+					<table class="ItemTable">
+						<tr>
+							<td>Ratio</td>
+							<td>2</td>
+						</tr>
+						<tr>
+							<td>Health</td>
+							<td>35</td>
+						</tr>
+						<tr>
+							<td>Armor</td>
+							<td>10</td>
+						</tr>
+						<tr>
+							<td>Bite</td>
+							<td>+3, 1d4 + 2 (Pierce)</td>
+						</tr>
+						<tr>
+							<td>Speed</td>
+							<td>8 meters</td>
+						</tr>
+						<tr>
+							<td>Initiative</td>
+							<td>12, 6</td>
+						</tr>
+					</table>
+					<h4 class="MonsterAbilities">Abilities</h4>
+					<table class="ItemTable">
+						<tr>
+							<td>Takes 2 turns</td>
+						</tr>
+						<tr>
+							<td>Dark Vision (12m), immune to Poison</td>
+						</tr>
+						<tr>
+							<td>Swarm (when at least 2 creatures): 4x1 line DC12 Dex save or Blinded + 1d6 Poison Damage</td>
+						</tr>
+						<tr>
+							<td>Host (for spiders): When the spider is low, it enters the broodmother. On its next turn, exits with full HP</td>
+						</tr>
+						<tr>
+							<td>Spawn (once): Summons 3 minion Spiders. They can only do one attack, and cant use abilities.</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div id="Torch_Villager" class="MonsterWrapper" data-name="Torch Villager">
+			<h3>Torch Villager</h3>
+			<select onchange="changeLevel(this.parentNode)">
+				<option value="Level 2">Level 2</option>
+			</select>
+			<div class="MonsterLevelWrapper hidden" data-name="Level 2">
+				<div class="MonsterContent">
+					<h3 class="MonsterName">1/1/1/1/1</h3>
+					<table class="ItemTable">
+						<tr>
+							<td>Ratio</td>
+							<td>0.5</td>
+						</tr>
+						<tr>
+							<td>Health</td>
+							<td>12</td>
+						</tr>
+						<tr>
+							<td>Armor</td>
+							<td>10</td>
+						</tr>
+						<tr>
+							<td>Weapon (reach)</td>
+							<td>+3, 1d4 + 1 (Pierce/Smash/Slash/Fire)</td>
+						</tr>
+						<tr>
+							<td>Gun</td>
+							<td>+1, 1d8 (Pierce/Smash/Slash/Fire)</td>
+						</tr>
+						<tr>
+							<td>Behavior</td>
+							<td>Attack random targets</td>
+						</tr>
+						<tr>
+							<td>Initiative</td>
+							<td>7</td>
+						</tr>
+					</table>
+					<h4 class="MonsterAbilities">Abilities</h4>
+					<table class="ItemTable">
+						<tr>
+							<td>Dark Vision (12m)</td>
+						</tr>
+						<tr>
+							<td>Oportunity attacks have reach</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div id="Undead_Drake" class="MonsterWrapper" data-name="Undead Drake">
+			<h3>Undead Drake</h3>
+			<select onchange="changeLevel(this.parentNode)">
+				<option value="Level 1">Level 1</option>
+			</select>
+			<div class="MonsterLevelWrapper hidden" data-name="Level 1">
+				<div class="MonsterContent">
+					<h3 class="MonsterName">4/4/1/4/4</h3>
+					<table class="ItemTable">
+						<tr>
+							<td>Ratio</td>
+							<td>3</td>
+						</tr>
+						<tr>
+							<td>Health</td>
+							<td>55</td>
+						</tr>
+						<tr>
+							<td>Armor</td>
+							<td>10</td>
+						</tr>
+						<tr>
+							<td>Bite/Scratch</td>
+							<td>+3, 1d6 + 2	(Pierce/Slash)</td>
+						</tr>
+						<tr>
+							<td>Breath</td>
+							<td>+5, 1d6 + 1, 3x3 around target</td>
+						</tr>
+						<tr>
+							<td>Speed</td>
+							<td>3 meters</td>
+						</tr>
+						<tr>
+							<td>Behavior</td>
+							<td>Attack random targets above 50% Health, then move to another</td>
+						</tr>
+						<tr>
+							<td>Initiative</td>
+							<td>15, 10, 5</td>
+						</tr>
+					</table>
+					<h4 class="MonsterAbilities">Abilities</h4>
+					<table class="ItemTable">
+						<tr>
+							<td>Takes 3 turns.</td>
+						</tr>
+						<tr>
+							<td>Dark Vision (12m), immune to its element</td>
+						</tr>
+						<tr>
+							<td>Death Aura (passive): Whenever someone casts a spell, gets a token. At 3 tokens, silenced.</td>
+						</tr>
+						<tr>
+							<td>Tail Swipe (if flanked): DC13 Dex save or 1d6 + pushed 2 meters away + Cripple</td>
+						</tr>
+						<tr>
+							<td>Calling (beginning of encounter): Summons Skeletons (Alternative)</td>
+						</tr>
+						<tr>
+							<td>Devour Bones (if getting damaged): Devours a skeleton. Heals for 2d6.</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div id="Wight" class="MonsterWrapper" data-name="Wight">
 			<h3>Wight</h3>
 			<select onchange="changeLevel(this.parentNode)">
 				<option value="Level 1">Level 1</option>
+				<option value="Level 2">Level 2</option>
+				<option value="Level 3">Level 3</option>
 			</select>
 			<div class="MonsterLevelWrapper hidden" data-name="Level 1">
 				<div class="MonsterContent">
@@ -1568,6 +2478,10 @@
 							<td>Behavior</td>
 							<td>Attack random very targets, truly chaotic random attacks and moves</td>
 						</tr>
+						<tr>
+							<td>Initiative</td>
+							<td>7</td>
+						</tr>
 					</table>
 					<h4 class="MonsterAbilities">Abilities</h4>
 					<table class="ItemTable">
@@ -1586,8 +2500,103 @@
 					</table>
 				</div>
 			</div>
+			<div class="MonsterLevelWrapper hidden" data-name="Level 2">
+				<div class="MonsterContent">
+					<h3 class="MonsterName">0/5/1/5/2</h3>
+					<table class="ItemTable">
+						<tr>
+							<td>Health</td>
+							<td>14</td>
+						</tr>
+						<tr>
+							<td>Armor</td>
+							<td>11</td>
+						</tr>
+						<tr>
+							<td>Speed</td>
+							<td>6 meters</td>
+						</tr>
+						<tr>
+							<td>Spirit Touch</td>
+							<td>+3, 1d4 + 4, if hits, target loses 1 Max Health until long rest</td>
+						</tr>
+						<tr>
+							<td>Behavior</td>
+							<td>Attack random very targets, truly chaotic random attacks and moves</td>
+						</tr>
+						<tr>
+							<td>Initiative</td>
+							<td>7</td>
+						</tr>
+					</table>
+					<h4 class="MonsterAbilities">Abilities</h4>
+					<table class="ItemTable">
+						<tr>
+							<td>50% resistance to Pierce, Smash, Slash</td>
+						</tr>
+						<tr>
+							<td>Can walk through walls and surfaces</td>
+						</tr>
+						<tr>
+							<td>Dark Vision (12m), immune to Diseases, Poison</td>
+						</tr>
+						<tr>
+							<td>Death Wail (when dies): units within 3 meters DC12 Wisdom save or Silenced</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="MonsterLevelWrapper hidden" data-name="Level 3">
+				<div class="MonsterContent">
+					<h3 class="MonsterName">0/5/1/5/2</h3>
+					<table class="ItemTable">
+						<tr>
+							<td>Health</td>
+							<td>17</td>
+						</tr>
+						<tr>
+							<td>Armor</td>
+							<td>11</td>
+						</tr>
+						<tr>
+							<td>Speed</td>
+							<td>6 meters</td>
+						</tr>
+						<tr>
+							<td>Spirit Touch</td>
+							<td>+3, 1d4 + 5, if hits, target loses 2 Max Health until long rest</td>
+						</tr>
+						<tr>
+							<td>Behavior</td>
+							<td>Attack random very targets, truly chaotic random attacks and moves</td>
+						</tr>
+						<tr>
+							<td>Initiative</td>
+							<td>7</td>
+						</tr>
+					</table>
+					<h4 class="MonsterAbilities">Abilities</h4>
+					<table class="ItemTable">
+						<tr>
+							<td>50% resistance to Pierce, Smash, Slash</td>
+						</tr>
+						<tr>
+							<td>Can walk through walls and surfaces</td>
+						</tr>
+						<tr>
+							<td>Dark Vision (12m), immune to Diseases, Poison</td>
+						</tr>
+						<tr>
+							<td>Flash (whenever possible) (free): teleport 6 meters</td>
+						</tr>
+						<tr>
+							<td>Death Wail (when dies): units within 3 meters DC13 Wisdom save or Silenced</td>
+						</tr>
+					</table>
+				</div>
+			</div>
 		</div>
-		<div class="MonsterWrapper" data-name="Wolf">
+		<div id="Wolf" class="MonsterWrapper" data-name="Wolf">
 			<h3>Wolf</h3>
 			<select onchange="changeLevel(this.parentNode)">
 				<option value="Level 1">Level 1</option>
@@ -1616,6 +2625,10 @@
 							<td>Behavior</td>
 							<td>Surround party</td>
 						</tr>
+						<tr>
+							<td>Initiative</td>
+							<td>12</td>
+						</tr>
 					</table>
 					<h4 class="MonsterAbilities">Abilities</h4>
 					<table class="ItemTable">
@@ -1629,62 +2642,12 @@
 				</div>
 			</div>
 		</div>
-		<div class="MonsterWrapper" data-name="Wraith">
-			<h3>Wraith</h3>
-			<select onchange="changeLevel(this.parentNode)">
-				<option value="Level 3">Level 3</option>
-			</select>
-			<div class="MonsterLevelWrapper hidden" data-name="Level 3">
-				<div class="MonsterContent">
-					<h3 class="MonsterName">0/5/1/5/2</h3>
-					<table class="ItemTable">
-						<tr>
-							<td>Health</td>
-							<td>17</td>
-						</tr>
-						<tr>
-							<td>Armor</td>
-							<td>11</td>
-						</tr>
-						<tr>
-							<td>Speed</td>
-							<td>6 meters</td>
-						</tr>
-						<tr>
-							<td>Spirit Touch</td>
-							<td>+3, 1d4 + 5, if hits, target loses 2 Max Health until long rest</td>
-						</tr>
-						<tr>
-							<td>Behavior</td>
-							<td>Attack random very targets, truly chaotic random attacks and moves</td>
-						</tr>
-					</table>
-					<h4 class="MonsterAbilities">Abilities</h4>
-					<table class="ItemTable">
-						<tr>
-							<td>50% resistance to Pierce, Smash, Slash</td>
-						</tr>
-						<tr>
-							<td>Can walk through walls and surfaces</td>
-						</tr>
-						<tr>
-							<td>Dark Vision (12m), immune to Diseases, Poison</td>
-						</tr>
-						<tr>
-							<td>Flash (whenever possible) (free): teleport 6 meters</td>
-						</tr>
-						<tr>
-							<td>Death Wail (when dies): units within 3 meters DC13 Wisdom save or Silenced</td>
-						</tr>
-					</table>
-				</div>
-			</div>
-		</div>
-		<div class="MonsterWrapper" data-name="Zombie">
+		<div id="Zombie" class="MonsterWrapper" data-name="Zombie">
 			<h3>Zombie</h3>
 			<select onchange="changeLevel(this.parentNode)">
 				<option value="Level 1">Level 1</option>
 				<option value="Level 2">Level 2</option>
+				<option value="Level 3">Level 3</option>
 			</select>
 			<div class="MonsterLevelWrapper hidden" data-name="Level 1">
 				<div class="MonsterContent">
@@ -1713,6 +2676,10 @@
 						<tr>
 							<td>Behavior</td>
 							<td>Attack random targets, fight till death</td>
+						</tr>
+						<tr>
+							<td>Initiative</td>
+							<td>3</td>
 						</tr>
 					</table>
 					<h4 class="MonsterAbilities">Abilities</h4>
@@ -1763,6 +2730,10 @@
 							<td>Behavior</td>
 							<td>Attack random targets, fight till death</td>
 						</tr>
+						<tr>
+							<td>Initiative</td>
+							<td>3</td>
+						</tr>
 					</table>
 					<h4 class="MonsterAbilities">Abilities</h4>
 					<table class="ItemTable">
@@ -1784,12 +2755,6 @@
 					</table>
 				</div>
 			</div>
-		</div>
-		<div class="MonsterWrapper" data-name="Zombie Ruthless">
-			<h3>Zombie Ruthless</h3>
-			<select onchange="changeLevel(this.parentNode)">
-				<option value="Level 3">Level 3</option>
-			</select>
 			<div class="MonsterLevelWrapper hidden" data-name="Level 3">
 				<div class="MonsterContent">
 					<h3 class="MonsterName">0/-1/-1/-1/-1</h3>
@@ -1817,6 +2782,10 @@
 						<tr>
 							<td>Behavior</td>
 							<td>Attack random targets, fight till death</td>
+						</tr>
+						<tr>
+							<td>Initiative</td>
+							<td>3</td>
 						</tr>
 					</table>
 					<h4 class="MonsterAbilities">Abilities</h4>
