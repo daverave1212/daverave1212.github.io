@@ -52,7 +52,8 @@
 		button.setAttribute("data-function", key)
 		button.innerHTML = goodyName(key)
 		button.onclick = function(){
-			console.clear()
+			console.log('Generating...')
+			//console.clear()
 			for(let i = 1; i<=5; i++){
 				console.log(Names[this.getAttribute("data-function")]())
 			}
