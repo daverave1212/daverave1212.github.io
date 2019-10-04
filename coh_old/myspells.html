@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src = "Javascript/utils.js"></script>
+	<script src = "Javascript/scripts.js"></script>
+	<script src = "Javascript/Queue.src.js"></script>
+	<script src = "Javascript/Abilities.js"></script>
+	<script src = "Javascript/RaceAbilities.js"></script>
+	<script src = "Javascript/Races.js"></script>
+	<script src = "Javascript/Backgrounds.js"></script>
+	<script src = "Javascript/Items.js"></script>
+	<script src = "Javascript/Bundles.js"></script>
+	<script src = "Javascript/Player.js"></script>
+	<script src = "Javascript/Armor.js"></script>
+	<link rel="stylesheet" href="CSS/globalstyle.css">
+<style>
+
+@media screen and (orientation: portrait){
+	
+
+	#WindowWrapper{
+		padding-top: 0px;
+	}
+	#Window{
+		width: 100%;
+		height: auto;
+	}
+	
+	.AbilityIcon{
+		margin-top: 15px;
+		border: solid gray 3px;
+		border-radius: 10px;
+		width: 40%;
+		height: auto;
+	}
+	.AbilityWrapper{
+		padding-top: 15px;
+		padding-bottom: 15px;
+		margin-bottom: 15px;
+		border: solid gray 3px;
+		border-radius: 10px;
+	}
+	.AbilityWrapperRight{
+		font-size: 150%;
+	}
+	
+}
+
+</style>
+</head>
+<!-- 825px height -->
+
+<body>
+<div id = "Wrapper">
+	<div id = "Navigation"></div>
+	<div id = "WindowWrapper"> <!-- Middle of the page -->
+		<div id = "Window" class = "Bordered"> <!-- Smaller panel -->
+			<img id = "Settings" onclick = "Scripts.showSettings()" class = "SettingsButton" src = "Images/Interface/settings.png">
+			<div id = "SettingsWrapper">
+				<div id = "SettingsPane">
+				
+				</div>
+			</div>
+			<!-- Window Start -->
+			<div id = "AbilityHolder">
+				
+			</div>
+			<!-- Window End -->
+		</div>
+	</div>
+</div>
+</body>
+<script>
+
+	var AbilityElements = {};
+	
+	function toggleAbility(){
+		console.log(this.getAttribute("used"));
+		if(this.getAttribute("used") == "yes"){
+			this.style.filter = "none";
+			this.setAttribute("used", "no");
+		} else{
+			 this.style.filter = "grayscale(80%) opacity(30%)";
+			 this.setAttribute("used", "yes");
+		}}
+		
+	function setupAbilityElement(thisAbility){
+		var thisAbilityElement = createAbilityElement(thisAbility);
+		thisAbilityElement.setAttribute("used", "no")
+		thisAbilityElement.onclick = toggleAbility;
+		get("AbilityHolder").appendChild(thisAbilityElement);
+	}
+
+	function loadAbilitiesFromBundle(bundle){
+		if (bundle == undefined) return;
+		print("Bundle " + bundle + " not undefined. Loading...");
+		for(var i = 0; i<bundle.abilities.length; i++){
+			setupAbilityElement(bundle.abilities[i]);}}
+	
+	function loadAbilities(){
+		var raceAbilities = Races[Player.race].abilities;
+		for(var i = 0; i<raceAbilities.length; i++){
+			var thisAbility = raceAbilities[i];
+			setupAbilityElement(thisAbility);}
+		var backgroundAbilities = Backgrounds[Player.background].abilities;
+		for(var i = 0; i<backgroundAbilities.length; i++){
+			var thisAbility = backgroundAbilities[i];
+			setupAbilityElement(thisAbility);}
+		loadAbilitiesFromBundle(Bundles[Player.bundle1]);
+		loadAbilitiesFromBundle(Bundles[Player.bundle2]);
+		loadAbilitiesFromBundle(Bundles[Player.bundle3]);
+		loadAbilitiesFromBundle(Bundles[Player.bundle5]);
+		loadAbilitiesFromBundle(Bundles[Player.bundle7]);
+		loadAbilitiesFromBundle(Bundles[Player.bundle9]);
+		loadAbilitiesFromBundle(Bundles[Player.bundle11]);
+		loadAbilitiesFromBundle(Bundles[Player.bundle13]);
+		loadAbilitiesFromBundle(Bundles[Player.bundle15]);
+		loadAbilitiesFromBundle(Bundles[Player.bundle17]);
+		loadAbilitiesFromBundle(Bundles[Player.bundle19]);
+		// TO DO: for each bundle
+
+	}
+	
+	// Initializaiton
+	loadParameters();
+	Player.loadFromParameters();
+	loadAbilities();
+
+
+</script>
+</html>
+
+
+
+
+

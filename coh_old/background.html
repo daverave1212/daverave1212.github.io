@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src = "Javascript/utils.js"></script>
+	<script src = "Javascript/scripts.js"></script>
+	<script src = "Javascript/Queue.src.js"></script>
+	<script src = "Javascript/Abilities.js"></script>
+	<script src = "Javascript/RaceAbilities.js"></script>
+	<script src = "Javascript/Races.js"></script>
+	<script src = "Javascript/Backgrounds.js"></script>
+	<script src = "Javascript/Items.js"></script>
+	<link rel="stylesheet" href="CSS/globalstyle.css">
+</head>
+<!-- 825px height -->
+<style>
+
+	#WindowLeft{
+		width: 50%;
+		height: 90%;
+		display: inline-block;
+		float: left;
+		padding: 3%;
+		//border: solid yellow;
+	}
+	#BackgroundsListPane{
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.5);
+		overflow-y: scroll;
+	}
+	.BackgroundGlow{
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0px;
+		z-index: 1000;
+		-webkit-box-shadow: inset 0px 0px 18px 0px rgba(255,234,0,1);
+		-moz-box-shadow: inset 0px 0px 18px 0px rgba(255,234,0,1);
+		box-shadow: inset 0px 0px 18px 0px rgba(255,234,0,1);
+	}
+	#WindowRight{
+		width: 49%;
+		height: 90%;
+		display: inline-block;
+		float: right;
+		padding: 3%;
+	}
+	.FillerDiv{
+		height: 5%;
+		width: 100%;
+	}
+	#RightTop{
+		width: 100%;
+		height: 25%;
+		background-color: rgba(0, 0, 0, 0.5);
+	}
+	#RightTopUpper{
+		width: 100%;
+		height: 25%
+	}
+	#NameAndTitleWrapper{
+		height: 100%;
+		width: 74%;
+		display: inline-block;
+		float: left;
+	}
+	#Name{
+		font-size: 200%;
+		padding-left: 7px;
+	}
+	#Title{
+		font-size: 100%;
+		padding-left: 7px;
+	}
+	#GoldWrapper{
+		height: 100%;
+		width: 25%;
+		float: left;
+		display: inline-block;
+	}
+	#Gold{
+		width: 70%;
+		height: 100%;
+		display: inline-block;
+		float: left;
+		font-size: 200%;
+		line-height: 200%;
+		text-align: right;
+	}
+	#GoldImage{
+		width: 24%;
+		display: inline-block;
+		float: right;
+		margin-top: 25px;
+	}
+	#RightTopLower{
+		width: 100%;
+		height: 75%;
+		padding: 7px;
+		padding-top: 25px;
+	}
+	#RightMid{
+		width: 100%;
+		height: 15%;
+		padding: 7px;
+		background-color: rgba(0, 0, 0, 0.5);
+	}
+	#RightBot{
+		width: 100%;
+		height: 50%;
+		padding: 7px;
+		background-color: rgba(0, 0, 0, 0.5);
+	}
+	#Abilities{
+		width: 100%;
+		height: 59%;
+	}
+	#Items{
+		width: 100%;
+		margin-top: 3%;
+		height: 40%;
+		//float: bottom;
+	}
+	#NextButton{
+		bottom: 20px;
+		right: 20px;
+	}
+	#BackButton{
+		bottom: 20px;
+		left: 20px;
+	}
+
+	
+</style>
+<body>
+<div id = "Wrapper">
+	<div id = "Navigation"></div>
+	<div id = "WindowWrapper"> <!-- Middle of the page -->
+		<div id = "Window" class = "Bordered"> <!-- Smaller panel -->
+			<img id = "Settings" onclick = "Scripts.showSettings()" class = "SettingsButton" src = "Images/Interface/settings.png">
+			<div id = "SettingsWrapper">
+				<div id = "SettingsPane">
+					
+				</div>
+			</div>
+			<!-- Window Start -->
+			<div id = "WindowLeft">
+				<div id = "BackgroundsListPane" class = "Bordered Scrollable">
+					<!-- Backgrounds (class=BackgroundWrapper) get generated here -->
+				</div>
+			</div>
+			<div id = "WindowRight">
+				<div id = "RightTop" class = "Bordered">
+					<div id = "RightTopUpper">
+						<div id = "NameAndTitleWrapper">
+							<div id = "Name"></div>
+							<div id = "Title"></div>
+						</div>
+						<div id = "GoldWrapper">
+							<div id = "Gold"></div>
+							<img id = "GoldImage" src = "http://www.pngmart.com/files/3/Coins-PNG-Transparent-Image.png">
+						</div>
+					</div>
+					<div id = "RightTopLower">
+						<p id = "Description"></p>
+					</div>
+				</div>
+				<div class = "FillerDiv"></div>
+				<div id = "RightMid" class = "Bordered">
+					<p id = "Bonuses"></p>
+				</div>
+				<div class = "FillerDiv"></div>
+				<div id = "RightBot" class = "Bordered">
+					<div id = "Abilities" class = "Scrollable"></div>
+					<div id = "Items" class = "Scrollable"></div>
+				</div>
+			</div>
+			<!-- Window End -->
+			<div id = "NextButton" onclick = "next()" class = "Button">Next</div>
+			<div id = "BackButton" onclick = "back()" class = "Button">Back</div>
+		</div>
+	</div>
+</div>
+</body>
+<script>
+
+	var SelectedBackground = null;
+
+	function initializeBackgrounds(){
+		for (var key in Backgrounds) {	// for each property/ability in the Backgrounds object...
+			if (!Backgrounds.hasOwnProperty(key)) continue;
+			var thisBackground = Backgrounds[key];
+			var backgroundElement = createBackgroundElement(thisBackground);
+			backgroundElement.onclick = function(){
+				console.log(this.getAttribute("name"));
+				backgroundClick(Backgrounds[this.getAttribute("name")]); }
+			thisBackground.backgroundElement = backgroundElement;
+			get("BackgroundsListPane").appendChild(backgroundElement);}}
+	
+	function backgroundClick(backgroundObject){
+		if(SelectedBackground != null){
+			removeChildWithClass(SelectedBackground.backgroundElement, "BackgroundGlow");}
+		SelectedBackground = backgroundObject;
+		SelectedBackground.backgroundElement.appendChild(createElementWithClass("div", "BackgroundGlow"));
+		/* Loading data from background object into html */
+		get("Name").innerHTML = SelectedBackground.name;
+		get("Title").innerHTML = SelectedBackground.title;
+		get("Description").innerHTML = SelectedBackground.longDesc;
+		get("Bonuses").innerHTML = "You are better at: ";
+		get("Bonuses").innerHTML += SelectedBackground.skillBonuses[0];
+		for(var i = 1; i<SelectedBackground.skillBonuses.length; i++){
+			if(i < SelectedBackground.skillBonuses.length - 1) get("Bonuses").innerHTML += ", ";
+			else get("Bonuses").innerHTML += " and ";
+			get("Bonuses").innerHTML += SelectedBackground.skillBonuses[i];}
+		get("Bonuses").innerHTML += "<br>You are worse at: ";
+		get("Bonuses").innerHTML += SelectedBackground.skillMinuses[0];
+		for(var i = 1; i<SelectedBackground.skillMinuses.length; i++){
+			if(i < SelectedBackground.skillMinuses.length - 1) get("Bonuses").innerHTML += ", ";
+			else get("Bonuses").innerHTML += " and ";
+			get("Bonuses").innerHTML += SelectedBackground.skillMinuses[i];}
+		get("Gold").innerHTML = SelectedBackground.gold;
+		removeAllChildren(get("Abilities"));
+		for(var i = 0; i<SelectedBackground.abilities.length; i++){
+			var thisAbilityElement = createAbilityElement(SelectedBackground.abilities[i]);
+			get("Abilities").appendChild(thisAbilityElement);}
+		removeAllChildren(get("Items"));
+		get("Items").appendChild(createItemTable(SelectedBackground.items));
+	}
+	
+	function next(){
+		setParameter("background", SelectedBackground.name);
+		window.location.href = "image.html?" + parseParameters();
+	}
+	
+	function back(){
+		setParameter("background", SelectedBackground.name);
+		window.location.href = "race.html?" + parseParameters();
+	}
+	
+	function setFromParameters(){
+		if(! ("background" in Parameters)) return;
+	}
+	// On start
+	initializeBackgrounds();
+	
+	loadParameters();
+
+
+</script>
+</html>
+
+
+
+
+
