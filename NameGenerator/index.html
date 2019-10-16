@@ -108,8 +108,10 @@ function createButton(name){
 	let b = createElement('a')
 	b.classList.add('GenerateButton')
 	b.setAttribute('data-func', name)
-	b.innerHTML = name[0].toUpperCase() + name.slice(1, name.length)
-	b.addEventListener('click', function(){
+        let innerHTML = name[0].toUpperCase() + name.slice(1, name.length)
+	innerHTML = functionNameToString(innerHTML)
+        b.innerHTML = innerHTML
+        b.addEventListener('click', function(){
 		generate(this.getAttribute('data-func'))
 	})
 	return b
