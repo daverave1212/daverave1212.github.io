@@ -172,6 +172,11 @@
 		return "\"" + str + "\"";
 	}
 	
+        function functionNameToString(str){
+                let arr = str.split(/(?=[A-Z])/)
+                return arr.join(' ')
+        }
+
 	function stringToFunctionName(str){
 		var words = str.split(" ");
 		var returnedString = "";
