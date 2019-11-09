@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+</head>
+<style>
+    @font-face {
+        font-family: 'AndraT';
+        src: url('AndraT-Regular.ttf');
+    }
+
+    input, p{
+        width: 50%;
+        padding: 15px;
+        font-size: 225%;
+        margin: auto;
+        display: block;
+        text-align: center;
+    }
+    #Text {
+        font-family: 'AndraT';
+        letter-spacing: -6px;
+        word-wrap: break-word;
+        -webkit-transform:scale(1,2); /* Safari and Chrome */
+        -moz-transform:scale(1,2); /* Firefox */
+        -ms-transform:scale(1,2); /* IE 9 */
+        -o-transform:scale(1,2); /* Opera */
+        transform:scale(1,2); /* W3C */
+    }
+</style>
+<body>
+
+    <input onkeyup="updateP(this.value)"/>
+    <br />
+    <hr />
+    <br />
+    <p id="Text">
+        ASDASDASDAS
+    </p>
+
+    <script>
+        function updateP(val){
+            val = val.toUpperCase().split(' ').join('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;')
+            document.getElementById('Text').innerHTML = val
+        }
+    </script>
+</body>
+</html>
