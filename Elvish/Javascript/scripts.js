@@ -10,8 +10,7 @@ Letters = {
 	'q' : '',
 	'w' : 'ela',
 	'y' : 'iy',
-	'k' : 'ce',
-	''
+	'k' : 'ce'
 }
 
 Pronouns = {
