@@ -8,8 +8,10 @@ Letters = {
 	'r' : 'l',
 	'p' : 'f',
 	'q' : '',
-	'w' : 'l',
+	'w' : 'ela',
 	'y' : 'iy',
+	'k' : 'ce',
+	''
 }
 
 Pronouns = {
@@ -43,15 +45,15 @@ SyllablesPriority = {
 	'ion' : 'ide',
 	'ise' : 'al',
 	'ing' : 'eth',
-	'ish' : 'ana',
+	'ish' : 'ore',
 	'ant' : 'ath',
 	'ent' : '\'mre',
 	'th' : 'sh',
 	'sh' : 's',
 	'ce' : 'thi',
-	'ci' : 'the',
+	'ci' : 'vo',
 	'ge' : 'th\'',
-	'on' : 'el',
+	'on' : 'ele',
 	'ed' : 'ede',
 	'nd' : 'la',
 }
@@ -66,12 +68,12 @@ Syllables = {
 	'my' : 'nal',
 	'dy' : 'reth',
 	'ry' : 'lath',
-	'al' : 'al',
-	'an' : 'ein',
+	'al' : 'ale',
+	'an' : 'eina',
 	'aw' : 'o',
-	'in' : 'ith',
+	'in' : 'ithe',
 	'is' : 'em',
-	'ar' : 'ar',
+	'ar' : 'ara',
 	'as' : 'am',
 	'ow' : 'ari',
 	'wh' : 'v\'',
@@ -92,21 +94,20 @@ Syllables = {
 	'ey' : 'ala',
 	'es' : 'atha',
 	'rt' : 'l',
-	'bl' : 'fet',
+	'bl' : 'e',
 	'nt' : 'la',
-	'nk' : 'ptha',
-	'ng' : 'leth',
-	'pt' : 'd',
-	'st' : 's',
-	'ur' : 'oth',
+	'nk' : 'ella',
+	'ng' : 'lethe',
+	'pt' : 'de',
+	'st' : 'isi',
+	'ur' : 'othe',
 	'to' : 'dae',
 	'il' : 'aed',
-	'sc' : 'hl',
-	'sp' : 'hef',
-	'gn' : 'nd',
+	'sc' : 'ate',
+	'sp' : 'he',
+	'gn' : 'ande',
 	'gh' : 'th',
-	'gl' : 'nth'
-
+	'gl' : 'enthe'
 }
 
 
@@ -139,7 +140,7 @@ function splitWordIntoSyllablesPrio(word){
 		}
 	}
 	print(start + ' - ' + word.length )
-	if(start < word.length - 1){
+	if(start <= word.length - 1){
 		syls = [...syls, ...splitWordIntoSyllables(word.substring(start, word.length))]
 	}
 	return syls
@@ -195,5 +196,5 @@ function splitSentence(sentence){
 	return finalWords.map(syls => syls.join('')).join(' ')
 }
 
-s = splitWordIntoSyllablesPrio('the')
+s = splitWordIntoSyllablesPrio('a')
 console.log(s)
