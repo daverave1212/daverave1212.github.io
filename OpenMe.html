@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ro">
+    <head>	
+		<style>
+			* { box-sizing: border-box; }
+			
+			.hidden{display:none;}
+			
+			.video-background {
+				background: #000;
+				position: fixed;
+				top: 0; right: 0; bottom: 0; left: 0;
+				z-index: -99;
+			}
+			
+			.video-foreground,.video-background iframe {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				pointer-events: none;
+			}
+			#stalin{
+				position: absolute;
+				margin: auto;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+			}
+			@-webkit-keyframes stretch {
+				0%{width:10%;}
+				100%{width:40%;}
+			}
+			@-webkit-keyframes stretch-rev {
+				0%{width:40%;}
+				100%{width:10%;}
+			}
+			#ussrlogo{
+				position: absolute;
+				margin: auto;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				animation: stretch 4s infinite;	
+			}
+			#ussrlogorev{
+				position: absolute;
+				margin: auto;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				animation: stretch-rev 4s infinite;	
+				
+			}
+			
+		</style>
+		
+    </head>
+	
+    <body>
+		
+		<div id="vd" class="video-background">
+			<div id="vid" class="video-foreground">
+				<iframe id="bg" src="https://www.youtube.com/embed/qLcc19mt4eA?autoplay=1&showinfo=0&controls=0&mute=1&loop=1&playlist=PLvDpt7WRYAI7lQ-h9jqSuf31jY9M_HkLN" frameborder="0" allowfullscreen></iframe>
+			</div>
+		</div>
+		
+		<div id="ussr" >
+			<img id="ussrlogo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Emblem_USSR_1.svg/2000px-Emblem_USSR_1.svg.png" width="30%">
+			<img id="ussrlogorev" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Emblem_USSR_1.svg/2000px-Emblem_USSR_1.svg.png" width="30%">
+		</div>
+		
+		<div id="stallin">
+			<img id="stalin" src="https://i.imgur.com/OexLKxa.jpg">
+			
+		</div>
+		
+		
+		<audio id="memesOfProduction" src="https://www.marxists.org/history/ussr/sounds/mp3/soviet-anthem.mp3" >
+		
+
+		
+		<script>
+		
+			
+			document.getElementById("vd").className="hidden";
+			document.getElementById("vid").className="hidden";
+			document.getElementById("ussrlogo").className="hidden";
+			document.getElementById("ussrlogorev").className="hidden";
+			var thissound=document.getElementById("memesOfProduction");
+			thissound.pause();
+			document.getElementById("stalin").onmouseover=
+			function(event)
+			{
+				document.getElementById("stalin").src="https://i.imgur.com/vKB2Gwn.png";
+				var thissound=document.getElementById("memesOfProduction");
+				thissound.play();
+				thissound.volume=0.2;
+				document.getElementById("vd").className="video-background";
+				document.getElementById("vid").className="video-foreground";
+				document.getElementById("ussrlogo").className="show";
+				document.getElementById("ussrlogorev").className="show";
+			}
+			document.getElementById("stalin").onmouseout=
+			function(event)
+			{
+				document.getElementById("stalin").src="https://i.imgur.com/OexLKxa.jpg";
+				var thissound=document.getElementById("memesOfProduction");
+				thissound.pause();
+				document.getElementById("vd").className="hidden";
+				document.getElementById("vid").className="hidden";
+				document.getElementById("ussrlogo").className="hidden";
+				document.getElementById("ussrlogorev").className="hidden";
+			}
+		</script>
+    </body>
+	
+</html>
