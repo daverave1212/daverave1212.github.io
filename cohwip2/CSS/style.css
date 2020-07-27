@@ -1,0 +1,205 @@
+
+@font-face {
+    font-family: defaultFont;
+    src: url(Fonts/iskpota.ttf);
+}
+
+body {
+    background-color: var(--background-color);
+}
+
+h1, h2, h3, h4, p, li, .btn, a {
+    font-family: defaultFont;
+}
+p, a, .btn, li {
+    font-size: var(--normal-font-size);
+}
+p {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+h1 {
+    font-size: var(--title-font-size);
+}
+h2 {
+    font-size: calc(var(--title-font-size) * 0.8);
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    background-color: var(--color-dark);
+}
+.dropdown-content a {
+    padding: var(--padding-normal) !important;
+    font-size: var(--normal-font-size) !important;
+    width: 100%;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+
+
+/* -------------------- Specifics -------------------- */
+
+.hr-half {
+    width: 300px;
+    margin-left: 0px;
+    margin-top: 0px;
+}
+.class-icon {
+    height: 32px;
+    margin-bottom: calc(var(--title-font-size) - 40px);   /* This is fine-tuned to center perfectly vertically */
+    margin-right: calc((var(--padding-normal) / 2) + 4px);
+}
+.title-icon {
+    height: 24px;
+    margin-bottom: 12px;   /* This is fine-tuned to center perfectly vertically */
+    margin-right: calc((var(--padding-normal) / 2) + 4px);
+}
+.text-symbol {
+    width: var(--text-symbol-width);
+    margin-bottom: 6px;
+}
+
+.shadow-dropper {
+    -webkit-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.55);
+    -moz-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.55);
+    box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.55);
+}
+
+nav .btn, nav a {
+    color: var(--menu-font-color-inactive) !important;
+}
+nav .btn:hover, nav a:hover {
+    color: var(--menu-font-color-active) !important;
+}
+
+#Top-Nav-Wrapper {
+    width: 100%;
+    height: var(--top-nav-height);
+}
+#Top-Nav {
+    border-bottom: solid 1px var(--color-gold);
+    background-color: var(--color-dark);
+    width: 100%;
+    position: fixed;
+}
+.navbar-brand img{
+    position: absolute;
+    bottom: 0px;
+    height: var(--top-nav-height);
+}
+.navbar-brand span {
+    margin-left: 80px;
+}
+.nav-item {
+    margin-right: var(--padding-normal);
+}
+
+
+/* -------------------- Background ----------------------- */
+
+.background-image {
+    z-index: -9999;
+    height: 100vh;
+    position: fixed;
+}
+.top-left {
+    left: 0px;
+    top: 0px;
+    border-right: solid var(--color-dark) 1px;
+}
+.top-right {
+    top: 0px;
+    right: 0px;
+    border-left: solid var(--color-dark) 1px;
+}
+
+/* -------------------- Index CSS ----------------------- */
+
+#Page-Body {
+    max-width: var(--max-page-content-width);
+    display: flex;
+    margin: auto;
+    padding: var(--padding-normal);
+    padding-top: calc(var(--padding-normal) * 2);
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+
+#Sidebar-Nav-Wrapper {
+    width: var(--sidebar-width);
+}
+#Sidebar-Nav {
+    width: var(--sidebar-width);
+    border: solid gray 1px;
+    background-color: var(--color-dark);
+    padding: var(--padding-normal);
+    position: fixed;
+}
+.sidebar-header {
+    border-left: solid var(--color-gold) 3px;
+    padding-left: var(--padding-normal);
+    font-size: var(--normal-font-size);
+}
+#Sidebar-Nav li {
+    padding-left: calc(var(--padding-normal) + 3px);
+}
+#Sidebar-Nav ul a {
+    color: var(--menu-font-color-inactive) !important;
+    text-decoration: none;
+}
+#Sidebar-Nav ul a:hover {
+    color: var(--menu-font-color-active) !important;
+}
+
+#Page-Content {
+    flex: 1;
+    max-width: 925px;
+    padding: var(--padding-normal)
+}
+
+/* --------------------- Spell Lists -------------------- */
+
+.class-spell-list, .class-spell-list ul {
+    list-style-type: none;
+    list-style-position: inside;
+    width: 250px;
+    background-color: var(--spell-background-color);
+    padding: 0px;
+}
+
+.class-spell-lists li {
+    margin: 0px;
+}
+.class-spell-list-head {
+    border: solid black 1px !important;
+    background-color: var(--color-charge);
+    padding: 4px;
+    padding-left: 6px;
+}
+.class-spell-list-head:hover {
+    opacity: 0.7;
+}
+.class-spell-list-head span {
+    opacity: 0.15;
+}
+.class-spell-list-head a {
+    color: black !important;
+}
+.class-spell-list-head a:hover {
+    text-decoration: none;
+}
+.class-spell-list ul li {
+    border: solid black 1px;
+    padding: 4px;
+    padding-left: 6px;
+    margin-top: -1px;
+}
