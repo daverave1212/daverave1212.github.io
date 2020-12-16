@@ -1,9 +1,190 @@
 	var Names = {};
 
+	var buttons = {
+		'Characters' 	: [
+			'darkSoulsBoss',
+			'dwarfFemale',
+			'dwarfSurname',
+			'dwarfMale',
+			'elfFemale',
+			'elfMale',
+			'gnomeSurname',
+			'goblinFemale',
+			'goblinSurname',
+			'goblinMale',
+			'humanMale',
+			'humanMale2',
+			'humanMale1',
+			'humanSurname',
+			'humanFemale',
+			'nordicMale',
+			'orcMale',
+			'pandarenSurname',
+			'pandarenFemale',
+			'pandarenMale',
+			'bandit',
+			'ogre',
+			'ogreTribe',
+			'succubus'
+
+		],
+		'Locations'		: [
+			'city',
+			'tavern',
+			'village',
+			'water',
+			'world',
+			'zone',
+		],
+		'Monsters'		: [
+			'shark',
+			'boar'
+		],
+		'Misc'			: [
+			'quest',
+			'upgrade',
+			'spellRogue',
+			'spellHoly',
+			'spellModifier',
+			'spellWarlock',
+			'spellMage',
+			'mace',
+			'sword',
+			'metalCommon',
+			'metalFormal',
+			'plantFantas',
+			'plantCommon',
+			'plantFormal',
+			'goodOrganization',
+			'cult',
+			'thievesGuild',
+		],
+		'Modern'	: [
+			'trapper',
+			'cookie',
+			'eSportsTeam',
+			'jew',
+			'cookie',
+			'eSportsTeam',
+			'jew',
+			'letter',
+			'letterOrNumber',
+			'redneck',
+			'pimp',
+			'programmingLanguage',
+			'videoGame',
+			'reggaeSinger'
+		],
+
+	}
+
 	Names.blank			= function(){
 		var q = randomOf();
 		var w = randomOf();
 		return q + w;
+	}
+
+	Names.darkSoulsBoss		= function(){
+		var how = randomOf(
+			'White',
+			'Lone',
+			'Undead',
+			'Great',
+			'Crystal',
+			'Old',
+			'Last',
+			'First',
+			'Lost',
+			'Silver',
+			'Rotten',
+			'Vengeful',
+			'Phantom',
+			'Imprisoned'
+		);
+		var what = randomOf(
+			'Knight',
+			'Beast',
+			'Dragon',
+			'Champion',
+			'Giant',
+			'Lord',
+			'Demon',
+			'Guardian',
+			'Watcher',
+			'Sentry',
+			'Ghoul',
+			'Eater',
+			'Drake',
+			'Warden',
+			'Wraith',
+			'Sage',
+			'Corvian',
+			'Judicator',
+			'Priest',
+			'Spirit',
+			'Shade',
+			'Wolf',
+		);
+		var ofWhat = randomOf(
+			'of Ash',
+			'of Farron',
+			'of Anor Londo',
+			'of the Boreal Valley',
+			'of Carthus',
+			'of the First Flame',
+			'of the Deep',
+			'of Oolacile',
+			'of Lothric Castle',
+			'of Drangleic',
+			'of Astora',
+			'of Catarina',
+			'of the Great Hollow',
+			'of the Painted World',
+			'of Lost Izalith',
+			'of the Harvest Valley',
+			'of the Undead Crypt',
+			'of the Dragon Aerie',
+			'of the Grand Cathedral',
+			'of Irithyll',
+			'of the Ringed City'
+		)
+		var locationHow = randomOf(
+			'Shallow',
+			'White',
+			'High',
+			'Ashen',
+			'King\'s',
+			'Profaned',
+			'Untended',
+			'Consumed',
+			'Hollow',
+			'Deep',
+			'Burried',
+			'Cursed',
+			'Great',
+			'Iron',
+			'Sunken',
+			'Black'
+		)
+		var location = randomOf(
+			'Grave',
+			'Cemetery',
+			'Wall',
+			'Keep',
+			'Cathedral',
+			'Valley',
+			'King',
+			'Lord',
+			'Bearer',
+			'Cinder',
+			'Flame',
+			'Shrine',
+			'Depths',
+			'Garden',
+			'Circle',
+			'Church',
+		)
+		return how + ' ' + what + ' ' + randomOf(ofWhat, 'of the ' + locationHow + ' ' + location)
 	}
 
 	Names.trapper			= function(){
@@ -12,18 +193,16 @@
 			"Brotha",
 			"Gucci",
 			"Young",
-			
+
 		);
 		var w = randomOf("Pump",
 			"Gucci",
 			"Ooh"
-		
+
 		);
 		return q + w;
 	}
-	
 
-	
 	Names.dwarfFemale	= function(){
 		var q = randomOf(
 			"Hel",
@@ -674,7 +853,7 @@
 			"Tanner ",
 			"Rowe ");
 		return q;
-	}	
+	}
 	Names.humanFemale	= function(){
 		var q = randomOf(
 			"Adela ",
@@ -903,7 +1082,7 @@
 		var w = randomOf(
 				"La",
 				"Sa",
-				"Na", 
+				"Na",
 				"Li",
 				"Wa",
 				"Ya",
@@ -1011,7 +1190,7 @@
 				"Chi");
 		return randomOf(q, q + lowercaseFirstLetter(w), q + " " + w);}
 
-		
+
 
 
 	Names.bandit		= function(){
@@ -1244,7 +1423,7 @@
 				"maw");
 		return q + w;
 	}
-	
+
 
 	Names.quest			= function(){
 		var q = randomOf("A Peasant's ",
@@ -1600,7 +1779,7 @@
 			b + y,
 			h + n,
 			randomOf(u + "and " + j, u + m));
-	}	
+	}
 	Names.upgrade		= function(){
 		var q = randomOf(
 			"Improved ",
@@ -2116,7 +2295,7 @@
 				"truffle",
 				"chips");
 		return q + w;
-	}	
+	}
 	Names.eSportsTeam		= function(){
 		var q = randomOf("Xplosion",
 				"Vampire",
@@ -2675,7 +2854,7 @@
 		return q + w;
 	}
 
-	
+
 	Names.metalCommon	= function(){
 		var q = randomOf(
 			"Frost",
@@ -3131,8 +3310,8 @@
 		return q + w;
 	}
 
-	
-	
+
+
 	Names.city			= function(){
 		var q = randomOf(
 			"Dragon",
@@ -3234,8 +3413,8 @@
 			"dorne",
 			"wich");
 		return q + w;
-			
-	
+
+
 	}
 	Names.tavern		= function(){
 		var q = randomOf("The Sleeping ",
@@ -3675,7 +3854,38 @@
 			case 0: w = ""; break;
 		}
 		return randomOf("", "The ") + q + " " + w;
-	}	
-	
+	}
 
+	Names.reggaeSinger = function() {
+		let q1 = randomOf(
+			'Jah',
+			'Face',
+			'Culture',
+			'Roots',
+			'Masta',
+			'Alpha',
+			'Dub',
+			'Black',
+			'Zion',
+			'Irie',
+			'Steppa',
+			'Style',
+			'Sound',
+		)
+		let w2 = randomOf(
+			'Culture',
+			'Roots',
+			'Syndicate',
+			'Masta',
+			'B',
+			'Dub',
+			'Zion',
+			'Foundation',
+			'Patrol',
+			'Nation',
+			'Zone',
+			'Steppa',
+			'Style'
+		)
 
+	}
