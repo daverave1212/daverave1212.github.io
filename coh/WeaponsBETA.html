@@ -1,0 +1,563 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="shortcut icon" type="image/png" href="favicon.png"/>
+    <title>Call of Heroes</title>
+</head>
+<body>
+<div class = "Navigation bordered">
+	<div class = "NavigationItem">
+		Classes
+		<div class = "NavigationDropdownContent bordered">
+			<div class = "NavAWrapper bordered">
+				<a href="Cleric.html">Cleric</a>
+			</div>
+			<div class = "NavAWrapper bordered">
+				<a href="Druid.html">Druid</a>
+			</div>
+			<div class = "NavAWrapper bordered">
+				<a href="Hunter.html">Hunter</a>
+			</div>
+			<div class = "NavAWrapper bordered">
+				<a href="Mage.html">Mage</a>
+			</div>
+			<div class = "NavAWrapper bordered">
+				<a href="Paladin.html">Paladin</a>
+			</div>
+			<div class = "NavAWrapper bordered">
+				<a href="Rogue.html">Rogue</a>
+			</div>
+			<div class = "NavAWrapper bordered">
+				<a href="Shaman.html">Shaman</a>
+			</div>
+			<div class = "NavAWrapper bordered">
+				<a href="Warlock.html">Warlock</a>
+			</div>
+			<div class = "NavAWrapper bordered">
+				<a href="Warrior.html">Warrior</a>
+			</div>
+			<div class = "NavAWrapper bordered locked">
+				<a href="#">Bard</a>
+			</div>
+			<div class = "NavAWrapper bordered locked">
+				<a href="#">Monk</a>
+			</div>
+			<div class = "NavAWrapper bordered locked">
+				<a href="#">Necromancer</a>
+			</div>
+			<div class = "NavAWrapper bordered locked">
+				<a href="#">Free Hero</a>
+			</div>
+		</div>
+	</div>
+	<div class = "NavigationItem">
+		Races
+		<div class = "NavigationDropdownContent bordered">
+			<div class = "NavAWrapper bordered">
+				<a href="Bertle.html">Bertle</a>
+			</div>
+			<div class = "NavAWrapper bordered">
+				<a href="Dragonborn.html">Dragonborn</a>
+			</div>
+			<div class = "NavAWrapper bordered">
+				<a href="Dwarf.html">Dwarf</a>
+			</div>
+			<div class = "NavAWrapper bordered">
+				<a href="Gnome.html">Gnome</a>
+			</div>
+			<div class = "NavAWrapper bordered">
+				<a href="Hollow.html">Hollow</a>
+			</div>
+			<div class = "NavAWrapper bordered">
+				<a href="Human.html">Human</a>
+			</div>
+			<div class = "NavAWrapper bordered">
+				<a href="Elf.html">Elf</a>
+			</div>
+			<div class = "NavAWrapper bordered">
+				<a href="Orc.html">Orc</a>
+			</div>
+		</div>
+	</div>
+	<div class = "NavigationItem">
+		Items
+		<div class = "NavigationDropdownContent bordered">
+			<div class = "NavAWrapper bordered">
+				<a href="Prices.html">Shop</a>
+			</div>
+			<div class = "NavAWrapper bordered">
+				<a href="Weapons.html">Weapons</a>
+			</div>
+			<div class = "NavAWrapper bordered">
+				<a href="Armors.html">Armors</a>
+			</div>
+		</div>
+	</div>
+	<div class = "NavigationItem">
+		<a href = "Backgrounds.html">Backgrounds</a>
+	</div>
+	<div class = "NavigationItem">
+		<a href = "Spells.html">Spells</a>
+	</div>
+	<div class = "NavigationItem">
+		<a href = "CharacterCreationHelper.html">Stat Calculator</a>
+	</div>
+</div>
+<div class = "Window bordered-full">
+
+
+<div class="Gear">
+	<div class="SpellIconWrapper">
+		<img class="SpellIcon" src="Icons/Punch.png">
+	</div>
+	<div class="SpellText">
+		<h3 class="SpellTitle GearTitle">Punch (<span class="GearTitleWhiteText">Fortitude or Dexterity</span>)</h3>
+		<p class="GearGrayText">1-Handed Melee, Special</p>
+		<p class="GearWhiteText">1d4 + 3</p>
+		<p class="GearGreenText">Each time you hit, you can move 1 more meter this turn.</p>
+		<p class="GearOtherText">Alternatives: Kick, Slam, Karate-Chop, etc</p>
+	</div>
+</div>
+<div class="Gear">
+	<div class="SpellIconWrapper">
+		<img class="SpellIcon" src="Icons/Club.png">
+	</div>
+	<div class="SpellText">
+		<h3 class="SpellTitle GearTitle">Club (<span class="GearTitleWhiteText">Fortitude</span>)</h3>
+		<p class="GearGrayText">1-Handed Melee</p>
+		<p class="GearWhiteText">1d8 + 1 Smash damage</p>
+		<p class="GearGreenText">If the target's Defense is more than 7, it counts as 7 against attacks with this weapon.</p>
+		<p class="GearOtherText">Alternatives: Katar (Slash instead of Smash)</p>
+	</div>
+</div>
+<div class="Gear">
+	<div class="SpellIconWrapper">
+		<img class="SpellIcon" src="Icons/Dagger.png">
+	</div>
+	<div class="SpellText">
+		<h3 class="SpellTitle GearTitle">Dagger (<span class="GearTitleWhiteText">Dexterity</span>)</h3>
+		<p class="GearGrayText">1-Handed Melee, Finesse, Thrown*</p>
+		<p class="GearWhiteText">1d6 + 2</p>
+		<p class="GearGreenText">If you roll 6 on the main roll, deal an extra 1d6 damage.</p>
+	</div>
+</div>
+<div class="Gear">
+	<div class="SpellIconWrapper">
+		<img class="SpellIcon" src="Icons/Mace.png">
+	</div>
+	<div class="SpellText">
+		<h3 class="SpellTitle GearTitle">Mace (<span class="GearTitleWhiteText">Fortitude</span>)</h3>
+		<p class="GearGrayText">1-Handed Melee</p>
+		<p class="GearWhiteText">2d4 Smash damage</p>
+		<p class="GearGreenText">Ignores resistance to physical damage. If you roll 1 and 1, it counts as 8 damage.</p>
+		<p class="GearOtherText">Alternatives: Light Morning Star</p>
+	</div>
+</div>
+<div class="Gear">
+	<div class="SpellIconWrapper">
+		<img class="SpellIcon" src="Icons/Hand_Axe.png">
+	</div>
+	<div class="SpellText">
+		<h3 class="SpellTitle GearTitle">Hand Axe (<span class="GearTitleWhiteText">Fortitude or Dexterity</span>)</h3>
+		<p class="GearGrayText">1-Handed Melee, Thrown</p>
+		<p class="GearWhiteText">1d12 - 1 Slash damage</p>
+		<p class="GearGreenText">If you rolled a 11 or 12 on the die, heal for 1 health.</p>
+		<p class="GearOtherText">Alternatives: Claws</p>
+	</div>
+</div>
+<div class="Gear">
+	<div class="SpellIconWrapper">
+		<img class="SpellIcon" src="Icons/Hand_Hammer.png">
+	</div>
+	<div class="SpellText">
+		<h3 class="SpellTitle GearTitle">Hand Hammer (<span class="GearTitleWhiteText">Fortitude</span>)</h3>
+		<p class="GearGrayText">1-Handed Melee, Thrown</p>
+		<p class="GearWhiteText">2d6 - 2 Smash damage</p>
+		<p class="GearGreenText">6 counts as 7 on the base rolls.</p>
+	</div>
+</div>
+<div class="Gear">
+	<div class="SpellIconWrapper">
+		<img class="SpellIcon" src="Icons/Sickle.png">
+	</div>
+	<div class="SpellText">
+		<h3 class="SpellTitle GearTitle">Sickle (<span class="GearTitleWhiteText">Fortitude or Dexterity</span>)</h3>
+		<p class="GearGrayText">1-Handed Melee, Finesse</p>
+		<p class="GearWhiteText">5 Slash damage</p>
+		<p class="GearOtherText">Alternatives: Nunchaku (Smash instead of Slash)</p>
+	</div>
+</div>
+<div class="Gear">
+	<div class="SpellIconWrapper">
+		<img class="SpellIcon" src="Icons/Spear.png">
+	</div>
+	<div class="SpellText">
+		<h3 class="SpellTitle GearTitle">Spear (<span class="GearTitleWhiteText">Fortitude</span>)</h3>
+		<p class="GearGrayText">1-Handed Melee</p>
+		<p class="GearWhiteText">1d10 Pierce damage</p>
+		<p class="GearGreenText">2 meters range.</p>
+		<p class="GearOtherText">Alternatives: Lance</p>
+	</div>
+</div>
+<div class="Gear">
+	<div class="SpellIconWrapper">
+		<img class="SpellIcon" src="Icons/Flail.png">
+	</div>
+	<div class="SpellText">
+		<h3 class="SpellTitle GearTitle">Flail (<span class="GearTitleWhiteText">Fortitude</span>)</h3>
+		<p class="GearGrayText">1-Handed Melee</p>
+		<p class="GearWhiteText">1d12 - 1 Pierce or Smash damage</p>
+		<p class="GearGreenText">None</p>
+		<p class="GearOtherText">Alternatives: Combat Chains, Kusarigama</p>
+	</div>
+</div>
+<div class="Gear">
+	<div class="SpellIconWrapper">
+		<img class="SpellIcon" src="Icons/Shortsword.png">
+	</div>
+	<div class="SpellText">
+		<h3 class="SpellTitle GearTitle">Shortsword (<span class="GearTitleWhiteText">Fortitude or Dexterity</span>)</h3>
+		<p class="GearGrayText">1-Handed Melee</p>
+		<p class="GearWhiteText">1d6 + 2 Slash damage</p>
+		<p class="GearGreenText">If the target's armor is 2 or less, attacks ignore armor.</p>
+		<p class="GearOtherText">Alternatives: Falchion, Sabre, Scimitar variant, Arming Sword</p>
+	</div>
+</div>
+<div class="Gear">
+	<div class="SpellIconWrapper">
+		<img class="SpellIcon" src="Icons/Scimitar.png">
+	</div>
+	<div class="SpellText">
+		<h3 class="SpellTitle GearTitle">Scimitar (<span class="GearTitleWhiteText">Fortitude or Dexterity</span>)</h3>
+		<p class="GearGrayText">1-Handed Melee</p>
+		<p class="GearWhiteText">1d8 + 1 Slash damage</p>
+		<p class="GearGreenText">If you roll 1 on the damage die, reroll the die.</p>
+	</div>
+</div>
+<div class="Gear">
+	<div class="SpellIconWrapper">
+		<img class="SpellIcon" src="Icons/Rapier.png">
+	</div>
+	<div class="SpellText">
+		<h3 class="SpellTitle GearTitle">Rapier (<span class="GearTitleWhiteText">Dexterity</span>)</h3>
+		<p class="GearGrayText">1-Handed Melee, Finesse</p>
+		<p class="GearWhiteText">1d10</p>
+		<p class="GearGreenText">If your other hand is empty, you can make multiple attacks with the Rapier per turn (normaly you can only make 1).</p>
+	</div>
+</div>
+<div class="Gear">
+	<div class="SpellIconWrapper">
+		<img class="SpellIcon" src="Icons/Cleaver.png">
+	</div>
+	<div class="SpellText">
+		<h3 class="SpellTitle GearTitle">Cleaver (<span class="GearTitleWhiteText">Fortitude or Dexterity</span>)</h3>
+		<p class="GearGrayText">1-Handed Melee, Thrown</p>
+		<p class="GearWhiteText">1d6 + 2 Slash damage</p>
+		<p class="GearGreenText">Flank attacks do an extra +1 damage.</p>
+		<p class="GearOtherText">Alternatives: Variant Dagger, Dead Fish (Smash instead of Slash)</p>
+	</div>
+</div>
+<div class="Gear">
+	<div class="SpellIconWrapper">
+		<img class="SpellIcon" src="Icons/Warglaive.png">
+	</div>
+	<div class="SpellText">
+		<h3 class="SpellTitle GearTitle">Warglaive (<span class="GearTitleWhiteText">Dexterity</span>)</h3>
+		<p class="GearGrayText">1-Handed Melee, Finesse, Thrown</p>
+		<p class="GearWhiteText">1d12 - 1 Pierce damage</p>
+		<p class="GearGreenText">None</p>
+		<p class="GearOtherText">Alternatives: Boomerang, Chakram, Shuriken</p>
+	</div>
+</div>
+<div class="Gear">
+	<div class="SpellIconWrapper">
+		<img class="SpellIcon" src="Icons/Greatclub.png">
+	</div>
+	<div class="SpellText">
+		<h3 class="SpellTitle GearTitle">Greatclub (<span class="GearTitleWhiteText">Fortitude</span>)</h3>
+		<p class="GearGrayText">2-Handed Melee</p>
+		<p class="GearWhiteText">2d4 + 2</p>
+		<p class="GearGreenText">If you roll 4 and 4, attempt a stun on the target (Fortitude save, your Spell DC)</p>
+	</div>
+</div>
+<div class="Gear">
+	<div class="SpellIconWrapper">
+		<img class="SpellIcon" src="Icons/Poor_Mans_Mallet.png">
+	</div>
+	<div class="SpellText">
+		<h3 class="SpellTitle GearTitle">Poor Man's Mallet (<span class="GearTitleWhiteText">Fortitude</span>)</h3>
+		<p class="GearGrayText">2-Handed Melee</p>
+		<p class="GearWhiteText">1d6 damage</p>
+		<p class="GearGreenText">Attacks with Poor Man's Mallet take only 0.5 Actions and you can make multiple attacks per turn with it.</p>
+	</div>
+</div>
+<div class="Gear">
+	<div class="SpellIconWrapper">
+		<img class="SpellIcon" src="Icons/Warhammer.png">
+	</div>
+	<div class="SpellText">
+		<h3 class="SpellTitle GearTitle">Warhammer (<span class="GearTitleWhiteText">Fortitude</span>)</h3>
+		<p class="GearGrayText">2-Handed Melee</p>
+		<p class="GearWhiteText">2d8 - 2 damage</p>
+		<p class="GearGreenText">Your first attack with this weapon on the first round of combat ignores 50% of the target's armor.</p>
+	</div>
+</div>
+<div class="Gear">
+	<div class="SpellIconWrapper">
+		<img class="SpellIcon" src="Icons/Heavy_Mace.png">
+	</div>
+	<div class="SpellText">
+		<h3 class="SpellTitle GearTitle">Heavy Mace (<span class="GearTitleWhiteText">Fortitude</span>)</h3>
+		<p class="GearGrayText">2-Handed Melee</p>
+		<p class="GearWhiteText">1d12 damage</p>
+		<p class="GearGreenText">Ignores physical damage resistance.</p>
+	</div>
+</div>
+<div class="Gear">
+	<div class="SpellIconWrapper">
+		<img class="SpellIcon" src="Icons/Longsword.png">
+	</div>
+	<div class="SpellText">
+		<h3 class="SpellTitle GearTitle">Longsword (<span class="GearTitleWhiteText">Fortitude</span>)</h3>
+		<p class="GearGrayText">1-Handed or 2-Handed Melee</p>
+		<p class="GearWhiteText">1d10 / 1d12 damage</p>
+		<p class="GearGreenText">Can be wielded either as a 1-Handed (for 1d10 damage) or 2-Handed weapon (for 1d12 damage).</p>
+		<p class="GearOtherText">You only need to be trained in 1-Handed or 2-Handed weapons to wield this weapon in both ways.</p>
+	</div>
+</div>
+<div class="Gear">
+	<div class="SpellIconWrapper">
+		<img class="SpellIcon" src="Icons/Greatsword.png">
+	</div>
+	<div class="SpellText">
+		<h3 class="SpellTitle GearTitle">Greatsword (<span class="GearTitleWhiteText">Fortitude</span>)</h3>
+		<p class="GearGrayText">2-Handed Melee</p>
+		<p class="GearWhiteText">1d20 - 4 Slash damage</p>
+	</div>
+</div>
+<div class="Gear">
+	<div class="SpellIconWrapper">
+		<img class="SpellIcon" src="Icons/Claymore.png">
+	</div>
+	<div class="SpellText">
+		<h3 class="SpellTitle GearTitle">Claymore (<span class="GearTitleWhiteText">Fortitude</span>)</h3>
+		<p class="GearGrayText">2-Handed Melee</p>
+		<p class="GearWhiteText">2d6 damage</p>
+		<p class="GearGreenText">For each 6 rolled, deal an extra 1d4 damage.</p>
+	</div>
+</div>
+<div class="Gear">
+	<div class="SpellIconWrapper">
+		<img class="SpellIcon" src="Icons/Quarterstaff.png">
+	</div>
+	<div class="SpellText">
+		<h3 class="SpellTitle GearTitle">Quarterstaff (<span class="GearTitleWhiteText">Dexterity</span>)</h3>
+		<p class="GearGrayText">2-Handed Melee, Finesse</p>
+		<p class="GearWhiteText">1d6 + 3 damage</p>
+		<p class="GearGreenText">If you are wearing no armor, you have +1 Defense.</p>
+	</div>
+</div>
+<div class="Gear">
+	<div class="SpellIconWrapper">
+		<img class="SpellIcon" src="Icons/Battle_Axe.png">
+	</div>
+	<div class="SpellText">
+		<h3 class="SpellTitle GearTitle">Battle Axe (<span class="GearTitleWhiteText">Fortitude</span>)</h3>
+		<p class="GearGrayText">2-Handed Melee</p>
+		<p class="GearWhiteText">2d12 - 6 damage</p>
+		<p class="GearGreenText">For each 11 and 12 rolled on the base dice, heal for 1 health.</p>
+	</div>
+</div>
+<div class="Gear">
+	<div class="SpellIconWrapper">
+		<img class="SpellIcon" src="Icons/Scythe.png">
+	</div>
+	<div class="SpellText">
+		<h3 class="SpellTitle GearTitle">Scythe (<span class="GearTitleWhiteText">Fortitude or Dexterity</span>)</h3>
+		<p class="GearGrayText">2-Handed Melee, Finesse</p>
+		<p class="GearWhiteText">3d4 damage</p>
+		<p class="GearGreenText">Instead of attacking, you can just deal 6 damage to all creatures around you (against their armor).</p>
+	</div>
+</div>
+<div class="Gear">
+	<div class="SpellIconWrapper">
+		<img class="SpellIcon" src="Icons/Pike.png">
+	</div>
+	<div class="SpellText">
+		<h3 class="SpellTitle GearTitle">Pike (<span class="GearTitleWhiteText">Fortitude</span>)</h3>
+		<p class="GearGrayText">2-Handed Melee</p>
+		<p class="GearWhiteText">1d12 Pierce damage</p>
+		<p class="GearGreenText">2 meters range.</p>
+	</div>
+</div>
+<div class="Gear">
+	<div class="SpellIconWrapper">
+		<img class="SpellIcon" src="Icons/Halberd.png">
+	</div>
+	<div class="SpellText">
+		<h3 class="SpellTitle GearTitle">Halberd (<span class="GearTitleWhiteText">Fortitude</span>)</h3>
+		<p class="GearGrayText">2-Handed Melee</p>
+		<p class="GearWhiteText">1d10 + 1 Slash damage</p>
+		<p class="GearGreenText">Has +1 damage against Large or larger enemies.</p>
+		<p class="GearOtherText">Alternatives: Garden Rake, Glaive, Bardiche</p>
+	</div>
+</div>
+<div class="Gear">
+	<div class="SpellIconWrapper">
+		<img class="SpellIcon" src="Icons/Katana.png">
+	</div>
+	<div class="SpellText">
+		<h3 class="SpellTitle GearTitle">Katana (<span class="GearTitleWhiteText">Dexterity</span>)</h3>
+		<p class="GearGrayText">2-Handed Melee, Finesse</p>
+		<p class="GearWhiteText">2d10 - 4 damage</p>
+		<p class="GearGreenText">If you roll the same number on both dice, deal 2d6 extra damage.</p>
+	</div>
+</div>
+<div class="Gear">
+	<div class="SpellIconWrapper">
+		<img class="SpellIcon" src="Icons/Trident.png">
+	</div>
+	<div class="SpellText">
+		<h3 class="SpellTitle GearTitle">Trident (<span class="GearTitleWhiteText">Fortitude</span>)</h3>
+		<p class="GearGrayText">2-Handed Melee</p>
+		<p class="GearWhiteText">3d6 - 4 damage</p>
+		<p class="GearGreenText">If you moved at least 3 meters in a straight line and then attacked, the attack gains +1d4 damage if it hits.</p>
+		<p class="GearOtherText">Alternatives: Pitchfork</p>
+	</div>
+</div>
+<div class="Gear">
+	<div class="SpellIconWrapper">
+		<img class="SpellIcon" src="Icons/Pickaxe.png">
+	</div>
+	<div class="SpellText">
+		<h3 class="SpellTitle GearTitle">Pickaxe (<span class="GearTitleWhiteText">Fortitude</span>)</h3>
+		<p class="GearGrayText">2-Handed Melee</p>
+		<p class="GearWhiteText">2d4 + 2 damage</p>
+		<p class="GearGreenText">Deals +1d4 damage against humanoids wearing shields.</p>
+		<p class="GearOtherText">Alternatives: Falx</p>
+	</div>
+</div>
+<div class="Gear">
+	<div class="SpellIconWrapper">
+		<img class="SpellIcon" src="Icons/Whip.png">
+	</div>
+	<div class="SpellText">
+		<h3 class="SpellTitle GearTitle">Whip (<span class="GearTitleWhiteText">Dexterity</span>)</h3>
+		<p class="GearGrayText">2-Handed Melee, Finesse</p>
+		<p class="GearWhiteText">1d4 + 4 damage</p>
+		<p class="GearGreenText">Deals +1d4 damage against unarmored or lightly armored creatures.</p>
+	</div>
+</div>
+<div class="Gear">
+	<div class="SpellIconWrapper">
+		<img class="SpellIcon" src="Icons/Longbow.png">
+	</div>
+	<div class="SpellText">
+		<h3 class="SpellTitle GearTitle">Longbow (<span class="GearTitleWhiteText">Dexterity</span>)</h3>
+		<p class="GearGrayText">2-Handed Ranged</p>
+		<p class="GearWhiteText">1d8 + 2 damage</p>
+		<p class="GearGreenText">Deal +1d6 extra amage if you roll 8.</p>
+	</div>
+</div>
+<div class="Gear">
+	<div class="SpellIconWrapper">
+		<img class="SpellIcon" src="Icons/Shortbow.png">
+	</div>
+	<div class="SpellText">
+		<h3 class="SpellTitle GearTitle">Shortbow (<span class="GearTitleWhiteText">None</span>)</h3>
+		<p class="GearGrayText">2-Handed Ranged</p>
+		<p class="GearWhiteText">2d6 damage</p>
+		<p class="GearGreenText">Shortbow does not require Training to use properly.</p>
+		<p class="GearOtherText">This weapon is intended for characters who are not proficient in ranged weapons, such as heavy melee, strength based warriors who want a decent ranged attack once in a while.<br>Attacks with the Shortbow do not benefit from Stats.<br><br>Alternatives: Javelin (variant)</p>
+	</div>
+</div>
+<div class="Gear">
+	<div class="SpellIconWrapper">
+		<img class="SpellIcon" src="Icons/Heavy_Crossbow.png">
+	</div>
+	<div class="SpellText">
+		<h3 class="SpellTitle GearTitle">Heavy Crossbow (<span class="GearTitleWhiteText">Fortitude or Dexterity</span>)</h3>
+		<p class="GearGrayText">2-Handed Ranged</p>
+		<p class="GearWhiteText">2d6</p>
+		<p class="GearGreenText">You can use your Fortitude for attacks with a heavy Crossbow.</p>
+		<p class="GearRedText">You must use either 0.5 Actions or all of your possible movement to reload the Heavy Crossbow before you can use it again.</p>
+	</div>
+</div>
+<div class="Gear">
+	<div class="SpellIconWrapper">
+		<img class="SpellIcon" src="Icons/Heavy_Gun.png">
+	</div>
+	<div class="SpellText">
+		<h3 class="SpellTitle GearTitle">Heavy Gun (<span class="GearTitleWhiteText">Fortitude or Dexterity</span>)</h3>
+		<p class="GearGrayText">2-Handed Ranged</p>
+		<p class="GearWhiteText">3d4</p>
+		<p class="GearGreenText">Instead of attacking, you can spend 5 ammo to deal 3 damage to all creatures in a 3x3 area directly in front of you</p>
+		<p class="GearRedText">You must always spend 0.5 Actions to reload the gun before you can attack or do its special ability again.</p>
+	</div>
+</div>
+<div class="Gear">
+	<div class="SpellIconWrapper">
+		<img class="SpellIcon" src="Icons/Sling.png">
+	</div>
+	<div class="SpellText">
+		<h3 class="SpellTitle GearTitle">Sling (<span class="GearTitleWhiteText">Dexterity</span>)</h3>
+		<p class="GearGrayText">1-Handed Ranged</p>
+		<p class="GearWhiteText">1d4 damage</p>
+		<p class="GearGreenText">Attacks with slings use 0.33 actions (and you can attack 3 times per turn with the same sling).</p>
+		<p class="GearOtherText">Alternatives: Slingshot</p>
+	</div>
+</div>
+<div class="Gear">
+	<div class="SpellIconWrapper">
+		<img class="SpellIcon" src="Icons/Light_Crossbow.png">
+	</div>
+	<div class="SpellText">
+		<h3 class="SpellTitle GearTitle">Light Crossbow (<span class="GearTitleWhiteText">Dexterity</span>)</h3>
+		<p class="GearGrayText">1-Handed Ranged</p>
+		<p class="GearWhiteText">1d10 damage</p>
+		<p class="GearRedText">You must use either 0.25 Actions or half of your possible movement to reload the Light Crossbow before you can use it again.</p>
+	</div>
+</div>
+<div class="Gear">
+	<div class="SpellIconWrapper">
+		<img class="SpellIcon" src="Icons/Handgun.png">
+	</div>
+	<div class="SpellText">
+		<h3 class="SpellTitle GearTitle">Handgun (<span class="GearTitleWhiteText">Dexterity</span>)</h3>
+		<p class="GearGrayText">1-Handed Ranged</p>
+		<p class="GearWhiteText">1d6 + 2 damage</p>
+		<p class="GearGreenText">You have no penalty for melee attacks with the Handgun.<br>Enemies don't get oportunity attacks when you make Handgun attacks.</p>
+		<p class="GearRedText">The half range of the Handgun is 3 meters.<br>You must use either 0.25 Actions or half of your possible movement to reload the Handgun before you can use it again.</p>
+	</div>
+</div>
+<div class="Gear">
+	<div class="SpellIconWrapper">
+		<img class="SpellIcon" src="Icons/Blowgun.png">
+	</div>
+	<div class="SpellText">
+		<h3 class="SpellTitle GearTitle">Blowgun (<span class="GearTitleWhiteText">Dexterity</span>)</h3>
+		<p class="GearGrayText">1-Handed Ranged</p>
+		<p class="GearWhiteText">1d8 + 1 damage</p>
+		<p class="GearGreenText">If the target has below 50% Health, deals an extra 1d4 Poison damage.<br>You can make as many attacks per turn witht he Blowgun as you can.</p>
+	</div>
+</div>
+<div class="Gear">
+	<div class="SpellIconWrapper">
+		<img class="SpellIcon" src="Icons/Other_Thrown_Weapon.png">
+	</div>
+	<div class="SpellText">
+		<h3 class="SpellTitle GearTitle">Other Thrown Weapon (<span class="GearTitleWhiteText">Dexterity</span>)</h3>
+		<p class="GearGrayText">1-Handed Ranged</p>
+		<p class="GearWhiteText">1d10 Pierce/Smash/Slash damage</p>
+	</div>
+</div>
+
+<style>body{background-image: url("Backgrounds/Weapons.jpg");}</style>
+﻿</div>
+<footer class = "bordered">
+	a
+</footer>
+</body>
+</html>
