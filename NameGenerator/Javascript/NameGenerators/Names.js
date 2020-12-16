@@ -73,12 +73,8 @@
 			'pimp',
 			'programmingLanguage',
 			'videoGame',
-<<<<<<< HEAD
 			'reggaeSinger'
-=======
->>>>>>> aa757e08850be75b314d72ccdc425ff84fcaff17
-		],
-
+		]
 	}
 
 	Names.blank			= function(){
