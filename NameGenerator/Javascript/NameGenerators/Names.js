@@ -58,6 +58,7 @@
 			'goodOrganization',
 			'cult',
 			'thievesGuild',
+			'voidFaction'
 		],
 		'Modern'	: [
 			'trapper',
@@ -3856,7 +3857,7 @@
 	}
 
 	Names.reggaeSinger = function() {
-		let q1 = randomOf(
+		let q = randomOf(
 			'Jah',
 			'Face',
 			'Culture',
@@ -3868,10 +3869,26 @@
 			'Zion',
 			'Irie',
 			'Steppa',
+			'Steppas',
 			'Style',
 			'Sound',
+			'Bush',
+			'Bass',
+			'Zulu',
+			'Lion',
+			'Conquering',
+			'Dread',
+			'Beat',
+			'Capital',
+			'Soundboy',
+			'Riddim',
+			'Bredda',
+			'Rasta',
+			'Rising'
 		)
-		let w2 = randomOf(
+		let w = randomOf(
+			'Lion',
+			'King',
 			'Culture',
 			'Roots',
 			'Syndicate',
@@ -3884,7 +3901,64 @@
 			'Nation',
 			'Zone',
 			'Steppa',
-			'Style'
+			'Steppas',
+			'Style',
+			'Reggae',
+			'Vibration',
+			'Direction',
+			'Dread',
+			'Revolution',
+			'Army'
 		)
 
+		if (q == w) return Names.reggaeSinger()
+		else return q + ' ' + w
+
+	}
+
+	Names.voidFaction = function() {
+		let q = randomOf(
+			'Void',
+			'Nether',
+			'Hel',
+			'Ether',
+			'Rever',
+			'Under',
+			'Dark',
+			'Fal',
+			'Avar',
+			'Eld',
+			'Murk',
+			'Ebon',
+			'Thral',
+			'For'
+		)
+		let w = randomOf(
+			'spawn',
+			'rim',
+			'lings',
+			'ren',
+			'rant',
+			'nant',
+			'mer',
+			'ner',
+			'der',
+			'roth',
+			'noth',
+			'loth',
+			'lath',
+			'radim',
+			'rich',
+			'rake',
+			'rest',
+			'dome',
+			'rone',
+			'iron',
+			'idians',
+			'riorn',
+			'lorn',
+			'riss',
+			'kan'
+		)
+		return randomOf('', 'The ', 'The ') + q + w
 	}
