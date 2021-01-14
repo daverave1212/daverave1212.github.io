@@ -50,6 +50,7 @@
 			'spellMage',
 			'mace',
 			'sword',
+			'lowQualityWeapon',
 			'metalCommon',
 			'metalFormal',
 			'plantFantas',
@@ -58,6 +59,7 @@
 			'goodOrganization',
 			'cult',
 			'thievesGuild',
+			'voidFaction'
 		],
 		'Modern'	: [
 			'trapper',
@@ -66,7 +68,6 @@
 			'jew',
 			'cookie',
 			'eSportsTeam',
-			'jew',
 			'letter',
 			'letterOrNumber',
 			'redneck',
@@ -2177,7 +2178,9 @@
 			"Rib",
 			"Wood",
 			"Spine",
-			"Steel");
+			"Steel",
+			'Forge'
+		);
 		var e = randomOf(
 			"basher",
 			" Smasher",
@@ -2186,6 +2189,7 @@
 			"maul",
 			"hammer",
 			"club",
+			'grip',
 			"mallet",
 			"cracker",
 			"pounder",
@@ -2202,8 +2206,71 @@
 			" Brutalizer",
 			"phage",
 			" Shatterer",
+			'shatter',
 			"flail");
 		return q + " " + w + e;
+	}
+	Names.lowQualityWeapon = function() {
+		let q = randomOf(
+			'Age-Worn',
+			'Flimsy',
+			'Rough',
+			'Rusted',
+			'Rusty',
+			'Muck-Encrusted',
+			'Dirty',
+			'Old',
+			'Commoner\'s',
+			'Shattered',
+			'Small',
+			'Whetted',
+			'Stone',
+			'Crude',
+			'Dull',
+			'Cracked',
+			'Chipped',
+			'Bent',
+			'Blunted',
+			'Loaded',
+			'Corroded',
+			'Toy',
+			'Wooden',
+			'Aged',
+			'Jagged',
+			'Stiff',
+			'Jammed',
+			'Eroded',
+			'Broken',
+			'Chiseled',
+			'Whittled',
+			'Notched',
+			'Deteriorating',
+			'Improvised',
+			'Weathered',
+			'Mossy',
+			'Fractured',
+			'Battered',
+			'Withered'
+
+		)
+		let weapon = randomOf(
+			'Mallet',
+			'Blade',
+			'Sword',
+			'Shortsword',
+			'Dagger',
+			'Dirk',
+			'Knife',
+			'Pike',
+			'Hilt',
+			'Staff',
+			'Club',
+			'Axe',
+			'Mace',
+			'Hatchet',
+			'Bow'
+		)
+		return q + ' ' + weapon
 	}
 	Names.sword			= function(){
 		var q = randomOf(
@@ -2230,17 +2297,23 @@
 			"Bane",
 			"Death",
 			"Mage",
-			"Pain");
+			"Pain",
+			'Cinder',
+			'Dream',
+			'Dawn',
+			'Venge',
+			'Vile',
+			'Cruel',
+			'Wrath'
+		);
 		var w = randomOf(
 			"mourne",
 			"blade",
 			"keeper",
 			"ward",
 			"sword",
-			"vengeance",
 			"bringer",
-			" Devourer",
-			" Swiftblade",
+			"eater",
 			"slayer",
 			"slicer",
 			"guard",
@@ -2251,8 +2324,91 @@
 			"fury",
 			"reaper",
 			"",
-			"edge");
+			"edge",
+			'fury',
+			'brand',
+			'saber',
+			'rive',
+			'rend',
+			'sever',
+			'sunder',
+			'maw',
+			'scythe',
+			'hilt',
+			'weaver'
+		);
 		return q + w;
+	}
+	Names.dagger = function() {
+		let q = randomOf(
+			'Blink',
+			'Quick',
+			'Mage',
+			'Shadow',
+
+		)
+		let w = randomOf(
+			'blade',
+			'slit',
+			'rend',
+			'shank',
+			'kris',
+			'thorn',
+			'fang',
+			'rip',
+			'slice',
+			'shiver'
+		)
+	}
+	Names.axe = function() {
+		let q = randomOf(
+			'Rage',
+			'Blood',
+			'Fury'
+		)
+		let w = randomOf(
+			'blade',
+			'whirl',
+			'fury',
+			'reaver',
+			'ripper',
+			'cleave'
+		)
+	}
+	Names.crab = function() {
+		let q = randomOf(
+			'Tide',
+			'Red',
+			'White',
+			'Reef',
+			'Shore',
+			'Ridge',
+			'Sea',
+			'Shell',
+		)
+		let w = randomOf(
+			'crawler',
+			'clasp',
+			'clack',
+			'clamp',
+			'claw',
+			'lob',
+			'clamb',
+			'pincher',
+			'clinch',
+			'glip',
+			'snap',
+			'crack',
+			'clutch',
+			'nip',
+			'crab',
+			'dredge',
+			'click',
+			'grab',
+			'knuck'
+
+
+		)
 	}
 
 	Names.cookie		= function(){
@@ -2461,8 +2617,8 @@
 			"Omar",
 			"Zachary",
 			"Joshua");
-		if(randomChance(20)) return r + e;
-		return r + q + w;;
+		if (randomInt(1, 5) == 1) return r + ' ' + e
+		return r + ' ' + q + ' ' + w
 	}
 	Names.letter		= function(){
 		var q = randomOf(
@@ -3856,7 +4012,7 @@
 	}
 
 	Names.reggaeSinger = function() {
-		let q1 = randomOf(
+		let q = randomOf(
 			'Jah',
 			'Face',
 			'Culture',
@@ -3868,10 +4024,26 @@
 			'Zion',
 			'Irie',
 			'Steppa',
+			'Steppas',
 			'Style',
 			'Sound',
+			'Bush',
+			'Bass',
+			'Zulu',
+			'Lion',
+			'Conquering',
+			'Dread',
+			'Beat',
+			'Capital',
+			'Soundboy',
+			'Riddim',
+			'Bredda',
+			'Rasta',
+			'Rising'
 		)
-		let w2 = randomOf(
+		let w = randomOf(
+			'Lion',
+			'King',
 			'Culture',
 			'Roots',
 			'Syndicate',
@@ -3884,7 +4056,64 @@
 			'Nation',
 			'Zone',
 			'Steppa',
-			'Style'
+			'Steppas',
+			'Style',
+			'Reggae',
+			'Vibration',
+			'Direction',
+			'Dread',
+			'Revolution',
+			'Army'
 		)
 
+		if (q == w) return Names.reggaeSinger()
+		else return q + ' ' + w
+
+	}
+
+	Names.voidFaction = function() {
+		let q = randomOf(
+			'Void',
+			'Nether',
+			'Hel',
+			'Ether',
+			'Rever',
+			'Under',
+			'Dark',
+			'Fal',
+			'Avar',
+			'Eld',
+			'Murk',
+			'Ebon',
+			'Thral',
+			'For'
+		)
+		let w = randomOf(
+			'spawn',
+			'rim',
+			'lings',
+			'ren',
+			'rant',
+			'nant',
+			'mer',
+			'ner',
+			'der',
+			'roth',
+			'noth',
+			'loth',
+			'lath',
+			'radim',
+			'rich',
+			'rake',
+			'rest',
+			'dome',
+			'rone',
+			'iron',
+			'idians',
+			'riorn',
+			'lorn',
+			'riss',
+			'kan'
+		)
+		return randomOf('', 'The ', 'The ') + q + w
 	}
