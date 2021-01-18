@@ -22,6 +22,8 @@
 			'pandarenSurname',
 			'pandarenFemale',
 			'pandarenMale',
+			'taurenMale',
+			'taurenFemale',
 			'bandit',
 			'ogre',
 			'ogreTribe',
@@ -38,7 +40,8 @@
 		],
 		'Monsters'		: [
 			'shark',
-			'boar'
+			'boar',
+			'crab'
 		],
 		'Misc'			: [
 			'quest',
@@ -51,9 +54,11 @@
 			'mace',
 			'sword',
 			'lowQualityWeapon',
+			'axe',
+			'dagger',
 			'metalCommon',
 			'metalFormal',
-			'plantFantas',
+			'plantFantasy',
 			'plantCommon',
 			'plantFormal',
 			'goodOrganization',
@@ -1189,7 +1194,135 @@
 				"Yi",
 				"Chi");
 		return randomOf(q, q + lowercaseFirstLetter(w), q + " " + w);}
+	Names.taurenMale = () => taurenMale() + ' ' + taurenSurname()
+	Names.taurenFemale = () => taurenFemale() + ' ' + taurenSurname()
+	const taurenFemale = function() {
+		let q = randomOf(
+			'Ku',
+			'Ka',
+			'Ko',
+			'Mu',
+			'Mai',
+			'Moi',
+			'Moo',
+			'Na',
+			'Noo',
+			'Su',
+			'Sa'
+		)
+		let w = randomOf(
+			'nna',
+			'nda',
+			'mna',
+			'ma',
+			'mwa',
+			'ra',
+			'ta',
+			'ka',
+			'ga',
+			'gra',
+			'gna',
+		)
+		return q + w
+	}
+	const taurenMale = function() {
+		let q = randomOf(
+			'Ka',
+			'Ko',
+			'Ta',
+			'To',
+			'Ti',
+			'Ha',
+			'Ho',
+			'Hu',
+			'Ra',
+			'O',
+			'E',
+			'Thu',
+			'Thru',
+			'Ku',
+			'Bu',
+			'Ba',
+			'Bai',
+			'Be',
+			'Sau',
+			'Mo',
+			'Mu',
+			'Moo',
+			'Cai',
+			'Ca'
 
+		)
+		let w = randomOf(
+			'rn',
+			'rm',
+			'rg',
+			'rog',
+			'ro',
+			'rne',
+			'ram',
+			'ru',
+			'rt',
+			'nn',
+			'ne',
+			'nu',
+			'mn',
+			'uk',
+			'gg',
+			'ko',
+			'gor',
+			'gonn',
+			'tt',
+			'tan',
+			'to',
+			'ttu',
+			'hu',
+			'ho',
+			'we',
+			'wo',
+			'wu'
+		)
+		return q + w
+	}
+	const taurenSurname = function() {
+		let q = randomOf(
+			'Stone',
+			'Blood',
+			'Hawk',
+			'Eagle',
+			'Thunder',
+			'Storm',
+			'Sage',
+			'Black',
+			'Crest',
+			'Feather',
+			'Winter',
+			'Proud',
+			'Plains',
+			'Cloud',
+			'Spirit',
+			'Earth',
+			'Rain',
+			'Mist',
+			'Wild'
+
+		)
+		let w = randomOf(
+			'totem',
+			'stout',
+			'hoof',
+			'horn',
+			'bluff',
+			'bender',
+			'drifter',
+			'walker',
+			'born',
+			'chaser',
+			'strider',
+			'mane'
+		)
+		return q + w
+	}
 
 
 
@@ -1423,6 +1556,40 @@
 				"maw");
 		return q + w;
 	}
+	Names.crab = function() {
+		let q = randomOf(
+			'Tide',
+			'Red',
+			'White',
+			'Reef',
+			'Shore',
+			'Ridge',
+			'Sea',
+			'Shell',
+		)
+		let w = randomOf(
+			'crawler',
+			'clasp',
+			'clack',
+			'clamp',
+			'claw',
+			'lob',
+			'clamb',
+			'pincher',
+			'clinch',
+			'glip',
+			'snap',
+			'crack',
+			'clutch',
+			'nip',
+			'crab',
+			'dredge',
+			'click',
+			'grab',
+			'knuck'
+		)
+		return q + w
+	}
 
 
 	Names.quest			= function(){
@@ -1438,7 +1605,9 @@
 				"A Knight's ",
 				"A Soldier's ",
 				"Warlord's ",
-				randomOf("My", "An", "") + "Unfortunate ",
+				randomOf('A ', '') + 'Difficult',
+				randomOf('An ', '') + 'Uplifting',
+				randomOf("My ", "An ", "") + "Unfortunate ",
 				"A Fortunate ",
 				"A Monk's ",
 				"A Priest's ",
@@ -1780,6 +1949,7 @@
 			h + n,
 			randomOf(u + "and " + j, u + m));
 	}
+
 	Names.upgrade		= function(){
 		var q = randomOf(
 			"Improved ",
@@ -2359,56 +2529,39 @@
 			'slice',
 			'shiver'
 		)
+		return q + w
 	}
 	Names.axe = function() {
 		let q = randomOf(
 			'Rage',
 			'Blood',
-			'Fury'
+			'Fury',
+			'Whirl',
+			'Battle',
+			'War',
+			'Soul',
+			'Corpse',
+			'Storm',
+			'Thunder',
+			'Steel',
+			'Gore'
 		)
 		let w = randomOf(
 			'blade',
-			'whirl',
 			'fury',
 			'reaver',
 			'ripper',
-			'cleave'
+			'cleave',
+			'sunder',
+			'rip',
+			'sever',
+			'carve',
+			'zerk',
+			'axe',
+			'howl',
+			'slaughter'
 		)
-	}
-	Names.crab = function() {
-		let q = randomOf(
-			'Tide',
-			'Red',
-			'White',
-			'Reef',
-			'Shore',
-			'Ridge',
-			'Sea',
-			'Shell',
-		)
-		let w = randomOf(
-			'crawler',
-			'clasp',
-			'clack',
-			'clamp',
-			'claw',
-			'lob',
-			'clamb',
-			'pincher',
-			'clinch',
-			'glip',
-			'snap',
-			'crack',
-			'clutch',
-			'nip',
-			'crab',
-			'dredge',
-			'click',
-			'grab',
-			'knuck'
-
-
-		)
+		return q + w
 	}
 
 	Names.cookie		= function(){
@@ -3850,35 +4003,51 @@
 	}
 	Names.zone			= function(){
 		var q = randomOf(
-			"Mage's ",
-			"Warrior's ",
-			"Magister's ",
-			"The Howling ",
-			"The Proving ",
-			"Hell's ",
-			"The Forgotten ",
-			"The Oblivion ",
-			"The Stone ",
-			"The Eastern ",
-			"The Western ",
-			"The Northern ",
-			"The Southern ",
-			"The Searing ",
-			"The Screaming ",
-			"The Golden ",
-			"The Brimstone ",
-			"Summoner's ",
-			"The Holy ",
-			"Sun's ",
-			"Moon's ",
-			"The Burning ",
-			"The Twilight ",
-			"The False ",
-			"Falcon's ",
-			"The Blessed ",
-			"The Cursed ",
-			"Storm's ");
+			"Mage's",
+			"Warrior's",
+			"Magister's",
+			"The Howling",
+			'The Ice',
+			'The Frozen',
+			'The Burning',
+			'Highland',
+			'The Forsaken',
+			'The Deserted',
+			'The Desolate',
+			"The Proving",
+			"Hell's",
+			'Death\'s',
+			"The Forgotten",
+			"The Oblivion",
+			"The Stone",
+			"The Eastern",
+			"The Western",
+			"The Northern",
+			"The Southern",
+			"The Searing",
+			"The Golden",
+			"The Brimstone",
+			"Summoner's",
+			"The Holy",
+			"Sun's",
+			"Moon's",
+			"The Burning",
+			"The Twilight",
+			"The Screaming",
+			'The Haunted',
+			"The Cursed",
+			'The Damned',
+			"The False",
+			"Falcon's",
+			"The Blessed",
+			'The Ivory',
+			"Storm's");
 		var w = randomOf(
+			'District',
+			'Realms',
+			'Domain',
+			'Sweep',
+			'Range',
 			"Retreat",
 			"Terrace",
 			"Fjord",
@@ -3901,10 +4070,19 @@
 			"Hill",
 			"Chapel",
 			"Altar",
+			'Haven',
+			'Sanctum',
+			'Domain',
+			'Refuge',
+			'Point',
+			'Asylum',
+			'Resort',
 			"Halls",
 			"Enclave",
 			"Square",
+			'Harbor',
 			"End");
+		return q + ' ' + w
 	}
 	Names.goodOrganization	= function(){
 		var q, w;
