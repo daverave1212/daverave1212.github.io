@@ -4,7 +4,6 @@
 		'Characters' 	: [
 			'darkSoulsBoss',
 			'dwarfFemale',
-			'dwarfSurname',
 			'dwarfMale',
 			'elfFemale',
 			'elfMale',
@@ -13,15 +12,14 @@
 			'goblinSurname',
 			'goblinMale',
 			'humanMale',
-			'humanMale2',
-			'humanMale1',
-			'humanSurname',
 			'humanFemale',
 			'nordicMale',
 			'orcMale',
 			'pandarenSurname',
 			'pandarenFemale',
 			'pandarenMale',
+			'taurenMale',
+			'taurenFemale',
 			'bandit',
 			'ogre',
 			'ogreTribe',
@@ -38,7 +36,8 @@
 		],
 		'Monsters'		: [
 			'shark',
-			'boar'
+			'boar',
+			'crab'
 		],
 		'Misc'			: [
 			'quest',
@@ -48,12 +47,15 @@
 			'spellModifier',
 			'spellWarlock',
 			'spellMage',
+			'strangePotion',
 			'mace',
 			'sword',
 			'lowQualityWeapon',
+			'axe',
+			'dagger',
 			'metalCommon',
 			'metalFormal',
-			'plantFantas',
+			'plantFantasy',
 			'plantCommon',
 			'plantFormal',
 			'goodOrganization',
@@ -99,7 +101,9 @@
 			'Rotten',
 			'Vengeful',
 			'Phantom',
-			'Imprisoned'
+			'Imprisoned',
+			'Ancient',
+			'Elder'
 		);
 		var what = randomOf(
 			'Knight',
@@ -203,7 +207,7 @@
 		return q + w;
 	}
 
-	Names.dwarfFemale	= function(){
+	const dwarfFemale	= function(){
 		var q = randomOf(
 			"Hel",
 			"Thor",
@@ -246,7 +250,7 @@
 			"ora");
 		return q + w;
 	}
-	Names.dwarfSurname	= function(){
+	const dwarfSurname	= function(){
 		var q = randomOf(
 			"Rock",
 			"Stout",
@@ -283,7 +287,7 @@
 			"back");
 		return q + w;
 	}
-	Names.dwarfMale		= function(){
+	const dwarfMale		= function(){
 		var q = randomOf(
 			"Bari",
 			"Brag",
@@ -343,6 +347,8 @@
 			"log");
 		return q + w;
 	}
+	Names.dwarfMale		= function(){ return dwarfMale() + ' ' + dwarfSurname() }
+	Names.dwarfFemale	= function(){ return dwarfFemale() + ' ' + dwarfSurname() }
 	Names.elfFemale		= function(){
 		var q = randomOf(
 			"E",
@@ -675,7 +681,93 @@
 		var q = randomOf(Names.humanMale1, Names.humanMale2);
 		return q;
 	}
-	Names.humanMale2	= function(){
+	const humanMaleNormalSounding = function() {
+		let q = randomOf(
+			'Le',
+			'Lu',
+			'Ma',
+			'He',
+			'Jai',
+			'Jo',
+			'Je',
+			'De',
+			'Da',
+			'Wi',
+			'We',
+			'Wa',
+			'O',
+			'Pra',
+			'Ca',
+			'Cha'
+		)
+		let w = randomOf(
+			'mie',
+			'ster',
+			'nnard',
+			'nnis',
+			'rshal',
+			'ckard',
+			'rold',
+			'rome',
+			'rry',
+			'den',
+			'dren',
+			randomOf('nneas', 'nnius'),
+			'nten',
+			'llen',
+			randomOf('lden', 'lton'),
+			randomOf('ston', 'ngston', 'rlston'),
+			'llace',
+			'ller',
+			randomOf('lder', 'lter'),
+			'dwin'
+		)
+		return q + w
+	}
+	const humanFemaleNormalSounding = function() {
+		let q = randomOf(
+			'Lo',
+			'La',
+			'Li',
+			'Do',
+			'Da',
+			'De',
+			'Ja',
+			'A',
+			'Ca',
+			'Mo',
+			'Moi',
+			'Ma',
+			'Wi',
+			'Ve',
+		)
+		let w = randomOf(
+			'nna',
+			'nessa',
+			'nette',
+			'cely',
+			'cey',
+			'rcey',
+			'rra',
+			'rry',
+			'bbie',
+			'la',
+			'lissa',
+			'lina',
+			'lma',
+			'lanie',
+			'rette',
+			'rena',
+			randomOf('tty', 'thy'),
+			'raine',
+			'ssa',
+			'rlyn',
+			'ndra',
+			'dia'
+		)
+		return q + w
+	}
+	const humanMale2	= function(){
 		var q = randomOf(
 			"Loth",
 			"Fal",
@@ -747,7 +839,7 @@
 			"nalt");
 		return q + w;
 	}
-	Names.humanMale1	= function(){
+	const humanMale1	= function(){
 		var q = randomOf(
 			"Aaron",
 			"Alva",
@@ -801,7 +893,7 @@
 			"Muhammad");
 		return q;
 	}
-	Names.humanSurname	= function(){
+	const humanSurname	= function(){
 		var q = randomOf(
 			"Robertson ",
 			"Flynn ",
@@ -851,62 +943,67 @@
 			"Vaughn ",
 			"Pressler ",
 			"Tanner ",
+			'Skinner',
 			"Rowe ");
 		return q;
 	}
+	Names.humanMale		= function() {
+		return randomOf(humanMaleNormalSounding(), humanMale1(), humanMale2()) + ' ' + humanSurname()
+	}
 	Names.humanFemale	= function(){
 		var q = randomOf(
-			"Adela ",
-			"Adelaide ",
-			"Mother ",
-			"Helga ",
-			"Becky ",
-			"Sophie ",
-			"Juliet ",
-			"Margot ",
-			"Dareth ",
-			"Shelby ",
-			"Aldin ",
-			"Steven ",
-			"Grif ",
-			"Hegnar ",
-			"Jordan ",
-			"Deena ",
-			"Kendra ",
-			"Carson ",
-			"Dorthy ",
-			"Helen ",
-			"Ella ",
-			"Lena ",
-			"Sasha ",
-			"Triss ",
-			"Trisha ",
-			"Alissa ",
-			"Annie ",
-			"Grace ",
-			"Lily ",
-			"Margery ",
-			"Gwen ",
+			"Adela",
+			"Adelaide",
+			"Mother",
+			"Helga",
+			"Becky",
+			"Sophie",
+			"Juliet",
+			"Margot",
+			"Dareth",
+			"Shelby",
+			"Aldin",
+			"Steven",
+			"Grif",
+			"Hegnar",
+			"Jordan",
+			"Deena",
+			"Kendra",
+			"Carson",
+			"Dorthy",
+			"Helen",
+			"Ella",
+			"Lena",
+			"Sasha",
+			"Triss",
+			"Trisha",
+			"Alissa",
+			"Annie",
+			"Grace",
+			"Lily",
+			"Margery",
+			"Gwen",
 			"Isabelle",
-			"Kyrsten ",
-			"Catelyn ",
-			"Myrra ",
-			"Sherrie ",
-			"Alyson ",
-			"Cindy ",
-			"Diana ",
-			"Melanie ",
-			"Sara ",
-			"Lydia ",
-			"Madelyn ",
-			"Sara ",
-			"Deidre ",
-			"Liza ",
-			"Wilma ",
-			"Aisha ",
-			"Heather ",
-			"Abby ");
-		return q;
+			"Kyrsten",
+			"Catelyn",
+			"Myrra",
+			"Sherrie",
+			"Alyson",
+			"Cindy",
+			"Diana",
+			"Melanie",
+			"Sara",
+			"Lydia",
+			"Madelyn",
+			"Sara",
+			"Deidre",
+			'Geraldine',
+			"Liza",
+			"Wilma",
+			"Aisha",
+			"Heather",
+			"Abby");
+		return randomOf(q, humanFemaleNormalSounding()) + ' ' + humanSurname();
 	}
 	Names.nordicMale	= function(){
 		var q = randomOf("Hast",
@@ -964,8 +1061,8 @@
 			"Rok",
 			"Tor",
 			"Ur",
-			"Orr",
-			"Darr'",
+			"Or",
+			"Dar'",
 			"Gar",
 			"Gron",
 			"Gnar",
@@ -977,12 +1074,10 @@
 			"Krall'",
 			"Karth'",
 			"Zug'",
-			"Zogg'",
+			"Zog'",
 			"Zor'",
-			"Xokk'",
 			"Rag'",
-			"Vrok'",
-			"Braak'",
+			"Brak'",
 			"Naz'",
 			"Nok'",
 			"Mor'",
@@ -990,10 +1085,12 @@
 			"Grom");
 		var w = randomOf(
 			"garosh",
-			"salok",
 			"tar",
+			'mar',
 			"zug",
 			"garon",
+			'gron',
+
 			"moga",
 			"ogar",
 			"zur",
@@ -1189,7 +1286,248 @@
 				"Yi",
 				"Chi");
 		return randomOf(q, q + lowercaseFirstLetter(w), q + " " + w);}
+	Names.taurenMale = () => taurenMale() + ' ' + taurenSurname()
+	Names.taurenFemale = () => taurenFemale() + ' ' + taurenSurname()
+	const taurenFemale = function() {
+		let q = randomOf(
+			'Ku',
+			'Ka',
+			'Ko',
+			'Mu',
+			'Mai',
+			'Moi',
+			'Moo',
+			'Na',
+			'Noo',
+			'Su',
+			'Sa'
+		)
+		let w = randomOf(
+			'nna',
+			'nda',
+			'mna',
+			'ma',
+			'mwa',
+			'ra',
+			'ta',
+			'ka',
+			'ga',
+			'gra',
+			'gna',
+		)
+		return q + w
+	}
+	const taurenMale = function() {
+		let q = randomOf(
+			'Ka',
+			'Ko',
+			'Ta',
+			'To',
+			'Ti',
+			'Ha',
+			'Ho',
+			'Hu',
+			'Ra',
+			'O',
+			'E',
+			'Thu',
+			'Thru',
+			'Ku',
+			'Bu',
+			'Ba',
+			'Bai',
+			'Be',
+			'Sau',
+			'Mo',
+			'Mu',
+			'Moo',
+			'Cai',
+			'Ca'
 
+		)
+		let w = randomOf(
+			'rn',
+			'rm',
+			'rg',
+			'rog',
+			'ro',
+			'rne',
+			'ram',
+			'ru',
+			'rt',
+			'nn',
+			'ne',
+			'nu',
+			'mn',
+			'uk',
+			'gg',
+			'ko',
+			'gor',
+			'gonn',
+			'tt',
+			'tan',
+			'to',
+			'ttu',
+			'hu',
+			'ho',
+			'we',
+			'wo',
+			'wu'
+		)
+		return q + w
+	}
+	const taurenSurname = function() {
+		let q = randomOf(
+			'Stone',
+			'Blood',
+			'Hawk',
+			'Eagle',
+			'Thunder',
+			'Storm',
+			'Sage',
+			'Black',
+			'Crest',
+			'Feather',
+			'Winter',
+			'Proud',
+			'Plains',
+			'Cloud',
+			'Spirit',
+			'Earth',
+			'Rain',
+			'Mist',
+			'Wild'
+
+		)
+		let w = randomOf(
+			'totem',
+			'stout',
+			'hoof',
+			'horn',
+			'bluff',
+			'bender',
+			'drifter',
+			'walker',
+			'born',
+			'chaser',
+			'strider',
+			'mane'
+		)
+		return q + w
+	}
+	Names.urchinBoy = function() {
+		let how = randomOf(
+			'Little',
+			'Lucky',
+			'Slimboy'
+		)
+		let name = randomOf(
+			'Pippin',
+			'Thomas',
+			'Tommy',
+			'Dennis',
+			'Loo',
+
+		)
+	}
+
+	Names.strangePotion			= function(){
+		let color = randomOf(
+			'Red',
+			'Black',
+			'Crimson',
+			'Moist',
+			'Thick',
+			'Dry',
+			'Damp',
+		)
+		var q = randomOf(
+			'Blood',
+			'Ooze',
+			'Bone',
+			'Mold',
+			'Slime',
+			'Tar',
+			'Bleed',
+			'Sweat',
+			'Tear',
+			'Roach',
+			'Fungal',
+			'Sludge',
+			'Sudor',
+			'Pus',
+			'Blister',
+			'Blain',
+			'Worm',
+			'Maggot'
+		);
+		var w = randomOf(
+			'clot',
+			'burst',
+			'linger',
+			'broth',
+			'milk',
+			'nectar',
+			'sap',
+			'juice',
+			'phlegm',
+			'cluster',
+			'batch',
+			'glob',
+			'grume',
+			'jelly',
+			'lopper',
+			'grease',
+			'lard',
+			'slick',
+			'smear',
+			'spatter',
+			'stain',
+			'slop',
+			'smudge',
+			'drain',
+			'leak',
+			'drib',
+			'leach',
+			'swelt',
+			'spurt',
+			'flow',
+			'weep',
+			'growth',
+			'sog',
+			'dew',
+			'clutch',
+			'boil',
+			'burn',
+			'sore',
+			'gnat',
+			'louse',
+			'pest',
+			'mite',
+			'limb',
+			'carve',
+			'grub'
+		);
+		let potion = randomOf(
+			'Potion',
+			'Concoction',
+			'Salve',
+			'Oil',
+			'Ointment',
+			'Balm',
+			'Draught',
+			'Elixir',
+			'Brew',
+			'Draft',
+			'Mixture',
+			'Philter',
+			'Tonic',
+			'Solution',
+			'Fluid',
+			'Serum'
+		)
+		return randomOf(color + ' ', '', '', '', '') + q + (percentChance(90)? w : '') + ' ' + potion
+	}
 
 
 
@@ -1423,6 +1761,40 @@
 				"maw");
 		return q + w;
 	}
+	Names.crab = function() {
+		let q = randomOf(
+			'Tide',
+			'Red',
+			'White',
+			'Reef',
+			'Shore',
+			'Ridge',
+			'Sea',
+			'Shell',
+		)
+		let w = randomOf(
+			'crawler',
+			'clasp',
+			'clack',
+			'clamp',
+			'claw',
+			'lob',
+			'clamb',
+			'pincher',
+			'clinch',
+			'glip',
+			'snap',
+			'crack',
+			'clutch',
+			'nip',
+			'crab',
+			'dredge',
+			'click',
+			'grab',
+			'knuck'
+		)
+		return q + w
+	}
 
 
 	Names.quest			= function(){
@@ -1438,7 +1810,9 @@
 				"A Knight's ",
 				"A Soldier's ",
 				"Warlord's ",
-				randomOf("My", "An", "") + "Unfortunate ",
+				randomOf('A ', '') + 'Difficult',
+				randomOf('An ', '') + 'Uplifting',
+				randomOf("My ", "An ", "") + "Unfortunate ",
 				"A Fortunate ",
 				"A Monk's ",
 				"A Priest's ",
@@ -1780,6 +2154,7 @@
 			h + n,
 			randomOf(u + "and " + j, u + m));
 	}
+
 	Names.upgrade		= function(){
 		var q = randomOf(
 			"Improved ",
@@ -2222,6 +2597,7 @@
 			'Old',
 			'Commoner\'s',
 			'Shattered',
+			'Poor Man\'s',
 			'Small',
 			'Whetted',
 			'Stone',
@@ -2253,6 +2629,15 @@
 			'Withered'
 
 		)
+		let material = randomOf(
+			'Steel',
+			'Steel',
+			'Wooden',
+			'Iron',
+			'Iron',
+			'Bronze',
+			'Copper'
+		)
 		let weapon = randomOf(
 			'Mallet',
 			'Blade',
@@ -2270,7 +2655,7 @@
 			'Hatchet',
 			'Bow'
 		)
-		return q + ' ' + weapon
+		return q + ' ' + (randomOf(material + ' ', '')) + weapon
 	}
 	Names.sword			= function(){
 		var q = randomOf(
@@ -2359,56 +2744,39 @@
 			'slice',
 			'shiver'
 		)
+		return q + w
 	}
 	Names.axe = function() {
 		let q = randomOf(
 			'Rage',
 			'Blood',
-			'Fury'
+			'Fury',
+			'Whirl',
+			'Battle',
+			'War',
+			'Soul',
+			'Corpse',
+			'Storm',
+			'Thunder',
+			'Steel',
+			'Gore'
 		)
 		let w = randomOf(
 			'blade',
-			'whirl',
 			'fury',
 			'reaver',
 			'ripper',
-			'cleave'
+			'cleave',
+			'sunder',
+			'rip',
+			'sever',
+			'carve',
+			'zerk',
+			'axe',
+			'howl',
+			'slaughter'
 		)
-	}
-	Names.crab = function() {
-		let q = randomOf(
-			'Tide',
-			'Red',
-			'White',
-			'Reef',
-			'Shore',
-			'Ridge',
-			'Sea',
-			'Shell',
-		)
-		let w = randomOf(
-			'crawler',
-			'clasp',
-			'clack',
-			'clamp',
-			'claw',
-			'lob',
-			'clamb',
-			'pincher',
-			'clinch',
-			'glip',
-			'snap',
-			'crack',
-			'clutch',
-			'nip',
-			'crab',
-			'dredge',
-			'click',
-			'grab',
-			'knuck'
-
-
-		)
+		return q + w
 	}
 
 	Names.cookie		= function(){
@@ -3850,61 +4218,153 @@
 	}
 	Names.zone			= function(){
 		var q = randomOf(
-			"Mage's ",
-			"Warrior's ",
-			"Magister's ",
-			"The Howling ",
-			"The Proving ",
-			"Hell's ",
-			"The Forgotten ",
-			"The Oblivion ",
-			"The Stone ",
-			"The Eastern ",
-			"The Western ",
-			"The Northern ",
-			"The Southern ",
-			"The Searing ",
-			"The Screaming ",
-			"The Golden ",
-			"The Brimstone ",
-			"Summoner's ",
-			"The Holy ",
-			"Sun's ",
-			"Moon's ",
-			"The Burning ",
-			"The Twilight ",
-			"The False ",
-			"Falcon's ",
-			"The Blessed ",
-			"The Cursed ",
-			"Storm's ");
+			'Burning',
+			"Blessed",
+			"Brimstone",
+			"Burning",
+			'Cold',
+			"Cursed",
+			'Damned',
+			'Deserted',
+			'Desolate',
+			'Death\'s',
+			'Dead',
+			'Derelict',
+			"Eastern",
+			"Falcon's",
+			'Forsaken',
+			"Forgotten",
+			'Frozen',
+			"False",
+			'Flaming',
+			'Fallout',
+			"Golden",
+			"Hell's",
+			"Howling",
+			'Headless',
+			"Holy",
+			'Haunted',
+			'Highland',
+			'Ice',
+			'Ivory',
+			"Mage's",
+			"Magister's",
+			"Moon's",
+			"Oblivion",
+			"Proving",
+			"Northern",
+			"Stone",
+			"Southern",
+			"Searing",
+			"Summoner's",
+			"Screaming",
+			'Scorching',
+			"Storm's",
+			"Sun's",
+			"Thief's",
+			"Twilight",
+			'Towering',
+			"Warrior's",
+			"Western",
+			'1000',
+		);
 		var w = randomOf(
-			"Retreat",
-			"Terrace",
+			"Altar",
+			'Asylum',
+			"Abyss",
+			"Breach",
+			'Bethel',
+			'Burrow',
+			'Blockade',
+			'Bog',
+			'Burial',
+			"Chapel",
+			'Corner',
+			'Cove',
+			'Cover',
+			'Chasm',
+			'District',
+			'Depth',
+			'Domain',
+			'Dawn',
+			'Dale',
+			"Enclave",
+			'Exit',
+			'Entry',
+			"End",
 			"Fjord",
+			"Field",
+			'Fen',
+			"Fall",
+			'Freehold',
 			"Grounds",
 			"Grave",
-			"Pools",
-			"Rift",
-			"Fields",
-			"Kingdoms",
-			"Lands",
-			"Falls",
-			"Wall",
-			"Breach",
+			'Glade',
+			'Garden',
 			"Gate",
 			"Gorge",
-			"Steppes",
-			"Tundra",
-			"Abyss",
-			"Sea",
+			'Gulch',
 			"Hill",
-			"Chapel",
-			"Altar",
+			'Haven',
+			'Harbor',
+			'Holding',
 			"Halls",
-			"Enclave",
+			'Hideout',
+			'Impasse',
+			'Incline',
+			"Kingdom",
+			"Land",
+			'Lair',
+			'Lot',
+			'Lock',
+			'Moor',
+			'Mire',
+			'Morass',
+			'Opening',
+			'Oasis',
+			'Point',
+			'Pass',
+			'Plateau',
+			'Plains',
+			'Parish',
+			"Pools",
+			'Passage',
+			'Quarter',
+			'Realms',
+			'Resting',
+			"Rift",
+			'Ria',
+			'Range',
+			"Retreat",
+			'Rule',
+			'Ridge',
+			'Ring',
+			'Resort',
+			'Refuge',
+			'Redoubt',
 			"Square",
-			"End");
+			"Sea",
+			"Steppes",
+			'Sanctum',
+			'Sweep',
+			'Shrines',
+			'Swamp',
+			'Summit',
+			'Slough',
+			"Tundra",
+			"Terrace",
+			'Turnstile',
+			'Trench',
+			'Vault',
+			"Wall",
+			'Ward',
+			'Woods',
+			'Where'
+		);
+		if (percentChance(15))
+			if (!w.endsWith('s'))
+				w = w + 's'
+		return (percentChance(85)? 'The ' : '') + q + ' ' + w
 	}
 	Names.goodOrganization	= function(){
 		var q, w;
