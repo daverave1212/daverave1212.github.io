@@ -76,7 +76,8 @@
 			'pimp',
 			'programmingLanguage',
 			'videoGame',
-			'reggaeSinger'
+			'reggaeSinger',
+			'techApp'
 		]
 	}
 
@@ -4576,4 +4577,164 @@
 			'kan'
 		)
 		return randomOf('', 'The ', 'The ') + q + w
+	}
+
+	Names.techApp			= function() {
+		var q = randomOf(
+			{ value: 'alpha', ends: ['fa'] }, { value: 'olpha', ends: ['fa'] },
+			'scape', 'scrape', 'scope', 'type', 'stripe', 'grape', 'hype', 'slope', 'shape', 'tape', 'escape', 'pipe',
+			'android', 'paid', 'verid', 'braid', 'fluid', 'solid', 'rapid', 'orchid', 'hybrid',
+			{ value: 'photo', ends: ['to', 'o'] }, 'keto', 'auto', 'motto', 'klepto', 'crypto',
+			{ value: 'video', ends: ['o', 'yo'] }, 'mayo',
+			{ value: 'desk', ends: ['sc'] }, 'masc', 'tasc', 'risc', 'whisc',
+			'ubuntu',
+			'insta', 'meta', 'beta', 'delta', 'theta', 'vista', 'pasta', 'crysta', 'strata',
+			'cash', 'stash', 'mesh', 'hash', 'dash', 'wish', 'swish', 'clash', 'flash', 'fresh',
+			'flip', 'drip', 'skip', 'clip', 'ship', 'zip', 'gossip',
+			'feed', 'need', 'seed', 'wired','fixed', 'shred', 'sacred',
+			'tictac', { value: 'hack', ends: ['ac'] }, { value: 'back', ends: ['ac'] }, { value: 'sex', ends: ['ac'] }, { value: 'pack', ends: ['ac'] }, { value: 'sack', ends: ['ac'] },
+			'trap', 'map', 'frap', 'cheap', 'strap', 'gap', 'leap', 'heap', 'snap',
+			'sleep', 'step', 'keep', 'prep', 'deep',
+			'group', 'soup', {value: 'loop', ends: ['up']}, {value: 'swoop', ends: ['up']},
+			'cog', 'prog', 'blog', 'frog',
+			'swag', 'lag', 'flag', 'zigzag',
+			'one', 'zone', 'mine', 'twine', 'leone',
+			'dino', 'keyno',
+			'dev', 'rev',
+			'micro', 'pyro', 'zero', 'retro', 'hydro', 'intro',
+			'net', 'jet', 'meet', 'sheet', 'asset',
+			'spin', 'pin', 'join', 'vagin', 'brain',
+			'circ', {value: 'perk', ends: ['rc']}, 'src',
+			'cond', 'accend', 'wind', 'mind', 'sand', 'brand', 'legend',
+			'motor', 'odor', 'vapor', 'color', 'armor', 'gator',
+			'bit', 'kit', 'unit', 'dixit',
+			'para', 'aura', 'supra', 'cobra', 'opera', 'extra', 'ultra', 'mantra',
+			'meta', 'quota', 'data', 'vita', 'beta', 'delta',
+			'cisco', 'coco', 'narco', 'fresco', 'popco',
+			'inspira', 'aera', 'dura', 'vibra', 'colora', 'genera',
+			'fire', 'lure', 'sure', 'wire',
+			'sky', 'saky', 'milky', 'leaky', 'husky', 'silky', 'lucky', 'shaky',
+			'verizo', 'horizo', 'schizo', 'izo',
+			'tele', 'idle', 'mile', 'role',
+			{ value: 'break', ends: ['ec'] }, { value: 'tech', ends: ['ec'] }, { value: 'sonix', ends: ['ec'] }
+		);
+		let secondOptions = [
+			'acintosh', 'accent',
+			'ognitive', 'ogger',
+			'evinite', 'evisto', 'evil', 'evolve', 'event',
+			'nduct', 'nductor', 'ndigen', 'ndium', 'ndict', 'ndoor', 'ndigo',
+			'factory', 'false', 'fact', 'fauna',
+			'rail', 'rain', 'rabola', 'random', 'racy', 'radio',
+			'tactics', 'talurgy', 'tandem', 'tard',
+			'round', 'roll', 'rock', 'roxide',
+			'rect',
+			'cover',
+			'tube',
+			'torrent',
+			'goat',
+			'app',
+			'agabond', 'agile',
+			'episode',
+			'shell', 'shard',
+			'news', 'net',
+			'node', 'note', 'noble', 'nord',
+			'intuition', 'intel', 'instrument', 'instant', 'indigo',
+			'scape',
+			'scribe',
+			'nerve',
+			'onward',
+			'optics',
+			'oracle',
+			'evidence',
+			'ory', 'orade',
+			'idle',
+			'ita.ly',
+			'ippet', 'ippit',
+			'yodle', 'york', 'you',
+			'ron',
+			'kynesis',
+			'zontal', 'zometric', 'zoo',
+			'leverage', 'level',
+			{ value: 'sperience', starts: ['ec'] }, { value: 'stra', starts: ['ec'] }, { value: 'spedia', starts: ['ec'] },
+			'ecno',
+			'rcocet', 'rcle', 'rcular',
+		]
+		let onlyIfLastLetterIsVowel = [
+			'gram',
+			'nce',
+			'dle',
+			'pal',
+			're',
+			'cion',
+			'tion'
+		]
+		let onlyifLastLetterIsConsonant = [
+			'ly',
+			'ie',
+			{ value: 'it', doubleLastLeter: true }
+		]
+		let anyOther = [
+			'flix', 'flow', 'ful',
+			'+',
+			'snap',
+			'app',
+			'up',
+			'down',
+			'cent',
+			'board',
+			'com',
+			'con',
+			'soft',
+			'way',
+			'wall',
+			'dev',
+			'zilla'
+
+		]
+
+		let qAsString = typeof(q) == 'string' ? q : q.value
+		switch (randomOf('ending','vowel-cons','other')) {
+			case 'ending':
+				let ending
+				if (typeof(q) == 'string')
+					ending = q.substring(q.length - 2, q.length)
+				else
+					ending = randomOf(...q.ends)
+				let possibleEndings = secondOptions.filter(word => {
+					if (typeof(word) == 'string') {
+						return word.startsWith(ending)
+					} else {
+						return word.starts.includes(ending)
+					}
+				})
+				let chosenEnding = randomOf(...possibleEndings)
+				let realEnding
+				if (typeof(chosenEnding) == 'string') {
+					realEnding = chosenEnding.substring(2, chosenEnding.length)
+				} else {
+					realEnding = chosenEnding.value
+				}
+				return qAsString + realEnding
+			case 'vowel-cons':
+				let isLastLetterVowel = ['a', 'e', 'i', 'o', 'u', 'y'].includes(qAsString[qAsString.lenght - 1])
+				let randomEnding
+				if (isLastLetterVowel) {
+					randomEnding = randomOf(...onlyIfLastLetterIsVowel)
+				} else {
+					randomEnding = randomOf(...onlyifLastLetterIsConsonant)
+				}
+				if (typeof(randomEnding) == 'string')
+					return q + randomEnding
+				else {
+					if (randomEnding.doubleLastLeter == true) {
+						return qAsString + q[qAsString.length - 1] + randomEnding.value
+					} else {
+						return qAsString + randomEnding.value
+					}
+				}
+			case 'other':
+				let otherEnding = randomOf(...anyOther)
+				return qAsString + otherEnding
+		}
+
 	}
