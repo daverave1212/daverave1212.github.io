@@ -1,0 +1,51 @@
+<style>
+body {
+  background-color: white;
+}
+</style>
+
+<div id="Form">
+  <h2>
+  Cerere Iesire Dave
+  </h2>
+
+  <label>Nume</label> <input id="Nume" onkeypress="changed()" onchange="changed()">
+  <br><br>
+  <label>Prenume</label> <input id="Prenume" onkeypress="changed()" onchange="changed()">
+  <br><br><br>
+  <textarea rows="10" cols="40">
+
+  </textarea>
+  <br><br>
+  <input type="checkbox"><label>Am citit si accept termenii si conditiile</label>
+  <br><br>
+  <button onclick="trimite()">Trimite</button>
+</div>
+
+<div id="Done" style="display:none;">
+  <h2>Cerere Trimisa</h2>
+  <p>
+    Momentan sunt <span style="color:red">38</span> de oameni pe lista de asteptare.
+  </p>
+  <p>
+    Timpul estimat de asteptare: <span style="color:red">61 de zile</span>
+  </p>
+  <p>
+    Multumim pentru rabdare si ne cerem scuze pentru asteptare!
+  </p>
+</div>
+
+
+<script>
+function changed() {
+	const nume = document.querySelector("#Nume").value
+  const prenume = document.querySelector("#Prenume").value
+  const textarea = document.querySelector("textarea")
+  textarea.value = `Subsemnatul(a) ${nume} ${prenume} declar ca doresc o programare de iesire cu Dave cu scopurile (mentionati scopul iesirii mai jos):`
+}
+
+function trimite() {
+	document.querySelector("#Form").style.display = 'none'
+  document.querySelector("#Done").style.display = ''
+}
+</script>
