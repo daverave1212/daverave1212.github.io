@@ -1,3 +1,5 @@
+	// NOTE: When I release these, don't release them all at once. Release one new name gen a day or something
+
 	var Names = {};
 
 	var buttons = {
@@ -23,8 +25,9 @@
 			'bandit',
 			'ogre',
 			'ogreTribe',
-			'succubus'
-
+			'succubus',
+			'urchinBoy',
+			'israeli'
 		],
 		'Locations'		: [
 			'city',
@@ -1418,18 +1421,110 @@
 	}
 	Names.urchinBoy = function() {
 		let how = randomOf(
+			'Big Boy',
+			'Boney',
+			'Cousin',
+			'Coinboy',
+			'Dirty',
+			'Dirtpoor',
 			'Little',
 			'Lucky',
-			'Slimboy'
+			'Little Lad',
+			'Slimboy',
+			'Happy Boy',
+			'Half-Pint',
+			'Hinty',
+			'Tiny',
+			'Thin',
+			'Needy',
+			'Pocketboy',
+			'Poor',
+			'Patchy',
+			'Frogboy',
+			'Slimboy',
+			'Stubby',
+			'Stumpy',
+			'Skimpy',
+			'Short',
+			'Shy',
+			'Scanty',
+			'Second-hand',
+			'Stingy',
+			'Spareboy',
+			'Schoolboy',
+			'Squirty',
+			'Slinky',
+			'Skinny',
+			'Slightly Starved',
+			'Scrawny',
+			'Softboy',
+			'Starving',
+			'Ricketty',
+			'Weeman',
+			'Wonderchild',
+		)
+		let howAfter = randomOf(
+			'Boyo',
+			'Boy',
+			'Junior',
+			'Bo',
+			'Ho',
+			'Boo'
 		)
 		let name = randomOf(
-			'Pippin',
-			'Thomas',
-			'Tommy',
+			'Al',
+			'Alvin',
+			'Alfred',
+			['Bob', 'Bobby'],
+			['Barnie', 'Barny'],
+			['Brody', 'Brodie'],
+			'Billy',
+			['Charlie', 'Charly'],
+			'Cody',
+			'Danny',
+			'Dudley',
 			'Dennis',
+			['Finley', 'Fin'],
+			'Jack',
+			['Johnny', 'John'],
+			'Jerry',
 			'Loo',
-
+			'Leo',
+			'Leeroy',
+			'Louie',
+			'Martin',
+			'Macky',
+			'Ollie',
+			'Pippin',
+			'Penley',
+			'Piper',
+			['Ralph', 'Ralphy'],
+			'Roy',
+			'Rayray',
+			['Rick', 'Ricky'],
+			['Sammy', 'Sam'],
+			['Shawny', 'Seany'],
+			'Stanley',
+			'Thomas',
+			['Tommy', 'Tom'],
+			'Troy',
+			'Tony',
+			'Terry',
+			'Timmy',
+			'Toby',
+			'Teddy',
+			'Walton',
+			'Wesley',
+			'Wylie'
 		)
+		if (typeof(name) != 'string') {
+			name = randomOf(...name)
+		}
+		if (randomOf(true, false, false, false, false, false) == true) {
+			return name + ' ' + howAfter
+		} else {
+			return how + ' ' + name
+		}
 	}
 
 	Names.strangePotion			= function(){
@@ -1530,6 +1625,69 @@
 		return randomOf(color + ' ', '', '', '', '') + q + (percentChance(90)? w : '') + ' ' + potion
 	}
 
+	Names.israeli				= function(){
+		var q = randomOf(
+			'Az',
+			'Ar',
+			'Av',
+			'A',
+			'Cha',
+			'Ka',
+			'Ya',
+			'Yo',
+			'Zi',
+			'Jai',
+			'Zai',
+			'Jo',
+		);
+		var w = randomOf(
+			'a',
+			'a',
+			'a',
+			'ra',
+			'e',
+			'e',
+			'e',
+			'ssu',
+			'cha',
+			'cha',
+			'ko',
+			'vi',
+		);
+		var e = randomOf(
+			'ah',
+			'am',
+			'av',
+			'v',
+			'n',
+			'd',
+			'ch',
+			'el',
+			'ev',
+			'en',
+			'iv',
+			'yim',
+			'yah',
+			'vet',
+			'ven',
+			'vev',
+			'mel',
+			'nen',
+			'nev',
+			'lim',
+			'lech',
+			'rah',
+			'jah',
+			'zar',
+			'kel'
+		)
+		if (randomOf(1, 2) == 1) {
+			return q + w + e
+		} else {
+			return q + e
+		}
+	}
+
 
 
 	Names.bandit		= function(){
@@ -1574,34 +1732,58 @@
 		return q + w;
 	}
 	Names.boar			= function(){
-		var q = randomOf("Muzzle",
+		var q = randomOf(
+				"Muzzle",
 				"Bristle",
 				"Bramble",
-				"Dirt",
 				"Muffle",
 				"Battle",
 				"Mottle",
+				'Muggle',
+				'Rattle',
 				"Might",
 				"Red",
 				"Blood",
 				"Rage",
 				"Charge",
 				"Tackle",
+				'Trample',
 				"Dust",
 				"Dredge",
+				"Dirt",
+				'Dread',
+				'Dire',
 				"Flak",
+				'Stone',
 				"Crag");
-		var w = randomOf("snout",
+		var w = randomOf(
+				"snout",
 				"tusk",
 				"fang",
 				"flank",
+				'gore',
+				'quill',
+				'grunt',
+				'grub',
 				"hoff",
 				"snuff",
+				'scroff',
+				'smut',
+				'stack',
 				"hog",
 				"hogger",
 				"horn",
 				"husk",
+				'hench',
+				'mug',
 				"spine",
+				'trot',
+				'patch',
+				'fleck',
+				'wrang',
+				'king',
+				'runt',
+				'glut',
 				"back");
 		return q + w;
 	}
@@ -1749,6 +1931,7 @@
 				"Blood",
 				"Razor",
 				"Rake",
+				'Sickle',
 				"Murk");
 		var w = randomOf("head",
 				"nose",
@@ -1762,7 +1945,7 @@
 				"maw");
 		return q + w;
 	}
-	Names.crab = function() {
+	Names.crab 			= function() {
 		let q = randomOf(
 			'Tide',
 			'Red',
@@ -1772,6 +1955,7 @@
 			'Ridge',
 			'Sea',
 			'Shell',
+			'Cray'
 		)
 		let w = randomOf(
 			'crawler',
@@ -1779,6 +1963,7 @@
 			'clack',
 			'clamp',
 			'claw',
+			'clatter',
 			'lob',
 			'clamb',
 			'pincher',
@@ -1795,6 +1980,92 @@
 			'knuck'
 		)
 		return q + w
+	}
+	Names.bird			= function() {
+		let a = randomOf(
+			'Sun',
+			'Moon',
+			'Star',
+			'Death',
+			'Glaive',
+			'Knife',
+			'Dread'
+		)
+		let b = randomOf(
+			'squak',
+			'beak',
+			'screech',
+			'feather',
+			'wing',
+			'wind',
+			'caw',
+			'bill',
+			'nib',
+			'tail',
+			'talon',
+			'nail',
+			'peck',
+			'strike'
+		)
+		let bird = randomOf(
+			'Macaw',
+			'Raven',
+			'Crow',
+			'Sparrow',
+			'Owl',
+			'Starling',
+			'Eagle',
+			'Finch',
+			'Robin',
+			'Swallow',
+			''
+		)
+		return a + b + ' ' + bird
+	}
+	Names.snake			= function() {
+		let a = randomOf(
+			'Rattle',
+			'Slither',
+			'Venom'
+		)
+		let b = randomOf(
+			'fang',
+			'ven',
+			'spine',
+			'skin',
+			'skid',
+			'scale',
+			'dart'
+		)
+	}
+	Names.wolf			= function() {
+		let a = randomOf(
+			'Timber',
+			'Dire'
+		)
+		let b = randomOf(
+			'fang',
+			'claw',
+			'dire',
+			'hound',
+		)
+	}
+	Names.bear			= function() {
+		let a = randomOf(
+			'Grizzle',
+			'Wild',
+			'Great',
+			'Shadow',
+			'Cuddle',
+		)
+		let b = randomOf(
+			'claw',
+			'fang',
+			'hide',
+			'mane',
+			'paw',
+			'tore',
+		)
 	}
 
 
@@ -2751,6 +3022,7 @@
 		let q = randomOf(
 			'Rage',
 			'Blood',
+			'Burst',
 			'Fury',
 			'Whirl',
 			'Battle',
@@ -2763,7 +3035,6 @@
 			'Gore'
 		)
 		let w = randomOf(
-			'blade',
 			'fury',
 			'reaver',
 			'ripper',
@@ -2775,7 +3046,8 @@
 			'zerk',
 			'axe',
 			'howl',
-			'slaughter'
+			'slaughter',
+			'frenzy',
 		)
 		return q + w
 	}
@@ -3344,37 +3616,77 @@
 			"Blast",
 			"Flame",
 			"Fire",
+			'Frost',
 			"War",
 			"Half",
 			"Metal",
 			"Dead",
 			"Dread",
+			'Dark',
 			"Waste",
 			"Border",
 			"Hype",
+			'Hyper',
+			'Hammer',
 			"Bleak",
 			"Quarter",
+			'Verge',
+			'Venge',
 			"Star",
-			"Car",
-			"Scrap");
+			'Counter',
+			'Cross',
+			"Scrap",
+			'Silver',
+			'Wild',
+			'Tale',
+		);
 		var w = randomOf(
 			"blast",
-			"land",
+			'bound',
+			'breach',
+			'bane',
+			'bolt',
+			'born',
 			"crash",
 			"cram",
-			"stance",
+			"craft",
+			'code',
+			"dog",
+			'dragon',
+			'drive',
+			"flame",
+			'fire',
+			'force',
+			'flown',
+			'forged',
+			"hog",
 			"lands",
-			"zone",
+			"land",
 			"log",
+			'locked',
+			'myth',
+			'out',
+			'souls',
 			"spark",
 			"storm",
-			"hog",
-			"dog",
+			'space',
+			"stance",
+			'space',
 			"shock",
 			"stalk",
-			"flame",
+			'scrap',
+			'slam',
+			'strike',
+			'trial',
+			'torn',
+			'run',
+			'rune',
 			"watch",
-			"craft");
+			'world',
+			'work',
+			'ward',
+			"zone"
+		);
 		return q + w;
 	}
 
@@ -3890,52 +4202,53 @@
 			"High");
 
 		var w = randomOf(
-			"shire",
-			"glen",
-			"ridge",
-			"town",
-			"garden",
-			"den",
-			"vale",
-			"meadow",
-			"hill",
 			"brad",
+			"bay",
+			"den",
+			"dale",
+			'dran',
+			"dor",
+			"dorne",
+			"ford",
+			"furt",
+			"field",
+			"fell",
+			"fall",
+			"grad",
+			"garden",
+			"glen",
+			"guard",
+			"garde",
+			"hill",
+			"hold",
+			"heim",
+			"land",
+			"meadow",
+			"marsh",
 			"mire",
 			"mill",
 			"keep",
-			"hold",
-			"watch",
 			"post",
-			"ford",
-			"marsh",
-			"field",
-			"ville",
-			"land",
-			"fell",
-			"shore",
-			"guard",
-			"garde",
-			"wallow",
-			"stead",
-			"fall",
-			"wall",
-			"state",
 			"run",
+			"ridge",
+			"state",
+			"stead",
+			"shore",
+			"shire",
+			"thurn",
+			"town",
+			"vale",
+			"vael",
+			"voord",
+			"ville",
+			"wall",
+			"watch",
+			"wallow",
 			"ward",
 			"water",
 			"tower",
-			"bay",
 			"wood",
-			"dale",
-			"heim",
-			"vael",
-			"dor",
-			"grad",
-			"voord",
-			"thurn",
-			"furt",
-			"dorne",
-			"wich");
+			"wich",);
 		return q + w;
 
 
