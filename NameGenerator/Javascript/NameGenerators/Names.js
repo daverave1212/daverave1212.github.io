@@ -64,7 +64,8 @@
 			'goodOrganization',
 			'cult',
 			'thievesGuild',
-			'voidFaction'
+			'voidFaction',
+			'romanianTown'
 		],
 		'Modern'	: [
 			'trapper',
@@ -3092,7 +3093,7 @@
 				"chips");
 		return q + w;
 	}
-	Names.eSportsTeam		= function(){
+	Names.eSportsTeam	= function(){
 		var q = randomOf("Xplosion",
 				"Vampire",
 				"Jester",
@@ -3291,7 +3292,7 @@
 			"M");
 		return q;//.toLowerCase();
 	}
-	Names.letterOrNumber	= function(){
+	Names.letterOrNumber= function(){
 		var q = randomOf("Q",
 				"W",
 				"E",
@@ -4359,7 +4360,7 @@
 				" Bar",
 				"", "", "");
 	}
-	Names.village			= function(){
+	Names.village		= function(){
 		var q = randomOf("High",
 				"Hald",
 				"River",
@@ -5050,4 +5051,91 @@
 				return qAsString + otherEnding
 		}
 
+	}
+
+	Names.romanianTown = function() {
+
+		function getRootWord() {
+			let letter1 = randomOf(
+				'R', 'T', 'Ț', 'P', 'S', 'Ș', 'D', 'Dr',
+				'G', 'Gr', 'Gl', 'H', 'L', 'Z',
+				'C', 'Cr', 'V', 'Vr', 'B', 'N', 'M'
+			)
+			const [letter2, letter4] = randomOf(	// ['', randomOf('ă', 'â', 'a', 'e', 'i', 'u', 'o', 'oa', 'ea')],
+				['ă', randomOf('ă', 'u', 'i', 'oa', 'ea', 'e')],
+				['â', randomOf('ă', 'â', 'u', 'i', 'e', 'ea')],
+				['a', randomOf('ă', 'â', 'u', 'ea')],
+				['e', randomOf('a', 'e', 'i', 'oa', 'ea')],
+				['u', randomOf('ă', 'a', 'e', 'i', 'u', 'oa', 'ea')],
+				['i', randomOf('ă', 'a', 'e', 'i', 'u', 'o', 'oa', 'ea')],
+				['ea', randomOf('ă', 'â', 'i', 'u', 'oa')],
+				['oa', randomOf('ă', 'a', 'e', 'i', 'ea')]
+			)
+			if ((letter1 == 'G' || letter1 == 'C') && (letter2 == 'e' || letter2 == 'i') && (percentChance(50))) {
+				letter1 += 'h'
+			}
+			function getLetter3() {
+				return randomOf(
+					randomOf('r', 'r', 'r', 'rg'), 't', 'ț', 's', 'ș', randomOf('d', 'd', 'd', 'dr', 'jn'),
+					randomOf('g', 'g', 'g', 'gr'), 'l', 'z', randomOf('c', 'c', 'c', 'cr'), 'v', 'b', 'n', 'm', 'v',
+				)
+			}
+			let letter3 = getLetter3()
+			if (letter1.length == 2) {
+				while (letter3.length > 1) {
+					letter3 = getLetter3()
+				}
+			}
+			if (percentChance(50))
+				return letter1 + letter2 + letter3
+
+			const letter5 = randomOf(
+				'r', 'rg', 't', 'ț', 's', 'ș', 'd', 'dr',
+				'g', 'l', 'z', 'c', 'v', 'b', 'n', 'm',
+				'jn'
+			)
+			return letter1 + letter2 + letter3 + letter4 + letter5
+		}
+
+		let baseWord = getRootWord()
+		let preword = ''
+		let postword = ''
+		let ending = ''
+		if (percentChance(66)) {
+			ending = randomOf('ea', 'ești', 'eana', 'u', 'ezi', 'ii', 'ele', 'ari', 'ău', 'ova', 'oasa', 'eți')
+			if (percentChance(33)) {		// 33% chance it's not a single word
+				if (percentChance(50)) {	// 16.5% chance it's Comuna
+					preword = 'Comuna '
+				} else {					// 16.5 chance it's big
+					if (ending.endsWith('ii') || ending.endsWith('ele')) {
+						postword = randomOf(' Mari', ' Mici', ' de Jos', ' de Sus', ' Noi')
+					} else if (ending.endsWith('i')) {
+						postword = randomOf('i Mari', 'i Mici', 'i de Jos', 'i de Sus')
+					} else if (ending.endsWith('u')) {
+						postword = randomOf(' Mare', ' Mic', ' de Jos', ' de Sus', ' Nou')
+					} else {
+						postword = randomOf(' Mare', ' Mică', ' de Jos', ' de Sus')
+					}
+				}
+			}
+		} else {
+			ending = randomOf('ului', 'ii', 'ii', 'ei', 'ei', 'oasei', 'ării', 'elei', 'ăului')
+			if (ending == 'ii' && baseWord.endsWith('t')) {
+				baseWord = baseWord.substring(0, baseWord.length - 1) + 'ț'
+			}
+			if (percentChance(50)) {
+				preword = randomOf(
+					'Zarea',
+					'Gura',
+					'Poalea',
+					'Valea',
+					'Sâmbăta',
+					'Drumu'
+				) + ' '
+			} else {
+				preword = getRootWord() + randomOf('ea', 'eștii', 'u', 'a') + ' '
+			}
+		}
+
+		return preword + baseWord + ending + postword
 	}
