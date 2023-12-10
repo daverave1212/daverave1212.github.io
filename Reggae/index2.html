@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
 	const FILLER = 0
@@ -341,4 +342,349 @@
 	
 	
 	
+=======
+
+
+	const FILLER = 0
+	const PREADJ = 1
+	const POSTADJ = 2
+	const PREP = 3
+	const PERSON = 4.1
+	const THING = 4.2
+	const ADV = 5
+	const VERB = 6
+	const VERBXPR = 6.5
+	const PRON = 7
+	const MODALVERB = 8
+	const LOCPREP = 9
+	const LOC = 10
+	const TIME = 11
+	
+	//Rhymes = []
+	
+	Words = [
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+	]
+	Words.randomWord = function(type, rh){
+		if(rh != null){
+			return randomOfArray(Words[type][rh])
+		} else {
+			return randomOfArray(Words[type][randomKey(Words[type])])
+		}
+	}
+	
+	class Struct{
+		constructor(word, syllables, type, rhyme, preps, pref){
+			this.word = word
+			this.syllables = syllables
+			this.rhyme = rhyme
+			this.type = type
+			this.prepositions = preps
+			this.prefferedNext = pref
+			//if(!Rhymes.includes(rhyme)) Rhymes.push(rhyme)
+			if(Words[type][rhyme] == null){
+				Words[type][rhyme] = []
+			}
+			Words[type][rhyme].push(this)
+		}
+	}
+	
+	
+
+
+
+	// Other
+	/*
+		POSTADJ + "er dan " + Structure
+		nuh go ..
+		
+		(FILLER) SUBJECT - SECOND       [ACTION - OBJECT]       (FILLER)
+		(FILLER) SUBJECT - SECOND       [ACTION - OBJECT - ADV] (FILLER)
+		(FILLER) SUBJECT - SECOND       [ACTION]                (FILLER)
+		
+		PRON:
+			PRON
+		
+		THING:
+			THING
+			THING and THING
+			PREADJ THING
+		
+		PREADJ:
+			PREADJ
+			PREADJ + POSTADJ
+		
+		SUBJECT:
+			PRON
+			THING
+			
+		VERB:
+			VERB
+			MODALVERB + MODALVERB.prep + VERB
+		
+		VERB + THING:
+			VERB + THING
+			PREFVERB
+		
+		SECOND:
+			ACTION - OBJECT
+				VERB + THING + PREP + THING + "dat" + PRON + VERB
+				VERB + THING + PREP + PREADJ+  THING + "dat" + PRON + VERB
+				VERB + THING
+				VERB + PREADJ + THING
+				VERB + PRON
+				VERB + THING + POSTADJ (rare)
+				a + POSTADJ
+				a + POSTADJ + like + THING
+				a + POSTADJ + like + PRON + VERB/VERBXPR
+				VERBXPR
+				ACTION - OBJECT + LOCPREP + LOC
+			ACTION
+				VERB
+				VERB + ADV
+
+			
+		
+		9 - 12
+	*/
+	
+	function getRandomLastWord(){
+		let type = randomOf(PRON, POSTADJ, THING, VERB)
+		let rhyme = randomKey(Words[type])
+		if(Words[type][rhyme] == null)
+			return getRandomLastWord()
+		let word = randomOfArray(Words[type][rhyme])
+		if(word.rhyme == "")
+			return getRandomLastWord()
+		return word
+
+	}
+	
+	function getRandomWordWithRhyme(rhyme){
+		let type = randomOf(PRON, POSTADJ, THING, VERB)
+		if(Words[type][rhyme] == null)
+			return getRandomWordWithRhyme(rhyme)
+		return randomOfArray(Words[type][rhyme])
+	}
+	
+	function generateTwoLyrics(){
+		let lastWord1 = getRandomLastWord()
+		let lastWord2 = getRandomWordWithRhyme(lastWord1.rhyme)
+		console.log(lastWord1.word + " : " + lastWord2.word)
+	}
+	
+	
+	
+	// Functions for generation
+
+	function w(){
+		let ret = []
+		for(let i = 0; i<arguments.length; i++){
+			if(typeof arguments[i] == 'number')
+				ret.push(return Words.randomWord(arguments[i]))
+			else ret.push(arguments[i])
+		}
+		return ret
+	}
+
+	function getPreadj(){
+		return randomOf(
+			w(PREADJ),
+			w(PREADJ, POSTADJ)
+		)
+	}
+	
+	function wordToComparison(word){
+		if(word.word == "dem") return "dem"
+		if(word.word == "good") return "betta"
+		return "betta"
+		return word.word + word.word[word.word.length - 1] + "a";
+	}
+	
+	function getPostadj(){
+		return randomOf(
+			w(POSTADJ),
+			wordToComparison(Words.randomWord(POSTADJ))
+		)
+	}
+	
+	function getNoun(){
+		return randomOf(
+			w(THING),
+			w(THING, "and", THING),
+			w(getPreadj(), THING)
+		)
+	}
+	
+	function getVerb(){
+		let mv = getNativeModalVerb()
+		return randomOf(
+			w(VERB),
+			w(mv.word, randomOf(mv.prepositions), VERB)
+		)
+	}
+
+	function getSubject(){
+		return randomOf(
+			w(PRON),
+			w(PERSON)
+		)
+	}
+	
+	function getAction(){
+		return randomOf(
+			w(VERBXPR),
+			getVerb(),
+			getVerb(),
+			w(getVerb(), ADV)
+		)
+	}
+
+	function getPrefVerb(){
+		let w1 = Words.randomWord(PREFVERB)
+		let w2 = randomOf(
+			Words.randomWord(w1.prefferedNext),
+			[w(PREADJ), Words.randomWord(w1.prefferedNext)]
+		)
+		return [w1, w2]
+	}
+	
+	function getVerbNounPair(){
+		return randomOf(
+			[getVerb(), getNoun()],
+			getPrefVerb()
+		)
+	}
+	
+
+	function getActionObject(){
+		return randomOf(
+			[getVerbNounPair()],
+			[getVerbNounPair(), w(LOCPREP), w(LOC)],
+			[getVerbNounPair(), w(PREP), getNoun(), "dat", w(PRON), randomOf(w(VERB), w(VERBXPR))],
+			[getVerbNounPair(), POSTADJ],
+			[getVerbNounPair(), nativeLocPrep(), w(LOC), POSTADJ],
+			[getVerbNounPair(), wordToComparison(Words.randomWord(POSTADJ)), "dan", PRON],
+			[getVerb(), getPreadj(), getNoun()],
+			[getVerb(), w(PRON)],
+			["a", w(POSTADJ)],
+			["a", w(POSTADJ), "like", getNoun()] 
+		)
+	}
+	
+	function getSecond(){
+		return randomOf(
+			getAction(),
+			getActionObject(),
+			getActionObject(),
+			getActionObject(),
+			getActionObject(),
+			[getActionObject(), w(TIME)],
+			[getActionObject(), w(LOCPREP), w(LOC)]
+		)
+	}
+	
+	function getLyric(){
+		return normalizeArrayTree([getSubject(), getSecond()])
+	}
+	
+	function calculateNSyllables(lyricArray){
+		let s = 0;
+		for(let i = 0; i<lyricArray.length; i++){
+			if(typeof lyricArray[i] == "string"){
+				s++
+			} else {
+				s += lyricArray[i].syllables
+			}
+		}
+		return s
+	}
+	
+
+	
+	function lyricArrayToString(lyricArray){
+		let l = "";
+		for(let i = 0; i<lyricArray.length; i++){
+			if(typeof lyricArray[i] == "string"){
+				l += lyricArray[i] + " "
+			} else {
+				l += lyricArray[i].word + " "
+			}
+		}
+		return l
+	}
+	
+	console.log(lyricArrayToString(getLyric()));
+	console.log(lyricArrayToString(getLyric()));
+	console.log(lyricArrayToString(getLyric()));
+	console.log(lyricArrayToString(getLyric()));
+	console.log(lyricArrayToString(getLyric()));
+	
+	function generateVerse(rhyme){
+		let la = null
+		let nSyls = 0
+		do{
+			la = generateLyricArray(getLyricTemplate())
+			nSyls = calculateNSyllables(la)
+		} while(nSyls > 12 || nSyls < 8)
+		if(rhyme != null){
+			console.log(la[la.length - 1])
+			let lastWordType = la[la.length - 1].type
+			if(Words[lastWordType][rhyme] == null){
+				return null;
+			}
+			let rhymingWord = randomOfArray(Words[lastWordType][rhyme])
+			la[la.length - 1] = copy(rhymingWord)
+		} else {
+			rhyme = la[la.length - 1].rhyme
+		}
+		if(nSyls < 10){
+			let key = randomKey(Words[FILLER])
+			let randomWord = randomOfArray(Words[FILLER][key])
+			switch(randomOf("head", "tail")){
+				case "tail":
+					la[la.length - 1].word += ","
+					la.push(randomWord)
+					break;
+				case "head":
+					la.unshift(randomWord.word + ",")
+					break;
+			}
+		}
+		let verse = lyricArrayToString(la)
+		console.log(calculateNSyllables(la) + ": " + verse)
+		return {verse:verse, rhyme:rhyme}
+	}
+	
+	
+	
+	
+	//console.log(getVerb())
+	//console.log(generateLyricArray(getLyricTemplate()))
+	
+	//console.log(getNativeModalVerb())
+	//console.log(generateLyric(getLyricTemplate()))
+	
+
+	//[7,[[[null,null],3,[1,2],[[1,2],4]],5]]
+
+	
+
+	
+	
+	
+	
+	
+>>>>>>> 448db754ee0ecb9f90b82e4acca8d9bce4854101
 	

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,3 +47,53 @@ go()
 
 </script>
 </html>
+=======
+<!DOCTYPE html>
+<html>
+<head>
+	<script src = "Javascript/utils.js"></script>
+	<script src = "Javascript/scripts2.js"></script>
+	<script src = "Javascript/Rhymes.js"></script>
+	<script src = "Javascript/Queue.src.js"></script>
+	<script src = "Javascript/jquery-3.3.1.min.js"></script>
+	<link rel="stylesheet" href="CSS/style.css">
+</head>
+<body>
+<div id = "Window">
+
+
+</div>
+</body>
+<script>
+
+function generateTwoVerses(){
+	console.log("Generating two verses...")
+	let v1 = generateVerse()
+	if(v1 == null) console.log("NUULLLEBEEE")
+	let v2 = generateVerse(v1.rhyme)
+	if(v2 == null) return generateTwoVerses()
+	else return {v1:v1, v2:v2}
+}
+function go(){	
+	for(let i = 1; i<=8; i++){
+		let v = generateTwoVerses()
+		console.log("   Generated.")
+		let v1 = v.v1
+		let v2 = v.v2
+		let p1 = createElement("p")
+		let p2 = createElement("p")
+		p1.innerHTML = capitalizeFirstLetter(v1.verse)
+		p2.innerHTML = capitalizeFirstLetter(v2.verse)
+		get("Window").appendChild(p1)
+		get("Window").appendChild(p2)
+		console.log(v1.lyricArray)
+		console.log(v2.lyricArray)
+	}
+}
+
+go()
+
+
+</script>
+</html>
+>>>>>>> 448db754ee0ecb9f90b82e4acca8d9bce4854101
