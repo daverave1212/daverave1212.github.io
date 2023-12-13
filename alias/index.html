@@ -136,6 +136,7 @@
     :root {
         --nav-height: 80px;
         --body-height: calc(100vh - 80px);
+        --card-height: calc(var(--body-height) * 0.7);
     }
     nav {
         height: var(--nav-height);
@@ -157,13 +158,11 @@
         margin-top: 2vh;
         height: 10vh;
         width: 100vw;
-        font-size: 8vh;
-        line-height: 8vh;
+        font-size: 6vh;
+        line-height: 6vh;
         text-align: center;
     }
-    .card {
-        --card-height: calc(var(--body-height) * 0.7);
-        
+    .card {        
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
@@ -172,11 +171,11 @@
         width: 70vw;
         height: var(--card-height);
         margin: auto;
-        margin-top: calc((var(--body-height) - var(--card-height)) / 2 - 12vh);
+        margin-top: calc((var(--body-height) - var(--card-height)) / 2 - 16vh);
         
         background-color: black;
         color: white;
-        font-size: 3vh;
+        font-size: 6vw;
         border-radius: 3vw;
     }
     .row4 {
@@ -188,9 +187,10 @@
         border-bottom: solid white 2px;
     }
     .col4 {
-        flex: 1;
+        width: 50%;
         text-align: center;
-        line-height: calc((var(--card-height) - 4vh) / 2);
+        box-sizing: border-box;
+        padding-top: calc(var(--card-height) / 4 - 20px);
     }
     .col4:nth-child(2) {
         border-left: solid white 2px;
