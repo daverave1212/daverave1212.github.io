@@ -1,0 +1,124 @@
+
+<nav>
+    das
+</nav>
+<body>
+    <div class="card" onclick="nextCard()">
+        <div class="row4">
+            <div class="col4"></div>
+            <div class="col4"></div>
+        </div>
+        <div class="row4">
+            <div class="col4"></div>
+            <div class="col4"></div>
+        </div>
+    </div>
+</body>
+
+
+<script src="keywords.js"></script>
+<script>
+
+    function splitIntoArraysOf4(array) {
+        const arrays = []
+        for (let i = 0; i < array.length; i++) {
+            if (i % 4 === 0) {
+                arrays.push([])
+            }
+            arrays[arrays.length - 1].push(array[i])
+        }
+        return arrays
+    }
+
+    function isString(myVar) {
+        return typeof myVar === 'string' || myVar instanceof String
+    }
+
+    function shuffle(array) {
+        let currentIndex = array.length,  randomIndex;
+
+        // While there remain elements to shuffle.
+        while (currentIndex > 0) {
+
+            // Pick a remaining element.
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex--;
+
+            // And swap it with the current element.
+            [array[currentIndex], array[randomIndex]] = [
+            array[randomIndex], array[currentIndex]];
+        }
+
+        return array;
+    }
+
+    function nextCard() {
+        currentCardOptions = deck.pop()
+        console.log(deck)
+        const col4s = document.querySelectorAll('.col4')
+        for (let i = 0; i < currentCardOptions.length; i++) {
+            const option = currentCardOptions[i]
+            console.log(isString(option))
+            const text = (i + 1) + '. ' +  (isString(option) ? currentCardOptions[i] : currentCardOptions[i].word)
+            const color = isString(option) ? 'white' : 'red'
+            col4s[i].style.color = color
+            col4s[i].innerHTML = text
+        }
+    }
+
+    const keywordsBy4 = splitIntoArraysOf4(keywords)
+    let deck = shuffle(keywordsBy4)
+    let currentCardOptions
+
+    nextCard()
+
+</script>
+
+<style>
+    :root {
+        --nav-height: 80px;
+        --body-height: calc(100vh - 80px);
+    }
+    nav {
+        height: var(--nav-height);
+    }
+    body {
+        width: 100vw;
+        height: var(--body-height);
+        overflow: hidden;
+    }
+    .card {
+        --card-height: calc(var(--body-height) * 0.7);
+        
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+
+        padding: 2vh;
+        width: 70vw;
+        height: var(--card-height);
+        margin: auto;
+        margin-top: calc((var(--body-height) - var(--card-height)) / 2);
+        
+        background-color: black;
+        color: white;
+        font-size: 3vh;
+        border-radius: 3vw;
+    }
+    .row4 {
+        display: flex;
+
+        flex: 1;
+    }
+    .row4:first-child {
+        border-bottom: solid white 2px;
+    }
+    .col4 {
+        flex: 1;
+        text-align: center;
+        line-height: calc((var(--card-height) - 4vh) / 2);
+    }
+    .col4:nth-child(2) {
+        border-left: solid white 2px;
+    }
+</style>
