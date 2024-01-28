@@ -1,0 +1,168 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Processing</title>
+</head>
+<body>
+     <div id="dropArea" ondrop="dropHandler(event)" ondragover="dragOverHandler(event)" style="height: 100px; width: 200px; border: solid black 1px;">
+        Drop image here
+    </div>
+    <canvas id="canvas"></canvas>
+</body>
+<script>
+    
+function setupDragDropArea() {
+	const dropArea = document.querySelector('#dropArea')
+  dropArea.addEventListener('drop', dropHandler);
+  dropArea.addEventListener('dragover', dragOverHandler);
+}
+
+function dropHandler(event) {
+    event.preventDefault();
+    const files = event.dataTransfer.files;
+
+    if (files.length > 0) {
+        const file = files[0]
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+            const image = new Image();
+            image.src = e.target.result;
+
+            image.onload = function () {
+                putImageOnCanvas(image, document.getElementById('canvas'));
+                doAlphaMagic(image, document.getElementById('canvas'), getReplaceWhiteWithAlpha)
+            };
+        };
+
+        reader.readAsDataURL(file);
+    }
+}
+
+function dragOverHandler(event) {
+    event.preventDefault();
+}
+
+function rgbToHsv(r, g, b) {
+	const [rRange, gRange, bRange] = [r/255, g/255, b/255]
+  const highestColorRange = Math.max(rRange, gRange, bRange)
+  const lowestColorRange = Math.min(rRange, gRange, bRange)
+ 	const rangeDelta = highestColorRange - lowestColorRange
+  
+  const rCoef = (highestColorRange - rRange) / rangeDelta
+  const gCoef = (highestColorRange - gRange) / rangeDelta
+  const bCoef = (highestColorRange - bRange) / rangeDelta
+  const hueCoef =
+  	highestColorRange == lowestColorRange? 0 :
+    highestColorRange == rRange? 0 + bCoef - gCoef :
+    highestColorRange == gRange? 2 + rCoef - bCoef :
+    highestColorRange == bRange? 4 + gCoef - rCoef :
+    -1
+    
+   const hue = ((hueCoef / 6) % 1) * 360
+   const saturation = (rangeDelta / highestColorRange) * 100
+   const vibrance = highestColorRange * 100
+   return [hue, saturation / 100, vibrance / 100]
+}
+
+function hsvToRgb(h, s, v) {
+	const c = v * s
+  const x = c * (1 - Math.abs((h / 60) % 2 - 1))
+  const m = v - c
+  
+  function getRGBCoef() {
+  	if (0 <= h && h < 60) {
+      return [c, x, 0]
+    } else if (60 <= h < 120) {
+			return [x, c, 0]
+    } else if (120 <= h < 180) {
+			return [0, c, x]
+    } else if (180 <= h < 240) {
+    	return [0, x, c]
+    } else if (240 <= h < 300) {
+    	return [x, 0, c]
+    } else {
+    	return [c, 0, x]
+    }
+  }
+  
+  const [rCoef, gCoef, bCoef] = getRGBCoef()
+  
+  const [r, g, b] = [
+  	(bCoef + m) * 255,
+    (rCoef + m) * 255,
+    (gCoef + m) * 255
+  ]
+  
+  return [r, g, b]
+}
+
+function getReplaceWhiteWithAlpha(r, g, b, a) {
+	const [h, s, v] = rgbToHsv(r, g, b)
+  const v255 = Math.floor(v * 255)
+  
+  const adjustv255Expo = x => x * x / 255
+  const newV255 = adjustv255Expo(v255)
+  const newA = 255 - newV255
+  
+  return [r, g, b, newA]
+}
+
+console.log(getReplaceWhiteWithAlpha(55, 145, 185, 255))
+
+function putImageOnCanvas(image, canvas) {
+    const context = canvas.getContext('2d');
+
+    // Clear previous drawings
+    context.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Draw the image on the canvas
+    canvas.width = image.width;
+    canvas.height = image.height;
+    context.drawImage(image, 0, 0, image.width, image.height);
+}
+
+function doAlphaMagic(sourceImage, canvas, func) {
+  var ctx = canvas.getContext('2d');
+
+  // Set canvas size to match image size
+  canvas.width = sourceImage.width;
+  canvas.height = sourceImage.height;
+
+  // Draw the image onto the canvas
+  ctx.drawImage(sourceImage, 0, 0, canvas.width, canvas.height);
+
+  // Get image data from canvas
+  var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  var data = imageData.data;
+  
+  for (let i = 0; i < 4; i++) {
+		console.log(data[i])
+	}
+
+  // Process each pixel
+  for (var i = 0; i < data.length; i += 4) {
+    // Extract RGBA values
+    var r = data[i];
+    var g = data[i + 1];
+    var b = data[i + 2];
+    var a = data[i + 3];
+    
+    const newRgba = func(r, g, b, a)
+    
+    // Update the pixel values
+    data[i] = newRgba[0];
+    data[i + 1] = newRgba[1];
+    data[i + 2] = newRgba[2];
+    data[i + 3] = newRgba[3];
+  }
+
+  // Put the modified image data back to the canvas
+  ctx.putImageData(imageData, 0, 0);
+
+
+}
+
+</script>
+</html>
