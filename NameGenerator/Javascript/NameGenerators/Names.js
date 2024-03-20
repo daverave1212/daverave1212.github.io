@@ -1,5 +1,10 @@
 	// NOTE: When I release these, don't release them all at once. Release one new name gen a day or something
 
+	const singleOutputFuncs = [
+		'villainDescription',
+		'dndCampaignIdea'
+	]
+
 	var Names = {};
 
 	var buttons = {
@@ -27,9 +32,11 @@
 			'ogreTribe',
 			'succubus',
 			'urchinBoy',
-			'israeli'
+			'israeli',
+			'villainDescription'
 		],
 		'Locations'		: [
+			'biome',
 			'city',
 			'tavern',
 			'village',
@@ -43,6 +50,7 @@
 			'crab'
 		],
 		'Misc'			: [
+			'plotHook',
 			'quest',
 			'upgrade',
 			'spellRogue',
@@ -65,7 +73,8 @@
 			'cult',
 			'thievesGuild',
 			'voidFaction',
-			'romanianTown'
+			'romanianTown',
+			'dndCampaignIdea'
 		],
 		'Modern'	: [
 			'trapper',
@@ -2070,6 +2079,126 @@
 	}
 
 
+	Names.villainDescription = function() {
+		const motivation = randomOf(
+			'believes they are doing good to the world, and the ends justify the means; they are fighting ' + one(
+				'because they have information about a future event that they are trying to prevent',
+				'for a political ideology on ' + one('elliminating opposition', 'silencing opposition', 'fascism', 'racism', 'speciesm'),
+				'to rid the world of ' + one('something', 'someone', 'a group of people') + one('', ', which represents' + one('a form of magic', 'a religion', 'a culture', 'a form of government')),
+				'because they have a twisted view of what humanity is about (e.g. ' + one('perfectionism', 'eugenics', 'undeath') + ')'
+			),
+			'has a plan that started as a good one, but slowly descended into evil through hard choices and cutting corners, and is now too close to finish to stop',
+			'is accelerationist, trying to achieve an idea for a strange or inevitable state of the environment, which is ' + one('somewhat beneficial', 'ambiguously beneficial') + ' to the world or area',
+			'is trying to save ' + one('themselves', 'a person they care for', 'a group', 'a faction', 'a place') + ' and the ends justify the means',
+			'is trying to ' + one('revert', 'prevent') + ' ' + one('a personal', 'a higher order', 'another villain\'s') + ' catastrophe',
+			'is trying to get revenge',
+			'is looking for entertainment through ' + one('playing with their prey', 'collection of something valuable to them to the detriment of others', 'careful orchestration of events'),
+			'is ' + one('insane', 'following a dogma', 'lacks self control')
+		)
+		const getRoots = () => one(
+			'a normal person, of a race ' + one('appropriate', 'unexpected') + ' for the environment',
+			'a monstrous ' + one('half-', '') + one('animal', 'spirit', 'aberration', 'fiend', 'demon', 'undead', 'dragonkin', 'hag', 'giant', 'fey creature'),
+			'a ' + one('cleric', 'druid of old', 'druid of the fae', 'wizard', 'witch', 'artificer', 'paladin', 'knight', 'assassin', 'shaman', 'berserker', 'warlock', 'hunter', 'necromancer'),
+		)
+		const alsoRoots1 = one('vampiric', 'a werewolf', 'spiritual', 'lich', 'void-touched')
+		const alsoRoots2 = 'themed to the color ' + one('red (fire, lava, gas)', 'orange (lava, fire, life)', 'yellow (toxic, the sun, holy), purple (dark magic, void, twilight, flowers)', 'blue (water, sky, crystal)', 'green (nature, toxic)', 'white (snow and ice, nothingness)', 'tan or brown (earth, paper)', 'black (death, black magic, shadows, tar)')
+		const powers = one(
+			'has raw powers to destroy, kill anything or anyone and will make sure the players see and understand it',
+			'has infinite money and resources to spend for a cause',
+			'has an infinite number people and favors to use for their cause',
+			'is immortal and has infinite lives and attempts at their plan'
+		)
+		const condition = one(
+			'is ' + one('physically', 'magically', 'monetarily', 'socially', '') + ' powerful, with a caveat or downside which they need to fix',
+			'is ' + one('robot-like', 'a force of nature', 'fixed on a goal') + ' and intelligent, but has no free will of their own',
+			'is bound to their superior, but has different capabilities than their superior',
+			'is pretending to be the hero and succeeding',
+			'is a force in the shadows that no one has seen'
+		)
+		const twist = one(
+			'looks different than expected (features, race, gender, height, etc)',
+			'has a power source that is different than expected (magic, psyonics, technology, physical strength, etc)',
+			'has a personality different that expected'
+		)
+		const entertainment = one(
+			'has an entertaining personality that is ' + one('over the top', 'overly dramatic', 'downright strange', 'mentally ill with a psychiatric disorder'),
+			'has an entertaining aspect to their body, fashion and powers',
+			'has entertaining powers and combat style based on ' + one('show of power', 'flashiness', 'strangeness of effect', 'randomness')
+		)
+		const also = 'there exists something that will greatly speed up their plan'
+		const plan = one(
+			'needs to get ' + one('an item', 'a person') + ' at a location, and the players must get there ' + one('before the villain', 'at the same time as the villain', 'after the villain, and retrieve it'),
+			'needs to destroy ' + one('an item', 'a person') + ' at a location, and the players must get there ' + one('before the villain', 'at the same time as the villain', 'after the villain, and deal with the consequences'),
+			'needs to maintain their current "pillars" of power, and the players must knowck down the "pillars"'
+		)
+		const boss = one(
+			'is already too far into the plan; even if they wanted to stop, the time and resources sunk MUST be worth it',
+			'is obsessed with thier idea, and is sure they are right and will never let go',
+			'follows the principle of "You do not understand because you haven\'t been through what I have been'
+		)
+
+		const part1 = `The villain is ${
+			one(
+				getRoots(),
+				getRoots(),
+				getRoots(),
+				getRoots() + ' and ' + one(alsoRoots1, alsoRoots2),
+				getRoots() + ' and ' + one(alsoRoots1, alsoRoots2),
+				getRoots() + ' and ' + one(alsoRoots1, alsoRoots2),
+				getRoots() + ' and ' + one(alsoRoots1, alsoRoots2),
+				getRoots() + ', ' + alsoRoots1 + ' and ' + alsoRoots2
+			)
+		}.${one('', ' However, it ' + twist + '.')}`
+		const part2 = `He or she ${motivation} and ${condition}.`
+		const part3 = 'The villain ' + powers + '.'
+		const part4 = 'He or she ' + plan + one('.', ', but ' + also + '.')
+		const part5 = 'The villain ' + entertainment + '.'
+		const part6 = one('', '', 'Stopping is impossible now because the villain ' + boss + '.')
+		return `${part1}\n${part2}\n${part3}\n\n${part4}\n${part5}\n${part6}`
+	}
+	Names.plotHook = function() {
+		const setting = randomOf(
+			'the players start powerful, but quickly lose the power and must reclaim it',
+			`an imminent apocalypse that is being ${randomOf('accidentally ', '')} caused by an ally (or allies)`,
+			'the environment has some unusual properties'
+		)
+		const mystery = randomOf(
+			`a normal event or phenomenon ${one('happened once', 'constantly happens')} ${one('in an usual place', 'at an unusual time')}`,
+			`${one('someone', 'an unusual person')} does ${one('something unusual', 'the opposite of what was expected')}`,
+			`someone is killed, and there are unusual signs around`,
+			`something is destroyed, and there are unusual signs around`,
+			`${one('something', 'someone')} important is suddenly ${one('gone', 'replaced with something else')}`,
+			`something strange suddenly ${one('appears', 'appeared')} in a place${one(', the opposite of what should be there', '')}`,
+			`no one has ever been ${one('to', 'inside of', 'outside of', 'under', 'through')} a certain place (tip: think geometric shapes)`,
+			`there are unusual rumors about ${one('a person', 'a place', 'an object')}`,
+			`something ${one('enormous', 'unusually large')} was spotted in an unusual place` + one('', ' and was deemed a threat')
+		)
+		const escape = randomOf(
+			`the players ${one('are', 'are tricked into becoming')} trapped in a ${one('small', 'medium', 'large')}, ${one('magical', 'non-magical')} environment${one(' way underground', ' way above ground', '')} and must escape${one('', ', and they will want revenge or justice')}`
+		)
+		const survival = randomOf(
+			'the players become affected by an affliction and must complete a task to get rid of it',
+			'the world is threatened by ' + one('a worldly', 'an otherworldly') + ' threat and the players must complete a task to ' + one('prevent it', 'revert it', 'save what they can', 'save or protect someone or something', 'make the best out of a lose-lose situation'),
+			'the players are ' + one('forced to', 'blackmailed to', 'threatened to ', 'controlled to') + ' do something against their will',
+			'the players are ' + one('passively threatened', 'directly threatened', 'chased') + ' by ' + one('an alive', 'a non-living') + ' entity, which is too strong to face directly, and must complete a task to ' + one('weaken it', 'gain enough power') + ' to ' + one('slay it', 'escape', 'save someone or something from it'),			
+		)
+		const misunderstanding = 'the players are caught in a suspicious situation and are accused of being responsible'
+		const defense = one(
+			one('the players', 'the players and their faction', 'a faction or place') + ' is under attack and must be defended',
+			'the players must ' + one('go on a journey', 'sneak') + ' on an offense ot stop the enemy defense',
+			'the players must fight to reclaim ' + one('a place', 'an item', 'a person') + ' that was captured by the enemy offense'
+		)
+		const prophecy = one(
+			'the players learn about ' + one('a speculated', 'an') + ' event in the future',
+			'the players ' + one('', 'accidentally ') + 'learn about the ' + one('full', 'partial') + ' plan of an NPC'
+		) + '; the final event will turn out to be ' + one('worse', 'different') + ' than everyone expected'
+		return randomOf(setting, mystery, mystery, mystery, escape, survival, misunderstanding, defense, prophecy)
+	}
+	Names.dndCampaignIdea = function() {
+		const intro = 'The story takes place in a ' + Names.biome() + ' environment, where ' + Names.plotHook() + '.'
+		const villain = Names.villainDescription()
+		return intro + '\n\n' + villain
+	}
 	Names.quest			= function(){
 		var q = randomOf("A Peasant's ",
 				"A Delicate ",
@@ -2427,7 +2556,6 @@
 			h + n,
 			randomOf(u + "and " + j, u + m));
 	}
-
 	Names.upgrade		= function(){
 		var q = randomOf(
 			"Improved ",
@@ -4148,7 +4276,56 @@
 	}
 
 
+	Names.biome = function() {
+		const modifier = randomOf(
+			'rainy',
+			'rainy',
+			'rainy',
+			'cloudy',
+			'cloudy',
+			'ever-dark',
+			'twilight'
+		)
+		const biome = randomOf(
+			'green plains',
+			'forest',
+			'fir forest',
+			'green hills',
+			'green fjords',
+			
+			'swamp',
+			
+			'autumn country side',
+			'autumn forest',
 
+			'winter country side',
+			'winter forest',
+			'icy fjords',
+
+			'rocky mountain',
+			'snowy mountain',
+			'green mountain',
+			'volcano outskirts',
+
+			'lake side',
+			'sea shore',
+			'tropical islands',
+			'desert',
+			'desert oases',
+			'wasteland',
+			'dry-land desert',
+			
+			'the underground',
+			'the shadow realm',
+			'the wyld faes',
+			'the 9 hells',
+
+			'urban'
+		)
+		const canHaveModifier = biome.indexOf('winter') == -1
+		const maybeModifier = canHaveModifier? randomOf(modifier + ' ', '', '', '') : ''
+		return maybeModifier + biome
+	}
 	Names.city			= function(){
 		var q = randomOf(
 			"Dragon",

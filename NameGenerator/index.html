@@ -131,9 +131,13 @@ function onNavClick(self){
 
 function generate(funcName){
 	removeAllChildren(get('Output'))
-	for(let i = 1; i<=10; i++){
-		let r = Names[funcName]()
-		makePar(r)
+	const funcToUse = Names[funcName]
+	if (singleOutputFuncs.includes(funcName)) {
+		makePar(funcToUse().split('\n').join('<br>'))
+	} else {
+		for(let i = 1; i<=10; i++){
+			makePar(funcToUse())
+		}
 	}
 }
 
@@ -142,41 +146,6 @@ function makePar(content){
 	p.innerHTML = content
 	get('Output').appendChild(p)
 }
-
-
-	/*
-	function goodyName(name){
-		let ret = name[0].toUpperCase()
-		for(let i = 1; i<name.length; i++){
-			if(name[i].toUpperCase() == name[i]){
-				ret += " "
-			}
-			ret += name[i]
-		}
-		return ret;
-	}
-
-	function createButton(key){
-		let button = createElement("div")
-		button.classList.add("Button")
-		button.setAttribute("data-function", key)
-		button.innerHTML = goodyName(key)
-		button.onclick = function(){
-			console.log('Generating...')
-			//console.clear()
-			for(let i = 1; i<=5; i++){
-				console.log(Names[this.getAttribute("data-function")]())
-			}
-		}
-		get("Window").appendChild(button)
-	}
-
-	// Generate buttons
-	for (var key in Names) {
-		createButton(key)
-	}
-
-	*/
 
 </script>
 <script src="Javascript/bootstrap.min.js"></script>

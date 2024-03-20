@@ -354,6 +354,9 @@
 	function randomOf(...args){
 		return args[randomInt(0, args.length - 1)];
 	}
+	function one(...args) {
+		return args[randomInt(0, args.length - 1)];
+	}
 	
 	/*
 	function randomInt(l, h){
