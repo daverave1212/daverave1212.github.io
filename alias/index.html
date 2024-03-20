@@ -1,0 +1,234 @@
+
+
+
+<body>
+    <nav>
+        <div class="nav-item" onclick="changePage('how-to-play')">How To Play</div>
+        <div class="nav-item" onclick="changePage('cards')">Cards</div>
+    </nav>
+
+    <div class="page" id="cards">
+        <div class="timer">
+            60
+        </div>
+        <div class="card" onclick="nextCard()">
+            <div class="row4">
+                <div class="col4"></div>
+                <div class="col4"></div>
+            </div>
+            <div class="row4">
+                <div class="col4"></div>
+                <div class="col4"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page" id="how-to-play">
+        <h2>How To Play</h2>
+        <p>
+            Make teams of 2. Teams take turns one by one.<br>
+            When you start your turn, you have 1 minute:<br>
+            You a card. Describe the words on that card 1 by 1, from 1 to 4.
+            When they guess right one word, gain 1 point if the word is white, or 2 points if the word is red.
+            Then describe the next word on the card.
+        </p>
+        <h3>Explaining Words Rules</h3>
+        <ol>
+            <li>You must not make any reference to technology (you must describe the non-tech meaning of the word). For example, for Python, you can't say it's a programming language. You must describe the snake. For the word Argument, you must not say anything about functions.</li>
+            <li>You must not say the number of letters, what letter it starts with, etc</li>
+        </ol>
+        <h3>FOOBAR!</h3>
+        <p>If anyone breaks any of these rules, shout FOOBAR! The team loses 1 point and must move to the next word on the card.</p>
+        <h3>Skipping</h3>
+        <p>The team in the last place has 1 skip per turn which must be called by the guesser (e.g. the team in the last place, on their turn, can say "skip" to skip to the next word).</p>
+    </div>
+</body>
+
+<script>
+    function changePage(pageId) {
+        const pages = Array.from(document.querySelectorAll('.page'))
+        for (const page of pages) {
+            page.style.display = 'none'
+        }
+        const pageWithId = document.querySelector('#' + pageId)
+        pageWithId.style.display =''
+    }
+
+    changePage('cards')
+</script>
+<script src="keywords.js"></script>
+<script>
+
+    function splitIntoArraysOf4(array) {
+        const arrays = []
+        for (let i = 0; i < array.length; i++) {
+            if (i % 4 === 0) {
+                arrays.push([])
+            }
+            arrays[arrays.length - 1].push(array[i])
+        }
+        return arrays
+    }
+
+    function isString(myVar) {
+        return typeof myVar === 'string' || myVar instanceof String
+    }
+
+    function shuffle(array) {
+        let currentIndex = array.length,  randomIndex;
+
+        // While there remain elements to shuffle.
+        while (currentIndex > 0) {
+
+            // Pick a remaining element.
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex--;
+
+            // And swap it with the current element.
+            [array[currentIndex], array[randomIndex]] = [
+            array[randomIndex], array[currentIndex]];
+        }
+
+        return array;
+    }
+
+    let currentTime = 60
+    setInterval(() => {
+        currentTime--
+        if (currentTime <= 0) {
+            document.querySelector('.timer').innerHTML = "Time's Up!"
+        } else {
+            document.querySelector('.timer').innerHTML = currentTime
+        }
+    }, 1000)
+
+    function startTimer() {
+        currentTime = 60
+        document.querySelector('.timer').innerHTML = currentTime
+    }
+
+    function nextCard() {
+        currentCardOptions = deck.pop()
+        console.log(deck)
+        const col4s = document.querySelectorAll('.col4')
+        for (let i = 0; i < currentCardOptions.length; i++) {
+            const option = currentCardOptions[i]
+            console.log(isString(option))
+            const text = (i + 1) + '. ' +  (isString(option) ? currentCardOptions[i] : currentCardOptions[i].word)
+            const color = isString(option) ? 'white' : 'red'
+            col4s[i].style.color = color
+            col4s[i].innerHTML = text
+        }
+        startTimer()
+    }
+
+    let keywordsCopy = [...keywords]
+    const shuffledKeywords = shuffle(keywordsCopy)
+    const keywordsBy4 = splitIntoArraysOf4(shuffledKeywords)
+    let deck = shuffle(keywordsBy4)
+    let currentCardOptions
+
+    nextCard()
+
+</script>
+
+<style>
+    :root {
+        --nav-height: 80px;
+        --body-height: calc(100vh - 80px);
+        --card-height: calc(var(--body-height) * 0.7);
+    }
+    nav {
+        height: var(--nav-height);
+    }
+    body {
+        padding: 0px;
+        margin: 0px;
+        width: 100vw;
+    }
+    .page {
+        min-height: 100%;
+        height: var(--body-height);
+    }
+    #cards {
+        max-height: var(--body-height);
+        overflow: hidden;
+    }
+    .timer {
+        margin-top: 2vh;
+        height: 10vh;
+        width: 100vw;
+        font-size: 6vh;
+        line-height: 6vh;
+        text-align: center;
+    }
+    .card {        
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+
+        padding: 2vh;
+        width: 70vw;
+        height: var(--card-height);
+        margin: auto;
+        margin-top: calc((var(--body-height) - var(--card-height)) / 2 - 16vh);
+        
+        background-color: black;
+        color: white;
+        font-size: 6vw;
+        border-radius: 3vw;
+    }
+    .row4 {
+        display: flex;
+
+        flex: 1;
+    }
+    .row4:first-child {
+        border-bottom: solid white 2px;
+    }
+    .col4 {
+        width: 50%;
+        text-align: center;
+        box-sizing: border-box;
+        padding-top: calc(var(--card-height) / 4 - 20px);
+    }
+    .col4:nth-child(2) {
+        border-left: solid white 2px;
+    }
+
+
+
+    
+    #how-to-play {
+        padding: 5vw;
+        font-size: 5vw;
+    }
+
+
+
+
+    /* NAV */
+    nav {
+        width: 100%;
+        height: var(--nav-height);
+        display: flex;
+        
+        gap: 10vw;
+        padding-left: 10vw;
+
+        background-color: #111;
+
+        font-size: calc(var(--nav-height) / 4);
+        line-height: var(--nav-height);
+        color: white;
+    }
+    .nav-item {
+        height: 100%;
+        padding-left: 5vw;
+        padding-right: 5vw;
+    }
+    .nav-item:hover {
+        cursor: pointer;
+        background-color: #222;
+    }
+</style>
