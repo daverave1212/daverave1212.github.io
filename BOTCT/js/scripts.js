@@ -1,199 +1,5 @@
 // http://bignose.whitetree.org/projects/botc/diy/
 
-const SETUP_GOOD = 'SETUP_GOOD'
-const NIGHTLY_GOOD = 'NIGHTLY_GOOD'
-const NORMAL = 'NORMAL'
-const SETUP_EVIL = 'SETUP_EVIL'
-const NIGHTLY_EVIL = 'NIGHTLY_EVIL'
-
-const TOWNSFOLK = 'townsfolk'
-const OUTSIDERS = 'outsiders'
-const MINIONS = 'minions'
-const DEMONS = 'demons'
-
-
-const TheImp = {
-    name: "Imp",
-    type: DEMONS,
-    isGood: false,
-    category: NIGHTLY_EVIL
-}
-
-const roles = [
-    {
-        name: "Washerwoman",
-        type: TOWNSFOLK,
-        isGood: true,
-        category: SETUP_GOOD
-    },
-    {
-        name: "Librarian",
-        type: TOWNSFOLK,
-        isGood: true,
-        category: SETUP_GOOD
-    },
-    {
-        name: "Investigator",
-        type: TOWNSFOLK,
-        isGood: true,
-        category: SETUP_GOOD
-    },
-    {
-        name: "Chef",
-        type: TOWNSFOLK,
-        isGood: true,
-        category: SETUP_GOOD
-    },
-    {
-        name: "Empath",
-        type: TOWNSFOLK,
-        isGood: true,
-        category: NIGHTLY_GOOD
-    },
-    {
-        name: "Fortune Teller",
-        type: TOWNSFOLK,
-        isGood: true,
-        category: NIGHTLY_GOOD
-    },
-    {
-        name: "Undertaker",
-        type: TOWNSFOLK,
-        isGood: true,
-        category: NIGHTLY_GOOD
-    },
-    {
-        name: "Monk",
-        type: TOWNSFOLK,
-        isGood: true,
-        category: NIGHTLY_GOOD
-    },
-    {
-        name: "Ravenkeeper",
-        type: TOWNSFOLK,
-        isGood: true,
-        category: NORMAL
-    },
-    {
-        name: "Virgin",
-        type: TOWNSFOLK,
-        isGood: true,
-        category: NORMAL
-    },
-    {
-        name: "Slayer",
-        type: TOWNSFOLK,
-        isGood: true,
-        category: NORMAL
-    },
-    {
-        name: "Soldier",
-        type: TOWNSFOLK,
-        isGood: true,
-        category: NORMAL
-    },
-    {
-        name: "Mayor",
-        type: TOWNSFOLK,
-        isGood: true,
-        category: NORMAL
-    },
-
-    {
-        name: "Butler",
-        type: OUTSIDERS,
-        isGood: true,
-        category: NIGHTLY_GOOD
-    },
-    {
-        name: "Drunk",
-        type: OUTSIDERS,
-        isGood: true,
-        category: NORMAL
-    },
-    {
-        name: "Recluse",
-        type: OUTSIDERS,
-        isGood: true,
-        category: NORMAL
-    },
-    {
-        name: "Saint",
-        type: OUTSIDERS,
-        isGood: true,
-        category: NORMAL
-    },
-
-    {
-        name: "Poisoner",
-        type: MINIONS,
-        isGood: false,
-        category: NIGHTLY_EVIL
-    },
-    {
-        name: "Spy",
-        type: MINIONS,
-        isGood: false,
-        category: NIGHTLY_EVIL
-    },
-    {
-        name: "Scarlet Woman",
-        type: MINIONS,
-        isGood: false,
-        category: NORMAL
-    },
-    {
-        name: "Baron",
-        type: MINIONS,
-        isGood: false,
-        category: NORMAL
-    },
-
-    TheImp
-]
-
-const firstNightOrder = [
-    'Imp',
-    "Poisoner",
-    'Spy',
-    'Washerwoman',
-    'Librarian',
-    'Investigator',
-    'Chef',
-    'Empath',
-    'Fortune Teller',
-    'Butler'
-]
-function getSetupRolePriority(roleName) {
-    const index = firstNightOrder.indexOf(roleName)
-    if (index == -1) {
-        return 99
-    }
-    return index
-}
-
-const everyNightOrder = [
-    'Poisoner',
-    'Monk',
-    'Spy',
-    'Scarlet Woman',
-    'Imp',
-    'Ravenkeeper',
-    'Undertaker',
-    'Empath',
-    'Fortune Teller',
-    'Butler'
-]
-function getNightlyRolePriority(roleName) {
-    const index = everyNightOrder.indexOf(roleName)
-    if (index == -1) {
-        return 99
-    }
-    return index
-}
-
-
-
 function getNDemonsByPeople(nPeople) {
     return 1
 }
@@ -249,6 +55,20 @@ function getSomeTownsfolkRoles(nTownsfolk) {
     }
     return townsfolkSoFar
 }
+function getDrunkRole(rolesSoFar) {
+    const isRoleUsed = role => rolesSoFar.find(roleSoFar => roleSoFar.name == role.name) != null
+    const rolesNotUsed = roles.filter(role => !isRoleUsed(role))
+
+    let townsfolkCategories = [NIGHTLY_GOOD, SETUP_GOOD, NORMAL]
+    for (const category of townsfolkCategories) {
+        const foundRole = rolesNotUsed.find(role => role.category == category)
+        if (foundRole != null) {
+            return foundRole
+        }
+    }
+    
+    return null
+}
 
 
 function getRolesByPeople(nPeople) {
@@ -262,10 +82,19 @@ function getRolesByPeople(nPeople) {
     rolesSoFar = [...rolesSoFar, ...outsiders]
 
     const nTownsfolk = nPeople - 1 - minions.length - outsiders.length
-    console.log(nTownsfolk)
     const townsfolk = getSomeTownsfolkRoles(nTownsfolk)
+    
+
+    const isDrunkInGame = rolesSoFar.find(role => role.name == 'Drunk') != null
+    if (isDrunkInGame) {
+        const differentRole = getDrunkRole(townsfolk)
+        const drunkIndex = rolesSoFar.findIndex(role => role.name == 'Drunk')
+        rolesSoFar[drunkIndex] = {...differentRole, isDrunk: true}
+    }
+
     rolesSoFar = [...rolesSoFar, ...townsfolk]
 
+    console.log({rolesSoFar})
     return rolesSoFar
 }
 
@@ -282,55 +111,4 @@ function getCurrentRolesByHTML() {
         .map(div => div.querySelector('role').innerText.trim())
     const rolesInGame = rolesNames.map(roleName => roles.find(role => role.name == roleName))
     return rolesInGame
-}
-
-
-// [{ name, type, playerName }]
-function setHTMLRolesState(roleStates) {
-    const rolesDivs = roleStates.map(state => dom(`
-        <div class="role-wrapper" data-type="${state.type}">
-            <div class="role role-${state.type}">
-                ${state.name}
-            </div>
-            <input class="name-input" value="${state.playerName}">
-        </div>
-    `))
-
-    const rolesDiv = document.querySelector('#Roles-Wrapper')
-    rolesDiv.innerHTML = ''
-    rolesDiv.append(...rolesDivs)
-}
-function getHTMLRolesState() {
-    const rolesWrapperDiv = document.querySelector('#Roles-Wrapper')
-    const rolesDivs = Array.from(rolesWrapperDiv.children)
-    return rolesDivs.map(div => ({
-        name: div.querySelector('.role').innerHTML.trim(),
-        type: div.getAttribute('data-type'),
-        playerName: div.querySelector('.name-input').value
-    }))
-}
-
-const index = {
-    generateRoles: function() {
-        const nPeople = getSelectedNPlayers()
-        const roles = getRolesByPeople(nPeople)
-
-        const roleStates = roles.map(role => ({...role, playerName: ''}))
-        setHTMLRolesState(roleStates)
-
-        document.querySelector("#Top-Wrapper").remove()
-        document.querySelector("#Sort-Wrapper").style.display = ''
-    },
-
-    sortBySetup: function() {
-        let roleStates = getHTMLRolesState()
-        roleStates = roleStates.sort((a, b) => getSetupRolePriority(a.name) - getSetupRolePriority(b.name))
-        setHTMLRolesState(roleStates)
-    },
-
-    sortByNightly: function() {
-        let roleStates = getHTMLRolesState()
-        roleStates = roleStates.sort((a, b) => getNightlyRolePriority(a.name) - getNightlyRolePriority(b.name))
-        setHTMLRolesState(roleStates)
-    }
 }
