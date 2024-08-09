@@ -112,3 +112,23 @@ function getCurrentRolesByHTML() {
     const rolesInGame = rolesNames.map(roleName => roles.find(role => role.name == roleName))
     return rolesInGame
 }
+
+function get3RandomUnusedRolesByHTML() {
+    const rolesThisGame = getHTMLRoleStates()
+    const isRoleInGame = (roleState) => rolesThisGame.find(role => role.name == roleState.name) != null
+    const townsfolkNotInGame = roles.filter(role => isRoleInGame(role) == false).filter(role => role.isGood)
+    randomizeArray(townsfolkNotInGame)
+    return townsfolkNotInGame.slice(0, 3)
+}
+
+function saveRolesStatesByHTML() {
+    const rolesThisGame = getHTMLRoleStates()
+    localStorage.setItem('rolesThisGame', JSON.stringify(rolesThisGame))
+}
+function getSavedRoleStates() {
+    const rolesThisGameJSON = localStorage.getItem('rolesThisGame')
+    if (rolesThisGameJSON == null) {
+        return
+    }
+    return JSON.parse(rolesThisGameJSON)
+}
