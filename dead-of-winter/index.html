@@ -1,0 +1,73 @@
+<head>
+
+</head>
+
+<style>
+
+    body, html {
+        padding: 0px;
+    }
+    * {
+        box-sizing: border-box;
+        background-color: rgb(255, 217, 0);
+    }
+    .card-holder {
+        width: 98vw;
+        padding: 5vw;
+    }
+    h2, h3 {
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        text-align: center;
+    }
+    p {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+</style>
+
+<script src="cards.js"></script>
+<script>
+    function shuffle(array) {
+        let currentIndex = array.length;
+
+    // While there remain elements to shuffle...
+        while (currentIndex != 0) {
+
+            // Pick a remaining element...
+            let randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex--;
+
+            // And swap it with the current element.
+            [array[currentIndex], array[randomIndex]] = [
+            array[randomIndex], array[currentIndex]];
+        }
+    }
+
+    shuffle(Cards)
+
+    function loadCard(card) {
+        document.querySelector('h2').innerText = card['Title ENG']
+        document.querySelector('i').innerText = card['Condition ENG']
+        document.querySelector('.setup').innerText = card['setup ENG']
+        document.querySelector('.option1').innerText = card['Option 1 /Thumbs Up ENG:']
+        document.querySelector('.option2').innerText = card['Option 2 /Thumbs Down ENG:'] != null? card['Option 2 /Thumbs Down ENG:']: ''
+        document.querySelector('.option3-title').innerText = card['Option 3 ENG'] != null? '> > > > > > > > > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; OPTION 3 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; > > > > > > > > >': ''
+        document.querySelector('.option3').innerText = card['Option 3 ENG'] != null? card['Option 3 ENG']: ''
+    }
+
+
+</script>
+
+<div class="card-holder" onclick="loadCard(Cards.pop())">
+    <h2>Title</h2>
+    <p><i></i></p>
+    <p class="setup">
+        Tap anywhere to draw a card.
+    </p>
+    <h3>> > > > > > > > > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; OPTION 1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; > > > > > > > > > ></h3> 
+    <p class="option1"></p>
+    <h3 class="option2-title">< < < < < < < < < &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; OPTION 2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; < < < < < < < < < <</h3> 
+    <p class="option2"></p>
+    <h3 class="option3-title"></h3> 
+    <p class="option3"></p>
+</div>
