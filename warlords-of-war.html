@@ -1,0 +1,202 @@
+<style>
+
+    * {
+        box-sizing: border-box;
+    }
+    html, body {
+        padding: 0px;
+        margin: 0px;
+        min-width: 100vw;
+        min-height: 100vh;
+
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1.2rem;
+        -webkit-user-select: none; /* Safari */        
+        -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* IE10+/Edge */
+        user-select: none; /* Standard */
+    }
+
+    body {
+        background-color: #222222;
+    }
+    .window {
+        width: 100vw;
+        padding: 2.5vw;
+    }
+    .buttons-box {
+        width: 100%;
+        height: 10vh;
+        display: flex;
+        gap: 2.5vw;
+    }
+    .button {
+        border-radius: 1.75rem;
+        background-color: rgb(195, 64, 221);
+        color: white;
+        text-align: center;
+        font-size: 1.2rem;
+        line-height: 10vh;
+        width: 100%;
+        height: 10vh;
+    }
+    .buttons-box .button {
+        flex: 1;
+        width: auto;
+    }
+
+    .player {
+        margin-top: 1rem;
+        width: 100%;
+        height: 15vh;
+        
+        display: flex;
+        overflow: hidden;
+    }
+    .plus {
+        height: 15vh;
+        width: 15vw;
+        line-height: 15vh;
+        text-align: center;
+        background-color: rgb(219, 219, 219);
+        color: black;
+    }
+    .plus.left {
+        border-top-left-radius: 1.75rem;
+        border-bottom-left-radius: 1.75rem;
+    }
+    .plus.right {
+        border-top-right-radius: 1.75rem;
+        border-bottom-right-radius: 1.75rem;
+    }
+    .centerfold {
+        flex-grow: 1;
+        line-height: 15vh;
+        font-size: 2.25rem;
+        text-align: center;
+
+        position: relative;
+        overflow: hidden;
+    }
+    .centerfold .image {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        top: -50%;
+        z-index: 98;
+    }
+    .centerfold .counter {
+        z-index: 99;
+        position: relative;
+        color: white;
+        text-shadow: rgb(0, 0, 0) 0px 0px 9px, rgb(0, 0, 0) 0px 0px 9px, rgb(0, 0, 0) 0px 0px 9px;
+    }
+    
+
+</style>
+
+<body>
+    <div class="window">
+        <div class="buttons-box">
+            <div class="button" onclick="shuffle()">
+                Shuffle
+            </div>
+            <div class="button" onclick="addPlayer()">
+                Add Player
+            </div>
+        </div>
+    </div>
+</body>
+
+
+<script>
+
+    function shuffleArray(array) {
+        let currentIndex = array.length;
+
+        // While there remain elements to shuffle...
+        while (currentIndex != 0) {
+
+            // Pick a remaining element...
+            let randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex--;
+
+            // And swap it with the current element.
+            [array[currentIndex], array[randomIndex]] = [
+            array[randomIndex], array[currentIndex]];
+        }
+    }
+
+
+    const warlords = [
+        'Horace the Mad',
+        'Hopus the Never Ending',
+        'Susan',
+        'xXNoobSlayer69Xx',
+        'Mercedesa the Seer',
+        'OROBORUS THE DESTROYER OF WORLDS',
+        'Patrocles the Pointer',
+        'Po',
+        'Stinky Steve',
+        'Sssssliver',
+        'Ser Arthur the Rich',
+        'Lily and Mister G',
+    ]
+
+
+    function addPlayer() {
+        const name = 'Daverave' //prompt()
+        const div = document.createElement('div')
+              div.classList.add('player')
+        
+        div.innerHTML = `
+            <div class="plus left">-</div>
+            <div class="centerfold" data-warlord-index="-1">
+                <div class="counter">0</div>
+                <img class="image">
+            </div>
+            <div class="plus right">+</div>
+        `
+
+        document.querySelector('.window').appendChild(div)
+
+        div.querySelector('.plus.left').addEventListener('click', () => onMinusClick(div))
+        div.querySelector('.plus.right').addEventListener('click', () => onPlusClick(div))
+        div.querySelector('.centerfold').addEventListener('click', () => onCenterClick(div))
+
+        onCenterClick(div)
+    }
+
+    function onPlusClick(div) {
+        let counter = parseInt(div.querySelector('.counter').innerHTML)
+        counter++
+        div.querySelector('.counter').innerHTML = counter
+    }
+    function onMinusClick(div) {
+        let counter = parseInt(div.querySelector('.counter').innerHTML)
+        counter--
+        div.querySelector('.counter').innerHTML = counter
+    }
+    function onCenterClick(div) {
+        let index = parseInt(div.querySelector('.centerfold').getAttribute('data-warlord-index'))
+        index++
+        if (index >= warlords.length) {
+            index = 0
+        }
+        div.querySelector('.centerfold').setAttribute('data-warlord-index', index)
+        console.log('asdasd')
+        div.querySelector('.image').setAttribute('src', `warlords-of-war-images/${warlords[index]}.png`)
+        // div.querySelector('.centerfold').style = `background-image: 'warlords-of-war-images/${warlords[index]}.png'`
+    }
+
+    function shuffle() {
+        const players = Array.from(document.querySelectorAll('.player'))
+        shuffleArray(players)
+        for (const player of players) {
+            player.remove()
+            document.querySelector('.window').appendChild(player)
+        }
+    }
+
+</script>
