@@ -185,7 +185,9 @@
     }
 
     function reset() {
-        document.querySelector('.window').innerHTML = ''
+        Array.from(document.querySelectorAll('.player')).forEach(div => {
+            div.remove()
+        })
     }
 
 
