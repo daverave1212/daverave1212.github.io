@@ -24,25 +24,31 @@
     body {
         background-color: #222222;
     }
-    .window {
+    .section {
         width: 100vw;
         padding: 2.5vw;
     }
     .buttons-box {
         width: 100%;
-        height: 10vh;
+        height: 7vh;
         display: flex;
         gap: 2.5vw;
     }
     .button {
         border-radius: 1.75rem;
-        background-color: rgb(195, 64, 221);
+        background-color: rgb(204, 50, 50);
         color: white;
         text-align: center;
         font-size: 1.2rem;
-        line-height: 10vh;
+        line-height: 7vh;
         width: 100%;
-        height: 10vh;
+        height: 7vh;
+    }
+    .button.pink {
+        background-color: rgb(195, 64, 221);
+    }
+    .button.teal {
+        background-color: rgb(25, 163, 228);
     }
     .buttons-box .button {
         flex: 1;
@@ -99,26 +105,45 @@
         color: white;
         text-shadow: rgb(0, 0, 0) 0px 0px 9px, rgb(0, 0, 0) 0px 0px 9px, rgb(0, 0, 0) 0px 0px 9px;
     }
+
+    canvas {
+        width: 85%;
+    }
     
 
 </style>
 
 <body>
-    <div class="window">
-        <div class="buttons-box">
-            <div class="button" onclick="shuffle()">
-                Shuffle
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+    <div class="window section">
+        <div class="buttons-box start">
+            <div class="button pink" onclick="start()">
+                Start
             </div>
-            <div class="button" onclick="addPlayer()">
+            <div class="button pink" onclick="addPlayer()">
                 Add Player
             </div>
         </div>
+        <div class="buttons-box gameplay" style="display: none;">
+            <div class="button teal end-turn-button" data-turn="1" onclick="endTurn()">
+                End Turn (1)
+            </div>
+            <div class="button teal" onclick="shuffle()">
+                Shuffle
+            </div>
+        </div>
+    </div>
+    <div class="canvas-holder" style="width: 85%; position: relative; margin: auto;">
+
     </div>
     <br><br><br><br><br>
-    <div>
+    <div class="section">
         <div class="buttons-box">
             <div class="button" onclick="reset()">
                 Reset
+            </div>
+            <div class="button" onclick="end()">
+                End Game
             </div>
         </div>
     </div>
@@ -143,6 +168,7 @@
         }
     }
 
+    let scoreHistory = {}
 
     const warlords = [
         'Patrocles the War Pointer',
@@ -158,6 +184,20 @@
         'Pipsy-Loo',
         'Po'
     ]
+    const warlordColors = {
+        'Patrocles the War Pointer': '#7d5100',
+        'Lily and Mister G': '#963b79',
+        'Horace the Mad': '#47acff',
+        'Hopus the Never Ending': '#851535',
+        'Albanzarterionantheris': '#7dffe3',
+        'Susan': '#ff3845',
+        'Stinky Steve': '#82b827',
+        'Pillula the Alchemist': '#eb38cd',
+        'OROBORUS THE DESTROYER OF ENTROPY': '#d62f11',
+        'Jake the Human': '#ebc334',
+        'Pipsy-Loo': 'black',
+        'Po': '#2be3d1'
+    }
 
 
     function getSaveState() {
@@ -169,18 +209,29 @@
         })
     }
     function save() {
-        console.log(JSON.stringify(getSaveState()))
         localStorage.setItem('players', JSON.stringify(getSaveState()))
+        localStorage.setItem('scoreHistory', JSON.stringify(scoreHistory))
+        localStorage.setItem('currentTurn', getCurrentTurn())
+
+        console.log(`Saving scoreHistory=${JSON.stringify(scoreHistory)}`)
     }
     function load() {
         const playersStorage = localStorage.getItem('players')
         if (playersStorage == null || playersStorage == 'undefined') {
             return
         }
-        console.log(playersStorage)
         const players = JSON.parse(playersStorage)
         for (const player of players) {
             addPlayer(player.warlord, player.score)
+        }
+        const scoreHistoryJson = localStorage.getItem('scoreHistory')
+        if (scoreHistoryJson != null && scoreHistoryJson != 'undefined') {
+            scoreHistory = JSON.parse(scoreHistoryJson)
+            console.log({scoreHistory})
+        }
+        const currentTurn = localStorage.getItem('currentTurn')
+        if (currentTurn != null && currentTurn != 'undefined') {
+            setCurrentTurn(parseInt(currentTurn))
         }
     }
 
@@ -188,6 +239,57 @@
         Array.from(document.querySelectorAll('.player')).forEach(div => {
             div.remove()
         })
+        scoreHistory = {}
+    }
+
+    function getCurrentTurn() {
+        const endTurnButton = document.querySelector('.end-turn-button')
+        const turn = parseInt(endTurnButton.getAttribute('data-turn'))
+        return turn
+    }
+    function setCurrentTurn(val) {
+        const endTurnButton = document.querySelector('.end-turn-button')
+        endTurnButton.innerHTML = `End Turn (${val})`
+        endTurnButton.setAttribute('data-turn', val)
+    }
+
+    function end() {
+        const canvas = document.createElement('canvas')
+        canvas.width = '600'
+        canvas.id = "graphic"
+        document.querySelector('.canvas-holder').appendChild(canvas)
+        const ctx = canvas.getContext('2d')
+
+        const xValues = []
+        const nTurns = getCurrentTurn()
+        for (let i = 0; i < nTurns; i++) {
+            xValues.push(i)
+        }
+
+        const datas = Object.keys(scoreHistory).map(warlordIndex => {
+            const color = warlordColors[warlords[warlordIndex]]
+            return {
+                data: scoreHistory[warlordIndex],
+                borderColor: color,
+                fill: false,
+                label: warlords[warlordIndex]
+            }
+        })
+
+
+        setTimeout(() => {
+            new Chart("graphic", {
+                type: "line",
+                data: {
+                    labels: xValues,
+                    datasets: datas
+                },
+                options: {
+                    legend: {display: false},
+                    responsive: true
+                }
+            })
+        }, 100)
     }
 
 
@@ -224,8 +326,12 @@
         onCenterClick(div)
     }
 
+    function getPlayerDivWarlordIndex(div) {
+        return parseInt(div.querySelector('.centerfold').getAttribute('data-warlord-index'))
+    }
+
     function onCenterClick(div) {
-        let index = parseInt(div.querySelector('.centerfold').getAttribute('data-warlord-index'))
+        let index = getPlayerDivWarlordIndex(div)
         index++
         if (index >= warlords.length) {
             index = 0
@@ -238,12 +344,36 @@
 
     function shuffle() {
         const players = Array.from(document.querySelectorAll('.player'))
+
         shuffleArray(players)
         for (const player of players) {
             player.remove()
             document.querySelector('.window').appendChild(player)
         }
+    }
+
+    function endTurn() {
+        const players = Array.from(document.querySelectorAll('.player'))
+
+        for (const player of players) {
+            const warlordIndex = getPlayerDivWarlordIndex(player)
+            const playerScore = parseInt(player.querySelector('.counter').innerHTML)
+            if (scoreHistory[warlordIndex] == null) {
+                scoreHistory[warlordIndex] = []
+            }
+            scoreHistory[warlordIndex].push(playerScore)
+        }
+
+        setCurrentTurn(getCurrentTurn() + 1)
+
+        console.log(scoreHistory)
+
         save()
+    }
+
+    function start() {
+        document.querySelector('.start').style.display = 'none'
+        document.querySelector('.gameplay').style.display = ''
     }
 
     
