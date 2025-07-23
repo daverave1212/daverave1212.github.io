@@ -109,7 +109,7 @@
 					'Todor',
 					'Laurentsius',
 					'Vasil',
-					'Vladimir,
+					'Vladimir',
 					'Aleksandros',
 					'Cornelius',
 					'Antonio',
