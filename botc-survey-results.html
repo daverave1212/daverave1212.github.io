@@ -256,8 +256,8 @@
     /**********************************************************************
      * 1) SET THESE
      **********************************************************************/
-    const SHEET_ID = "11pU1Ef7UO6b1VJ2Y5FePZ5dCYpkO5D7QLlj_Rjuun84";
-    const SHEET_NAME = "Carousel Roles Survey (1–5)"; // tab name
+    let SHEET_ID = "2PACX-1vQun8AtPLVDX69y3UFoxJmWhNpKfgpv25-nLKMQLZifjy61wO1rEP7XReQ4yB0SyZyF8kV2Gz3L9ds7";
+    let SHEET_NAME = "Carousel Roles Survey (1–5)"; // tab name
 
     /**********************************************************************
      * 2) YOUR (CLEANED) ROLE DATA — name + effect
@@ -463,7 +463,8 @@
       try{
         statusEl.textContent = "Fetching sheet data…";
 
-        const res = await fetch(gvizUrl(SHEET_ID, SHEET_NAME));
+        let theUrl = gvizUrl(SHEET_ID, SHEET_NAME)
+        const res = await fetch(theUrl);
         if (!res.ok) throw new Error(`Fetch failed: ${res.status} ${res.statusText}`);
 
         const text = await res.text();
