@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Survey Results — Averages</title>
+  <style>
+    :root{
+      --bg: #0b1220;
+      --panel: rgba(255,255,255,.06);
+      --panel2: rgba(255,255,255,.10);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.68);
+      --border: rgba(255,255,255,.12);
+      --shadow: 0 10px 35px rgba(0,0,0,.35);
+      --radius: 16px;
+    }
+
+    * { box-sizing: border-box; }
+    body{
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(1200px 600px at 20% -10%, rgba(122,162,247,.35), transparent 60%),
+        radial-gradient(900px 500px at 85% 0%, rgba(255,123,172,.22), transparent 55%),
+        radial-gradient(900px 700px at 50% 120%, rgba(124,255,206,.12), transparent 55%),
+        var(--bg);
+      font: 15px/1.55 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+
+    header{
+      padding: 38px 18px 18px;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .title{
+      display:flex;
+      gap:12px;
+      align-items:flex-end;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+
+    h1{
+      margin: 0;
+      font-size: 28px;
+      letter-spacing: .2px;
+    }
+
+    .sub{
+      margin: 10px 0 0;
+      color: var(--muted);
+      max-width: 72ch;
+    }
+
+    .controls{
+      margin-top: 18px;
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+
+    .pill{
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    .pill strong{ font-weight: 650; }
+    .pill span{ color: var(--muted); }
+
+    .search{
+      flex: 1 1 260px;
+      min-width: 220px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.07);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+    .search input{
+      all: unset;
+      width: 100%;
+      color: var(--text);
+      font-size: 14px;
+    }
+    .search input::placeholder{ color: rgba(255,255,255,.55); }
+
+    main{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 18px 44px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .card{
+      grid-column: span 12;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,.085), rgba(255,255,255,.045));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 16px 16px 14px;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+    }
+
+    @media (min-width: 820px){
+      .card{ grid-column: span 6; }
+    }
+
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:-1px;
+      background: radial-gradient(500px 220px at 0% 0%, rgba(122,162,247,.18), transparent 55%);
+      pointer-events:none;
+    }
+
+    .row{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 14px;
+      position: relative;
+    }
+
+    .name{
+      font-size: 18px;
+      margin: 0;
+      font-weight: 700;
+      letter-spacing: .2px;
+    }
+
+    .effect{
+      margin: 10px 0 0;
+      color: var(--muted);
+    }
+
+    .score{
+      flex: 0 0 auto;
+      text-align:right;
+      min-width: 84px;
+    }
+
+    .score .num{
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: .2px;
+    }
+    .score .meta{
+      margin-top: 2px;
+      font-size: 12px;
+      color: rgba(255,255,255,.62);
+    }
+
+    .bar{
+      height: 8px;
+      margin-top: 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.10);
+      overflow:hidden;
+      position: relative;
+    }
+    .bar > div{
+      height: 100%;
+      width: 0%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(124,255,206,.85), rgba(122,162,247,.9), rgba(255,123,172,.85));
+      filter: saturate(1.1);
+    }
+
+    .status{
+      margin-top: 18px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.05);
+      color: var(--muted);
+    }
+
+    .small{
+      font-size: 12px;
+      color: rgba(255,255,255,.55);
+      margin-top: 12px;
+    }
+
+    .empty{
+      padding: 28px 16px;
+      border-radius: var(--radius);
+      border: 1px dashed rgba(255,255,255,.18);
+      color: rgba(255,255,255,.65);
+      background: rgba(255,255,255,.03);
+      text-align:center;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="title">
+      <div>
+        <h1>Survey averages</h1>
+        <p class="sub">
+          Sorted by highest average first. Scores are computed from your public Google Sheet responses.
+        </p>
+      </div>
+    </div>
+
+    <div class="controls">
+      <div class="pill">
+        <strong id="count">—</strong>
+        <span>items</span>
+      </div>
+      <div class="pill">
+        <strong id="updated">—</strong>
+        <span>updated</span>
+      </div>
+
+      <div class="search" title="Filter by name or effect text">
+        <span style="opacity:.7">🔎</span>
+        <input id="q" placeholder="Search…" />
+      </div>
+    </div>
+
+    <div id="status" class="status">Loading…</div>
+  </header>
+
+  <main>
+    <div id="grid" class="grid"></div>
+    <div class="small">
+      Tip: If your sheet has a “Timestamp” column, this page ignores non-numeric columns automatically.
+    </div>
+  </main>
+
+  <script>
+    /**********************************************************************
+     * 1) SET THESE
+     **********************************************************************/
+    const SHEET_ID = "11pU1Ef7UO6b1VJ2Y5FePZ5dCYpkO5D7QLlj_Rjuun84";
+    const SHEET_NAME = "Carousel Roles Survey (1–5)"; // tab name
+
+    /**********************************************************************
+     * 2) YOUR (CLEANED) ROLE DATA — name + effect
+     *    (difficulty/isEvil/isDemon are not needed for display here)
+     **********************************************************************/
+    const ROLE_DATA = [
+      {"name":"Acrobat","effect":"Each night*, choose a player: if they are or become drunk or poisoned tonight, you die."},
+      {"name":"Alchemist","effect":"You have a Minion ability. When using this, the Storyteller may prompt you to choose differently."},
+      {"name":"Alsaahir","effect":"Each day, if you publicly guess which players are Minion(s) and which are Demon(s), good wins."},
+      {"name":"Amnesiac","effect":"You do not know what your ability is. Each day, privately guess what it is: you learn how accurate you are."},
+      {"name":"Atheist","effect":"The Storyteller can break the game rules, and if executed, good wins, even if you are dead. [No evil characters]"},
+      {"name":"Balloonist","effect":"Each night, you learn a player of a different character type than last night. [+0 or +1 Outsider]"},
+      {"name":"Banshee","effect":"If the Demon kills you, all players learn this. From now on, you may nominate twice per day and vote twice per nomination.”"},
+      {"name":"Bounty Hunter","effect":"You start knowing 1 evil player. If the player you know dies, you learn another evil player tonight. [1 Townsfolk is evil]"},
+      {"name":"Cannibal","effect":"You have the ability of the recently killed executee. If they are evil, you are poisoned until a good player dies by execution."},
+      {"name":"Choirboy","effect":"If the Demon kills the King, you learn which player is the Demon. [+the King]"},
+      {"name":"Cult Leader","effect":"Each night, you become the alignment of an alive neighbor. If all good players choose to join your cult, your team wins."},
+      {"name":"Engineer","effect":"Once per game, at night, choose which Minions or which Demon is in play."},
+      {"name":"Farmer","effect":"When you die at night, an alive good player becomes a Farmer."},
+      {"name":"Fisherman","effect":"Once per game, during the day, visit the Storyteller for some advice to help your team win."},
+      {"name":"General","effect":"Each night, you learn which alignment the Storyteller believes is winning: good, evil, or neither."},
+      {"name":"High Priestess","effect":"Each night, learn which player the Storyteller believes you should talk to most."},
+      {"name":"Huntsman","effect":"Once per game, at night, choose a living player: the Damsel, if chosen, becomes a not-in-play Townsfolk. [+the Damsel]"},
+      {"name":"King","effect":"Each night, if the dead equal or outnumber the living, you learn 1 alive character. The Demon knows you are the King."},
+      {"name":"Knight","effect":"You start knowing 2 players that are not the Demon."},
+      {"name":"Lycanthrope","effect":"Each night*, choose an alive player. If good, they die & the Demon doesn’t kill tonight. One good player registers as evil."},
+      {"name":"Magician","effect":"The Demon thinks you are a Minion. Minions think you are a Demon."},
+      {"name":"Nightwatchman","effect":"Once per game, at night, choose a player: they learn you are the Nightwatchman."},
+      {"name":"Noble","effect":"You start knowing 3 players, 1 and only 1 of which is evil."},
+      {"name":"Pixie","effect":"You start knowing 1 in-play Townsfolk. If you were mad that you were this character, you gain their ability when they die."},
+      {"name":"Poppy Grower","effect":"Minions & Demons do not know each other. If you die, they learn who each other are that night."},
+      {"name":"Preacher","effect":"Each night, choose a player: a Minion, if chosen, learns this. All chosen Minions have no ability."},
+      {"name":"Shugenja","effect":"You start knowing if your closest evil player is clockwise or anti-clockwise. If equidistant, this info is arbitrary."},
+      {"name":"Steward","effect":"You start knowing 1 good player."},
+      {"name":"Village Idiot","effect":"Each night, choose a player: you learn their alignment. [+0 to +2 Village Idiots. 1 of the extras is drunk]"},
+      {"name":"Damsel","effect":"All Minions know a Damsel is in play. If a Minion publicly guesses you (once), your team loses."},
+      {"name":"Golem","effect":"You may only nominate once per game. When you do, if the nominee is not the Demon, they die."},
+      {"name":"Hatter","effect":"If you died today or tonight, the Minion & Demon players may choose new Minion & Demon characters to be."},
+      {"name":"Heretic","effect":"Whoever wins, loses & whoever loses, wins, even if you are dead."},
+      {"name":"Ogre","effect":"On your 1st night, choose a player (not yourself): you become their alignment (you dont know which) even if drunk or poisoned.”"},
+      {"name":"Plague Doctor","effect":"When you die, the Storyteller gains a Minion ability."},
+      {"name":"Politician","effect":"If you were the player most responsible for your team losing, you change alignment & win, even if dead."},
+      {"name":"Puzzlemaster","effect":"1 player is drunk, even if you die. If you guess (once) who it is, learn the Demon player, but guess wrong & get false info."},
+      {"name":"Snitch","effect":"Each Minion gets 3 bluffs."},
+      {"name":"Zealot","effect":"If there are 5 or more players alive, you must vote for every nomination."},
+      {"name":"boffin","effect":"The Demon (even if drunk or poisoned) has a not-in-play good characters ability. You both know which."},
+      {"name":"Boomdandy","effect":"If you are executed, all but 3 players die. After a 10 to 1 countdown, the player with the most players pointing at them, dies."},
+      {"name":"Fearmonger","effect":"Each night, choose a player: if you nominate & execute them, their team loses. All players know if you choose a new player."},
+      {"name":"Goblin","effect":"If you publicly claim to be the Goblin when nominated & are executed that day, your team wins."},
+      {"name":"Harpy","effect":"Each night, choose 2 players: tomorrow, the 1st player is mad that the 2nd is evil, or one or both might die."},
+      {"name":"Marionette","effect":"You think you are a good character, but you are not. The Demon knows who you are. [You neighbor the Demon]"},
+      {"name":"Mezepheles","effect":"You start knowing a secret word. The 1st good player to say this word becomes evil that night."},
+      {"name":"Organ Grinder","effect":"All players keep their eyes closed when voting and the vote tally is secret. Each night, choose if you are drunk until dusk."},
+      {"name":"Psychopath","effect":"Each day, before nominations, you may publicly choose a player: they die. If executed, you only die if you lose roshambo."},
+      {"name":"Summoner","effect":"You get 3 bluffs. On the 3rd night, choose a player: they become an evil Demon of your choice. [No Demon]"},
+      {"name":"Vizier","effect":"All players know you are the Vizier. You cannot die during the day. If good voted, you may choose to execute immediately."},
+      {"name":"Widow","effect":"On your 1st night, look at the Grimoire & choose a player: they are poisoned. 1 good player knows a Widow is in play."},
+      {"name":"Wizard","effect":"Once per game, choose to make a wish. If granted, it might have a price & leave a clue as to its nature."},
+      {"name":"Xaan","effect":"On night X, all Townsfolk are poisoned until dusk. [X Outsiders]"},
+      {"name":"Al-Hadikhia","effect":"Each night*, you may choose 3 players (all players learn who): each silently chooses to live or die, but if all live, all die."},
+      {"name":"Kazali","effect":"Each night*, choose a player: they die. [You choose which players are which Minions. -? to +? Outsiders]"},
+      {"name":"Legion","effect":"Each night*, a player might die. Executions fail if only evil voted. You register as a Minion too. [Most players are Legion]"},
+      {"name":"Leviathan","effect":"If more than 1 good player is executed, evil wins. All players know you are in play. After day 5, evil wins."},
+      {"name":"Lil' Monsta","effect":"Each night, Minions choose who babysits Lil Monsta & is the Demon. Each night*, a player might die. [+1 Minion]"},
+      {"name":"Lleech","effect":"Each night*, choose a player: they die. You start by choosing a player: they are poisoned. You die if & only if they are dead. "},
+      {"name":"Lord of Typhon","effect":"Each night*, choose a player: they die. [Evil characters are in a line. You are in the middle. +1 Minion. There can be any number of outsiders]"},
+      {"name":"Ojo","effect":"Each night*, choose a character: they die. If they are not in play, the Storyteller chooses who dies."},
+      {"name":"Riot","effect":"On day 3, Minions become Riot & nominees die but nominate an alive player immediately. This must happen."},
+      {"name":"Yaggababble","effect":"You start knowing a secret phrase. For each time you said it publicly today, a player might die."}
+    ];
+
+    /**********************************************************************
+     * 3) IMPLEMENTATION
+     **********************************************************************/
+    const statusEl = document.getElementById("status");
+    const gridEl = document.getElementById("grid");
+    const countEl = document.getElementById("count");
+    const updatedEl = document.getElementById("updated");
+    const qEl = document.getElementById("q");
+
+    const roleByName = new Map(ROLE_DATA.map(r => [String(r.name).trim(), r]));
+
+    function gvizUrl(sheetId, sheetName){
+      return `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?sheet=${encodeURIComponent(sheetName)}&tqx=out:json`;
+    }
+
+    function parseGviz(text){
+      return JSON.parse(text.substring(text.indexOf('{'), text.lastIndexOf('}') + 1));
+    }
+
+    function isFiniteNumber(x){
+      return typeof x === "number" && Number.isFinite(x);
+    }
+
+    function computeColumnAverages(gviz){
+      const cols = gviz.table.cols.map(c => (c.label || "").trim());
+      const sums = Array(cols.length).fill(0);
+      const counts = Array(cols.length).fill(0);
+
+      (gviz.table.rows || []).forEach(row => {
+        (row.c || []).forEach((cell, i) => {
+          const v = cell ? cell.v : null;
+          if (isFiniteNumber(v)) {
+            sums[i] += v;
+            counts[i] += 1;
+          }
+        });
+      });
+
+      return cols.map((label, i) => ({
+        label,
+        avg: counts[i] ? (sums[i] / counts[i]) : null,
+        n: counts[i]
+      }));
+    }
+
+    function normalizeName(s){
+      return String(s || "").trim();
+    }
+
+    function buildModel(averages){
+      // Match sheet column labels to ROLE_DATA names
+      // Anything that doesn't match is ignored (e.g. Timestamp)
+      const items = [];
+
+      for (const col of averages) {
+        const name = normalizeName(col.label);
+        if (!name) continue;
+
+        const role = roleByName.get(name);
+        if (!role) continue; // ignore unknown columns
+
+        items.push({
+          name: role.name,
+          effect: role.effect,
+          avg: col.avg,      // may be null if no numeric responses
+          n: col.n
+        });
+      }
+
+      // Sort: highest avg first, nulls last, then by name
+      items.sort((a, b) => {
+        const ax = (a.avg == null ? -Infinity : a.avg);
+        const bx = (b.avg == null ? -Infinity : b.avg);
+        if (bx !== ax) return bx - ax;
+        return a.name.localeCompare(b.name);
+      });
+
+      return items;
+    }
+
+    function clamp(n, min, max){ return Math.max(min, Math.min(max, n)); }
+
+    function render(items, query){
+      const q = (query || "").trim().toLowerCase();
+      const filtered = q
+        ? items.filter(it =>
+            it.name.toLowerCase().includes(q) ||
+            it.effect.toLowerCase().includes(q)
+          )
+        : items;
+
+      countEl.textContent = filtered.length.toString();
+
+      if (filtered.length === 0) {
+        gridEl.innerHTML = `<div class="empty">No matches. Try a different search.</div>`;
+        return;
+      }
+
+      gridEl.innerHTML = filtered.map(it => {
+        const scoreText = (it.avg == null) ? "—" : it.avg.toFixed(2);
+        const pct = (it.avg == null) ? 0 : clamp((it.avg / 5) * 100, 0, 100);
+        const responsesText = it.n ? `${it.n} response${it.n === 1 ? "" : "s"}` : "no responses yet";
+
+        return `
+          <article class="card">
+            <div class="row">
+              <div>
+                <h2 class="name">${escapeHtml(it.name)}</h2>
+                <div class="effect">${escapeHtml(it.effect)}</div>
+              </div>
+              <div class="score">
+                <div class="num">${scoreText}</div>
+                <div class="meta">${responsesText}</div>
+              </div>
+            </div>
+            <div class="bar" aria-hidden="true"><div style="width:${pct}%"></div></div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function escapeHtml(str){
+      return String(str)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#39;");
+    }
+
+    async function main(){
+      try{
+        statusEl.textContent = "Fetching sheet data…";
+
+        const res = await fetch(gvizUrl(SHEET_ID, SHEET_NAME));
+        if (!res.ok) throw new Error(`Fetch failed: ${res.status} ${res.statusText}`);
+
+        const text = await res.text();
+        const gviz = parseGviz(text);
+
+        const averages = computeColumnAverages(gviz);
+        const model = buildModel(averages);
+
+        const now = new Date();
+        updatedEl.textContent = now.toLocaleString();
+
+        const matched = model.length;
+        statusEl.textContent =
+          matched
+            ? `Loaded ${matched} items from sheet columns that match your ROLE_DATA names.`
+            : `Loaded sheet data, but none of the column headers matched ROLE_DATA names. (Check your sheet tab name + column headers.)`;
+
+        // initial render + search
+        render(model, "");
+        qEl.addEventListener("input", () => render(model, qEl.value));
+      } catch (err){
+        console.error(err);
+        statusEl.textContent = `Error: ${err.message}`;
+        gridEl.innerHTML = `
+          <div class="empty">
+            Couldn’t load data. Common fixes:<br/>
+            • Make sure the sheet is published to the web<br/>
+            • Verify SHEET_ID and SHEET_NAME<br/>
+            • Ensure the response columns are numeric (1–5)
+          </div>
+        `;
+      }
+    }
+
+    main();
+  </script>
+</body>
+</html>
