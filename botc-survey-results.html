@@ -253,6 +253,20 @@
   </main>
 
   <script>
+
+    function normalizeBaseNameFromHeader(label){
+      // Removes your appended type suffixes and trims whitespace
+      return String(label || "")
+        .trim()
+        .replace(/\s+\((DEMON|MINION|OUTSIDER)\)\s*$/i, "")
+        .trim();
+    }
+    
+    function extractTypeSuffix(label){
+      const m = String(label || "").trim().match(/\s+\((DEMON|MINION|OUTSIDER)\)\s*$/i);
+      return m ? m[1].toUpperCase() : null;
+    }
+    
     /**********************************************************************
      * 1) SET THESE
      **********************************************************************/
@@ -379,25 +393,27 @@
     }
 
     function buildModel(averages){
-      // Match sheet column labels to ROLE_DATA names
-      // Anything that doesn't match is ignored (e.g. Timestamp)
       const items = [];
-
+    
       for (const col of averages) {
-        const name = normalizeName(col.label);
-        if (!name) continue;
-
-        const role = roleByName.get(name);
-        if (!role) continue; // ignore unknown columns
-
+        const rawHeader = String(col.label || "").trim();
+        if (!rawHeader) continue;
+    
+        const baseName = normalizeBaseNameFromHeader(rawHeader);
+        if (!baseName) continue;
+    
+        const role = roleByName.get(baseName); // roleByName is keyed by plain item.name
+        if (!role) continue;                  // ignore Timestamp / unmatched columns
+    
         items.push({
-          name: role.name,
+          name: baseName,              // <- "real name" without suffix
           effect: role.effect,
-          avg: col.avg,      // may be null if no numeric responses
-          n: col.n
+          avg: col.avg,
+          n: col.n,
+          type: extractTypeSuffix(rawHeader) // DEMON/MINION/OUTSIDER or null
         });
       }
-
+    
       // Sort: highest avg first, nulls last, then by name
       items.sort((a, b) => {
         const ax = (a.avg == null ? -Infinity : a.avg);
@@ -405,9 +421,10 @@
         if (bx !== ax) return bx - ax;
         return a.name.localeCompare(b.name);
       });
-
+    
       return items;
     }
+
 
     function clamp(n, min, max){ return Math.max(min, Math.min(max, n)); }
 
