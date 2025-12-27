@@ -370,17 +370,18 @@
       const cols = gviz.table.cols.map(c => (c.label || "").trim());
       const sums = Array(cols.length).fill(0);
       const counts = Array(cols.length).fill(0);
-
+    
       (gviz.table.rows || []).forEach(row => {
         (row.c || []).forEach((cell, i) => {
-          const v = cell ? cell.v : null;
-          if (isFiniteNumber(v)) {
-            sums[i] += v;
-            counts[i] += 1;
-          }
+          // Skip columns that never contain numbers (e.g. Timestamp)
+          if (gviz.table.cols[i].type !== "number") return;
+    
+          const v = cell && isFiniteNumber(cell.v) ? cell.v : 3; // 👈 default to 3
+          sums[i] += v;
+          counts[i] += 1;
         });
       });
-
+    
       return cols.map((label, i) => ({
         label,
         avg: counts[i] ? (sums[i] / counts[i]) : null,
