@@ -1,0 +1,162 @@
+
+* {
+    touch-action: manipulation !important;
+}
+
+
+.img-background {
+    background-image: url('img/menu.png');
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+}
+
+@font-face {
+    font-family: Kreon;
+    src: url('fonts/static/Kreon-Medium.ttf');
+}
+.sts-font {
+    font-family: Kreon;
+    font-size: 2rem;
+    color: white;
+    text-shadow: 0px 0px 9px #000000, 0px 0px 9px #000000, 0px 0px 9px #000000, 0px 0px 9px #000000, 0px 0px 9px #000000, 0px 0px 9px #000000;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}
+.sts-font.simple {
+    text-shadow: none;
+}
+.sts-font.smaller {
+    font-size: 1.5rem;
+}
+.sts-button {
+    transition: all 0.35s;
+    max-width: 50vw;
+    padding: 0.5rem;
+}
+.sts-button:hover {
+    padding-left: 1rem;
+    cursor: pointer;
+    background: #ffef45;
+    background: linear-gradient(90deg,rgba(255, 239, 69, 0) 0%, rgba(245, 255, 138, 0.73) 3%, rgba(237, 221, 83, 0) 100%);
+}
+
+.card-image {
+    width: 80%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 12px;
+
+    /* tiny depth */
+    box-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.25),
+        0 4px 10px rgba(0, 0, 0, 0.15);
+
+    /* micro highlight */
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.08),
+        rgba(255, 255, 255, 0.02)
+    );
+
+      /* tiny tilt */
+    transform:
+        perspective(800px)
+        rotateX(1.2deg)
+        rotateY(-1.5deg);
+
+    transform-style: preserve-3d;
+
+    transition:
+        transform 1s ease,
+        box-shadow 1s ease;
+
+    transform-origin: 50% 60%;
+    backface-visibility: hidden;
+    will-change: transform, filter, opacity;
+}
+.card-image:hover {
+  transform:
+    perspective(800px)
+    rotateX(-1.2deg)
+    rotateY(1.5deg)
+    translateY(-2px);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.12),
+    0 6px 18px rgba(0, 0, 0, 0.35);
+}
+.card-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.15),
+    rgba(255, 255, 255, 0) 40%
+  );
+}
+
+@media (hover: none) {
+  .card-image:hover {
+    transform:
+      perspective(800px)
+      rotateX(1.2deg)
+      rotateY(-1.5deg);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.35),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.12),
+      0 3px 10px rgba(0, 0, 0, 0.25);
+  }
+}
+
+
+/* Trigger class */
+.card-image.card--reveal {
+  animation: card-reveal 2.25s cubic-bezier(.2,.9,.2,1) both;
+}
+
+@keyframes card-reveal {
+  0% {
+    opacity: 0;
+    filter: blur(1px);
+    transform:
+      perspective(800px)
+      rotateY(78deg)         /* almost edge / "other side" vibe */
+      rotateX(8deg)
+      translateY(6px)
+      scale(0.985);
+  }
+
+  60% {
+    opacity: 1;
+    filter: blur(0px);
+    transform:
+      perspective(800px)
+      rotateY(-4deg)         /* slight overshoot */
+      rotateX(2deg)
+      translateY(-2px)
+      scale(1.01);
+  }
+
+  100% {
+    opacity: 1;
+    filter: blur(0px);
+    transform:
+      perspective(800px)
+      rotateX(1.2deg)        /* your resting tilt */
+      rotateY(-1.5deg);
+  }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .card-image.card--reveal {
+    animation: none;
+  }
+}

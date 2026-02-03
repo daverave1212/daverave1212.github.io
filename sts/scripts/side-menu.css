@@ -1,0 +1,51 @@
+/* Overlay (click outside to close) */
+.side-menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+  z-index: 1000;
+}
+
+/* Menu container */
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  max-width: 70vw;
+
+  background: #111;
+  color: #fff;
+
+  transform: translateX(-100%);
+  transition: transform 220ms ease;
+  z-index: 1001;
+}
+
+/* Menu items */
+.side-menu__item {
+  background: none;
+  border: none;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+/* Visible state */
+.side-menu--open {
+  transform: translateX(0);
+}
+
+.side-menu-overlay--open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
+body.menu-open {
+  overflow: hidden;
+  touch-action: none;
+}

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Slay the Spire</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="utils.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="scripts/side-menu.css" />
+  <link rel="stylesheet" href="scripts/Counter.css" />
+  <link rel="stylesheet" href="scripts/BigCounter.css" />
+</head>
+<body>
+
+    <script src="scripts/utils.js"></script>
+    <script src="scripts/side-menu.js"></script>
+    <script src="scripts/cards.js"></script>
+    <script src="scripts/Counter.js"></script>
+    <script src="scripts/BigCounter.js"></script>
+
+    <div id="app">
+
+        <div id="sideMenuOverlay" class="side-menu-overlay"></div>
+
+        <!-- Side menu -->
+        <nav id="sideMenu" class="side-menu flex column gap-2 padding-2 padding-top-4">
+            <button class="side-menu__item sts-font sts-button" onclick="showPage('Menu')">Home</button>
+            <button class="side-menu__item sts-font sts-button" onclick="nextCharacter()">Change Character</button>
+            <button class="side-menu__item sts-font sts-button" onclick="showPage('Neow')">Draw Neow Card</button>
+            <button class="side-menu__item sts-font sts-button" onclick="showPage('Event')">Draw Event</button>
+        </nav>
+
+        <script src="side-menu.js"></script>
+        <script src="scripts/pager.js"></script>
+
+
+
+
+
+        <!-- Pages -->
+
+        <div id="Menu" class="page img-background flex column gap-1" style="padding: 2rem; padding-left: 10vw; padding-bottom: 10vh; justify-content: end;">
+            <div class="sts-font sts-button" onclick="showPage('New-Game')">New Game</div>
+            <div class="sts-font sts-button" onclick="showPage('Board')">Continue</div>
+            <div class="sts-font sts-button"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" style="text-decoration: none; color: white;">Secrets</a></div>
+        </div>
+
+        <div id="New-Game" class="page img-background center-content gap-1" style="padding: 2rem; padding-left: 10vw; padding-bottom: 10vh;">
+            <input class="sts-font sts-button simple center-text" placeholder="Room code" style="color: black;">
+            <div class="center-content row gap-1">
+                <div class="sts-font sts-button" onclick="showPage('Menu')">Back</div>
+                <div class="sts-font sts-button" onclick="showPage('Neow')">Join</div>
+            </div>
+        </div>
+
+        <div id="Neow" class="page img-background center-content gap-1" style="padding: 2rem; padding-left: 10vw; padding-bottom: 10vh;">
+            <div class="sts-font center-text" style="color: yellow;">Neow Card</div>
+            <img class="card-image" src="">
+            <div class="sts-font sts-button center-text" onclick="showPage('Board')">Ok</div>
+            <script>
+                onShowPage('Neow', () => {
+                    showRandomCardOnImg('#Neow .card-image', 'Neow', 20)
+                })
+            </script>
+        </div>
+
+        <div id="Event" class="page img-background center-content gap-1" style="padding: 2rem; padding-left: 10vw; padding-bottom: 10vh;">
+            <div class="sts-font center-text" style="color: yellow;">Event</div>
+            <img class="card-image" src="">
+            <div class="sts-font sts-button center-text" onclick="showPage('Board')">Ok</div>
+            <script>
+                onShowPage('Event', () => {
+                    showRandomCardOnImg('#Event .card-image', 'Events', 52)
+                })
+            </script>
+        </div>
+
+        <div id="Board" class="page img-background gap-1" style="background-image: url('img/Ironclad.png');">
+            <div class="flex gap-1 padding-1">
+                <div class="sts-font sts-button" onclick="showSideMenu()">Menu</div>
+                <!-- <div class="sts-font sts-button" onclick="showPage('Menu')">Back</div>
+                <div class="sts-font sts-button" onclick="nextCharacter()">Change Character</div> -->
+            </div>
+            <div id="Board-Buttons" class="center-content gap-1">
+            </div>
+            <div id="Power" class="center-content margin-top-1 gap-1">
+                <img class="shadowed more" src="img/PowerIronclad.PNG" style="border-radius: 1rem;"/>
+                <img id="Power-Extra" class="shadowed more" src="" style="display: none;"/>
+            </div>
+            <div id="Elite-HP-Tracker" class="margin-top-4 center-content gap-1">
+                <div class="sts-font" style="color: yellow;">Elite HP Tracker</div>
+            </div>
+        </div>
+        <script>
+            const CHARACTERS = ["Ironclad", "Silent", "Defect", "Watcher"]
+            function setCharacter(i) {
+                const characterName = CHARACTERS[i]
+                console.log(`Set character to ${characterName}`)
+                document.querySelector('#Board').style['background-image'] = `url('img/${characterName}.png')`
+                document.querySelector('#Power img').setAttribute('src', `img/Power${characterName}.png`)
+
+                if (characterName == 'Silent') {
+                    document.querySelector('#Power-Extra').setAttribute('src', 'img/PowerSilentExtra.png')
+                    document.querySelector('#Power-Extra').style.display = ''
+                } else {
+                    document.querySelector('#Power-Extra').style.display = 'none'
+                }
+            }
+            
+            if (getLocalStorageState('characterIndex') == null) {
+                setLocalStorageState('characterIndex', 0)
+            }
+            setCharacter(getLocalStorageState('characterIndex'))
+
+            onLocalStorageStateChange('characterIndex', newI => {
+                let i = parseInt(newI) % CHARACTERS.length
+                setCharacter(i)
+            })
+            
+
+            function nextCharacter() {
+                const i = parseInt(getLocalStorageState('characterIndex'))
+                const newI = (i + 1) % CHARACTERS.length
+                setLocalStorageState('characterIndex', newI)
+            }
+            
+
+            const energyCounter = createCounter('energy', { min: 0, max: 6, defaultValue: 3, color: 'orange' })
+            const blockCounter = createCounter('block', { min: 0, max: 10, defaultValue: 0, color: 'rgb(71, 88, 124)' })
+            const hpCounter = createCounter('hp', { min: 0, max: 10, defaultValue: 10, color: '#e35120' })
+            document.querySelector('#Board-Buttons').appendChild(energyCounter)
+            document.querySelector('#Board-Buttons').appendChild(blockCounter)
+            document.querySelector('#Board-Buttons').appendChild(hpCounter)
+            const eliteHPTracker = createBigCounter('elite-hp', { min: 0, max: 999, defaultValue: 10, color: '#CC0033' })
+            document.querySelector('#Elite-HP-Tracker').appendChild(eliteHPTracker)
+        </script>
+
+
+
+
+    </div>
+
+    
+
+    <script>
+        showPage('Menu')
+    </script>
+</body>
+</html>
