@@ -78,10 +78,14 @@
         </div>
 
         <div id="Board" class="page img-background gap-1" style="background-image: url('img/Ironclad.png');">
-            <div class="flex gap-1 padding-1">
+            <div id="Board-Top-Panel" class="flex gap-1 padding-1 space-between">
                 <div class="sts-font sts-button" onclick="showSideMenu()">Menu</div>
-                <!-- <div class="sts-font sts-button" onclick="showPage('Menu')">Back</div>
-                <div class="sts-font sts-button" onclick="nextCharacter()">Change Character</div> -->
+                <div id="Gold-Box" class="padding-half"></div>
+                <script>
+                    const gold = createCounter('gold', { min: 0, max: 99, defaultValue: 0, color: 'gold', src: './Icons/Gold.png' })
+                    gold.classList.add('smaller')
+                    document.querySelector('#Gold-Box').appendChild(gold)
+                </script>
             </div>
             <div id="Board-Buttons" class="center-content gap-1">
             </div>
@@ -127,9 +131,9 @@
             }
             
 
-            const energyCounter = createCounter('energy', { min: 0, max: 6, defaultValue: 3, color: 'orange' })
-            const blockCounter = createCounter('block', { min: 0, max: 10, defaultValue: 0, color: 'rgb(71, 88, 124)' })
-            const hpCounter = createCounter('hp', { min: 0, max: 10, defaultValue: 10, color: '#e35120' })
+            const energyCounter = createCounter('energy', { min: 0, max: 6, defaultValue: 3, color: 'orange', icon: './Icons/Energy.png' })
+            const blockCounter = createCounter('block', { min: 0, max: 10, defaultValue: 0, color: 'rgb(71, 88, 124)', icon: './Icons/Block.png' })
+            const hpCounter = createCounter('hp', { min: 0, max: 10, defaultValue: 10, color: '#880011', icon: './Icons/HP.png' })
             document.querySelector('#Board-Buttons').appendChild(energyCounter)
             document.querySelector('#Board-Buttons').appendChild(blockCounter)
             document.querySelector('#Board-Buttons').appendChild(hpCounter)

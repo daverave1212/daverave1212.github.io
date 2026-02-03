@@ -4,8 +4,7 @@
   --radius: 12px;
   --bg: #111;
   --fg: #f2f2f2;
-  --border-color: rgba(255, 255, 255, 0.12);
-  --hover-color: rgba(255, 255, 255, 0.06);
+  --hover-color: #333;
   --color: rgb(71, 88, 124);
 
   display: inline-grid;
@@ -15,12 +14,15 @@
   width: 70%;
   height: var(--h);
   border-radius: var(--radius);
-  background: var(--bg);
   color: var(--fg);
-  border: 1px solid var(--border-color);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   overflow: hidden;
   user-select: none;
 }
+.ls-counter.smaller {
+  width: auto;
+}
+
 
 /* Buttons */
 .ls-counter__btn {
@@ -30,7 +32,7 @@
   place-items: center;
 
   border: 0;
-  background: transparent;
+  background: var(--bg);
   color: inherit;
   cursor: pointer;
 
@@ -39,6 +41,20 @@
   line-height: 1;
 
   transition: background 120ms ease, transform 120ms ease;
+}
+.ls-counter__btn:first-child {
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+.ls-counter__btn:nth-child(3) {
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+.ls-counter.with-image .ls-counter__btn {
+  border-top-right-radius: var(--radius);
+  border-bottom-right-radius: var(--radius);
+  border-top-left-radius: var(--radius);
+  border-bottom-left-radius: var(--radius);
 }
 
 .ls-counter__btn:hover {
@@ -56,12 +72,9 @@
 
 /* Disabled state */
 .ls-counter__btn:disabled {
-  opacity: 0.4;
+  color: rgb(102, 102, 102);
+  background-color: #111;
   cursor: not-allowed;
-}
-
-.ls-counter__btn:disabled:hover {
-  background: transparent;
 }
 
 /* Center value */
@@ -70,4 +83,21 @@
   display: grid;
   place-items: center;
   background-color: var(--color);
+}
+.ls-counter.with-image .ls-counter__value {
+  background-color: transparent;
+}
+.ls-counter__number {
+  position: relative;
+  z-index: 20;
+}
+.background-img {
+  position: absolute;
+  height: var(--h);
+  z-index: 10;
+}
+.text-icon {
+  height: calc(0.8 * var(--h));
+  padding-top: calc(0.2 * var(--h));
+  padding-left: 0.5rem;
 }

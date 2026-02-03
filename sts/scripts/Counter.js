@@ -27,6 +27,9 @@ function createCounter(name, opts = {}) {
   const defaultValue = Number.isFinite(opts.defaultValue) ? opts.defaultValue : 0;
   const step = Number.isFinite(opts.step) && opts.step > 0 ? opts.step : 1;
   const color = opts.color ?? '#111'
+  const src = opts.src ?? null
+  const iconSrc = opts.icon ?? null
+  console.log({iconSrc})
 
   const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
 
@@ -49,14 +52,14 @@ function createCounter(name, opts = {}) {
 
   // Build DOM
   const root = document.createElement("div");
-  root.className = "ls-counter sts-font";
+  root.className = "ls-counter sts-font " + (src != null? 'with-image': '');
   root.id = idRoot;
   root.dataset.name = safeName;
-
   root.innerHTML = `
     <button type="button" class="ls-counter__btn ls-counter__btn--minus" id="${idMinus}" aria-label="Decrease">−</button>
-    <div class="ls-counter__value" id="${idValue}" aria-live="polite" style="background-color: ${color};">
-      <span class="ls-counter__number">0</span>
+    <div class="ls-counter__value" id="${idValue}" aria-live="polite" style="${src? '': `background-color: ${color};`}">
+      ${src == null? '': `<img class="background-img" src="${src}">`}
+      <div class="ls-counter__number"><span class="number">0</span>${iconSrc? `<img class="text-icon" src="${iconSrc}">`: ''}</div>
     </div>
     <button type="button" class="ls-counter__btn ls-counter__btn--plus" id="${idPlus}" aria-label="Increase">+</button>
   `;
@@ -64,7 +67,7 @@ function createCounter(name, opts = {}) {
   const els = {
     minus: root.querySelector(`#${CSS.escape(idMinus)}`),
     plus: root.querySelector(`#${CSS.escape(idPlus)}`),
-    number: root.querySelector(".ls-counter__number"),
+    number: root.querySelector(".number"),
   };
 
   function readState() {
