@@ -30,6 +30,9 @@
 .sts-font.smaller {
     font-size: 1.5rem;
 }
+.sts-font.smallest {
+    font-size: 1rem;
+}
 .sts-button {
     transition: all 0.35s;
     max-width: 50vw;

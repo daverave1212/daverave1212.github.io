@@ -18,5 +18,3 @@ function showPage(id) {
 
     showPageFuncs[id]?.()
 }
-
-showPage('Menu')

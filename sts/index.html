@@ -99,7 +99,7 @@
                 const characterName = CHARACTERS[i]
                 console.log(`Set character to ${characterName}`)
                 document.querySelector('#Board').style['background-image'] = `url('img/${characterName}.png')`
-                document.querySelector('#Power img').setAttribute('src', `img/Power${characterName}.png`)
+                document.querySelector('#Power img').setAttribute('src', `./img/Power${characterName}.png`)
 
                 if (characterName == 'Silent') {
                     document.querySelector('#Power-Extra').setAttribute('src', 'img/PowerSilentExtra.png')

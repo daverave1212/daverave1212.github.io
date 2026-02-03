@@ -53,21 +53,17 @@ function createBigCounter(name, opts = {}) {
   }
 
   root.innerHTML = `
-    <div class="ls-bigcounter__group ls-bigcounter__group--minus">
-      <button type="button" class="ls-bigcounter__btn sts-font smaller" id="${btnIds(-10)}" data-delta="-10" aria-label="Minus 10">-10</button>
-      <button type="button" class="ls-bigcounter__btn sts-font smaller" id="${btnIds(-5)}"  data-delta="-5"  aria-label="Minus 5">-5</button>
-      <button type="button" class="ls-bigcounter__btn sts-font smaller" id="${btnIds(-1)}"  data-delta="-1"  aria-label="Minus 1">-1</button>
-    </div>
+    <button type="button" class="ls-bigcounter__btn sts-font smallest" id="${btnIds(-10)}" data-delta="-10" aria-label="Minus 10">-10</button>
+    <button type="button" class="ls-bigcounter__btn sts-font smallest" id="${btnIds(-5)}"  data-delta="-5"  aria-label="Minus 5">-5</button>
+    <button type="button" class="ls-bigcounter__btn sts-font smallest" id="${btnIds(-1)}"  data-delta="-1"  aria-label="Minus 1">-1</button>
 
     <div class="ls-bigcounter__value" id="${idValue}" aria-live="polite">
-      <span class="ls-bigcounter__number sts-font">0</span>
+      <span class="ls-bigcounter__number sts-font smaller">0</span>
     </div>
 
-    <div class="ls-bigcounter__group ls-bigcounter__group--plus">
-      <button type="button" class="ls-bigcounter__btn sts-font smaller" id="${btnIds(1)}"  data-delta="1"  aria-label="Plus 1">+1</button>
-      <button type="button" class="ls-bigcounter__btn sts-font smaller" id="${btnIds(5)}"  data-delta="5"  aria-label="Plus 5">+5</button>
-      <button type="button" class="ls-bigcounter__btn sts-font smaller" id="${btnIds(10)}" data-delta="10" aria-label="Plus 10">+10</button>
-    </div>
+    <button type="button" class="ls-bigcounter__btn sts-font smallest" id="${btnIds(1)}"  data-delta="1"  aria-label="Plus 1">+1</button>
+    <button type="button" class="ls-bigcounter__btn sts-font smallest" id="${btnIds(5)}"  data-delta="5"  aria-label="Plus 5">+5</button>
+    <button type="button" class="ls-bigcounter__btn sts-font smallest" id="${btnIds(10)}" data-delta="10" aria-label="Plus 10">+10</button>
   `;
 
   const els = {

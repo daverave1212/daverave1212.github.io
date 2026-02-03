@@ -10,9 +10,8 @@
   /* value background override via JS option: opts.color */
   --value-bg: transparent;
 
-  display: inline-grid;
-  grid-template-columns: auto minmax(72px, 1fr) auto;
-  align-items: center;
+  display: flex;
+  flex-direction: row;
 
   height: var(--h);
   width: 90%;
@@ -29,23 +28,19 @@
 /* Button groups */
 .ls-bigcounter__group {
   height: 100%;
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: var(--h);
 }
 
 .ls-bigcounter__btn {
   height: 100%;
   width: var(--h);
   display: grid;
-  place-items: center;
 
   border: 0;
   background: transparent;
   color: inherit;
   cursor: pointer;
 
-  line-height: 1;
+  line-height: var(--h);
 
   transition: background 120ms ease, transform 120ms ease;
 }
