@@ -11,12 +11,12 @@ const QUEST_SYMBOL = {
     'Personal Quest': '!',
     'Secondary Quest': '!',
 }
-function makeQuestArticle(row) {
+function makeQuestArticle(row, onClick) {
     const [name, type, location, description] = row
     const symbol = QUEST_SYMBOL[type]
     const symbolClass = type == 'Secondary Quest'? 'secondary': ''
     const renderedDescription = description.split('\n').join('<br>')
-    return dom(`
+    const div = dom(`
         <article class="quest-item">
             <span class="quest-symbol ${symbolClass}">${symbol}</span>
             <div class="quest-copy">
@@ -26,6 +26,8 @@ function makeQuestArticle(row) {
             <!--span class="quest-level">18</span-->
         </article>
     `)
+    div.addEventListener('click', () => onClick(row))
+    return div
 }
 
 function getLocationsData(glossary) {
@@ -83,7 +85,7 @@ function makeGlossaryEntry(entryRow) {
     const [name, type, location, description, importance, reputation, emoji] = entryRow
     return dom(`
         <article class="codex-entry" data-description="${description}" data-reputation="${reputation}" data-location="${location}">
-            <div class="entry-icon character-icon">${emoji}</div>
+            <div class="entry-icon character-icon">${emoji ?? ''}</div>
 
             <div class="entry-copy">
             <strong>${name}</strong>
@@ -97,7 +99,7 @@ function makeGlossaryEntry(entryRow) {
 
             <div class="entry-importance">
                 <span class="importance-label important">
-                    ${importance}
+                    ${importance ?? '?'}
                 </span>
 
                 <span class="importance-dot importance-orange"></span>
@@ -130,11 +132,11 @@ function makeBoardObjectiveCard({heading, text}) {
 function setBoardToGlossaryEntry(entryRow) {
     const [name, type, location, description, importance, reputation, emoji] = entryRow
 
-    document.querySelector('#board-eyebrow').innerHTML = importance
+    document.querySelector('#board-eyebrow').innerHTML = importance ?? ''
     document.querySelector('#board-title').innerHTML = name
     document.querySelector('#board-location').innerHTML = location
     document.querySelector('#board-level').innerHTML = '?'
-    document.querySelector('#banner-emoji').innerHTML = emoji
+    document.querySelector('#banner-emoji').innerHTML = emoji ?? ''
 
     const textSections = splitIntoSections(description)
     
@@ -155,6 +157,7 @@ function setBoardToGlossaryEntry(entryRow) {
     }
     
     const descriptionDiv = document.querySelector('.details-grid')
+    document.querySelectorAll('.objectives-card').forEach(div => div.remove())
     for (const { heading, text } of textSections) {
         if (heading == null)
             continue

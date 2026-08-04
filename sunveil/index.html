@@ -652,7 +652,7 @@
             const sectionHeader = makeQuestHeader(location, rows.length)
             sectionDiv.appendChild(sectionHeader)
             for (const row of rows) {
-                const questDiv = makeQuestArticle(row)
+                const questDiv = makeQuestArticle(row, () => setBoardToGlossaryEntry(row))
                 sectionDiv.appendChild(questDiv)
             }
         }
