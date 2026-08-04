@@ -30,7 +30,7 @@
     </header>
 
     <main class="quest-layout">
-      <aside class="panel quest-sidebar">
+      <aside class="panel quest-sidebar" style="flex: 4">
         <div class="panel-corner corner-tl"></div>
         <div class="panel-corner corner-tr"></div>
         <div class="panel-corner corner-bl"></div>
@@ -156,7 +156,7 @@
         </div> -->
       </aside>
 
-      <section class="panel quest-details">
+      <section class="panel quest-details" style="flex: 7">
         <div class="panel-corner corner-tl"></div>
         <div class="panel-corner corner-tr"></div>
         <div class="panel-corner corner-bl"></div>
@@ -164,39 +164,39 @@
 
         <div class="quest-hero">
           <div class="banner-placeholder" aria-label="Faction banner image placeholder">
-            <span>Other</span>
+            <span id="banner-emoji">?</span>
           </div>
 
           <div class="hero-art-placeholder" aria-label="Quest artwork placeholder">
-            <span>Journal</span>
+            <br>
+            <br>
+            <br>
+            <!-- <span>Journal</span> -->
           </div>
 
           <div class="quest-heading">
-            <!-- <div>
-              <p class="eyebrow">Main Story Quest</p>
-              <h2>The Compass Awakens</h2>
-              <p class="location">Petrasil Highlands</p>
+            <div>
+              <p id="board-eyebrow" class="eyebrow">Main Story Quest</p>
+              <h2 id="board-title">Click on an Entry!</h2>
+              <p id="board-location" class="location">Entries are on the right.</p>
             </div>
-            <span class="recommended-level">Level 18</span> -->
+            <span id="board-level" class="recommended-level">?</span>
           </div>
 
-          <div class="quest-intro">
-            <!-- <p>Follow the strange pull of the ancient compass and uncover why its needle points beyond every known road.</p>
+          <!-- <div class="quest-intro">
+            <p id="board-description">Follow the strange pull of the ancient compass and uncover why its needle points beyond every known road.</p>
             <div class="objective-line">
               <span class="diamond">◆</span>
               <span>0 / 1 Reach the ruined observatory</span>
-            </div> -->
-          </div>
+            </div>
+          </div> -->
         </div>
 
-        <!-- <div class="details-grid">
+        <div class="details-grid">
           <section class="content-card description-card">
             <h3>Description</h3>
-            <p>
-              The compass has remained silent since the crossing, yet tonight its face burns with a pale golden light. Every turn of the needle leads deeper into the highlands, toward an observatory abandoned long before Petrasil raised its first walls.
-            </p>
-            <p>
-              Find the tower before the agents of La Roix do. Whatever waits there may be tied to the hidden artefacts—and to the war none of the common folk yet understand.
+            <p id="glossary-entry-description">
+              
             </p>
           </section>
 
@@ -204,22 +204,21 @@
             <h3>Rewards</h3>
             <p class="muted">You will receive:</p>
             <div class="reward-row">
-              <div class="reward-icon">XP</div>
+              <div class="reward-icon">R</div>
               <div>
-                <strong>4,850 Experience</strong>
-                <span>Story progression reward</span>
+                <strong>Story progression reward</strong>
               </div>
             </div>
             <div class="reward-row">
               <div class="reward-icon">◉</div>
               <div>
-                <strong>32 Gold</strong>
-                <span>Plus reputation</span>
+                <strong>Gold</strong>
+                <span>Probably also reputation</span>
               </div>
             </div>
           </aside>
 
-          <section class="content-card objectives-card">
+          <!-- <section class="content-card objectives-card">
             <h3>Objectives</h3>
             <div class="objective-line large">
               <span class="diamond">◆</span>
@@ -268,25 +267,372 @@
                 <strong>Under the Brass Moon</strong>
               </div>
             </div>
-          </section>
-        </div> -->
+          </section> -->
+        </div>
       </section>
+
+      <!-- GLOSSARY / CODEX PANEL -->
+      <aside class="panel codex-panel" style="flex: 4">
+        <div class="panel-corner corner-tl"></div>
+        <div class="panel-corner corner-tr"></div>
+        <div class="panel-corner corner-bl"></div>
+        <div class="panel-corner corner-br"></div>
+
+        <header class="codex-header">
+          <p class="eyebrow">Known Lore</p>
+
+          <div class="codex-title-row">
+            <h2>Glossary</h2>
+
+            <span class="codex-count">
+              11 entries
+            </span>
+          </div>
+        </header>
+
+        <nav class="codex-navigation" aria-label="Glossary locations">
+          <div class="codex-section-heading">
+            <span>By Location</span>
+            <span>⌄</span>
+          </div>
+
+          <div class="location-list">
+            <!-- <button class="location-item is-selected" type="button">
+              <span class="location-icon">🌍</span>
+              <span class="location-name">All Locations</span>
+              <span class="location-count">11</span>
+            </button>
+
+            <button class="location-item" type="button">
+              <span class="location-icon">🌿</span>
+              <span class="location-name">Petrasil</span>
+              <span class="location-count">2</span>
+            </button>
+
+            <button class="location-item" type="button">
+              <span class="location-icon">🛡</span>
+              <span class="location-name">Sevigrad</span>
+              <span class="location-count">4</span>
+            </button>
+
+            <button class="location-item" type="button">
+              <span class="location-icon">⚓</span>
+              <span class="location-name">Sword's Rest</span>
+              <span class="location-count">2</span>
+            </button>
+
+            <button class="location-item" type="button">
+              <span class="location-icon">🌙</span>
+              <span class="location-name">Oris</span>
+              <span class="location-count">1</span>
+            </button>
+
+            <button class="location-item" type="button">
+              <span class="location-icon">?</span>
+              <span class="location-name">Unknown</span>
+              <span class="location-count">2</span>
+            </button> -->
+          </div>
+        </nav>
+
+        <section class="codex-entries">
+          <div class="codex-entries-header">
+            <div>
+              <p class="eyebrow">Discovered Knowledge</p>
+              <h3>All Entries</h3>
+            </div>
+
+            <div class="codex-header-symbols" aria-hidden="true">
+              <span>◫</span>
+              <span>⚙</span>
+            </div>
+          </div>
+
+          <div class="codex-filter-row">
+            <span class="codex-filter is-active">All</span>
+            <span class="codex-filter">Characters</span>
+            <span class="codex-filter">Artifacts</span>
+            <span class="codex-filter">More</span>
+          </div>
+
+          <div class="codex-entry-list">
+            <!-- <article class="codex-entry is-selected">
+              <div class="entry-icon artifact-icon">⚔</div>
+
+              <div class="entry-copy">
+                <strong>Sword of End Times</strong>
+
+                <div class="entry-metadata">
+                  <span>Artifact</span>
+                  <span class="metadata-separator">◆</span>
+                  <span>Sword's Rest</span>
+                </div>
+              </div>
+
+              <div class="entry-importance">
+                <span class="importance-label very-important">
+                  Very Important
+                </span>
+
+                <span class="importance-dot importance-gold"></span>
+              </div>
+            </article>
+
+            <article class="codex-entry">
+              <div class="entry-icon character-icon">🐉</div>
+
+              <div class="entry-copy">
+                <strong>Styx</strong>
+
+                <div class="entry-metadata">
+                  <span>Character</span>
+                  <span class="metadata-separator">◆</span>
+                  <span>Sword's Rest</span>
+                </div>
+              </div>
+
+              <div class="entry-importance">
+                <span class="importance-label mildly-important">
+                  Mildly Important
+                </span>
+
+                <span class="importance-dot importance-yellow"></span>
+              </div>
+            </article>
+
+            <article class="codex-entry">
+              <div class="entry-icon character-icon">🔥</div>
+
+              <div class="entry-copy">
+                <strong>Lady Saraha</strong>
+
+                <div class="entry-metadata">
+                  <span>Character</span>
+                  <span class="metadata-separator">◆</span>
+                  <span>Petrasil</span>
+                </div>
+              </div>
+
+              <div class="entry-importance">
+                <span class="importance-label important">
+                  Important
+                </span>
+
+                <span class="importance-dot importance-orange"></span>
+              </div>
+            </article>
+
+            <article class="codex-entry">
+              <div class="entry-icon information-icon">📜</div>
+
+              <div class="entry-copy">
+                <strong>Elven Tunnels</strong>
+
+                <div class="entry-metadata">
+                  <span>Information</span>
+                  <span class="metadata-separator">◆</span>
+                  <span>Unknown</span>
+                </div>
+              </div>
+
+              <div class="entry-importance">
+                <span class="importance-label important">
+                  Important
+                </span>
+
+                <span class="importance-dot importance-orange"></span>
+              </div>
+            </article>
+
+            <article class="codex-entry">
+              <div class="entry-icon faction-icon">☾</div>
+
+              <div class="entry-copy">
+                <strong>Oris &amp; The Witch</strong>
+
+                <div class="entry-metadata">
+                  <span>Faction</span>
+                  <span class="metadata-separator">◆</span>
+                  <span>Oris</span>
+                </div>
+              </div>
+
+              <div class="entry-importance">
+                <span class="importance-label very-important">
+                  Very Important
+                </span>
+
+                <span class="importance-dot importance-gold"></span>
+              </div>
+            </article>
+
+            <article class="codex-entry">
+              <div class="entry-icon character-icon">🧔</div>
+
+              <div class="entry-copy">
+                <strong>Barigas Goldcliff</strong>
+
+                <div class="entry-metadata">
+                  <span>Character</span>
+                  <span class="metadata-separator">◆</span>
+                  <span>Sevigrad</span>
+                </div>
+              </div>
+
+              <div class="entry-importance">
+                <span class="importance-label not-important">
+                  Not Very Important
+                </span>
+
+                <span class="importance-dot importance-grey"></span>
+              </div>
+            </article>
+
+            <article class="codex-entry">
+              <div class="entry-icon character-icon">🐲</div>
+
+              <div class="entry-copy">
+                <strong>Diana</strong>
+
+                <div class="entry-metadata">
+                  <span>Character</span>
+                  <span class="metadata-separator">◆</span>
+                  <span>Sevigrad</span>
+                </div>
+              </div>
+
+              <div class="entry-importance">
+                <span class="importance-label unknown-importance">
+                  Unknown
+                </span>
+
+                <span class="importance-dot importance-grey"></span>
+              </div>
+            </article>
+
+            <article class="codex-entry">
+              <div class="entry-icon character-icon">♛</div>
+
+              <div class="entry-copy">
+                <strong>Petrasil Minister of External Affairs</strong>
+
+                <div class="entry-metadata">
+                  <span>Character</span>
+                  <span class="metadata-separator">◆</span>
+                  <span>Petrasil</span>
+                </div>
+              </div>
+
+              <div class="entry-importance">
+                <span class="importance-label mildly-important">
+                  Mildly Important
+                </span>
+
+                <span class="importance-dot importance-yellow"></span>
+              </div>
+            </article>
+
+            <article class="codex-entry">
+              <div class="entry-icon faction-icon">🛡</div>
+
+              <div class="entry-copy">
+                <strong>Sevigrad</strong>
+
+                <div class="entry-metadata">
+                  <span>Faction</span>
+                  <span class="metadata-separator">◆</span>
+                  <span>Sevigrad</span>
+                </div>
+              </div>
+
+              <div class="entry-importance">
+                <span class="importance-label mildly-important">
+                  Mildly Important
+                </span>
+
+                <span class="importance-dot importance-yellow"></span>
+              </div>
+            </article>
+
+            <article class="codex-entry">
+              <div class="entry-icon artifact-icon">●</div>
+
+              <div class="entry-copy">
+                <strong>Golden Apple</strong>
+
+                <div class="entry-metadata">
+                  <span>Artifact</span>
+                  <span class="metadata-separator">◆</span>
+                  <span>Sevigrad</span>
+                </div>
+              </div>
+
+              <div class="entry-importance">
+                <span class="importance-label very-important">
+                  Very Important
+                </span>
+
+                <span class="importance-dot importance-gold"></span>
+              </div>
+            </article>
+
+            <article class="codex-entry">
+              <div class="entry-icon artifact-icon">🧭</div>
+
+              <div class="entry-copy">
+                <strong>Compass</strong>
+
+                <div class="entry-metadata">
+                  <span>Artifact</span>
+                  <span class="metadata-separator">◆</span>
+                  <span>Unknown</span>
+                </div>
+              </div>
+
+              <div class="entry-importance">
+                <span class="importance-label unknown-importance">
+                  Unknown
+                </span>
+
+                <span class="importance-dot importance-grey"></span>
+              </div>
+            </article> -->
+          </div>
+        </section>
+      </aside>
     </main>
   </div>
   <script src="scripts.js"></script>
+  <script src="components.js"></script>
 
   <script>
 
+    async function populateGlossary() {
+        const glossary = await fetchCsvRowsAsync(GLOSSARY_URL)
+        console.log({glossary})
+
+        setupAllLocationEntries('.location-list', glossary, location => {
+            if (location.name == 'All Locations') {
+                document.querySelectorAll('.codex-entry').forEach(div => div.style.display = '')
+            } else {
+                document.querySelectorAll('.codex-entry').forEach(div => {
+                    console.log(div.getAttribute('data-location'))
+                    if (div.getAttribute('data-location') == location.name) {
+                        div.style.display = ''
+                    } else {
+                        div.style.display = 'none'
+                    }
+                })
+            }
+        })
+        setupGlossaryEntries('.codex-entry-list', glossary, row => {
+            setBoardToGlossaryEntry(row)
+        })
+    }
     async function populateQuestLog() {
         const quests = await fetchCsvRowsAsync(QUESTS_URL)
         
         document.querySelector('#number-of-quests').innerHTML = quests.length
-
-        const QUEST_SYMBOL = {
-            'Main Quest': '✦',
-            'Personal Quest': '!',
-            'Secondary Quest': '!',
-        }
 
         const questsByLocation = {}
         for (const row of quests) {
@@ -295,32 +641,6 @@
                 questsByLocation[location] = []
             }
             questsByLocation[location].push(row)
-        }
-        console.log({questsByLocation})
-
-        function makeQuestHeader(text, number) {
-            return dom(`
-                <div class="group-heading">
-                    <span>${text}</span>
-                    <span>${number}</span>
-                </div>
-            `)
-        }
-        function makeQuestArticle(row) {
-            const [name, type, location, description] = row
-            const symbol = QUEST_SYMBOL[type]
-            const symbolClass = type == 'Secondary Quest'? 'secondary': ''
-            const renderedDescription = description.split('\n').join('<br>')
-            return dom(`
-                <article class="quest-item">
-                    <span class="quest-symbol ${symbolClass}">${symbol}</span>
-                    <div class="quest-copy">
-                        <strong>${name}</strong>
-                        <span>${renderedDescription}</span>
-                    </div>
-                    <!--span class="quest-level">18</span-->
-                </article>
-            `)
         }
 
         const questHolderDiv = document.querySelector('.panel.quest-sidebar')
@@ -336,11 +656,10 @@
                 sectionDiv.appendChild(questDiv)
             }
         }
-        
-
     }
 
     populateQuestLog()
+    populateGlossary()
 
   </script>
 </body>

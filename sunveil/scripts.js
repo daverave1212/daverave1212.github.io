@@ -1,4 +1,5 @@
 const QUESTS_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ3W6Me42z9yeWeoeIGrGtNlqcoybwIa4wCp0SrjTKQ_rXkNGCvRlGMOdNjlAoskJA0NpheVfyLCnqT/pub?output=csv";
+const GLOSSARY_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQ3W6Me42z9yeWeoeIGrGtNlqcoybwIa4wCp0SrjTKQ_rXkNGCvRlGMOdNjlAoskJA0NpheVfyLCnqT/pub?gid=2139382352&single=true&output=csv'
 
 async function fetchCsvRowsAsync(url) {
     const response = await fetch(url + (url.includes("?") ? "&" : "?") + "_=" + Date.now());
@@ -68,6 +69,40 @@ function dom(htmlString) {
   
   // doc.body.firstElementChild retrieves the top-level element with all its children
   return doc.body.firstElementChild;
+}
+
+function splitIntoSections(text) {
+  if (typeof text !== "string") {
+    return [];
+  }
+
+  return text
+    // Split by one or more newlines
+    .split(/\r?\n+/)
+    .map(section => section.trim())
+    // Remove empty sections
+    .filter(Boolean)
+    .map(section => {
+      /*
+       * Matches:
+       * Goal: Something
+       * Location: Somewhere
+       * Any Heading: Some text
+       */
+      const headingMatch = section.match(/^([^:\n]+):\s*(.*)$/s);
+
+      if (headingMatch) {
+        return {
+          heading: headingMatch[1].trim(),
+          text: headingMatch[2].trim()
+        };
+      }
+
+      return {
+        heading: null,
+        text: section
+      };
+    });
 }
 
 window.QUESTS_URL = QUESTS_URL
