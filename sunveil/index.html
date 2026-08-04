@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fantasy Quest Log</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Source+Serif+4:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="brand-mark">Q</div>
+      <nav class="main-nav" aria-label="Primary navigation">
+        <a href="https://docs.google.com/spreadsheets/d/13acA9pha-mGGqUpFbFjsEaw1v-4SiuneFOIphXPf-uY/edit?usp=sharing">Edit</a>
+      </nav>
+      <div class="topbar-actions">
+        <button class="icon-button" aria-label="Search">⌕</button>
+        <button class="icon-button" aria-label="Notifications"></button>
+        <div class="profile">
+          <div class="profile-avatar">S</div>
+          <div>
+            <strong>Sunveil Peninsula</strong>
+            <span>Level 3 Party</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="quest-layout">
+      <aside class="panel quest-sidebar">
+        <div class="panel-corner corner-tl"></div>
+        <div class="panel-corner corner-tr"></div>
+        <div class="panel-corner corner-bl"></div>
+        <div class="panel-corner corner-br"></div>
+
+        <header class="sidebar-header">
+          <p class="eyebrow">Journal</p>
+          <h1>Quest Log</h1>
+          <div class="sidebar-meta">
+            <span>Quests: <span id="number-of-quests"></span> / 100</span>
+            <!-- <span class="small-pill">All</span> -->
+          </div>
+        </header>
+
+        <!-- <div class="quest-scroll">
+          <section class="quest-group">
+            
+            <div class="group-heading">
+              <span>Sunveil Peninsula</span>
+              <span>4</span>
+            </div>
+
+            <article class="quest-item is-active">
+              <span class="quest-symbol">!</span>
+              <div class="quest-copy">
+                <strong>The Compass Awakens</strong>
+                <span>Petrasil Highlands</span>
+              </div>
+              <span class="quest-level">18</span>
+            </article>
+
+            <article class="quest-item">
+              <span class="quest-symbol">!</span>
+              <div class="quest-copy">
+                <strong>A Debt in Gold</strong>
+                <span>The Merchant Road</span>
+              </div>
+              <span class="quest-level">17</span>
+            </article>
+
+            <article class="quest-item">
+              <span class="quest-symbol">?</span>
+              <div class="quest-copy">
+                <strong>The Silent Watchtower</strong>
+                <span>Eastern March</span>
+              </div>
+              <span class="quest-level">16</span>
+            </article>
+          </section>
+
+          <section class="quest-group">
+            <div class="group-heading">
+              <span>La Roix</span>
+              <span>3</span>
+            </div>
+
+            <article class="quest-item">
+              <span class="quest-symbol">!</span>
+              <div class="quest-copy">
+                <strong>Masquerade of Ash</strong>
+                <span>Saint-Veyre</span>
+              </div>
+              <span class="quest-level">18</span>
+            </article>
+
+            <article class="quest-item">
+              <span class="quest-symbol">!</span>
+              <div class="quest-copy">
+                <strong>Ink, Blood and Seals</strong>
+                <span>The Red Archive</span>
+              </div>
+              <span class="quest-level">18</span>
+            </article>
+          </section>
+
+          <section class="quest-group">
+            <div class="group-heading">
+              <span>Darklands</span>
+              <span>2</span>
+            </div>
+
+            <article class="quest-item">
+              <span class="quest-symbol danger">!</span>
+              <div class="quest-copy">
+                <strong>Where Lanterns Die</strong>
+                <span>Blackfen Crossing</span>
+              </div>
+              <span class="quest-level">19</span>
+            </article>
+
+            <article class="quest-item">
+              <span class="quest-symbol danger">?</span>
+              <div class="quest-copy">
+                <strong>The Hollow Bell</strong>
+                <span>Unknown</span>
+              </div>
+              <span class="quest-level">20</span>
+            </article>
+          </section>
+
+          <section class="quest-group">
+            <div class="group-heading">
+              <span>World Quests</span>
+              <span>3</span>
+            </div>
+
+            <article class="quest-item compact">
+              <span class="quest-symbol world">✦</span>
+              <div class="quest-copy">
+                <strong>Caravan Under Siege</strong>
+                <span>Expires in 3h 20m</span>
+              </div>
+            </article>
+
+            <article class="quest-item compact">
+              <span class="quest-symbol world">✦</span>
+              <div class="quest-copy">
+                <strong>The River Remembers</strong>
+                <span>Expires in 5h 40m</span>
+              </div>
+            </article>
+          </section>
+        </div> -->
+      </aside>
+
+      <section class="panel quest-details">
+        <div class="panel-corner corner-tl"></div>
+        <div class="panel-corner corner-tr"></div>
+        <div class="panel-corner corner-bl"></div>
+        <div class="panel-corner corner-br"></div>
+
+        <div class="quest-hero">
+          <div class="banner-placeholder" aria-label="Faction banner image placeholder">
+            <span>Other</span>
+          </div>
+
+          <div class="hero-art-placeholder" aria-label="Quest artwork placeholder">
+            <span>Journal</span>
+          </div>
+
+          <div class="quest-heading">
+            <!-- <div>
+              <p class="eyebrow">Main Story Quest</p>
+              <h2>The Compass Awakens</h2>
+              <p class="location">Petrasil Highlands</p>
+            </div>
+            <span class="recommended-level">Level 18</span> -->
+          </div>
+
+          <div class="quest-intro">
+            <!-- <p>Follow the strange pull of the ancient compass and uncover why its needle points beyond every known road.</p>
+            <div class="objective-line">
+              <span class="diamond">◆</span>
+              <span>0 / 1 Reach the ruined observatory</span>
+            </div> -->
+          </div>
+        </div>
+
+        <!-- <div class="details-grid">
+          <section class="content-card description-card">
+            <h3>Description</h3>
+            <p>
+              The compass has remained silent since the crossing, yet tonight its face burns with a pale golden light. Every turn of the needle leads deeper into the highlands, toward an observatory abandoned long before Petrasil raised its first walls.
+            </p>
+            <p>
+              Find the tower before the agents of La Roix do. Whatever waits there may be tied to the hidden artefacts—and to the war none of the common folk yet understand.
+            </p>
+          </section>
+
+          <aside class="content-card rewards-card">
+            <h3>Rewards</h3>
+            <p class="muted">You will receive:</p>
+            <div class="reward-row">
+              <div class="reward-icon">XP</div>
+              <div>
+                <strong>4,850 Experience</strong>
+                <span>Story progression reward</span>
+              </div>
+            </div>
+            <div class="reward-row">
+              <div class="reward-icon">◉</div>
+              <div>
+                <strong>32 Gold</strong>
+                <span>Plus reputation</span>
+              </div>
+            </div>
+          </aside>
+
+          <section class="content-card objectives-card">
+            <h3>Objectives</h3>
+            <div class="objective-line large">
+              <span class="diamond">◆</span>
+              <span>Reach the ruined observatory in the Petrasil Highlands.</span>
+            </div>
+          </section>
+
+          <section class="content-card tracking-card">
+            <h3>Tracking</h3>
+            <div class="button-row">
+              <button class="fantasy-button primary">Track Quest</button>
+              <button class="fantasy-button">Abandon</button>
+            </div>
+          </section>
+
+          <div class="map-placeholder" aria-label="Map image placeholder">
+            <span>Map artwork</span>
+            <div class="map-marker">!</div>
+          </div>
+
+          <section class="content-card progress-card">
+            <div class="progress-header">
+              <div>
+                <p class="eyebrow">Story Progress</p>
+                <h3>The Hidden Artefacts</h3>
+              </div>
+              <div class="crest-placeholder">Crest</div>
+            </div>
+
+            <div class="progress-path" aria-label="Chapter progress">
+              <span class="progress-node complete">✓</span>
+              <span class="progress-line complete"></span>
+              <span class="progress-node complete">✓</span>
+              <span class="progress-line complete"></span>
+              <span class="progress-node current">3</span>
+              <span class="progress-line"></span>
+              <span class="progress-node">4</span>
+              <span class="progress-line"></span>
+              <span class="progress-node">5</span>
+            </div>
+
+            <div class="next-quest">
+              <span class="quest-symbol">!</span>
+              <div>
+                <small>Next in chain</small>
+                <strong>Under the Brass Moon</strong>
+              </div>
+            </div>
+          </section>
+        </div> -->
+      </section>
+    </main>
+  </div>
+  <script src="scripts.js"></script>
+
+  <script>
+
+    async function populateQuestLog() {
+        const quests = await fetchCsvRowsAsync(QUESTS_URL)
+        
+        document.querySelector('#number-of-quests').innerHTML = quests.length
+
+        const QUEST_SYMBOL = {
+            'Main Quest': '✦',
+            'Personal Quest': '!',
+            'Secondary Quest': '!',
+        }
+
+        const questsByLocation = {}
+        for (const row of quests) {
+            const [name, type, location, description] = row
+            if (questsByLocation[location] == null) {
+                questsByLocation[location] = []
+            }
+            questsByLocation[location].push(row)
+        }
+        console.log({questsByLocation})
+
+        function makeQuestHeader(text, number) {
+            return dom(`
+                <div class="group-heading">
+                    <span>${text}</span>
+                    <span>${number}</span>
+                </div>
+            `)
+        }
+        function makeQuestArticle(row) {
+            const [name, type, location, description] = row
+            const symbol = QUEST_SYMBOL[type]
+            const symbolClass = type == 'Secondary Quest'? 'secondary': ''
+            const renderedDescription = description.split('\n').join('<br>')
+            return dom(`
+                <article class="quest-item">
+                    <span class="quest-symbol ${symbolClass}">${symbol}</span>
+                    <div class="quest-copy">
+                        <strong>${name}</strong>
+                        <span>${renderedDescription}</span>
+                    </div>
+                    <!--span class="quest-level">18</span-->
+                </article>
+            `)
+        }
+
+        const questHolderDiv = document.querySelector('.panel.quest-sidebar')
+        const logDiv = dom(`<div class="quest-scroll"></div>`)
+        questHolderDiv.appendChild(logDiv)
+        for (const [location, rows] of Object.entries(questsByLocation)) {
+            const sectionDiv = dom(`<section class="quest-group"></section>`)
+            logDiv.appendChild(sectionDiv)
+            const sectionHeader = makeQuestHeader(location, rows.length)
+            sectionDiv.appendChild(sectionHeader)
+            for (const row of rows) {
+                const questDiv = makeQuestArticle(row)
+                sectionDiv.appendChild(questDiv)
+            }
+        }
+        
+
+    }
+
+    populateQuestLog()
+
+  </script>
+</body>
+</html>
