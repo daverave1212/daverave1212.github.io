@@ -72,11 +72,34 @@ function dom(htmlString) {
 }
 
 function splitIntoSections(text) {
+  if (text == null) {
+    return []
+  }
+  const lines = text.split('\n').map(t => t.trim())
+  
+  let lastSection = { heading: null, text: '' }
+  const sections = [lastSection]
+  for (const line of lines) {
+    const hasHeading = line.includes(':')
+    if (hasHeading) {
+      const [part1, part2] = line.split(':').map(t => t.trim())
+      lastSection = { heading: part1, text: part2 ?? '' }
+      sections.push(lastSection)
+    } else {
+      lastSection.text += '<br>' + line
+    }
+  }
+
+  return sections
+}
+
+function _splitIntoSections(text) {
+  console.log({text})
   if (typeof text !== "string") {
     return [];
   }
 
-  return text
+  const result = text
     // Split by one or more newlines
     .split(/\r?\n+/)
     .map(section => section.trim())
@@ -103,6 +126,8 @@ function splitIntoSections(text) {
         text: section
       };
     });
+
+    return result
 }
 
 window.QUESTS_URL = QUESTS_URL

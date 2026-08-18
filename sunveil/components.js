@@ -33,8 +33,6 @@ function makeQuestArticle(row, onClick) {
 function getLocationsData(glossary) {
     const locationsData = {}
     for (const [name, type, location, desc, imp, rep, emoji] of glossary) {
-        console.log(`At ${location}`)
-        console.log({glossary})
         locationsData[location] = locationsData[location] ?? {
             nEntries: 0,
             emoji: '❓',
@@ -122,7 +120,6 @@ function makeBoardObjectiveCard({heading, text}) {
           <section class="content-card objectives-card">
             <h3>${heading}</h3>
             <div class="objective-line large">
-              <span class="diamond">◆</span>
               <span>${text}</span>
             </div>
           </section>    
@@ -156,16 +153,17 @@ function setBoardToGlossaryEntry(entryRow) {
         mainDescriptionDiv.appendChild(p)
     }
     
-    const descriptionDiv = document.querySelector('.details-grid')
+    const descriptionDiv = document.querySelector('.details-grid .details-content')
     document.querySelectorAll('.objectives-card').forEach(div => div.remove())
+    console.log({textSections})
     for (const { heading, text } of textSections) {
         if (heading == null)
             continue
         const card = makeBoardObjectiveCard({ heading, text })
-        const cardRight = dom(`
-          <section class="content-card tracking-card"></section>    
-        `)
+        // const cardRight = dom(`
+        //   <section class="content-card tracking-card"></section>    
+        // `)
         descriptionDiv.appendChild(card)
-        descriptionDiv.appendChild(cardRight)
+        // descriptionDiv.appendChild(cardRight)
     }
 }

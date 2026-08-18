@@ -490,8 +490,8 @@ button {
 }
 
 .details-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.55fr) minmax(260px, 0.85fr);
+  /* display: grid; */
+  /* grid-template-columns: minmax(0, 1.55fr) minmax(260px, 0.85fr); */
   gap: 0;
   border-right: 1px solid rgba(200, 155, 60, 0.24);
   border-bottom: 1px solid rgba(200, 155, 60, 0.24);
